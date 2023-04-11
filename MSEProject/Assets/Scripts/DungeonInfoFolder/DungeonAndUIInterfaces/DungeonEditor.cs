@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DungeonInfoFolder.DungeonAndUIInterfaces
 {
-    public class DungeonEditor : MonoBehaviour
+    public class DungeonEditor : Singleton<DungeonEditor>
     {
         public Dungeon editingDungeon;
     }

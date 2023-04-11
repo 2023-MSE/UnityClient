@@ -6,6 +6,13 @@ namespace DungeonInfoFolder
     {
         public string name;
         public string createdTime;
-        public List<Stage> stages;
+        public Dictionary<long, Stage> stages = new Dictionary<long, Stage>();
+        
+        // Test Default Dungeon
+        public Dungeon()
+        {
+            for (int i = 0 ; i < 11 ; i ++)
+                stages.Add(i, new Stage(i));
+        }
     }
 }

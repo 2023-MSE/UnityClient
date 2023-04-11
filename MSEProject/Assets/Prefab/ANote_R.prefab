@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 5375850686441753687}
   - component: {fileID: 6051996354094404867}
   - component: {fileID: 7723729461001663081}
-  - component: {fileID: 4489473621084609202}
+  - component: {fileID: -6918031960092706065}
   m_Layer: 5
-  m_Name: AttackNote
-  m_TagString: ANote
+  m_Name: ANote_R
+  m_TagString: ANote_R
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 5375850686441753685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.21919607, z: 0.21919607}
+  m_LocalScale: {x: 0.1, y: 0.27399507, z: 0.27399507}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,14 +62,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.3254717, b: 0.3254717, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1f0dde06477784e43b033d01c30935fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 767c6ca62d74023478583b2681b5c9c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -126,7 +126,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4489473621084609202
+--- !u!114 &-6918031960092706065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5375850686441753685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5b201011f9b224db8b4f8a4bc764d3, type: 3}
+  m_Script: {fileID: 11500000, guid: a704a755d30865246ba53effc5dcc776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 2

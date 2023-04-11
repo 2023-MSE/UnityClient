@@ -9,15 +9,11 @@ public class Note : MonoBehaviour
     public Direction dir;
     public int Damage;
    
-    public virtual GameObject getNote()
+    public int getdamage()
     {
-        return null;
+        return 0;
     }
-
-    public virtual int getDamage()
-    {
-        return Damage;
-    }
+ 
 
     public virtual Direction GetDirection()
     {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using DefaultNamespace;
+using Unity.VisualScripting;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Object = System.Object;
@@ -26,6 +27,7 @@ public class TimingManager : MonoBehaviour
 
     public List<int> dir_int = new List<int>();
     private int num;
+    private String _dir;
     
 
 
@@ -66,45 +68,112 @@ public class TimingManager : MonoBehaviour
     
     public void CheckTiming_dir(String dir)
     {
+
         for (int i = 0; i < boxNoteList.Count; i++)
         {
             float t_notePosX = boxNoteList[i].transform.localPosition.x;
 
-            for (int x = 0; x < timingBoxs.Length; x++) // Pefect -> Cool -> Good -> Bad 순으로 판별하게됨.
+            for (int x = 0; x < timingBoxs.Length; x++) // Pefect -> Cool -> Good -> Bad 순으로 판별하게됨. -> 이건 차후에!
             {
-                
-                if (timingBoxs[x].x <= t_notePosX && t_notePosX <= timingBoxs[x].y)
-                { // 각 판정 범위의 최소값 x, 최대값 y 를 비교하게됨.
-
+                // 각 판정 범위의 최소값 x, 최대값 y 를 비교하게됨.
+                if (timingBoxs[0].x <= t_notePosX && t_notePosX <= timingBoxs[0].y)
+                { 
+                    Debug.Log(i);
+                    // 인식 된 노트를 note 로 지정
+                    GameObject note = boxNoteList[i].gameObject;
                     
-            
-                    // 성공시
-                    if (boxNoteList[i].CompareTag("ANote"))
-                    {
-                        Debug.Log("anote");
-                        /
 
-                        AttackNote note = boxNoteList[i].GetComponent<AttackNote>;
-                        
+                    // 성공시
+                    if (note.CompareTag("ANote_L"))
+                    {
+                         _dir=note.GetComponent<AttackNote_L>().getdir();
+              
                         // note 안에 String 과 파라메터 dir이 같으면 -> monster attack note 성공
-                         if (note.getdir()==dir)
+                         if (_dir==dir)
                          {
-                             //monster attack note :
+                             //monster attack note : 방어 성공
+                             SendSuccess_Attack();
+
                          }
                          else // note 안에 String 과 파라메터 dir이 같지 않으면 -> note 성공 못함
                          {
-                             //monster attack note : fail
-                             player.setHP(note.getdamage());
+                             //monster attack note : 방어 실패
+                             SendFail_Attack(note.GetComponent<AttackNote_L>().getdamage());
+                             MissNote();
                          }
+                         
                          
                         
                         
                     }
-                    else if(boxNoteList[i].CompareTag("GNote"))
+                    else if (note.CompareTag("ANote_D"))
                     {
-                        Debug.Log("gnote");
-                        Direction direction = SendGenalizeData(dir);
+                        _dir=note.GetComponent<AttackNote_D>().getdir();
+                  
+                        // note 안에 String 과 파라메터 dir이 같으면 -> monster attack note 성공
+                        if (_dir=="s")
+                        {
+                            
+                            //monster attack note : 방어 성공
+                            SendSuccess_Attack();
+
+                        }
+                        else // note 안에 String 과 파라메터 dir이 같지 않으면 -> note 성공 못함
+                        {
+                            //monster attack note : 방어 실패
+                            SendFail_Attack(note.GetComponent<AttackNote_D>().getdamage());
+                            
+                        }
+                         
                     }
+                    else if (note.CompareTag("ANote_R"))
+                    {
+                        _dir=note.GetComponent<AttackNote_R>().getdir();
+                    
+                        // note 안에 String 과 파라메터 dir이 같으면 -> monster attack note 성공
+                        if (_dir=="d")
+                        {
+                            
+                            //monster attack note : 방어 성공
+                            SendSuccess_Attack();
+
+                        }
+                        else // note 안에 String 과 파라메터 dir이 같지 않으면 -> note 성공 못함
+                        {
+                            //monster attack note : 방어 실패
+                            SendFail_Attack(note.GetComponent<AttackNote_R>().getdamage());
+                            
+                        }
+                        
+                        
+                    }
+                    else if (note.CompareTag("ANote_U"))
+                    {
+                        _dir=note.GetComponent<AttackNote_U>().getdir();
+                        // note 안에 String 과 파라메터 dir이 같으면 -> monster attack note 성공
+                        if (_dir=="w")
+                        {
+                            
+                            //monster attack note : 방어 성공
+                            SendSuccess_Attack();
+
+                        }
+                        else // note 안에 String 과 파라메터 dir이 같지 않으면 -> note 성공 못함
+                        {
+                            //monster attack note : 방어 실패
+                            SendFail_Attack(note.GetComponent<AttackNote_U>().getdamage());
+                            
+                        }
+                         
+                         
+                        
+                        
+                    }
+                    else if(note.CompareTag("GNote"))
+                    {
+                        SendGenalizeData(dir);
+                    }
+                    
                     
 
 
@@ -122,8 +191,6 @@ public class TimingManager : MonoBehaviour
     
         }
         //실패시
-        
-        Debug.Log("miss!");
         MissNote();
     }
 
@@ -145,7 +212,18 @@ public class TimingManager : MonoBehaviour
         
     }
 
-    public Direction SendGenalizeData(String s)
+    public void SendSuccess_Attack()
+    {
+        Debug.Log("SendSuccess_Attack");
+    }
+
+    public int SendFail_Attack(int damage)
+    {
+        Debug.Log("SendFail_Attack"+damage);
+        return damage;
+    }
+
+    public String SendGenalizeData(String s)
     {
         Direction dir=0;
         switch (s)
@@ -168,12 +246,12 @@ public class TimingManager : MonoBehaviour
 
         }
 
-        return dir;
+        return s;
     }
     public void MissNote()
     {
         // 범위 안에 miss -> hp 가 1씩 깍이게 
-       
+        Debug.Log("miss!");
         player.setHP(num--);
         
     }

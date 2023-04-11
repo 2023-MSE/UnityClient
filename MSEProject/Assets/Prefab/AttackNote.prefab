@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 5375850686441753684}
   - component: {fileID: 5375850686441753686}
   - component: {fileID: 5375850686441753687}
-  - component: {fileID: 5375850686441753673}
   - component: {fileID: 6051996354094404867}
   - component: {fileID: 7723729461001663081}
+  - component: {fileID: 4489473621084609202}
   m_Layer: 5
   m_Name: AttackNote
-  m_TagString: Note
+  m_TagString: ANote
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,21 +79,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5375850686441753673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5375850686441753685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f578095c5bd734c85ae3c78803ac9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noteSpeed: 120
-  dir: 0
-  Damage: 0
 --- !u!61 &6051996354094404867
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,3 +126,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4489473621084609202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5375850686441753685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5b201011f9b224db8b4f8a4bc764d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0

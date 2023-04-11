@@ -1485,9 +1485,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88d6cc21c0fc6764cb8c743f048f42b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Green_3: {fileID: 0}
-  Blue_5: {fileID: 0}
-  Red_7: {fileID: 0}
+  Green_3: {fileID: 2131635574}
+  Blue_5: {fileID: 693549079}
+  Red_7: {fileID: 143407674}
 --- !u!114 &1361079963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1500,8 +1500,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acacb38201d985f43afb237402ed895e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects: []
-  skills: []
+  effects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  skills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1400323589
 GameObject:
   m_ObjectHideFlags: 0

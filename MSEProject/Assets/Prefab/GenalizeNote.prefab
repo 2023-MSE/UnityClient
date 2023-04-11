@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7723729461001663081}
   m_Layer: 5
   m_Name: GenalizeNote
-  m_TagString: Note
+  m_TagString: GNote
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

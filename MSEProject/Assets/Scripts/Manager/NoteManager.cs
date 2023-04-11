@@ -20,6 +20,7 @@ public class NoteManager : MonoBehaviour
     [SerializeField] private Transform tfNoteAppear = null;
     [SerializeField] private GameObject goNote1 = null;
     [SerializeField] private GameObject goNote2 = null;
+    
    // [SerializeField] private GameObject goNote2 = null;
     public TimingManager theTimingManager;
 
@@ -81,7 +82,7 @@ public class NoteManager : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Note"))
+        if (other.CompareTag("Note")||other.CompareTag("GNote")||other.CompareTag("ANote"))
         {
             theTimingManager.RemoveNote(other.gameObject);
             Destroy(other.gameObject);

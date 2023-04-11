@@ -26,6 +26,8 @@ public class TimingManager : MonoBehaviour
 
     public List<int> dir_int = new List<int>();
     private int num;
+    
+
 
     private void Awake()
     {
@@ -70,16 +72,43 @@ public class TimingManager : MonoBehaviour
 
             for (int x = 0; x < timingBoxs.Length; x++) // Pefect -> Cool -> Good -> Bad 순으로 판별하게됨.
             {
-                //
+                
                 if (timingBoxs[x].x <= t_notePosX && t_notePosX <= timingBoxs[x].y)
                 { // 각 판정 범위의 최소값 x, 최대값 y 를 비교하게됨.
+
                     
-                    
+            
                     // 성공시
-                   
-                    Direction direction = SendGenalizeData(dir);
-                    Debug.Log(direction);
+                    if (boxNoteList[i].CompareTag("ANote"))
+                    {
+                        Debug.Log("anote");
+                        /*
+
+                        AttackNote note = boxNoteList[i].GetComponent<AttackNote>;
+                        
+                        // note 안에 String 과 파라메터 dir이 같으면 -> monster attack note 성공
+                         if (note.getdir()==dir)
+                         {
+                             //monster attack note :
+                         }
+                         else // note 안에 String 과 파라메터 dir이 같지 않으면 -> note 성공 못함
+                         {
+                             //monster attack note : fail
+                             player.setHP(note.getdamage());
+                         }
+                         */
+                        
+                        
+                    }
+                    else if(boxNoteList[i].CompareTag("GNote"))
+                    {
+                        Debug.Log("gnote");
+                        Direction direction = SendGenalizeData(dir);
+                    }
                     
+
+
+
                     Destroy(boxNoteList[i].gameObject);
                    
                     RemoveNote(boxNoteList[i]);
@@ -90,6 +119,7 @@ public class TimingManager : MonoBehaviour
                     return;
                 }
             }
+    
         }
         //실패시
         

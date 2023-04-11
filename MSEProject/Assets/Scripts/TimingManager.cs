@@ -82,7 +82,7 @@ public class TimingManager : MonoBehaviour
                     if (boxNoteList[i].CompareTag("ANote"))
                     {
                         Debug.Log("anote");
-                        /*
+                        /
 
                         AttackNote note = boxNoteList[i].GetComponent<AttackNote>;
                         
@@ -96,7 +96,7 @@ public class TimingManager : MonoBehaviour
                              //monster attack note : fail
                              player.setHP(note.getdamage());
                          }
-                         */
+                         
                         
                         
                     }

@@ -10,6 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Skill/Skill.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/Tiling/MinMaxZJob.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -71,7 +72,8 @@
       <workItem from="1681132302848" duration="5750000" />
       <workItem from="1681172837497" duration="732000" />
       <workItem from="1681174017399" duration="5710000" />
-      <workItem from="1681201170077" duration="6930000" />
+      <workItem from="1681201170077" duration="7674000" />
+      <workItem from="1681279992328" duration="1688000" />
     </task>
     <servers />
   </component>

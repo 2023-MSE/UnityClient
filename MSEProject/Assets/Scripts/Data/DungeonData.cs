@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class NewBehaviourScript
+public class DungeonData
 {
     public List<StageData> stages;
     public float speed;

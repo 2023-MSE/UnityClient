@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class AttackNote_D : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Direction dir=Direction.Down;
+    private Direction dir=Direction.DOWN;
     
     public int damage=1;
   

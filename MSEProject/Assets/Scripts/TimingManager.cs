@@ -229,16 +229,16 @@ public class TimingManager : MonoBehaviour
         switch (s)
         {
             case "a":
-                dir= Direction.Left;
+                dir= Direction.LEFT;
                 break;
             case "s":
-                dir= Direction.Down;
+                dir= Direction.DOWN;
                 break;
             case "d":
-                dir=Direction.Right;
+                dir=Direction.RIGHT;
                 break;
             case "w":
-                dir= Direction.Up;
+                dir= Direction.UP;
                 break;
             default:
                 MissNote();

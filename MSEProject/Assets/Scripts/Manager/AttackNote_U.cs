@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class AttackNote_U : MonoBehaviour
 {
-    private Direction dir=Direction.Up;
+    private Direction dir=Direction.UP;
     
     public int damage=5;
     

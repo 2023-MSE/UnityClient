@@ -11,15 +11,17 @@ public class Skill_L : Skill
     private int damage;
 
    
-    public override void DoSkill()
+    public void DoSkill()
     {
-        
+
     }
-    public override int getDamage()
+
+    public int getDamage()
     {
         return damage;
     }
-    public override void setDamage(int damage)
+
+    public void setDamage(int damage)
     {
         this.damage = damage;
     }

@@ -1,0 +1,73 @@
+{
+    "nodes": [
+        {
+            "id": "ce7dac38-72af-4661-b127-db61cddf335f",
+            "values": [],
+            "posX": -77.43667602539063,
+            "posY": 267.7183532714844,
+            "path": "Nodes/StageNode",
+            "inputSocketIds": [
+                "27687cee-6ea4-4736-96f4-e58bbc7aa2c9"
+            ],
+            "outputSocketIds": [
+                "a5cd41c4-4fe1-420b-9521-3a7d38ed299a"
+            ]
+        },
+        {
+            "id": "47d72e6c-b000-40f8-a8c3-f81953a6a430",
+            "values": [],
+            "posX": 41.78875732421875,
+            "posY": 163.54930114746095,
+            "path": "Nodes/StageNode",
+            "inputSocketIds": [
+                "7553f967-54e7-4cbb-96a5-abc98e5f6ca9"
+            ],
+            "outputSocketIds": [
+                "e4f19144-cf1f-46b6-80ec-7968b16371a4"
+            ]
+        },
+        {
+            "id": "b26e608d-6a38-4c44-a60a-5d5c4765784c",
+            "values": [],
+            "posX": 144.54925537109376,
+            "posY": 31.042251586914064,
+            "path": "Nodes/StageNode",
+            "inputSocketIds": [
+                "8839d9ce-bec1-4053-b490-c3cc7f77a7f7"
+            ],
+            "outputSocketIds": [
+                "f2add40c-cf03-4566-b471-4384039c06d1"
+            ]
+        },
+        {
+            "id": "598b6e7f-fcf2-4050-895a-36ae485bc18d",
+            "values": [],
+            "posX": 120.21127319335938,
+            "posY": -217.74649047851563,
+            "path": "Nodes/StageNode",
+            "inputSocketIds": [
+                "ac13ddd1-47ba-4aa4-8a72-1ff7f8782101"
+            ],
+            "outputSocketIds": [
+                "a462a3e1-0839-4253-8ca2-8295b9cb2fe6"
+            ]
+        }
+    ],
+    "connections": [
+        {
+            "id": "335fe70e-5983-42f3-9c70-1bca4ff414ac",
+            "outputSocketId": "f2add40c-cf03-4566-b471-4384039c06d1",
+            "inputSocketId": "ac13ddd1-47ba-4aa4-8a72-1ff7f8782101"
+        },
+        {
+            "id": "34c48188-a46e-4474-ba94-42d15babbf90",
+            "outputSocketId": "e4f19144-cf1f-46b6-80ec-7968b16371a4",
+            "inputSocketId": "8839d9ce-bec1-4053-b490-c3cc7f77a7f7"
+        },
+        {
+            "id": "b02488f2-92d9-4acf-9701-f4361ebaf488",
+            "outputSocketId": "a5cd41c4-4fe1-420b-9521-3a7d38ed299a",
+            "inputSocketId": "7553f967-54e7-4cbb-96a5-abc98e5f6ca9"
+        }
+    ]
+}

@@ -31,6 +31,11 @@ public class UIInputChecker : MonoBehaviour
         DungeonUIVisualizer.Instance.VisualizeDungeonList();
     }
 
+    public void OnEditButtonClick()
+    {
+        FindObjectOfType<StageNodeEditor>().LoadDungeonGraph();
+    }
+
     public void OnDeleteButtonClicked()
     {
         Dungeon tempDungeon = DungeonEditor.Instance.editingDungeon;

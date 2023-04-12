@@ -1,0 +1,45 @@
+{
+    "nodes": [
+        {
+            "id": "5d482bfb-3c09-4e36-93fd-23a575ea89ed",
+            "values": [
+                {
+                    "key": "floatValue",
+                    "value": "0"
+                }
+            ],
+            "posX": -147.0,
+            "posY": -39.0,
+            "path": "Nodes/FloatNode",
+            "inputSocketIds": [],
+            "outputSocketIds": [
+                "da47c8ef-2bba-4630-a568-afbadc375a03"
+            ]
+        },
+        {
+            "id": "50dc810e-d2c8-43eb-b3ec-1c61b6135544",
+            "values": [
+                {
+                    "key": "opType",
+                    "value": "0"
+                }
+            ],
+            "posX": 107.0,
+            "posY": -47.0,
+            "path": "Nodes/MathOperationNode",
+            "inputSocketIds": [
+                "f0a065a2-8003-4237-8887-ffacca4dc84d"
+            ],
+            "outputSocketIds": [
+                "3809207b-2cdf-44d5-93d1-30e293cdd8fb"
+            ]
+        }
+    ],
+    "connections": [
+        {
+            "id": "64650262-9bcd-4b9c-941d-9a22ea1f69fd",
+            "outputSocketId": "da47c8ef-2bba-4630-a568-afbadc375a03",
+            "inputSocketId": "f0a065a2-8003-4237-8887-ffacca4dc84d"
+        }
+    ]
+}

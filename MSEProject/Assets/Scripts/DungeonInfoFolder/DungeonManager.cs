@@ -21,9 +21,9 @@ public class DungeonManager : Singleton<DungeonManager>
         MyDungeonList = new DungeonList();
         MyDungeonList.myDungeons = new List<Dungeon>();
 
-        for (int i = 0; i < Random.Range(10,20); i++)
+        /*for (int i = 0; i < Random.Range(10,20); i++)
         {
-            Dungeon tempDungeon = new Dungeon();
+            Dungeon tempDungeon = new Dungeon(true);
             switch (Random.Range(0,4))
             {
                 case 0 :
@@ -44,7 +44,7 @@ public class DungeonManager : Singleton<DungeonManager>
                     break;
             }
             MyDungeonList.myDungeons.Add(tempDungeon);
-        }
+        }*/
     }
 
     public void GetDungeonList(DungeonList inputDungeonList)

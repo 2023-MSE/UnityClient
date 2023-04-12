@@ -9,6 +9,7 @@ public class EachDungeonMaker : MonoBehaviour
 {
     public TextMeshProUGUI dungeonNameText;
     public Dungeon assignedDungeon;
+    public Transform indicator;
 
     public void SetUpEachDungeonUI(string inputDungeonName, string inputCreatedTime, Dungeon inputDungeon)
     {
@@ -20,5 +21,7 @@ public class EachDungeonMaker : MonoBehaviour
     {
         if (inputToggleStatus)
             DungeonEditor.Instance.editingDungeon = assignedDungeon;
+        
+        FindObjectOfType<ActivateIndicator>().OtherTargetActivated(indicator);
     }
 }

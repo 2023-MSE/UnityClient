@@ -4,12 +4,13 @@ using UnityEngine;
 
 namespace DungeonInfoFolder
 {
+    [Serializable]
     public class Stage
     {
         public ulong nodeID;
         public List<ulong> prevStageID;
         public List<ulong> nextStageID;
-
+        
         [Serializable]
         public enum StageType
         {
@@ -22,6 +23,7 @@ namespace DungeonInfoFolder
         public StageType myStageType;
 
         public string specificTypeInfo;
+        public List<int> monsters;
 
         public Stage(ulong inputNodeID)
         {

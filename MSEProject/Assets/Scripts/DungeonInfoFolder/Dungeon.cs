@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEditor;
+using System;
 
 namespace DungeonInfoFolder
 {
+    [Serializable]
     public class Dungeon
     {
         // this used for local save dungeon stage info
@@ -14,11 +16,9 @@ namespace DungeonInfoFolder
         public string createdTime;
         public Dictionary<ulong, Stage> stages = new Dictionary<ulong, Stage>();
         public ulong recentID = 0;
+        public ulong level;
 
-        public Dungeon()
-        {
-            id = GUID.Generate().ToString();
-        }
+        public Dungeon(){ }
         
         // Test Default Dungeon
         public Dungeon(bool thisIsTest)

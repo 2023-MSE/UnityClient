@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
@@ -6,32 +7,32 @@ using UnityEngine;
 public class Note : MonoBehaviour
 {
     public float noteSpeed = 120;
-    public Direction dir;
-    public int Damage;
+    
+    private String dir= " ";
+    private int damage=0;
    
     public int getdamage()
     {
-        return 0;
+        return damage ;
     }
- 
 
-    public virtual Direction GetDirection()
+    public void setdamage(int _damage)
+    {
+        damage = _damage;
+    }
+
+    public String getDirection()
     {
         return dir;
     }
 
-    public virtual Direction sendDirection(Direction _dir)
+    public void setDirection(String _dir)
     {
-        return _dir;
+        dir = _dir;
     }
-    
-    
-
-    // Update is called once per frame
+ 
     void Update()
     {
         transform.localPosition += Vector3.right * noteSpeed * Time.deltaTime;
-        
-        
     }
 }

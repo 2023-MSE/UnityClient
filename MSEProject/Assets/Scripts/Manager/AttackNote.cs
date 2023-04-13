@@ -6,35 +6,27 @@ using UnityEngine;
 using Random = System.Random;
 
 
-public class AttackNote : MonoBehaviour
+public class AttackNote : Note
 {
-    // 다양한 방향키가 존재하야함
-
-    private Direction dir;
+    public String dir;
     
     public int damage;
     public void Start()
     {
-        Random random = new Random();
-
-        dir=(Direction)random.Next(Enum.GetNames(typeof(Direction)).Length);
-     
-        damage = 5;
-    }
-
-    public Direction getdir()
-    {
-        return dir;
+       Debug.Log(dir + " " + damage);
     }
 
     public int getdamage()
     {
+        Debug.Log("It is AttackNote | getdamage");
         return damage;
     }
-    void Update()
+
+    public String getDirection()
     {
-        transform.localPosition += Vector3.right * 120 * Time.deltaTime;
-        
-        
+        Debug.Log("It is AttackNote | getDirection");
+        return dir;
     }
+
+    
 }

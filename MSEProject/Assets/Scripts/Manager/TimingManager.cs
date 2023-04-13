@@ -4,11 +4,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using DefaultNamespace;
+using MSEProject.Assets.Scripts.Events;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.ParticleSystemJobs;
 using Debug = UnityEngine.Debug;
 using Object = System.Object;
 
+[System.Serializable]
+public class StringEvent : UnityEvent<string>
+{
+        
+}
 public class TimingManager : MonoBehaviour
 {
     private PlayerController player;
@@ -18,14 +26,21 @@ public class TimingManager : MonoBehaviour
     [SerializeField] RectTransform[] timingRect = null;
 
     [SerializeField] private GameObject RedCenter;
-    
+
+    [SerializeField] private UnityEvent _successAttackUnityEvent;
+
+    [SerializeField] private UnityEvent _failAttackUnityEvent;
+
+    [SerializeField] private UnityEvent _failGenalizeUnityEvent;
+
+    [SerializeField] private StringEvent _successGenalizeUnityEvent;
+
     Vector2[] timingBoxs = null;
 
     private Direction Dir;
     // Start is called before the first frame update
     public List<GameObject> boxNoteList = new List<GameObject>();
-
-    public List<int> dir_int = new List<int>();
+    
     private int num;
     private String _dir;
     
@@ -68,21 +83,21 @@ public class TimingManager : MonoBehaviour
     
     public void CheckTiming_dir(String dir)
     {
+        _dir = dir;
+        Debug.Log("사용자 입력 값 : "+ _dir);
 
         for (int i = 0; i < boxNoteList.Count; i++)
         {
             float t_notePosX = boxNoteList[i].transform.localPosition.x;
+            GameObject note = boxNoteList[i].gameObject;
 
             for (int x = 0; x < timingBoxs.Length; x++) // Pefect -> Cool -> Good -> Bad 순으로 판별하게됨. -> 이건 차후에!
             {
                 // 각 판정 범위의 최소값 x, 최대값 y 를 비교하게됨.
                 if (timingBoxs[0].x <= t_notePosX && t_notePosX <= timingBoxs[0].y)
                 { 
-                    Debug.Log(i);
-                    // 인식 된 노트를 note 로 지정
-                    GameObject note = boxNoteList[i].gameObject;
                     
-
+                    /*
                     // 성공시
                     if (note.CompareTag("ANote_L"))
                     {
@@ -173,7 +188,32 @@ public class TimingManager : MonoBehaviour
                     {
                         SendGenalizeData(dir);
                     }
-                    
+                    */
+                    if (note.gameObject.CompareTag("ANote")) // 공격 노트이면!
+                    {
+                        Debug.Log("자식 공격 노트: " + note.GetComponent<AttackNote>().getDirection());
+                        Debug.Log("사용자 입력 값  : "+ _dir + " | "+ "노트 dir 값" + note.GetComponent<AttackNote>().getDirection());
+                      
+                        if (_dir==note.GetComponent<AttackNote>().getDirection())// 입력값과 노트의 dir 값이 같으면!
+                        {
+                            Debug.Log("공격 노트 방어 성공입니다");
+                            _successAttackUnityEvent.Invoke();
+                        }
+                        else if (_dir != note.GetComponent<AttackNote>().getDirection())
+                        {
+                            Debug.Log("공격 노트 방어 실패입니다");
+                            _failAttackUnityEvent.Invoke();
+                        }
+                            
+                    }
+                    else if (note.gameObject.CompareTag("GNote")) // 일반 노트이면!
+                    {
+                      
+                        note.GetComponent<GenalizeNote>().setDirection(_dir);
+                        Debug.Log("자식 일반 노트 입력값: " + note.GetComponent<GenalizeNote>().getDirection());
+                        string sendStr = note.GetComponent<GenalizeNote>().getDirection();
+                        _successGenalizeUnityEvent.Invoke(sendStr);
+                    }
                     
 
 
@@ -183,7 +223,7 @@ public class TimingManager : MonoBehaviour
                     RemoveNote(boxNoteList[i]);
                     
                     
-                    StartCoroutine(changeColor());
+                    
                     CheckNote(x);
                     return;
                 }
@@ -262,3 +302,4 @@ public class TimingManager : MonoBehaviour
         
     }
 }
+

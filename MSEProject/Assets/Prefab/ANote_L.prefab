@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 5375850686441753687}
   - component: {fileID: 6051996354094404867}
   - component: {fileID: 7723729461001663081}
-  - component: {fileID: 9114574016602859546}
+  - component: {fileID: 1158976239944431549}
   m_Layer: 5
   m_Name: ANote_L
-  m_TagString: ANote_L
+  m_TagString: ANote
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &9114574016602859546
+--- !u!114 &1158976239944431549
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5375850686441753685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b229740b39429424aaddb574054715e5, type: 3}
+  m_Script: {fileID: 11500000, guid: fe5b201011f9b224db8b4f8a4bc764d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  noteSpeed: 120
+  dir: s
+  damage: 2

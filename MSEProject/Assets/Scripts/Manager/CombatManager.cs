@@ -13,6 +13,10 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         // 초기 설정
+
+        /*
+         * test case
+         **/
         player = GameObject.FindObjectOfType<Player>().gameObject;
         player.GetComponent<Player>().setHp(100);
         Monster[] monster = GameObject.FindObjectsOfType<Monster>();
@@ -25,6 +29,7 @@ public class CombatManager : MonoBehaviour
         monsters.Add(monster[1].gameObject);
         monster[2].GetComponent<Monster>().setHp(100);
         monster[2].GetComponent<Monster>().setPower(30);
+
     }
     private void damage(GameObject target, float damage)
     {
@@ -34,6 +39,10 @@ public class CombatManager : MonoBehaviour
 
     public void skillActivation()
     {
+        // test
+        Debug.Log("Skill Active" + currentSkill);
+        return;
+        
         Skill skill = GameData.skills[lastSkill];
         if (skill.getSplash())
         {

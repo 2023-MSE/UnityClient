@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 2c6bf08684bf8db4f98c06ed77c0447f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - tfNoteAppear: {instanceID: 0}
+  - GNote: {fileID: 5375850686441753685, guid: 64c479266873a5b4db7082809c64abfe, type: 3}
+  - ANote_l: {fileID: 5375850686441753685, guid: 2a879ce6718e8e541a5f71f4fd14bb94,
+      type: 3}
+  - ANote_r: {fileID: 5375850686441753685, guid: 167f10008dceec340976d982d9acdfae,
+      type: 3}
+  - ANote_u: {fileID: 5375850686441753685, guid: 1f3ee2dfb090d6c47ae4faac4ea5ed6b,
+      type: 3}
+  - ANote_d: {fileID: 5375850686441753685, guid: ca284ff69f10a8e4b8170637aff6e14f,
+      type: 3}
+  - theTimingManager: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

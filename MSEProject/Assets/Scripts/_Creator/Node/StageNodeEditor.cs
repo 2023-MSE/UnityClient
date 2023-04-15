@@ -101,7 +101,7 @@ public class StageNodeEditor : NodeEditor
     {
         switch (thisEditorSaveType)
         {
-            case StageNodeEditorSaveType.Local:
+            /*case StageNodeEditorSaveType.Local:
             {
                 string tempSavePath = Application.dataPath + "/Resources/" + DungeonEditor.Instance.editingDungeon.id +
                                       "graph.json";
@@ -109,7 +109,7 @@ public class StageNodeEditor : NodeEditor
                 CloseContextMenu();
                 Graph.SaveFile(tempSavePath);
                 break;
-            }
+            }*/
 
             case StageNodeEditorSaveType.ToDungeon_Server:
             {
@@ -133,7 +133,7 @@ public class StageNodeEditor : NodeEditor
     {
         switch (thisEditorSaveType)
         {
-            case StageNodeEditorSaveType.Local:
+            /*case StageNodeEditorSaveType.Local:
             {
                 string tempLoadPath = Application.dataPath + "/Resources/" + DungeonEditor.Instance.editingDungeon.id +
                                       "graph.json";
@@ -142,7 +142,7 @@ public class StageNodeEditor : NodeEditor
                 Graph.Clear();
                 Graph.LoadFile(tempLoadPath);
                 break;
-            }
+            }*/
 
             case StageNodeEditorSaveType.ToDungeon_Server:
             {

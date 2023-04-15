@@ -8,7 +8,7 @@ namespace DungeonInfoFolder
     public class Dungeon
     {
         // this used for local save dungeon stage info
-        public string id;
+        // public string id;
         // this used for server save dungeon stage info
         public string nodeEditorJsonData;
         

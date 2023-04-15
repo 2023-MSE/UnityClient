@@ -7,10 +7,14 @@ namespace DungeonInfoFolder
     [Serializable]
     public class Stage
     {
+        // 1. Node ID for Searching and Positioning stages
         public ulong nodeID;
         public List<ulong> prevStageID;
         public List<ulong> nextStageID;
         
+        
+        // 2. Specific Stage information
+        // 1) Type information
         [Serializable]
         public enum StageType
         {
@@ -22,17 +26,21 @@ namespace DungeonInfoFolder
 
         public StageType myStageType;
 
+        // 2) specific information about that type
         public string specificTypeInfo;
-        public List<int> monsters;
+        public List<uint> elements;
+        public short limitForElements = 4;
 
         public Stage(ulong inputNodeID)
         {
             nodeID = inputNodeID;
-            myStageType = StageType.Relax;
-            specificTypeInfo = "Just Default Stage for new Node";
-
             prevStageID = new List<ulong>();
             nextStageID = new List<ulong>();
+            
+            myStageType = StageType.Relax;
+            
+            specificTypeInfo = "Just Default Stage for new Node";
+            elements = new List<uint>();
         }
 
         public void PrintStageInfo()

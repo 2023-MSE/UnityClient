@@ -23,6 +23,9 @@ namespace RuntimeNodeEditor
             _graph          = graph;
             _graph.Init(_signalSystem, minZoom, maxZoom);
 
+            if (_graph == null)
+                Debug.Log("graph is null");
+
             if (contextMenuPrefab != null)
             {
                 _contextMenu    = Instantiate(contextMenuPrefab, _graph.contextMenuContainer).GetComponent<ContextMenu>();

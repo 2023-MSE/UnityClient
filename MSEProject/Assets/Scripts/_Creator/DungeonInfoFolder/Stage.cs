@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DungeonInfoFolder
 {
@@ -30,6 +31,10 @@ namespace DungeonInfoFolder
         public string specificTypeInfo;
         public List<uint> elements;
         public short limitForElements = 4;
+        
+        // 3) Music information
+        public string musicName;
+        public byte[] musicBytesData;
 
         public Stage(ulong inputNodeID)
         {

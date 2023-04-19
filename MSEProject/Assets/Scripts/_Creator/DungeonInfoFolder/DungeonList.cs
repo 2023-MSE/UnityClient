@@ -6,5 +6,10 @@ namespace DungeonInfoFolder
     public class DungeonList
     {
         public List<Dungeon> myDungeons;
+        
+        public void SetDungeonList(List<Dungeon> inputDungeons)
+        {
+            myDungeons = inputDungeons;
+        }
     }
 }

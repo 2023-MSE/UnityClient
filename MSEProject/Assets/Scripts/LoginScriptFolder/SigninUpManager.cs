@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class SigninUpManager : MonoBehaviour
 {
@@ -46,6 +47,11 @@ public class SigninUpManager : MonoBehaviour
         dialogPopup.SetActive(true);
         dialogPopup.GetComponent<Transform>().GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = str;
     }
+    
+    [Space(10)]
+    [Header("SigninUpEvents")]
+    public UnityEvent onSigninSuccess;
+    
     public void onClickSigninButton()
     {
         Debug.Log(IDInputField.text);

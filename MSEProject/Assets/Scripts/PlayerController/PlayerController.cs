@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             dir = inputHor > 0 ? Direction.UP : Direction.DOWN;
         }
-        Debug.Log("ÀÔ·ÂµÈ ¹æÇâÀº " + dir.ToString());
+        Debug.Log("ì…ë ¥ëœ ë°©í–¥ì€ " + dir.ToString());
         theTimingManager.CheckTiming_dir(dir);
     }
 }

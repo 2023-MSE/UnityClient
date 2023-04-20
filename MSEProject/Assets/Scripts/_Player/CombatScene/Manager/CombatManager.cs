@@ -24,9 +24,14 @@ namespace _Player.CombatScene
 
         public void skillActivation()
         {
-            // test
+            if (lastSkill == 0)
+            {
+                Debug.Log("Skill Not Active");
+                currentSkill = 0;
+                return;
+            }
+
             Debug.Log("Skill Active" + currentSkill);
-            return;
 
             Skill skill = skillData.skills[lastSkill];
             if (skill.isSplash)
@@ -34,7 +39,7 @@ namespace _Player.CombatScene
                 // 광역 스킬인 경우
                 foreach (Monster monster in monsters)
                 {
-                    float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2;
+                    float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
                     float skillDamage = skill.damage * (1f + typeMulti);
                     damage(monster.gameObject, skillDamage);
                 }
@@ -42,7 +47,7 @@ namespace _Player.CombatScene
             else
             {
                 // 단일 스킬인 경우
-                float typeMulti = (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2;
+                float typeMulti = (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
                 float skillDamage = skill.damage * (1f + typeMulti);
                 damage(monsters[singleTargetIndex].gameObject, skillDamage * attackMulti);
             }

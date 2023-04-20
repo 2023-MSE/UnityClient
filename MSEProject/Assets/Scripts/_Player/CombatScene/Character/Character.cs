@@ -7,7 +7,7 @@ namespace _Player.CombatScene
     public abstract class Character : MonoBehaviour
     {
         [SerializeField]
-        protected float maxHp = 100;
+        protected float maxHp = 1000;
         [SerializeField]
         protected float hp = 0;
 

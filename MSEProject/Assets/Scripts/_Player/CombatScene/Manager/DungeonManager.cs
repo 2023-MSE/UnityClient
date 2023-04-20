@@ -53,7 +53,6 @@ namespace _Player.CombatScene
 
         public void GoNextStage(ulong nextStage)
         {
-            // 이렇게 했을 때 씬이 로드되기 전 아래 코드가 실행될까? 만약 그렇다면 어떻게 해결할지 생각해 봐야함
             UnityEngine.SceneManagement.SceneManager.LoadScene("CombatScene");
             currentStage = nextStage;
         }

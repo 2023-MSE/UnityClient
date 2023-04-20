@@ -19,8 +19,9 @@ public class ValidationCheck : MonoBehaviour
                 endPoint = true;
             }
             if (stage.Value.prevStageID.Count == 0)
+
             {
-                // 시작 지점 노드들을 저장
+                // 시작 지점 노드들을 적용
                 startList.Add(stage.Value);
             }
             // 음악 파일 유무 확인 필요

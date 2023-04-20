@@ -24,17 +24,8 @@ namespace DungeonInfoFolder
         public Dungeon(bool thisIsTest)
         {
             if (thisIsTest)
-            {
-                Stage stage = new Stage(0);
-                stage.nextStageID.Add(1);
-                stage.nextStageID.Add(2);
-                stage.elements.Add(0);
-                stage.elements.Add(1);
-                stage.myStageType = Stage.StageType.Monster;
-                stages.Add(0, stage);
-                for (ulong i = 1; i < 11; i++)
+                for (ulong i = 0 ; i < 11 ; i ++)
                     stages.Add(i, new Stage(i));
-            }
         }
     }
 }

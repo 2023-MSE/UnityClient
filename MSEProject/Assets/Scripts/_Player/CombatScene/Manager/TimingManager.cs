@@ -121,10 +121,7 @@ public class TimingManager : MonoBehaviour
                     Destroy(boxNoteList[i].gameObject);
                    
                     RemoveNote(boxNoteList[i]);
-                    
-                    
-                    
-                    CheckNote(x);
+
                     return;
                 }
             }
@@ -139,17 +136,6 @@ public class TimingManager : MonoBehaviour
         RedCenter.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         RedCenter.SetActive(false);
-    }
-
-    public void CheckNote(int x)
-    {
-        // 범위 값에 맞게 -> Perfect : 0 - Cool : 1 - Good : 2 - Bad : 3 순으로 스킬 up 가중치 주기 -> switch 문으로
-        // 일단, Good 범위에만 들어오면 skill up 되게!
-
-     
-            player.setHP(num++);
-            
-        
     }
 
     public void SendSuccess_Attack()

@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: -8043025863859762526}
   m_Layer: 5
   m_Name: ANote_D
-  m_TagString: ANote_D
+  m_TagString: ANote
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,7 @@ RectTransform:
   m_GameObject: {fileID: 5375850686441753685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.27399507, z: 0.27399507}
+  m_LocalScale: {x: 0.3, y: 0.82198524, z: 0.82198524}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6787919985195814163}
@@ -236,7 +236,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5375850686441753685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10e4a504d07ff064d940991203fcd94d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a42cffdb8813504a84567341b52a8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
+  noteSpeed: 120
+  dir: 1
+  damage: 0

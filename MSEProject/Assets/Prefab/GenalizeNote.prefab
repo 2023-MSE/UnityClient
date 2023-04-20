@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5375850686441753687}
   - component: {fileID: 5375850686441753673}
   - component: {fileID: 6051996354094404867}
-  - component: {fileID: 7723729461001663081}
+  - component: {fileID: -8634319952087721976}
   m_Layer: 5
   m_Name: GenalizeNote
   m_TagString: GNote
@@ -30,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 5375850686441753685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.27399507, z: 0.27399507}
+  m_LocalScale: {x: 0.3, y: 0.82198524, z: 0.82198524}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,12 +88,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5375850686441753685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f578095c5bd734c85ae3c78803ac9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b09f008029e17b4db669147c1aba144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   noteSpeed: 120
-  dir: 0
-  Damage: 0
+  dir: 4
 --- !u!61 &6051996354094404867
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -120,7 +119,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &7723729461001663081
+--- !u!50 &-8634319952087721976
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -130,7 +129,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 5375850686441753685}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0

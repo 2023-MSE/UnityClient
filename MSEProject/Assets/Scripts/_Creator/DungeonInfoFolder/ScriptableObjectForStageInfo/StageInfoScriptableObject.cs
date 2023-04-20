@@ -10,6 +10,7 @@ namespace _Creator.DungeonInfoFolder
     {
         public StageInfo stageInfo;
         public uint thisStageInfoIndex;
+        public String prefabPath;
     }
     
     [CreateAssetMenu(fileName = "StageInfoTemplate", menuName = "Scriptable Object/StageInfoTemplate", order = int.MaxValue)]

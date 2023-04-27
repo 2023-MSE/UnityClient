@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Transactions;
+using _Player.CombatScene;
+using Unity.Mathematics;
 using UnityEngine;
-
+using UnityEngine.Pool;
 using Debug = UnityEngine.Debug;
 using Random = System.Random;
 
@@ -26,18 +28,28 @@ public class NoteManager : MonoBehaviour
    // [SerializeField] private GameObject goNote2 = null;
     public TimingManager theTimingManager;
 
+    private CombatManager theCombatManager;
     public List<GameObject> Notes = new List<GameObject>();
 
+    public static ObjectPool<GameObject> Instances;
+    
     private Random rand = new Random();
+
+    private GameObject t_note = null;
     
     private int num;
+
     private void Start()
     {
         //TimingManager 스크립트를 가지고 있는 오브젝트를 반환한다.
         theTimingManager = FindObjectOfType<TimingManager>();
+        theCombatManager = FindObjectOfType<CombatManager>();
         num = Notes.Count;
-
+     
+        
     }
+
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -47,29 +59,18 @@ public class NoteManager : MonoBehaviour
 
         if (currentTime >= 60d / bpm) // 60s / bpm = 비트 한개당 등장 속도 : 1초에 1개씩 노트가 생성.. 120s / bpm : 0.5초에 1개씩 노트가 생성
         {
-            int RandGenarate = rand.Next(0, 4);
-            GameObject t_note=null;
-            if (RandGenarate==0)
-            {
-                t_note = Instantiate(GNote, tfNoteAppear.position, Quaternion.identity);
-            }
-            else if (RandGenarate == 1)
-            {
-                t_note = Instantiate(ANote_l, tfNoteAppear.position, Quaternion.identity);
-            }
-            else if (RandGenarate == 2)
-            {
-                t_note = Instantiate(ANote_r, tfNoteAppear.position, Quaternion.identity);
-            }
-            else if (RandGenarate == 3)
-            {
-                t_note = Instantiate(ANote_u, tfNoteAppear.position, Quaternion.identity);
-            }
-            else if (RandGenarate == 4)
-            {
-                t_note = Instantiate(ANote_d, tfNoteAppear.position, Quaternion.identity);
-            }
+            
+            GameObject note = theCombatManager.GetNote();
+            //t_note.transform.position = tfNoteAppear.position;
 
+            if (note != null)
+            {
+                t_note = Instantiate(note, tfNoteAppear.position, quaternion.identity);
+            }
+            else
+            {
+                Debug.Log("note is null");
+            }
 
             //새로 생성된 t_note의 부모를 Canvas 안의 위치로 지정해줘야함!
             t_note.gameObject.transform.SetParent(this.transform);
@@ -92,9 +93,11 @@ public class NoteManager : MonoBehaviour
     {
         if (other.CompareTag("Note")||other.CompareTag("GNote")||other.CompareTag("ANote"))
         {
+           
             theTimingManager.RemoveNote(other.gameObject);
-            Destroy(other.gameObject);
+
             
+            other.gameObject.SetActive(false);
             
         }
     }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography;
+using _Player.CombatScene;
 using MSEProject.Assets.Scripts.Events;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -40,8 +41,8 @@ public class TimingManager : MonoBehaviour
     public List<GameObject> boxNoteList = new List<GameObject>();
     
     private int num;
-    
 
+    private CombatManager _combatManager;
 
     private void Awake()
     {
@@ -54,6 +55,7 @@ public class TimingManager : MonoBehaviour
         
 
         timingBoxs = new Vector2[timingRect.Length];
+        _combatManager = FindObjectOfType<CombatManager>();
 
         for (int i = 0; i < timingRect.Length; i++)
         {
@@ -66,16 +68,14 @@ public class TimingManager : MonoBehaviour
     public void AddNote(GameObject note)
     {
         boxNoteList.Add(note);
-
-
     }
     
     
     
     public void RemoveNote(GameObject note)
     {
-        boxNoteList.Remove(note);
-        
+       boxNoteList.Remove(note);
+      // _combatManager.getQueue().Enqueue(note);
     }
     
     public void CheckTiming_dir(Direction dir)
@@ -85,6 +85,7 @@ public class TimingManager : MonoBehaviour
 
         for (int i = 0; i < boxNoteList.Count; i++)
         {
+            Debug.Log(i);
             float t_notePosX = boxNoteList[i].transform.localPosition.x;
             GameObject note = boxNoteList[i].gameObject;
 
@@ -100,35 +101,43 @@ public class TimingManager : MonoBehaviour
                         {
                             Debug.Log("공격 노트 방어 성공입니다");
                             _successAttackUnityEvent.Invoke();
+                            
+                          
+                            boxNoteList.Remove(note);
+                       
+                            note.SetActive(false);
+
                         }
                         else if (dir != note.GetComponent<AttackNote>().getDirection())
                         {
                             Debug.Log("공격 노트 방어 실패입니다");
-                            _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().getdamage());
+                           // _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().getdamage());
+                            
                         }
                             
                     }
                     else if (note.gameObject.CompareTag("GNote")) // 일반 노트이면!
                     {
                       
+                        
                         note.GetComponent<GenalizeNote>().setDirection(dir);
-                        _successGenalizeUnityEvent.Invoke(dir);
+                        
+                        boxNoteList.Remove(note);
+                      
+                        note.SetActive(false);
                     }
-                    Debug.Log("note Success");
-
-
-
-                    Destroy(boxNoteList[i].gameObject);
-                   
-                    RemoveNote(boxNoteList[i]);
-
-                    return;
                 }
+
             }
-    
+           
         }
-        //실패시
-        MissNote();
+     
+    }
+
+    IEnumerator EnQueue(GameObject obj)
+    {
+        _combatManager.getQueue().Enqueue(obj);
+        yield break;
     }
 
     IEnumerator changeColor()
@@ -149,13 +158,6 @@ public class TimingManager : MonoBehaviour
         return damage;
     }
 
-    public void MissNote()
-    {
-        // 범위 안에 miss -> hp 가 1씩 깍이게 
-        Debug.Log("miss!");
-        player.setHP(num--);
-        
-    }
 
     // Update is called once per frame
     void Update()

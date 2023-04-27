@@ -14,7 +14,7 @@ public class GenalizeNote: Note
    }
    public void setDirection(Direction _dir)
    {
-      Debug.Log("It is GenalizeNote | setDirection");
+      Debug.Log("It is GenalizeNote | setDirection"+dir);
       dir = _dir;
    }
    

@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Pool;
+using UnityEngine.SearchService;
 
 namespace _Player.CombatScene
 {
@@ -16,6 +20,61 @@ namespace _Player.CombatScene
         private float attackMulti = 1.0f;
         private int currentSkill = 0;
         private int lastSkill = 0;
+
+        private Queue<GameObject> queue;
+
+        private List<GameObject> list = new List<GameObject>();
+        
+        private GameObject note;
+
+        public void setQueue(GameObject[] q)
+        {
+            foreach (var v in q)
+            {
+                queue.Enqueue(v);
+            }
+           
+        }
+
+        public Queue<GameObject> getQueue()
+        {
+            return queue;
+        }
+
+        private void Start()
+        {
+            queue = new Queue<GameObject>();
+            
+        }
+
+
+        public GameObject GetNote()
+        {
+            if (queue.Count > 0)
+            {
+                var obj = queue.Dequeue();
+                queue.Enqueue(obj);
+                obj.SetActive(true);
+                return obj;
+            }
+            else
+            {
+                //queue is empty
+                Debug.Log("empty");
+                return null;
+            }
+
+        }
+
+        public void ReturnNoteToQueue(GameObject note)
+        {
+            Debug.Log("put note");
+            queue.Enqueue(note);
+           
+            note.gameObject.SetActive(false);
+ 
+        }
+
         private void damage(GameObject target, float damage)
         {
             // singleTargetIndex 재설정 필요

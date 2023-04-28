@@ -98,7 +98,7 @@ public class NoteManager : MonoBehaviour
 
             
             other.gameObject.SetActive(false);
-            
+            Destroy(other.gameObject);
         }
     }
 }

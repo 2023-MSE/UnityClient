@@ -106,6 +106,7 @@ public class TimingManager : MonoBehaviour
                             boxNoteList.Remove(note);
                        
                             note.SetActive(false);
+                            Destroy(note);
 
                         }
                         else if (dir != note.GetComponent<AttackNote>().getDirection())
@@ -125,6 +126,7 @@ public class TimingManager : MonoBehaviour
                         boxNoteList.Remove(note);
                       
                         note.SetActive(false);
+                        Destroy(note);
                     }
                 }
 

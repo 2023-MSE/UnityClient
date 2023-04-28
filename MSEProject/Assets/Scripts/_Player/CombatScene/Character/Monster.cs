@@ -7,6 +7,8 @@ namespace _Player.CombatScene
 {
     public class Monster : Character
     {
+        [SerializeField] private int num = 0;
+        
         [SerializeField]
         private bool[] pattern = new bool[4];
         

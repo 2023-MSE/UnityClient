@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +13,8 @@ namespace _Player.CombatScene
          * Make it singleton
          * **/
         public static DungeonManager instance = null;
+
+        private bool check = false;
 
         private DungeonManager() { }
         public static DungeonManager Instance
@@ -72,6 +76,20 @@ namespace _Player.CombatScene
             if (Instance != null && dungeon != null)
             {
                 GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[0]);
+            }
+        }
+
+        public void StopScene()
+        {
+            check = !check;
+
+            if (check)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
             }
         }
     }

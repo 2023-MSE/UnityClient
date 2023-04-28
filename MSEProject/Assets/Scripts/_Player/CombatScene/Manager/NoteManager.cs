@@ -96,7 +96,7 @@ public class NoteManager : MonoBehaviour
            
             theTimingManager.RemoveNote(other.gameObject);
 
-            
+            theCombatManager.EnqueueObjectPool(other.gameObject);
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
         }

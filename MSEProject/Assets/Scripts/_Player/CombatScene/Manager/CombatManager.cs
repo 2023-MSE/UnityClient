@@ -23,6 +23,8 @@ namespace _Player.CombatScene
 
         private Queue<GameObject> queue;
 
+        private Queue<GameObject> ObjectPool;
+
         private List<GameObject> list = new List<GameObject>();
         
         private GameObject note;
@@ -44,7 +46,18 @@ namespace _Player.CombatScene
         private void Start()
         {
             queue = new Queue<GameObject>();
-            
+            ObjectPool = new Queue<GameObject>();
+
+        }
+
+        public void EnqueueObjectPool(GameObject note)
+        {
+            ObjectPool.Enqueue(note);
+        }
+
+        public GameObject DequeueObjectPool()
+        {
+            return ObjectPool.Dequeue();
         }
 
 

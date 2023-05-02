@@ -3479,6 +3479,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e8371e861e0c394d8f83a1388a6f5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterAssetReference:
+    m_LabelString: Monster & Player
+  effectAssetReference:
+    m_LabelString: Effect
+  BuffAndRelaxAssetReference:
+    m_LabelString: Buff & Relax
+  onSigninSuccess:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1271920641
 Transform:
   m_ObjectHideFlags: 0

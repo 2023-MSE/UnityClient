@@ -3,7 +3,10 @@ guid: c275c373526c8d040b29ee04d25abef9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - stageInfo: {fileID: 11400000, guid: b8b4368193b2b714b882805d0c0d982d, type: 2}
+  - spawnPointPlayer: {instanceID: 0}
+  - spawnPointBuffAndRelax: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

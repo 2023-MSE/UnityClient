@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using _Creator.DungeonInfoFolder;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace _Player.CombatScene
 {
@@ -38,9 +41,38 @@ namespace _Player.CombatScene
             }
         }
 
+
         // 테스트를 위해 dungeon을 public으로 수정함. 이후 private으로 변환 예정
         public DungeonInfoFolder.Dungeon dungeon;
         private ulong currentStage;
+        [SerializeField]
+        private StageInfoScriptableObject stageInfo;
+        private Dictionary<uint, AsyncOperationHandle> assetDict;
+        private AsyncOperationHandle characterHandle;
+        private AsyncOperationHandle effectHandle;
+        private AsyncOperationHandle buffAndRelaxHandle;
+
+        public enum HandelType
+        {
+            Character = 0,
+            Effect = 1,
+            BuffAndRelax =2
+        }
+
+        private void Start()
+        {
+            assetDict = new Dictionary<uint, AsyncOperationHandle>();
+            foreach (StageInfoStruct info in stageInfo.stageInfoTemplate)
+            {
+                Addressables.LoadAssetAsync<GameObject>(info.prefabPath).Completed +=
+                (handle) =>
+                {
+                    Debug.Log("Load Asset " + info.stageInfo);
+                    Debug.Assert(handle.Status == AsyncOperationStatus.Succeeded, "Fail to load Asset" + handle.Status);
+                    assetDict.Add(info.thisStageInfoIndex, handle);
+                };
+            }
+        }
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)
         {
             this.dungeon = dungeon;
@@ -55,6 +87,11 @@ namespace _Player.CombatScene
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("CombatScene");
             currentStage = nextStage;
+        }
+
+        public AsyncOperationHandle GetHandle(uint index)
+        {
+            return assetDict[index];
         }
         private void OnEnable()
         {

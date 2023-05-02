@@ -161,6 +161,16 @@ namespace _Player.CombatScene
                 monster.setHp(MAX_HP);
             }
         }
+
+        public void GetBuff()
+        {
+            attackMulti = attackMulti * 1.5f;
+        }
+
+        public void GetRelax(int heal)
+        {
+            player.GetComponent<Player>().setHp(heal);
+        }
     }
 
 }

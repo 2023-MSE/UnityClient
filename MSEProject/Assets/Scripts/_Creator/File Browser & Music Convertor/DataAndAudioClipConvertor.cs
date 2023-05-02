@@ -65,6 +65,6 @@ public class DataAndAudioClipConvertor : MonoBehaviour
         };
 
         // AudioClip.Create 함수를 사용하여 AudioClip 생성
-        return AudioClip.Create("RandomName" + GUID.Generate(), length, isStereo ? 2 : 1, sampleRate, true, pcmReaderCallback);
+        return AudioClip.Create("RandomName" + UnityEngine.Random.Range(0,10000000), length, isStereo ? 2 : 1, sampleRate, true, pcmReaderCallback);
     }
 }

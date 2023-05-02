@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class SigninUpManager : MonoBehaviour
 {
+
     private TMP_InputField IDInputField;
     private TMP_InputField passwordInputField;
     private TMP_InputField signupIDInputField;
@@ -62,6 +63,9 @@ public class SigninUpManager : MonoBehaviour
         {
             case SigninupResult.SUCCESS:
                 Debug.Log("SigninSuccess");
+
+                // TODO GO TO NEXT SCENE
+
                 break;
             case SigninupResult.NETWORK_ERROR:
                 makeDialogtMessage("Network Error Occur");

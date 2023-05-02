@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Schema;
@@ -42,6 +43,11 @@ namespace _Player.CombatScene
             }
         }
 
+        private void Start()
+        {
+            GetMonstersInDungeon();
+        }
+
         // 테스트를 위해 dungeon을 public으로 수정함. 이후 private으로 변환 예정
         public DungeonInfoFolder.Dungeon dungeon;
         private ulong currentStage;
@@ -53,6 +59,16 @@ namespace _Player.CombatScene
         {
             // 지도 보여줄때 필요함
             return dungeon;
+        }
+
+        public GameObject[] GetMonstersInDungeon()
+        {
+            // ? ???? ??? ?? ????
+            GameObject[] monsters = GameObject.FindGameObjectsWithTag("Monster");
+            
+            Debug.Log(monsters.Length);
+
+            return monsters;
         }
 
         public void GoNextStage(ulong nextStage)

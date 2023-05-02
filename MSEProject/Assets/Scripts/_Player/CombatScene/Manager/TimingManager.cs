@@ -101,8 +101,7 @@ public class TimingManager : MonoBehaviour
                         {
                             Debug.Log("공격 노트 방어 성공입니다");
                             _successAttackUnityEvent.Invoke();
-                            
-                          
+                        
                             boxNoteList.Remove(note);
 
 

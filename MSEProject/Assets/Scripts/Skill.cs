@@ -6,6 +6,7 @@ using System;
 [Serializable]
 public class Skill
 {
+    
     public int type;
     public int damage;
     public bool isSplash;

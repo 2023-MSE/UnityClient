@@ -12,8 +12,7 @@ namespace _Player.CombatScene
     public class CombatManager : MonoBehaviour
     {
         public const int MAX_HP = 9999999;
-        [SerializeField]
-        private SkillDataScriptableObject skillData;
+        [SerializeField] private SkillDataScriptableObject skillData;
         private int singleTargetIndex = 0;
         private Monster[] monsters;
         private GameObject player;
@@ -26,8 +25,10 @@ namespace _Player.CombatScene
         private Queue<GameObject> ObjectPool;
 
         private List<GameObject> list = new List<GameObject>();
-        
+
         private GameObject note;
+
+        private DungeonManager _dungeonManager;
 
         public void setQueue(GameObject[] q)
         {
@@ -35,7 +36,7 @@ namespace _Player.CombatScene
             {
                 queue.Enqueue(v);
             }
-           
+
         }
 
         public Queue<GameObject> getQueue()
@@ -47,6 +48,9 @@ namespace _Player.CombatScene
         {
             queue = new Queue<GameObject>();
             ObjectPool = new Queue<GameObject>();
+
+            _dungeonManager = FindObjectOfType<DungeonManager>();
+            setMonsters();
 
         }
 
@@ -66,7 +70,7 @@ namespace _Player.CombatScene
             if (queue.Count > 0)
             {
                 var obj = queue.Dequeue();
-                queue.Enqueue(obj);
+
                 obj.SetActive(true);
                 return obj;
             }
@@ -83,15 +87,23 @@ namespace _Player.CombatScene
         {
             Debug.Log("put note");
             queue.Enqueue(note);
-           
+
             note.gameObject.SetActive(false);
- 
+
         }
 
         private void damage(GameObject target, float damage)
         {
             // singleTargetIndex 재설정 필요
             target.GetComponent<Character>().setHp(-damage);
+        }
+
+        private void setMonsters()
+        {
+            int i = 0;
+            foreach (var mon in _dungeonManager.GetMonstersInDungeon())
+            {
+            }
         }
 
         public void skillActivation()
@@ -108,12 +120,16 @@ namespace _Player.CombatScene
             Skill skill = skillData.skills[lastSkill];
             if (skill.isSplash)
             {
+                
                 // 광역 스킬인 경우
                 foreach (Monster monster in monsters)
                 {
                     float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
                     float skillDamage = skill.damage * (1f + typeMulti);
                     damage(monster.gameObject, skillDamage);
+                   //skill.effect.transform.position = monster.transform.position;
+
+                    //StartCoroutine(skillTime(skill.effect, 2f));
                 }
             }
             else
@@ -122,8 +138,21 @@ namespace _Player.CombatScene
                 float typeMulti = (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
                 float skillDamage = skill.damage * (1f + typeMulti);
                 damage(monsters[singleTargetIndex].gameObject, skillDamage * attackMulti);
+                
+                //skill.effect.transform.position = monsters[singleTargetIndex].transform.position;
+                    
+                //StartCoroutine(skillTime(skill.effect, 2f));
             }
             currentSkill = lastSkill = 0;
+        }
+
+        IEnumerator skillTime(GameObject skill,float wait)
+        {
+            skill.SetActive(true);
+
+            yield return wait;
+            
+            skill.SetActive(false);
         }
 
         public void updateSkill(Direction direction)

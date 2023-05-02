@@ -25,30 +25,39 @@ namespace _Player.CombatScene
         {
             _combatManager = FindObjectOfType<CombatManager>();
             //test
-            attactMotion();
+            
+        }
+
+        public void Update()
+        {
+            hitMotion();
+
+            if (hp == 0)
+            {
+                dead();
+            }
         }
 
         public override void hitMotion()
         {
             /*TODO*/
+            if (patterns != null)
+            {
+                _combatManager.setQueue(patterns);
+            }
         }
         public override void dead()
         {
             /*TODO*/
+            
+            // monster change
             Debug.Log("Monster dead");
-            this.GetComponent<GameObject>().SetActive(false);
-        }
-
-        public void attactMotion()
-        {
-            if (patterns != null)
-            {
-               
-               _combatManager.setQueue(patterns);
-                
-            }
+                this.GetComponent<GameObject>().SetActive(false);
             
         }
+        
+        
+
 
         public void setPower(int power)
         {

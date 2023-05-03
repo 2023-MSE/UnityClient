@@ -738,12 +738,12 @@ MonoBehaviour:
   num: 0
   pattern: 00000000
   patterns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5375850686441753685, guid: 64c479266873a5b4db7082809c64abfe, type: 3}
+  - {fileID: 5375850686441753685, guid: 64c479266873a5b4db7082809c64abfe, type: 3}
+  - {fileID: 5375850686441753685, guid: 64c479266873a5b4db7082809c64abfe, type: 3}
+  - {fileID: 5375850686441753685, guid: ca284ff69f10a8e4b8170637aff6e14f, type: 3}
   power: 100
-  type: 0
+  type: 1
 --- !u!1 &6860756994242604924
 GameObject:
   m_ObjectHideFlags: 0

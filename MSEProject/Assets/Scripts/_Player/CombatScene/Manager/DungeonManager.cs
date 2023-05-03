@@ -49,6 +49,7 @@ namespace _Player.CombatScene
         private StageInfoScriptableObject stageInfo;
         private Dictionary<uint, AsyncOperationHandle> assetDict;
         private float speed = 1f;
+        private bool check = false;
 
         private void Start()
         {
@@ -114,6 +115,19 @@ namespace _Player.CombatScene
             if (Instance != null && dungeon != null)
             {
                 GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[0]);
+            }
+        }
+        public void StopScene()
+        {
+            check = !check;
+
+            if (check)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
             }
         }
     }

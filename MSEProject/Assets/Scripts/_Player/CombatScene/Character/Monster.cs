@@ -28,6 +28,13 @@ namespace _Player.CombatScene
             //test
             attactMotion();
         }
+        public void hitMotion()
+        {
+            if (patterns != null)
+            {
+                _combatManager.setQueue(patterns);
+            }
+        }
 
         public override void AnimateHitMotion()
         {

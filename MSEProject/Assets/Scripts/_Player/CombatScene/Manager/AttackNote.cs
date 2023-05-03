@@ -7,12 +7,9 @@ using Random = System.Random;
 
 public class AttackNote : Note
 {
-    public Direction dir;
-    
-    public int damage;
     public void Start()
     {
-       Debug.Log(dir + " " + damage);
+        Debug.Log(dir + " " + damage);
     }
 
     public int getdamage()
@@ -25,5 +22,5 @@ public class AttackNote : Note
         return dir;
     }
 
-    
+
 }

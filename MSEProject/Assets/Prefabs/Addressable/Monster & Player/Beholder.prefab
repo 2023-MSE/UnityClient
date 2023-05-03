@@ -659,10 +659,10 @@ MonoBehaviour:
   num: 0
   pattern: 00000000
   patterns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5375850686441753685, guid: ca284ff69f10a8e4b8170637aff6e14f, type: 3}
+  - {fileID: 5375850686441753685, guid: 2a879ce6718e8e541a5f71f4fd14bb94, type: 3}
+  - {fileID: 5375850686441753685, guid: 1f3ee2dfb090d6c47ae4faac4ea5ed6b, type: 3}
+  - {fileID: 5375850686441753685, guid: 64c479266873a5b4db7082809c64abfe, type: 3}
   power: 100
   type: 0
 --- !u!1 &7487410016656624449

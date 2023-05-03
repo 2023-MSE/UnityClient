@@ -18,6 +18,7 @@ namespace _Player.CombatScene
         private Monster[] monsters;
         private GameObject player;
         private int currentSkill = 0;
+        private bool isStageReady = false;
 
         private Queue<GameObject> queue;
 
@@ -26,6 +27,12 @@ namespace _Player.CombatScene
         private List<GameObject> list = new List<GameObject>();
         
         private GameObject note;
+
+        private void Start()
+        {
+            queue = new Queue<GameObject>();
+            ObjectPool = new Queue<GameObject>();
+        }
 
         public void setQueue(GameObject[] q)
         {
@@ -39,13 +46,6 @@ namespace _Player.CombatScene
         public Queue<GameObject> getQueue()
         {
             return queue;
-        }
-
-        private void Start()
-        {
-            queue = new Queue<GameObject>();
-            ObjectPool = new Queue<GameObject>();
-
         }
 
         public void EnqueueObjectPool(GameObject note)
@@ -65,7 +65,8 @@ namespace _Player.CombatScene
             {
                 var obj = queue.Dequeue();
                 queue.Enqueue(obj);
-                obj.SetActive(true);
+
+                //obj.SetActive(true);
                 return obj;
             }
             else
@@ -105,7 +106,6 @@ namespace _Player.CombatScene
                 }
             }
         }
-
         public void skillActivation()
         {
             player.GetComponent<Player>().AnimateSkillMotion();
@@ -130,6 +130,15 @@ namespace _Player.CombatScene
                 damage(monsters[singleTargetIndex].gameObject, skillDamage * DungeonManager.instance.GetSpeed());
             }
             currentSkill = 0;
+        }
+
+        IEnumerator skillTime(GameObject skill, float wait)
+        {
+            skill.SetActive(true);
+
+            yield return wait;
+
+            skill.SetActive(false);
         }
 
         public void updateSkill(Direction direction)
@@ -165,6 +174,7 @@ namespace _Player.CombatScene
         }
         public void setVariable()
         {
+            Debug.Log("SetVariable");
             player = GameObject.FindObjectOfType<Player>().gameObject;
             player.GetComponent<Player>().setHp(MAX_HP);
             monsters = GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None);
@@ -174,6 +184,7 @@ namespace _Player.CombatScene
                 monster.AnimateIdle(DungeonManager.instance.GetSpeed());
             }
             player.GetComponent<Player>().AnimateIdle(DungeonManager.instance.GetSpeed());
+            FindObjectOfType<NoteManager>().CombatManagerReady(this);
         }
 
         public void InteractBuff()
@@ -189,6 +200,11 @@ namespace _Player.CombatScene
         public GameObject GetPlayer()
         {
             return player;
+        }
+
+        public bool GetStageReady()
+        {
+            return isStageReady;
         }
     }
 

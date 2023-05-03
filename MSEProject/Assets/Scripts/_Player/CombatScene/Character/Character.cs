@@ -17,13 +17,18 @@ namespace _Player.CombatScene
         {
             return hp;
         }
-        public void setHp(float value)
+        public bool setHp(float value)
         {
+            // return true if dead
             Debug.Log("Hp is " + hp + "value is" + value);
             hp = (hp + value >= maxHp ? maxHp : hp + value);
             Debug.Log("Hp is " + hp);
             if (hp <= 0)
+            {
                 dead();
+                return true;
+            }
+            return false;
         }
     }
 }

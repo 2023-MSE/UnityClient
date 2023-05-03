@@ -8,10 +8,6 @@ namespace _Player.CombatScene
     {
         private List<bool> skillAvailability;
         private Animator animator;
-        private void Start()
-        {
-            animator = this.GetComponent<Animator>();
-        }
         public override void AnimateHitMotion()
         {
             animator.SetTrigger("isDefence");
@@ -33,9 +29,10 @@ namespace _Player.CombatScene
         {
             animator.SetTrigger("activeSkill");
         }
-        public void AnimateIdle()
+        public void AnimateIdle(float speed)
         {
             animator = this.GetComponent<Animator>();
+            animator.SetFloat("speed", speed);
             Debug.Log("Animator is " + animator);
             Debug.Assert(animator != null, "Animator is NULL");
 

@@ -17,7 +17,6 @@ namespace _Player.CombatScene
         private int singleTargetIndex = 0;
         private Monster[] monsters;
         private GameObject player;
-        private float attackMulti = 1.0f;
         private int currentSkill = 0;
 
         private Queue<GameObject> queue;
@@ -90,7 +89,21 @@ namespace _Player.CombatScene
         private void damage(GameObject target, float damage)
         {
             // singleTargetIndex 재설정 필요
-            target.GetComponent<Character>().setHp(-damage);
+            target.GetComponent<Character>().AnimateHitMotion();
+            if (target.GetComponent<Character>().setHp(-damage))
+            {
+                // target is dead
+                if (target.GetComponent<Character>() is Player)
+                {
+                    // player is dead
+
+                }
+                else if (target.GetComponent<Character>() is Monster) 
+                {
+                    // monster is dead
+
+                }
+            }
         }
 
         public void skillActivation()
@@ -114,7 +127,7 @@ namespace _Player.CombatScene
                 // 단일 스킬인 경우
                 float typeMulti = (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
                 float skillDamage = skill.damage * (1f + typeMulti);
-                damage(monsters[singleTargetIndex].gameObject, skillDamage * attackMulti);
+                damage(monsters[singleTargetIndex].gameObject, skillDamage * DungeonManager.instance.GetSpeed());
             }
             currentSkill = 0;
         }
@@ -143,10 +156,10 @@ namespace _Player.CombatScene
         {
             int power = monsters[monsterIndex].GetComponent<Monster>().getPower();
             Debug.Log(power);
-            damage(player, power * attackMulti);
-            player.GetComponent<Player>().AnimateHitMotion();
+            monsters[monsterIndex].AnimateAttack();
+            damage(player, power * DungeonManager.instance.GetSpeed());
         }
-        public void monsterAttackFail()
+        public void monsterAttackDefence()
         {
             player.GetComponent<Player>().AnimateDefenceMotion();
         }
@@ -158,13 +171,14 @@ namespace _Player.CombatScene
             foreach(Monster monster in monsters)
             {
                 monster.setHp(MAX_HP);
+                monster.AnimateIdle(DungeonManager.instance.GetSpeed());
             }
-            player.GetComponent<Player>().AnimateIdle();
+            player.GetComponent<Player>().AnimateIdle(DungeonManager.instance.GetSpeed());
         }
 
         public void InteractBuff()
         {
-            attackMulti = attackMulti * 1.5f;
+            DungeonManager.instance.SetSpeed(1.5f);
         }
 
         public void InteractRelax(int heal)

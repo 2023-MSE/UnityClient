@@ -48,6 +48,7 @@ namespace _Player.CombatScene
         [SerializeField]
         private StageInfoScriptableObject stageInfo;
         private Dictionary<uint, AsyncOperationHandle> assetDict;
+        private float speed = 1f;
 
         private void Start()
         {
@@ -66,6 +67,7 @@ namespace _Player.CombatScene
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)
         {
             this.dungeon = dungeon;
+            speed = 1f;
         }
         public DungeonInfoFolder.Dungeon GetDungeon()
         {
@@ -85,6 +87,16 @@ namespace _Player.CombatScene
         public AsyncOperationHandle GetHandle(uint index)
         {
             return assetDict[index];
+        }
+
+        public float GetSpeed()
+        {
+            return speed;
+        }
+
+        public void SetSpeed(float multi)
+        {
+            speed = (speed * multi > 2) ? 2f : speed * multi;
         }
         private void OnEnable()
         {

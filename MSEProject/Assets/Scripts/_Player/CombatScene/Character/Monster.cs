@@ -28,7 +28,7 @@ namespace _Player.CombatScene
             attactMotion();
         }
 
-        public override void hitMotion()
+        public override void AnimateHitMotion()
         {
             /*TODO*/
         }

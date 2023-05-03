@@ -48,16 +48,6 @@ namespace _Player.CombatScene
         [SerializeField]
         private StageInfoScriptableObject stageInfo;
         private Dictionary<uint, AsyncOperationHandle> assetDict;
-        private AsyncOperationHandle characterHandle;
-        private AsyncOperationHandle effectHandle;
-        private AsyncOperationHandle buffAndRelaxHandle;
-
-        public enum HandelType
-        {
-            Character = 0,
-            Effect = 1,
-            BuffAndRelax =2
-        }
 
         private void Start()
         {
@@ -82,7 +72,10 @@ namespace _Player.CombatScene
             // 지도 보여줄때 필요함
             return dungeon;
         }
-
+        public DungeonInfoFolder.Stage.StageType GetCurrentStageType()
+        {
+            return dungeon.stages[currentStage].myStageType;
+        }
         public void GoNextStage(ulong nextStage)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("CombatScene");

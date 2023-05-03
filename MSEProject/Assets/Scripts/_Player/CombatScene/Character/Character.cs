@@ -11,7 +11,7 @@ namespace _Player.CombatScene
         [SerializeField]
         protected float hp = 0;
 
-        public abstract void hitMotion();
+        public abstract void AnimateHitMotion();
         public abstract void dead();
         public float getHp()
         {

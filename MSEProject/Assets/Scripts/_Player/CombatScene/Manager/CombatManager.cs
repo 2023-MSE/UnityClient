@@ -19,7 +19,6 @@ namespace _Player.CombatScene
         private GameObject player;
         private float attackMulti = 1.0f;
         private int currentSkill = 0;
-        private int lastSkill = 0;
 
         private Queue<GameObject> queue;
 
@@ -96,16 +95,10 @@ namespace _Player.CombatScene
 
         public void skillActivation()
         {
-            if (lastSkill == 0)
-            {
-                Debug.Log("Skill Not Active");
-                currentSkill = 0;
-                return;
-            }
-
+            player.GetComponent<Player>().AnimateSkillMotion();
             Debug.Log("Skill Active" + currentSkill);
 
-            Skill skill = skillData.skills[lastSkill];
+            Skill skill = skillData.skills[currentSkill];
             if (skill.isSplash)
             {
                 // 광역 스킬인 경우
@@ -123,23 +116,25 @@ namespace _Player.CombatScene
                 float skillDamage = skill.damage * (1f + typeMulti);
                 damage(monsters[singleTargetIndex].gameObject, skillDamage * attackMulti);
             }
-            currentSkill = lastSkill = 0;
+            currentSkill = 0;
         }
 
         public void updateSkill(Direction direction)
         {
             currentSkill = skillData.skills[currentSkill].getNextSkill(direction);
+
             if (currentSkill == -1)
             {
                 // 해당 방향키의 스킬이 존재하지 않는 경우
-                skillActivation();
+                player.GetComponent<Player>().AnimateMissMotion();
             }
             else
             {
+                player.GetComponent<Player>().AnimateDirectionMotion(direction);
                 // 해당 방향키의 스킬이 존재하는 경우
                 if (skillData.skills[currentSkill].isEnable)
                 {
-                    lastSkill = currentSkill;
+                    skillActivation();
                 }
             }
         }
@@ -149,8 +144,12 @@ namespace _Player.CombatScene
             int power = monsters[monsterIndex].GetComponent<Monster>().getPower();
             Debug.Log(power);
             damage(player, power * attackMulti);
+            player.GetComponent<Player>().AnimateHitMotion();
         }
-
+        public void monsterAttackFail()
+        {
+            player.GetComponent<Player>().AnimateDefenceMotion();
+        }
         public void setVariable()
         {
             player = GameObject.FindObjectOfType<Player>().gameObject;
@@ -160,16 +159,22 @@ namespace _Player.CombatScene
             {
                 monster.setHp(MAX_HP);
             }
+            player.GetComponent<Player>().AnimateIdle();
         }
 
-        public void GetBuff()
+        public void InteractBuff()
         {
             attackMulti = attackMulti * 1.5f;
         }
 
-        public void GetRelax(int heal)
+        public void InteractRelax(int heal)
         {
             player.GetComponent<Player>().setHp(heal);
+        }
+
+        public GameObject GetPlayer()
+        {
+            return player;
         }
     }
 

@@ -19,11 +19,7 @@ public class NoteManager : MonoBehaviour
     private double currentTime = 0d;
 
     [SerializeField] private Transform tfNoteAppear = null;
-    [SerializeField] private GameObject GNote = null;
-    [SerializeField] private GameObject ANote_l = null;
-    [SerializeField] private GameObject ANote_r = null;
-    [SerializeField] private GameObject ANote_u= null;
-    [SerializeField] private GameObject ANote_d = null;
+
     
    // [SerializeField] private GameObject goNote2 = null;
     public TimingManager theTimingManager;
@@ -33,7 +29,6 @@ public class NoteManager : MonoBehaviour
 
     public static ObjectPool<GameObject> Instances;
     
-    private Random rand = new Random();
 
     private GameObject t_note = null;
     

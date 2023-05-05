@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d8ed7c0-ca58-4364-8a5c-b5fffc0a54c3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/RelaxManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/RelaxManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/Assets/CoolDown.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CoolDown.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Image/T_lesson04_base01.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Image/T_lesson04_base01.png.meta" afterDir="false" />
@@ -24,6 +27,21 @@
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Assets/Animators/PlayerController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animators/PlayerController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Character/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Character/Monster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Character/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Character/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/AttackNote.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/AttackNote.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/DungeonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/DungeonManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/NoteManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/NoteManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/StageSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/StageSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/TimingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/TimingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/hud/CoolDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/hud/CoolDown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +55,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/_Creator/UI/StageInfoButtonListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/enum/MusicExtension.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/enum/StageInfo.cs" root0="FORCE_HIGHLIGHTING" />
+<<<<<<< Updated upstream
+=======
+    <setting file="file://$PROJECT_DIR$/Assets/SkillScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationHandle.cs" root0="SKIP_HIGHLIGHTING" />
+>>>>>>> Stashed changes
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/Tiling/MinMaxZJob.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/ScrollRect.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -141,11 +164,16 @@
       <workItem from="1682569575422" duration="3610000" />
       <workItem from="1682578855564" duration="32000" />
       <workItem from="1682578927339" duration="5194000" />
+<<<<<<< Updated upstream
       <workItem from="1682657478316" duration="5048000" />
       <workItem from="1682930473022" duration="9042000" />
       <workItem from="1682939848100" duration="276000" />
       <workItem from="1683020065666" duration="4000" />
       <workItem from="1683020213571" duration="982000" />
+=======
+      <workItem from="1682657478316" duration="2933000" />
+      <workItem from="1683272328206" duration="9687000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

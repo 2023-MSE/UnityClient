@@ -8,7 +8,6 @@ using UnityEngine.SearchService;
 
 namespace _Player.CombatScene
 {
-
     public class CombatManager : MonoBehaviour
     {
         public const int MAX_HP = 9999999;
@@ -28,11 +27,23 @@ namespace _Player.CombatScene
 
         private GameObject note;
 
+<<<<<<< Updated upstream
         private DungeonManager _dungeonManager;
+=======
+        private CoolDown _coolDown;
 
-        public void setQueue(GameObject[] q)
+        private void Start()
         {
-            foreach (var v in q)
+            queue = new Queue<GameObject>();
+            ObjectPool = new Queue<GameObject>();
+            _coolDown = FindObjectOfType<CoolDown>();
+        }
+>>>>>>> Stashed changes
+
+        public void setQueue(GameObject[] note)
+        {
+        
+            foreach (var v in note)
             {
                 queue.Enqueue(v);
             }
@@ -70,8 +81,13 @@ namespace _Player.CombatScene
             if (queue.Count > 0)
             {
                 var obj = queue.Dequeue();
+<<<<<<< Updated upstream
 
                 obj.SetActive(true);
+=======
+                
+           
+>>>>>>> Stashed changes
                 return obj;
             }
             else
@@ -103,6 +119,36 @@ namespace _Player.CombatScene
             int i = 0;
             foreach (var mon in _dungeonManager.GetMonstersInDungeon())
             {
+<<<<<<< Updated upstream
+=======
+                // target is dead
+                if (target.GetComponent<Character>() is Player)
+                {
+                    
+                    // player is dead
+                    _coolDown.DamageToZero();
+
+                }
+                else if (target.GetComponent<Character>() is Monster) 
+                {
+                    // monster is dead
+
+                }
+            }
+            else
+            {
+                //target is already alive
+                if (target.GetComponent<Character>() is Player)
+                {
+                    _coolDown.DamageHp(0.1f);
+
+                }
+                else if (target.GetComponent<Character>() is Monster) 
+                {
+                    // monster is dead
+
+                }
+>>>>>>> Stashed changes
             }
         }
 
@@ -175,9 +221,37 @@ namespace _Player.CombatScene
 
         public void monsterAttack(int monsterIndex)
         {
+<<<<<<< Updated upstream
             int power = monsters[monsterIndex].GetComponent<Monster>().getPower();
             Debug.Log(power);
             damage(player, power * attackMulti);
+=======
+            Debug.Log("mosterAttack");
+            isPlayerHit = true;
+            player.GetComponent<Player>().AnimateDefenceMotion();
+            attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
+            monsters[monsterIndex].AnimateAttack();
+        }
+        public void monsterAttackDefence(int monsterIndex)
+        {
+            Debug.Log("monsterAttackDefence");
+            isPlayerHit = false;
+            attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
+            monsters[monsterIndex].AnimateAttack();
+            player.GetComponent<Player>().AnimateDefenceMotion();
+        }
+
+        public void MonsterAttackPlayer()
+        {
+            if (isPlayerHit)
+            {
+                damage(player, attackMonsterPower * DungeonManager.instance.GetSpeed());
+            }
+            else
+            {
+                player.GetComponent<Player>().AnimateDefendeHitMotion();
+            }
+>>>>>>> Stashed changes
         }
 
         public void setVariable()
@@ -189,6 +263,40 @@ namespace _Player.CombatScene
             {
                 monster.setHp(MAX_HP);
             }
+<<<<<<< Updated upstream
+=======
+            player.GetComponent<Player>().AnimateIdle(DungeonManager.instance.GetSpeed());
+            FindObjectOfType<NoteManager>().CombatManagerReady(this);
+        }
+
+        public void InteractBuff()
+        {
+            DungeonManager.instance.SetSpeed(1.5f);
+        }
+
+        public void InteractRelax(int heal)
+        {
+            if (player.GetComponent<Player>())
+            {
+                Debug.Log("interact r elax");
+                player.GetComponent<Player>().setHp(heal);
+                player.GetComponent<Player>().AnimateIsDrink();
+               
+            }
+
+            
+            
+        }
+
+        public GameObject GetPlayer()
+        {
+            return player;
+        }
+
+        public bool GetStageReady()
+        {
+            return isStageReady;
+>>>>>>> Stashed changes
         }
     }
 

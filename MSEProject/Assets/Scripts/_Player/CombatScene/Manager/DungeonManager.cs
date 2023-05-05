@@ -50,6 +50,11 @@ namespace _Player.CombatScene
 
         // 테스트를 위해 dungeon을 public으로 수정함. 이후 private으로 변환 예정
         public DungeonInfoFolder.Dungeon dungeon;
+<<<<<<< Updated upstream
+=======
+        private CombatManager combatManager;
+        private RelaxManager relaxmanager;
+>>>>>>> Stashed changes
         private ulong currentStage;
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)
         {
@@ -76,6 +81,48 @@ namespace _Player.CombatScene
             UnityEngine.SceneManagement.SceneManager.LoadScene("CombatScene");
             currentStage = nextStage;
         }
+<<<<<<< Updated upstream
+=======
+
+        public AsyncOperationHandle GetHandle(uint index)
+        {
+            return assetDict[index];
+        }
+
+        public float GetSpeed()
+        {
+            return speed;
+        }
+
+        public void SetSpeed(float multi)
+        {
+            speed = (speed * multi > 2) ? 2f : speed * multi;
+        }
+
+        public void SetCombatManager()
+        {
+            combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
+            combatManager.setVariable();
+        }
+        
+        public void SetRelaxManager()
+        {
+            Debug.Log("scene relax");
+            relaxmanager = GameObject.Find("RelaxManager").GetComponent<RelaxManager>();
+            relaxmanager.Scenecheck();
+        }
+
+        public void SkillActivation()
+        {
+            combatManager.skillActivation();
+        }
+
+        public void MonsterAttack()
+        {
+            combatManager.MonsterAttackPlayer();
+        }
+
+>>>>>>> Stashed changes
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;

@@ -33,4 +33,27 @@ public class CoolDown : MonoBehaviour
     {
         cooldown.fillAmount -= hp;
     }
+    
+    public void RelaxHp(float hp)
+    {
+      
+        cooldown.fillAmount += 0.1f;
+     
+    }
+
+
+    public void DamageToZero()
+    {
+        cooldown.fillAmount = 0;
+    }
+
+    public void DamageToFull()
+    {
+        cooldown.fillAmount = 1;
+    }
+
+    public void getFillAmount()
+    {
+        Debug.Log("fill: "+cooldown.fillAmount);
+    }
 }

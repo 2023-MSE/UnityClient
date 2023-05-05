@@ -10,10 +10,13 @@ namespace _Player.CombatScene
         private Animator animator;
         public override void AnimateHitMotion()
         {
-            animator.SetTrigger("isDefence");
             animator.SetTrigger("isGetDamage");
         }
 
+        public void AnimateDefendeHitMotion()
+        {
+            animator.SetTrigger("isDefendHit");
+        }
         public void AnimateDefenceMotion()
         {
             animator.SetTrigger("isDefence");
@@ -95,6 +98,11 @@ namespace _Player.CombatScene
         {
             animator.SetInteger("idleType", -1);
             animator.SetInteger("dir", -1);
+        }
+
+        public void SkillActivation()
+        {
+            DungeonManager.instance.SkillActivation();
         }
     }
 }

@@ -4698,8 +4698,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1163982689}
         m_TargetAssemblyTypeName: _Player.CombatScene.CombatManager, Assembly-CSharp
-        m_MethodName: skillActivation
-        m_Mode: 1
+        m_MethodName: monsterAttackDefence
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8926,7 +8926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: skill Fail
+  m_text: attack success
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12410,7 +12410,6 @@ MonoBehaviour:
   ANote_r: {fileID: 5375850686441753685, guid: 167f10008dceec340976d982d9acdfae, type: 3}
   ANote_u: {fileID: 5375850686441753685, guid: 1f3ee2dfb090d6c47ae4faac4ea5ed6b, type: 3}
   ANote_d: {fileID: 5375850686441753685, guid: ca284ff69f10a8e4b8170637aff6e14f, type: 3}
-  theTimingManager: {fileID: 0}
   Notes: []
 --- !u!61 &1591618205
 BoxCollider2D:
@@ -12460,7 +12459,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1163982689}
         m_TargetAssemblyTypeName: _Player.CombatScene.CombatManager, Assembly-CSharp
         m_MethodName: monsterAttackDefence
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -44,6 +44,7 @@ namespace _Player.CombatScene
 
         // 테스트를 위해 dungeon을 public으로 수정함. 이후 private으로 변환 예정
         public DungeonInfoFolder.Dungeon dungeon;
+        private CombatManager combatManager;
         private ulong currentStage;
         [SerializeField]
         private StageInfoScriptableObject stageInfo;
@@ -98,6 +99,22 @@ namespace _Player.CombatScene
         public void SetSpeed(float multi)
         {
             speed = (speed * multi > 2) ? 2f : speed * multi;
+        }
+
+        public void SetCombatManager()
+        {
+            combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
+            combatManager.setVariable();
+        }
+
+        public void SkillActivation()
+        {
+            combatManager.skillActivation();
+        }
+
+        public void MonsterAttack()
+        {
+            combatManager.MonsterAttackPlayer();
         }
         private void OnEnable()
         {

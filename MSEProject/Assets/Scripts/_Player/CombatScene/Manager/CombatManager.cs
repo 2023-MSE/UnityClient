@@ -19,7 +19,8 @@ namespace _Player.CombatScene
         private GameObject player;
         private int currentSkill = 0;
         private bool isStageReady = false;
-
+        private int attackMonsterPower;
+        private bool isPlayerHit;
         private Queue<GameObject> queue;
 
         private Queue<GameObject> ObjectPool;
@@ -108,7 +109,6 @@ namespace _Player.CombatScene
         }
         public void skillActivation()
         {
-            player.GetComponent<Player>().AnimateSkillMotion();
             Debug.Log("Skill Active" + currentSkill);
 
             Skill skill = skillData.skills[currentSkill];
@@ -117,9 +117,12 @@ namespace _Player.CombatScene
                 // 광역 스킬인 경우
                 foreach (Monster monster in monsters)
                 {
-                    float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
-                    float skillDamage = skill.damage * (1f + typeMulti);
-                    damage(monster.gameObject, skillDamage);
+                    if (!monster.isDead())
+                    {
+                        float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
+                        float skillDamage = skill.damage * (1f + typeMulti);
+                        damage(monster.gameObject, skillDamage);
+                    }
                 }
             }
             else
@@ -144,7 +147,7 @@ namespace _Player.CombatScene
         public void updateSkill(Direction direction)
         {
             currentSkill = skillData.skills[currentSkill].getNextSkill(direction);
-
+            Debug.Log("Current Skill num: " + currentSkill);
             if (currentSkill == -1)
             {
                 // 해당 방향키의 스킬이 존재하지 않는 경우
@@ -152,26 +155,43 @@ namespace _Player.CombatScene
             }
             else
             {
-                player.GetComponent<Player>().AnimateDirectionMotion(direction);
-                // 해당 방향키의 스킬이 존재하는 경우
                 if (skillData.skills[currentSkill].isEnable)
                 {
-                    skillActivation();
+                    // 해당 방향키의 스킬이 존재하는 경우
+                    Debug.Log("SKILL ENABLE");
+                    player.GetComponent<Player>().AnimateSkillMotion();
                 }
+                player.GetComponent<Player>().AnimateDirectionMotion(direction);
             }
         }
 
         public void monsterAttack(int monsterIndex)
         {
-            int power = monsters[monsterIndex].GetComponent<Monster>().getPower();
-            Debug.Log(power);
+            isPlayerHit = true;
+            player.GetComponent<Player>().AnimateDefenceMotion();
+            attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
             monsters[monsterIndex].AnimateAttack();
-            damage(player, power * DungeonManager.instance.GetSpeed());
         }
-        public void monsterAttackDefence()
+        public void monsterAttackDefence(int monsterIndex)
         {
+            isPlayerHit = false;
+            attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
+            monsters[monsterIndex].AnimateAttack();
             player.GetComponent<Player>().AnimateDefenceMotion();
         }
+
+        public void MonsterAttackPlayer()
+        {
+            if (isPlayerHit)
+            {
+                damage(player, attackMonsterPower * DungeonManager.instance.GetSpeed());
+            }
+            else
+            {
+                player.GetComponent<Player>().AnimateDefendeHitMotion();
+            }
+        }
+
         public void setVariable()
         {
             Debug.Log("SetVariable");

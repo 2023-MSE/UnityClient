@@ -97,6 +97,16 @@ namespace _Player.CombatScene
         {
             return power;
         }
+
+        public void MonsterAttack()
+        {
+            DungeonManager.instance.MonsterAttack();
+        }
+
+        public bool isDead()
+        {
+            return hp < 0;
+        }
     }
 
 }

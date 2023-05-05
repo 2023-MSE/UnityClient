@@ -105,7 +105,7 @@ namespace _Player.CombatScene
 
         public bool isDead()
         {
-            return hp < 0;
+            return hp <= 0;
         }
     }
 

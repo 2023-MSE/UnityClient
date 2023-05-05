@@ -14,8 +14,9 @@ public class ConvertCombatTestScript : MonoBehaviour
         DungeonInfoFolder.Stage stage = new DungeonInfoFolder.Stage(0);
         stage.nextStageID.Add(1);
         stage.nextStageID.Add(2);
-        stage.elements.Add(2);
+        stage.elements.Add(5);
         stage.elements.Add(3);
+        stage.elements.Add(4);
         stage.myStageType = DungeonInfoFolder.Stage.StageType.Monster;
         dungeon.stages.Add(0, stage);
         for (ulong i = 1; i < 11; i++)

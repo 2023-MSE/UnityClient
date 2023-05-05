@@ -16,13 +16,10 @@ public enum StageInfo
     Colossus,
     
     // Monster
-    Golem,
-    Goblin,
-    Slime,
-    Ogre,
-    Zombie,
-    Skeleton,
-    Troll,
+    Beholder,
+    ChestMonster,
+    Cactus,
+    Mushroom,
     
     // Buff
     HealingSpring,

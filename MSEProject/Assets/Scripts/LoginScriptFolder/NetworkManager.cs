@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,10 @@ using UnityEngine;
 public class NetworkManager : MonoBehaviour
 {
     public static NetworkManager instance = null;
+
+    public void Start()
+    {
+    }
 
     private NetworkManager() { }
     public static NetworkManager Instance

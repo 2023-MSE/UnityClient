@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 
-public class SigninUpManager : MonoBehaviour
+public partial class SigninUpManager : MonoBehaviour
 {
 
     private TMP_InputField IDInputField;
@@ -37,6 +37,9 @@ public class SigninUpManager : MonoBehaviour
         signupIDInputField = popupObject.GetChild(1).GetComponent<TMP_InputField>();
         signupPasswordInputField = popupObject.GetChild(2).GetComponent<TMP_InputField>();
         signupPasswordConfirmInputField = popupObject.GetChild(3).GetComponent<TMP_InputField>();
+        
+        SetUpForLogin();
+        SetUpForSignUp();
 }
 
     private void emphasisInput(TMP_InputField inputField)
@@ -55,30 +58,10 @@ public class SigninUpManager : MonoBehaviour
     
     public void onClickSigninButton()
     {
-        Debug.Log(IDInputField.text);
-        Debug.Log(passwordInputField.text);
+        string id = IDInputField.text;
+        string pw = passwordInputField.text;
 
-        SigninupResult result = NetworkManager.instance.requestSignin(IDInputField.text, passwordInputField.text);
-        switch (result)
-        {
-            case SigninupResult.SUCCESS:
-                Debug.Log("SigninSuccess");
-
-                // TODO GO TO NEXT SCENE
-
-                break;
-            case SigninupResult.NETWORK_ERROR:
-                makeDialogtMessage("Network Error Occur");
-                break;
-            case SigninupResult.INVALID_ID:
-                makeDialogtMessage("ID is invalid");
-                emphasisInput(IDInputField);
-                break;
-            case SigninupResult.INVALID_PASSWD:
-                makeDialogtMessage("Password is invalid");
-                emphasisInput(passwordInputField);
-                break;
-        }
+        StartCoroutine(loginManager.Login(id, pw));
     }
 
     public void onClickSignupButton()
@@ -96,35 +79,11 @@ public class SigninUpManager : MonoBehaviour
         }
         else
         {
-            SigninupResult result = NetworkManager.instance.requestSignup(
-                signupIDInputField.text,
-                signupPasswordInputField.text,
-                signupNicknameInputField.text
-            );
+            string id = signupIDInputField.text;
+            string nickname = signupNicknameInputField.text;
 
-            switch (result)
-            {
-                case SigninupResult.SUCCESS:
-                    Debug.Log("SignupSuccess");
-                    onClickCancleButton();
-                    break;
-                case SigninupResult.NETWORK_ERROR:
-                    Debug.Log("Network error occur");
-                    makeDialogtMessage("Network Error Occur");
-                    break;
-                case SigninupResult.INVALID_ID:
-                    makeDialogtMessage("ID is invalid");
-                    emphasisInput(signupIDInputField);
-                    break;
-                case SigninupResult.INVALID_PASSWD:
-                    makeDialogtMessage("Password is invalid");
-                    emphasisInput(signupPasswordInputField);
-                    break;
-                case SigninupResult.INVALID_NICKNAME:
-                    makeDialogtMessage("NickName is invalid");
-                    emphasisInput(signupNicknameInputField);
-                    break;
-            }
+            StartCoroutine(signUpManager.DoubleCheck(true, id));
+            StartCoroutine(signUpManager.DoubleCheck(false, nickname));
         }
     }
 

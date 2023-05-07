@@ -1539,8 +1539,10 @@ GameObject:
   m_Component:
   - component: {fileID: 461013531}
   - component: {fileID: 461013530}
+  - component: {fileID: 461013533}
+  - component: {fileID: 461013532}
   m_Layer: 0
-  m_Name: NetworkManager
+  m_Name: Network(Login/SignUp)Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1573,6 +1575,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &461013532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461013529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa382122a3e9b40409495a774809605d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverUrl: http://localhost:80
+  onDoubleCheckSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onDoubleCheckFail:
+    m_PersistentCalls:
+      m_Calls: []
+  onSignUpSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onSignUpFail:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &461013533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461013529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00df6dda63cef8441a9e8419ddb1049b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverUrl: http://localhost:80
+  onLoginSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onLoginFailWithNoId:
+    m_PersistentCalls:
+      m_Calls: []
+  onLoginFailWithWrongPw:
+    m_PersistentCalls:
+      m_Calls: []
+  onGetUserInfoDone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &479944234
 GameObject:
   m_ObjectHideFlags: 0
@@ -3427,6 +3479,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125426481}
   m_CullTransparentMesh: 1
+--- !u!1 &1130670434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130670435}
+  m_Layer: 0
+  m_Name: UserInfo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1130670435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130670434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1138173325
 GameObject:
   m_ObjectHideFlags: 0
@@ -3506,7 +3589,7 @@ GameObject:
   - component: {fileID: 1271920641}
   - component: {fileID: 1271920640}
   m_Layer: 0
-  m_Name: SigninUpManager
+  m_Name: SigninUpUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

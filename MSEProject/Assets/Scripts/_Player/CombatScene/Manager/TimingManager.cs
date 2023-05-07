@@ -68,7 +68,7 @@ public class TimingManager : MonoBehaviour
             Debug.Log(timingBoxs[i].x+" "+timingBoxs[i].y);
         }
         
-        _coolDown.DamageToFull();
+        //_coolDown.DamageToFull();
     }
 
     public void AddNote(GameObject note)

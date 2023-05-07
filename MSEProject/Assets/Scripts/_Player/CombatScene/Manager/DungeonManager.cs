@@ -55,6 +55,7 @@ namespace _Player.CombatScene
         private void Start()
         {
             assetDict = new Dictionary<uint, AsyncOperationHandle>();
+            currentStage = 0;
             foreach (StageInfoStruct info in stageInfo.stageInfoTemplate)
             {
                 Addressables.LoadAssetAsync<GameObject>(info.prefabPath).Completed +=
@@ -70,6 +71,11 @@ namespace _Player.CombatScene
         {
             this.dungeon = dungeon;
             speed = 1f;
+        }
+
+        public ulong GetCurrentStage()
+        {
+            return currentStage;
         }
         public DungeonInfoFolder.Dungeon GetDungeon()
         {
@@ -131,7 +137,7 @@ namespace _Player.CombatScene
             Debug.Log("Scene Loaded");
             if (Instance != null && dungeon != null)
             {
-                GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[0]);
+                GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[currentStage]);
             }
         }
         public void StopScene()

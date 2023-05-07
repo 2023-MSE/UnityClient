@@ -8,7 +8,6 @@ using UnityEngine.SearchService;
 
 namespace _Player.CombatScene
 {
-
     public class CombatManager : MonoBehaviour
     {
         public const int MAX_HP = 9999999;
@@ -28,11 +27,23 @@ namespace _Player.CombatScene
 
         private GameObject note;
 
+
         private DungeonManager _dungeonManager;
 
-        public void setQueue(GameObject[] q)
+        private CoolDown _coolDown;
+
+        private void Start()
         {
-            foreach (var v in q)
+            queue = new Queue<GameObject>();
+            ObjectPool = new Queue<GameObject>();
+            _coolDown = FindObjectOfType<CoolDown>();
+        }
+
+
+        public void setQueue(GameObject[] note)
+        {
+        
+            foreach (var v in note)
             {
                 queue.Enqueue(v);
             }
@@ -71,7 +82,10 @@ namespace _Player.CombatScene
             {
                 var obj = queue.Dequeue();
 
+
                 obj.SetActive(true);
+
+
                 return obj;
             }
             else
@@ -94,7 +108,7 @@ namespace _Player.CombatScene
 
         private void damage(GameObject target, float damage)
         {
-            // singleTargetIndex Àç¼³Á¤ ÇÊ¿ä
+            // singleTargetIndex ï¿½ç¼³ï¿½ï¿½ ï¿½Ê¿ï¿½
             target.GetComponent<Character>().setHp(-damage);
         }
 
@@ -103,6 +117,35 @@ namespace _Player.CombatScene
             int i = 0;
             foreach (var mon in _dungeonManager.GetMonstersInDungeon())
             {
+
+                // target is dead
+                if (target.GetComponent<Character>() is Player)
+                {
+                    
+                    // player is dead
+                    _coolDown.DamageToZero();
+
+                }
+                else if (target.GetComponent<Character>() is Monster) 
+                {
+                    // monster is dead
+
+                }
+            }
+            else
+            {
+                //target is already alive
+                if (target.GetComponent<Character>() is Player)
+                {
+                    _coolDown.DamageHp(0.1f);
+
+                }
+                else if (target.GetComponent<Character>() is Monster) 
+                {
+                    // monster is dead
+
+                }
+
             }
         }
 
@@ -121,7 +164,7 @@ namespace _Player.CombatScene
             if (skill.isSplash)
             {
                 
-                // ±¤¿ª ½ºÅ³ÀÎ °æ¿ì
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½
                 foreach (Monster monster in monsters)
                 {
                     float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
@@ -134,7 +177,7 @@ namespace _Player.CombatScene
             }
             else
             {
-                // ´ÜÀÏ ½ºÅ³ÀÎ °æ¿ì
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½
                 float typeMulti = (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
                 float skillDamage = skill.damage * (1f + typeMulti);
                 damage(monsters[singleTargetIndex].gameObject, skillDamage * attackMulti);
@@ -160,12 +203,12 @@ namespace _Player.CombatScene
             currentSkill = skillData.skills[currentSkill].getNextSkill(direction);
             if (currentSkill == -1)
             {
-                // ÇØ´ç ¹æÇâÅ°ÀÇ ½ºÅ³ÀÌ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì
+                // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½
                 skillActivation();
             }
             else
             {
-                // ÇØ´ç ¹æÇâÅ°ÀÇ ½ºÅ³ÀÌ Á¸ÀçÇÏ´Â °æ¿ì
+                // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
                 if (skillData.skills[currentSkill].isEnable)
                 {
                     lastSkill = currentSkill;
@@ -175,9 +218,37 @@ namespace _Player.CombatScene
 
         public void monsterAttack(int monsterIndex)
         {
+
             int power = monsters[monsterIndex].GetComponent<Monster>().getPower();
             Debug.Log(power);
             damage(player, power * attackMulti);
+
+            Debug.Log("mosterAttack");
+            isPlayerHit = true;
+            player.GetComponent<Player>().AnimateDefenceMotion();
+            attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
+            monsters[monsterIndex].AnimateAttack();
+        }
+        public void monsterAttackDefence(int monsterIndex)
+        {
+            Debug.Log("monsterAttackDefence");
+            isPlayerHit = false;
+            attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
+            monsters[monsterIndex].AnimateAttack();
+            player.GetComponent<Player>().AnimateDefenceMotion();
+        }
+
+        public void MonsterAttackPlayer()
+        {
+            if (isPlayerHit)
+            {
+                damage(player, attackMonsterPower * DungeonManager.instance.GetSpeed());
+            }
+            else
+            {
+                player.GetComponent<Player>().AnimateDefendeHitMotion();
+            }
+
         }
 
         public void setVariable()
@@ -189,6 +260,40 @@ namespace _Player.CombatScene
             {
                 monster.setHp(MAX_HP);
             }
+
+
+            player.GetComponent<Player>().AnimateIdle(DungeonManager.instance.GetSpeed());
+            FindObjectOfType<NoteManager>().CombatManagerReady(this);
+        }
+
+        public void InteractBuff()
+        {
+            DungeonManager.instance.SetSpeed(1.5f);
+        }
+
+        public void InteractRelax(int heal)
+        {
+            if (player.GetComponent<Player>())
+            {
+                Debug.Log("interact r elax");
+                player.GetComponent<Player>().setHp(heal);
+                player.GetComponent<Player>().AnimateIsDrink();
+               
+            }
+
+            
+            
+        }
+
+        public GameObject GetPlayer()
+        {
+            return player;
+        }
+
+        public bool GetStageReady()
+        {
+            return isStageReady;
+
         }
     }
 

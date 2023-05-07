@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,8 @@ using _Creator.DungeonInfoFolder;
 /*
  * stage spawner
  * 
- * stage Á¤º¸¸¦ ÀÌ¿ëÇÏ¿© ÇÃ·¹ÀÌ¾î, ¸ó½ºÅÍ
- * ¹öÇÁ, ÈÞ½Ä¿ë ¸ð´ÚºÒÀ» ¸¸µé¾îÁÖ´Â script
+ * stage ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½, ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½, ï¿½Þ½Ä¿ï¿½ ï¿½ï¿½Úºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ script
  * 
  * **/
 
@@ -24,6 +25,12 @@ namespace _Player.CombatScene
         GameObject[] spawnPointMonster;
         [SerializeField]
         GameObject spawnPointBuffAndRelax;
+        
+        private void Start()
+        {
+        
+
+        }
 
         // spawn monster
         private void spawnMonster(uint monsterIndex, int spawnIndex)
@@ -51,6 +58,23 @@ namespace _Player.CombatScene
         {
             GameObject item = Resources.Load<GameObject>("Relax");
             GameObject.Instantiate(item, spawnPointBuffAndRelax.transform.position, Quaternion.identity).transform.parent = spawnPointBuffAndRelax.transform;
+
+            // WARNING
+            // Relax's index SHOULD BE 1
+
+            AsyncOperationHandle handle = DungeonManager.instance.GetHandle(1);
+            if (handle.Status == AsyncOperationStatus.Succeeded && handle.Result is GameObject)
+            {
+                Instantiate(handle.Result as GameObject, spawnPointBuffAndRelax.transform.position, Quaternion.identity);
+                Debug.Log("instantiate Success: Relax");
+   
+                
+            }
+            else
+            {
+                Debug.Log("instantiate Fail: Relax");
+            }
+
         }
         // spawn buff;
         private void spawnBuff(uint buffindex)
@@ -95,6 +119,7 @@ namespace _Player.CombatScene
                     break;
                 case DungeonInfoFolder.Stage.StageType.Relax:
                     spawnRelax();
+                    DungeonManager.instance.SetRelaxManager();
                     break;
                 default:
                     Debug.Log("ERROR Unknown Node");

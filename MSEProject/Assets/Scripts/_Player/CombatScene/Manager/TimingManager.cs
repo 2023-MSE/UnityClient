@@ -103,6 +103,9 @@ public class TimingManager : MonoBehaviour
                             _successAttackUnityEvent.Invoke();
                         
                             boxNoteList.Remove(note);
+                            Destroy(note);
+                            
+                        
 
 
                         }
@@ -112,7 +115,7 @@ public class TimingManager : MonoBehaviour
                            // _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().getdamage());
                             
                         }
-                            
+
                     }
                     else if (note.gameObject.CompareTag("GNote")) // 일반 노트이면!
                     {
@@ -121,6 +124,8 @@ public class TimingManager : MonoBehaviour
                         note.GetComponent<GenalizeNote>().setDirection(dir);
                         
                         boxNoteList.Remove(note);
+                        
+                        Destroy(note);
 
                     }
                 }

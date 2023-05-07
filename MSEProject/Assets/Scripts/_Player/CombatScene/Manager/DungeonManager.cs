@@ -48,8 +48,12 @@ namespace _Player.CombatScene
             GetMonstersInDungeon();
         }
 
-        // Å×½ºÆ®¸¦ À§ÇØ dungeonÀ» publicÀ¸·Î ¼öÁ¤ÇÔ. ÀÌÈÄ privateÀ¸·Î º¯È¯ ¿¹Á¤
+        // ï¿½×½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ dungeonï¿½ï¿½ publicï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ privateï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½
         public DungeonInfoFolder.Dungeon dungeon;
+
+        private CombatManager combatManager;
+        private RelaxManager relaxmanager;
+
         private ulong currentStage;
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)
         {
@@ -57,7 +61,7 @@ namespace _Player.CombatScene
         }
         public DungeonInfoFolder.Dungeon GetDungeon()
         {
-            // Áöµµ º¸¿©ÁÙ¶§ ÇÊ¿äÇÔ
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½
             return dungeon;
         }
 
@@ -76,6 +80,46 @@ namespace _Player.CombatScene
             UnityEngine.SceneManagement.SceneManager.LoadScene("CombatScene");
             currentStage = nextStage;
         }
+
+        public AsyncOperationHandle GetHandle(uint index)
+        {
+            return assetDict[index];
+        }
+
+        public float GetSpeed()
+        {
+            return speed;
+        }
+
+        public void SetSpeed(float multi)
+        {
+            speed = (speed * multi > 2) ? 2f : speed * multi;
+        }
+
+        public void SetCombatManager()
+        {
+            combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
+            combatManager.setVariable();
+        }
+        
+        public void SetRelaxManager()
+        {
+            Debug.Log("scene relax");
+            relaxmanager = GameObject.Find("RelaxManager").GetComponent<RelaxManager>();
+            relaxmanager.Scenecheck();
+        }
+
+        public void SkillActivation()
+        {
+            combatManager.skillActivation();
+        }
+
+        public void MonsterAttack()
+        {
+            combatManager.MonsterAttackPlayer();
+        }
+
+
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;

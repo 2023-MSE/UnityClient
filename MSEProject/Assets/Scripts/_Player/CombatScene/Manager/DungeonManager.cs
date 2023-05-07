@@ -45,6 +45,7 @@ namespace _Player.CombatScene
         // 테스트를 위해 dungeon을 public으로 수정함. 이후 private으로 변환 예정
         public DungeonInfoFolder.Dungeon dungeon;
         private CombatManager combatManager;
+        private RelaxManager relaxmanager;
         private ulong currentStage;
         [SerializeField]
         private StageInfoScriptableObject stageInfo;
@@ -111,6 +112,13 @@ namespace _Player.CombatScene
         {
             combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
             combatManager.setVariable();
+        }
+        
+        public void SetRelaxManager()
+        {
+            Debug.Log("scene relax");
+            relaxmanager = GameObject.Find("RelaxManager").GetComponent<RelaxManager>();
+            relaxmanager.Scenecheck();
         }
 
         public void SkillActivation()

@@ -20,6 +20,10 @@ public class StringEvent : UnityEvent<string>
 public class TimingManager : MonoBehaviour
 {
     private PlayerController player;
+
+    private Player _player;
+    
+    private CoolDown _coolDown;
     
     [SerializeField] Transform Center = null;
 
@@ -52,8 +56,8 @@ public class TimingManager : MonoBehaviour
 
     void Start()
     {
+        _coolDown = GameObject.Find("CoolDown").GetComponent<CoolDown>();
         
-
         timingBoxs = new Vector2[timingRect.Length];
         _combatManager = FindObjectOfType<CombatManager>();
 
@@ -63,6 +67,8 @@ public class TimingManager : MonoBehaviour
             timingBoxs[i].Set(Center.localPosition.x-timingRect[i].rect.width/2,Center.localPosition.x+timingRect[i].rect.width/2);
             Debug.Log(timingBoxs[i].x+" "+timingBoxs[i].y);
         }
+        
+        _coolDown.DamageToFull();
     }
 
     public void AddNote(GameObject note)
@@ -104,12 +110,14 @@ public class TimingManager : MonoBehaviour
                             
                           
                             boxNoteList.Remove(note);
-
+                            Destroy(note);
 
                         }
                         else if (dir != note.GetComponent<AttackNote>().getDirection())
                         {
                             Debug.Log("공격 노트 방어 실패입니다");
+                            
+                            _coolDown.DamageHp(0.01f);
                             // _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
 
                         }
@@ -122,9 +130,10 @@ public class TimingManager : MonoBehaviour
                         note.GetComponent<GenalizeNote>().setDirection(dir);
                         
                         boxNoteList.Remove(note);
-
+                        Destroy(note);
                     }
                 }
+               
 
             }
            

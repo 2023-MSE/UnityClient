@@ -9,8 +9,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 /*
  * stage spawner
  * 
- * stage Á¤º¸¸¦ ÀÌ¿ëÇÏ¿© ÇÃ·¹ÀÌ¾î, ¸ó½ºÅÍ
- * ¹öÇÁ, ÈÞ½Ä¿ë ¸ð´ÚºÒÀ» ¸¸µé¾îÁÖ´Â script
+ * stage ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½, ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½, ï¿½Þ½Ä¿ï¿½ ï¿½ï¿½Úºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ script
  * 
  * **/
 
@@ -111,6 +111,7 @@ namespace _Player.CombatScene
                     spawnBuff(stage.elements[0]);
                     break;
                 case DungeonInfoFolder.Stage.StageType.Relax:
+                    DungeonManager.instance.SetRelaxManager();
                     spawnRelax();
                     break;
                 default:

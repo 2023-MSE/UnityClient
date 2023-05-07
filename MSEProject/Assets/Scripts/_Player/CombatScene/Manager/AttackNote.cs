@@ -8,6 +8,9 @@ using Random = System.Random;
 public class AttackNote : Note
 {
     private int monsterIndex = 0;
+    public Direction dir;
+    public int damage;
+
     public void Start()
     {
         Debug.Log(dir + " " + damage);

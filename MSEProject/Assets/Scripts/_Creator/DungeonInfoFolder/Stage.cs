@@ -34,6 +34,7 @@ namespace DungeonInfoFolder
         
         // 3) Music information
         public string musicName;
+        public AudioClip musicData;
         public byte[] musicBytesData;
 
         public Stage(ulong inputNodeID)

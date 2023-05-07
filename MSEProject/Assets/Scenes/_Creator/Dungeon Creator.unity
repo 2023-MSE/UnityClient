@@ -3004,6 +3004,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onAudioClipUploaded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 967198269}
+        m_TargetAssemblyTypeName: MusicDungeonInterface, Assembly-CSharp
+        m_MethodName: SaveMusicAudioClipToStage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &221615351
 GameObject:
   m_ObjectHideFlags: 0
@@ -8708,8 +8723,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 239065250}
   m_HandleRect: {fileID: 239065249}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.61129206
+  m_Value: 1
+  m_Size: 0.611292
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13212,7 +13227,7 @@ MonoBehaviour:
     thisCollectionStageType: 1
   - stageButtonCollection: {fileID: 1680671850}
     thisCollectionStageType: 2
-  - stageButtonCollection: {fileID: 292870944}
+  - stageButtonCollection: {fileID: 1398297237}
     thisCollectionStageType: 3
   limitForElementsTMP: {fileID: 1284703055}
   stageInfoElementPrefab: {fileID: 4106285950603123577, guid: 97cdefddee312264387cf91916227e63,
@@ -17159,7 +17174,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1468402381}
   m_HandleRect: {fileID: 1468402380}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -22797,42 +22812,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2020388908}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 143346267}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1805101156
 MonoBehaviour:

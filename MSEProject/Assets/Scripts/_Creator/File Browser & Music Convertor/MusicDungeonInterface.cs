@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,27 @@ public class MusicDungeonInterface : Singleton<MusicDungeonInterface>
 {
     public AudioSource myAudioSource;
     
+    public void SaveMusicAudioClipToStage(string inputMusicName, AudioClip inputMusicData)
+    {
+        StageEditor.Instance.EditingStage.musicName = inputMusicName;
+        StageEditor.Instance.EditingStage.musicData = inputMusicData;
+        StageEditor.Instance.EditingStage.musicBytesData = ConvertAudioClipToBytes(inputMusicData);
+
+        myAudioSource.clip = inputMusicData;
+    }
+    
+    public byte[] ConvertAudioClipToBytes(AudioClip inputMusicData)
+    {
+        float[] samples = new float[inputMusicData.samples * inputMusicData.channels];
+        inputMusicData.GetData(samples, 0);
+
+        byte[] bytes = new byte[samples.Length * 2];
+        Buffer.BlockCopy(samples, 0, bytes, 0, bytes.Length);
+
+        return bytes;
+    }
+    
+    # region Old
     public void SaveMusicToStage(string inputMusicName, byte[] inputMusicData)
     {
         StageEditor.Instance.EditingStage.musicName = inputMusicName;
@@ -30,13 +52,13 @@ public class MusicDungeonInterface : Singleton<MusicDungeonInterface>
         if (string.IsNullOrEmpty(StageEditor.Instance.EditingStage.musicName))
             return;
         
-        MusicExtension thisMusicExtension = DataAndAudioClipConvertor.MusicDataAnalyzer(StageEditor.Instance.EditingStage.musicName);
+        AudioType thisMusicExtension = DataAndAudioClipConvertor.MusicDataAnalyzer(StageEditor.Instance.EditingStage.musicName);
         switch (thisMusicExtension)
         {
-            case MusicExtension.MP3 :
+            case AudioType.MPEG :
                 myAudioSource.clip = DataAndAudioClipConvertor.ConvertMp3ByteToAudioClip(LoadMusicFromStage());
                 break;
-            case MusicExtension.WAV :
+            case AudioType.WAV :
                 myAudioSource.clip = DataAndAudioClipConvertor.ConvertWavByteToAudioClip(LoadMusicFromStage());
                 break;
         }
@@ -51,4 +73,5 @@ public class MusicDungeonInterface : Singleton<MusicDungeonInterface>
     {
         myAudioSource.Pause();
     }
+    #endregion
 }

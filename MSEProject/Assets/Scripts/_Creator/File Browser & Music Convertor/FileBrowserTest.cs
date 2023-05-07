@@ -63,6 +63,7 @@ public class FileBrowserTest : MonoBehaviour
 	
 	[Space(10)]
 	public UnityEvent<string, byte[]> onFileUploaded = new UnityEvent<string, byte[]>();
+	public UnityEvent<string, AudioClip> onAudioClipUploaded = new UnityEvent<string, AudioClip>();
 
 	IEnumerator ShowLoadDialogCoroutine()
 	{
@@ -82,15 +83,49 @@ public class FileBrowserTest : MonoBehaviour
 			for( int i = 0; i < FileBrowser.Result.Length; i++ )
 				Debug.Log( FileBrowser.Result[i] );
 
-			// Read the bytes of the first file via FileBrowserHelpers
-			// Contrary to File.ReadAllBytes, this function works on Android 10+, as well
-			byte[] bytes = FileBrowserHelpers.ReadBytesFromFile( FileBrowser.Result[0] );
-			
-			onFileUploaded.Invoke(FileBrowserHelpers.GetFilename( FileBrowser.Result[0] ), bytes);
+			// // Read the bytes of the first file via FileBrowserHelpers
+			// // Contrary to File.ReadAllBytes, this function works on Android 10+, as well
+			//
+			// byte[] bytes = FileBrowserHelpers.ReadBytesFromFile( FileBrowser.Result[0] );
+			//
+			// onFileUploaded.Invoke(FileBrowserHelpers.GetFilename( FileBrowser.Result[0] ), bytes);
+			//
+			// // Or, copy the first file to persistentDataPath
+			// string destinationPath = Path.Combine( Application.persistentDataPath, FileBrowserHelpers.GetFilename( FileBrowser.Result[0] ) );
+			// FileBrowserHelpers.CopyFile( FileBrowser.Result[0], destinationPath );
 
-			// Or, copy the first file to persistentDataPath
 			string destinationPath = Path.Combine( Application.persistentDataPath, FileBrowserHelpers.GetFilename( FileBrowser.Result[0] ) );
-			FileBrowserHelpers.CopyFile( FileBrowser.Result[0], destinationPath );
+			destinationPath = "file:///" + destinationPath;
+			
+			UnityWebRequest webRequest = null;
+			switch (DataAndAudioClipConvertor.MusicDataAnalyzer(FileBrowserHelpers.GetFilename(FileBrowser.Result[0])))
+			{
+				case AudioType.WAV:
+				{
+					webRequest = UnityWebRequestMultimedia.GetAudioClip(destinationPath, AudioType.WAV);
+					break;
+				}
+				case AudioType.MPEG:
+				{
+					webRequest = UnityWebRequestMultimedia.GetAudioClip(destinationPath, AudioType.MPEG);
+					break;
+				}
+			}
+			Debug.Log(destinationPath);
+
+			if (webRequest != null)
+			{
+				yield return webRequest.SendWebRequest();
+				
+				if (webRequest.result != UnityWebRequest.Result.Success)
+				{
+					Debug.Log(webRequest.error);
+				}
+				else
+				{
+					onAudioClipUploaded.Invoke(FileBrowserHelpers.GetFilename( FileBrowser.Result[0] ), DownloadHandlerAudioClip.GetContent(webRequest) );
+				}
+			}
 		}
 	}
 }

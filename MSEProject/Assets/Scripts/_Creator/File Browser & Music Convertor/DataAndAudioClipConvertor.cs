@@ -6,14 +6,16 @@ using UnityEngine;
 
 public class DataAndAudioClipConvertor : MonoBehaviour
 {
-    public static MusicExtension MusicDataAnalyzer(string inputMusicName)
+    public static AudioType MusicDataAnalyzer(string inputMusicName)
     {
         if (inputMusicName.Contains(".wav"))
-            return MusicExtension.WAV;
+            return AudioType.WAV;
         else if (inputMusicName.Contains(".mp3"))
-            return MusicExtension.MP3;
+            return AudioType.MPEG;
+        else if (inputMusicName.Contains(".m4a"))
+            return AudioType.MPEG;
 
-        return MusicExtension.NONE;
+        return AudioType.UNKNOWN;
     }
     
     public static AudioClip ConvertWavByteToAudioClip(byte[] inputByte)

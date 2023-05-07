@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SearchService;
@@ -13,6 +14,8 @@ namespace _Player.CombatScene
     {
         public const int MAX_HP = 9999999;
         [SerializeField] private SkillDataScriptableObject skillData;
+        
+        
         private int singleTargetIndex = 0;
         private Monster[] monsters;
         private GameObject player;
@@ -139,6 +142,9 @@ namespace _Player.CombatScene
                 {
                     if (!monster.isDead())
                     {
+                        skill.seteffect(monster.transform.position);
+                        
+                        
                         float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
                         float skillDamage = skill.damage * (1f + typeMulti);
                         damage(monster.gameObject, skillDamage);
@@ -148,6 +154,10 @@ namespace _Player.CombatScene
             else
             {
                 // 단일 스킬인 경우
+                
+                skill.seteffect(monsters[singleTargetIndex].transform.position);
+                
+                
                 float typeMulti =
                     (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
                 float skillDamage = skill.damage * (1f + typeMulti);

@@ -11,19 +11,24 @@ namespace _Player.CombatScene
         [SerializeField]
         protected float hp = 0;
 
-        public abstract void hitMotion();
+        public abstract void AnimateHitMotion();
         public abstract void dead();
         public float getHp()
         {
             return hp;
         }
-        public void setHp(float value)
+        public bool setHp(float value)
         {
+            // return true if dead
             Debug.Log("Hp is " + hp + "value is" + value);
             hp = (hp + value >= maxHp ? maxHp : hp + value);
             Debug.Log("Hp is " + hp);
             if (hp <= 0)
+            {
                 dead();
+                return true;
+            }
+            return false;
         }
     }
 }

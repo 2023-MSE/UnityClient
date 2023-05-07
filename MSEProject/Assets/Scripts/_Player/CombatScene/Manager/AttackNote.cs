@@ -16,14 +16,6 @@ public class AttackNote : Note
     private int monsterIndex = 0;
 
 
-    public Direction dir;
-    
-    public int damage;
-
-    private int monsterIndex = 0;
-
-
-    
 
     public void Start()
     {

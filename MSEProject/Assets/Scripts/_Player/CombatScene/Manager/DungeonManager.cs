@@ -1,10 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Schema;
-using Unity.VisualScripting;
 using UnityEngine;
+using _Creator.DungeonInfoFolder;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace _Player.CombatScene
 {
@@ -14,8 +14,6 @@ namespace _Player.CombatScene
          * Make it singleton
          * **/
         public static DungeonManager instance = null;
-
-        private bool check = false;
 
         private DungeonManager() { }
         public static DungeonManager Instance
@@ -43,48 +41,56 @@ namespace _Player.CombatScene
             }
         }
 
-        private void Start()
-        {
-            GetMonstersInDungeon();
-        }
 
         // �׽�Ʈ�� ���� dungeon�� public���� ������. ���� private���� ��ȯ ����
         public DungeonInfoFolder.Dungeon dungeon;
-
         private CombatManager combatManager;
-        private RelaxManager relaxmanager;
-
-
-        private CombatManager combatManager;
-        private RelaxManager relaxmanager;
-
         private ulong currentStage;
+        [SerializeField]
+        private StageInfoScriptableObject stageInfo;
+        private Dictionary<uint, AsyncOperationHandle> assetDict;
+        private float speed = 1f;
+        private bool check = false;
+
+        private void Start()
+        {
+            assetDict = new Dictionary<uint, AsyncOperationHandle>();
+            currentStage = 0;
+            foreach (StageInfoStruct info in stageInfo.stageInfoTemplate)
+            {
+                Addressables.LoadAssetAsync<GameObject>(info.prefabPath).Completed +=
+                (handle) =>
+                {
+                    Debug.Log("Load Asset " + info.stageInfo);
+                    Debug.Assert(handle.Status == AsyncOperationStatus.Succeeded, "Fail to load Asset" + handle.Status);
+                    assetDict.Add(info.thisStageInfoIndex, handle);
+                };
+            }
+        }
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)
         {
             this.dungeon = dungeon;
+            speed = 1f;
+        }
+
+        public ulong GetCurrentStage()
+        {
+            return currentStage;
         }
         public DungeonInfoFolder.Dungeon GetDungeon()
         {
             // ���� �����ٶ� �ʿ���
             return dungeon;
         }
-
-        public GameObject[] GetMonstersInDungeon()
+        public DungeonInfoFolder.Stage.StageType GetCurrentStageType()
         {
-            // ? ???? ??? ?? ????
-            GameObject[] monsters = GameObject.FindGameObjectsWithTag("Monster");
-            
-            Debug.Log(monsters.Length);
-
-            return monsters;
+            return dungeon.stages[currentStage].myStageType;
         }
-
         public void GoNextStage(ulong nextStage)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("CombatScene");
             currentStage = nextStage;
         }
-
 
         public AsyncOperationHandle GetHandle(uint index)
         {
@@ -106,13 +112,6 @@ namespace _Player.CombatScene
             combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
             combatManager.setVariable();
         }
-        
-        public void SetRelaxManager()
-        {
-            Debug.Log("scene relax");
-            relaxmanager = GameObject.Find("RelaxManager").GetComponent<RelaxManager>();
-            relaxmanager.Scenecheck();
-        }
 
         public void SkillActivation()
         {
@@ -123,7 +122,6 @@ namespace _Player.CombatScene
         {
             combatManager.MonsterAttackPlayer();
         }
-
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -139,10 +137,9 @@ namespace _Player.CombatScene
             Debug.Log("Scene Loaded");
             if (Instance != null && dungeon != null)
             {
-                GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[0]);
+                GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[currentStage]);
             }
         }
-
         public void StopScene()
         {
             check = !check;

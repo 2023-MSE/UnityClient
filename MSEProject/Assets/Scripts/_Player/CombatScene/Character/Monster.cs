@@ -2,28 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
-using Random = System.Random;
 
 namespace _Player.CombatScene
 {
-
-    public static class ArrayExtensions
-    {
-        // 배열을 랜덤으로 섞는 Fisher-Yates 알고리즘
-        public static void Shuffle<T>(this IList<T> list)
-        {
-            int n = list.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = UnityEngine.Random.Range(0, n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
-            }
-        }
-    }
     public class Monster : Character
     {
         [SerializeField] private int num = 0;
@@ -40,44 +21,13 @@ namespace _Player.CombatScene
         private int type;
 
         private CombatManager _combatManager;
+        private Animator animator;
         public void Start()
         {
             _combatManager = FindObjectOfType<CombatManager>();
-
             //test
-
+            attactMotion();
         }
-
-        public void Update()
-        {
-
-            hitMotion();
-
-            if (hp == 0)
-            {
-                dead();
-            }
-        }
-
-        public override void hitMotion()
-        {
-            /*TODO*/
-            if (patterns != null)
-
-
-            patterns.Shuffle();
-
-
-            if (!isDead())
-
-            {
-                attactMotion();
-            }
-        }
-
-
-
-
 
         public override void AnimateHitMotion()
         {
@@ -106,38 +56,30 @@ namespace _Player.CombatScene
         public override void dead()
         {
             /*TODO*/
-            
-            // monster change
             Debug.Log("Monster dead");
-
-            this.GetComponent<GameObject>().SetActive(false);
-
-                this.GetComponent<GameObject>().SetActive(false);
-
             AnimateDie();
         }
-
-     
        
         public void attactMotion()
         {
             if (patterns != null)
             {
-             
+               
                _combatManager.setQueue(patterns);
                 
             }
             
-       
-            
         }
-        
-        
-
 
         public void setPower(int power)
         {
             this.power = power;
+        }
+
+        public void AnimateIdle(float speed)
+        {
+            animator = this.GetComponent<Animator>();
+            animator.SetFloat("speed", speed);
         }
         public int getPower()
         {
@@ -147,6 +89,16 @@ namespace _Player.CombatScene
         public int getType()
         {
             return power;
+        }
+
+        public void MonsterAttack()
+        {
+            DungeonManager.instance.MonsterAttack();
+        }
+
+        public bool isDead()
+        {
+            return hp <= 0;
         }
     }
 

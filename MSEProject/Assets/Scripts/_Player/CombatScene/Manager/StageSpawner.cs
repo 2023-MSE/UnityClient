@@ -1,9 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DungeonInfoFolder;
 using _Creator.DungeonInfoFolder;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 /*
  * stage spawner
@@ -25,43 +26,34 @@ namespace _Player.CombatScene
         GameObject[] spawnPointMonster;
         [SerializeField]
         GameObject spawnPointBuffAndRelax;
-        
-        private void Start()
-        {
-        
-
-        }
 
         // spawn monster
         private void spawnMonster(uint monsterIndex, int spawnIndex)
         {
-            GameObject item = null;
-            foreach (StageInfoStruct info in stageInfo.stageInfoTemplate)
+            AsyncOperationHandle handle = DungeonManager.instance.GetHandle(monsterIndex);
+            if (handle.Status == AsyncOperationStatus.Succeeded && handle.Result is GameObject)
             {
-                if(info.thisStageInfoIndex == monsterIndex)
-                {
-                    item = Resources.Load<GameObject>(info.prefabPath);
-                    break;
-                }
-            } 
-            GameObject.Instantiate(item, spawnPointMonster[spawnIndex].transform.position, Quaternion.identity).transform.parent = spawnPointMonster[spawnIndex].transform;
+                Instantiate(handle.Result as GameObject, spawnPointMonster[spawnIndex].transform.position, Quaternion.identity);
+                Debug.Log("instantiate Success: Monster");
+            }
+            else
+            {
+                Debug.Log("instantiate Fail: Monster");
+            }
         }
 
         // spawn player;
         private void spawnPlayer()
         {
-            GameObject item = Resources.Load<GameObject>("Player");
-            GameObject.Instantiate(item, spawnPointPlayer.transform.position, Quaternion.identity).transform.parent = spawnPointPlayer.transform;
+            // WARNING
+            // Player's index SHOULD BE 0
+            AsyncOperationHandle handle = DungeonManager.instance.GetHandle(0);
+            Instantiate(handle.Result as GameObject, spawnPointPlayer.transform.position, Quaternion.Euler(0f, 180f, 0f));
         }
+
         // spawn relax;
         private void spawnRelax()
         {
-
-            GameObject item = Resources.Load<GameObject>("Relax");
-            GameObject.Instantiate(item, spawnPointBuffAndRelax.transform.position, Quaternion.identity).transform.parent = spawnPointBuffAndRelax.transform;
-
-
-
             // WARNING
             // Relax's index SHOULD BE 1
 
@@ -70,28 +62,26 @@ namespace _Player.CombatScene
             {
                 Instantiate(handle.Result as GameObject, spawnPointBuffAndRelax.transform.position, Quaternion.identity);
                 Debug.Log("instantiate Success: Relax");
-   
-                
             }
             else
             {
                 Debug.Log("instantiate Fail: Relax");
             }
-
         }
+
         // spawn buff;
         private void spawnBuff(uint buffindex)
         {
-            GameObject item = null;
-            foreach (StageInfoStruct info in stageInfo.stageInfoTemplate)
+            AsyncOperationHandle handle = DungeonManager.instance.GetHandle(buffindex);
+            if (handle.Status == AsyncOperationStatus.Succeeded && handle.Result is GameObject)
             {
-                if (info.thisStageInfoIndex == buffindex)
-                {
-                    item = Resources.Load<GameObject>(info.prefabPath);
-                    break;
-                }
+                Instantiate(handle.Result as GameObject, spawnPointBuffAndRelax.transform.position, Quaternion.identity);
+                Debug.Log("instantiate Success: Buff");
             }
-            GameObject.Instantiate(item, spawnPointBuffAndRelax.transform.position, Quaternion.identity).transform.parent = spawnPointBuffAndRelax.transform;
+            else
+            {
+                Debug.Log("instantiate Fail: Buff");
+            }
         }
 
         public void spawnStage(Stage stage)
@@ -122,13 +112,12 @@ namespace _Player.CombatScene
                     break;
                 case DungeonInfoFolder.Stage.StageType.Relax:
                     spawnRelax();
-                    DungeonManager.instance.SetRelaxManager();
                     break;
                 default:
                     Debug.Log("ERROR Unknown Node");
                     break;
             }
-            GameObject.Find("CombatManager").GetComponent<CombatManager>().setVariable();
+            DungeonManager.instance.SetCombatManager();
         }
     }
 }

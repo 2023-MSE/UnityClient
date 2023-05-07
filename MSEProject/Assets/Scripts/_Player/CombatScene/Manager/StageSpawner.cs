@@ -56,8 +56,11 @@ namespace _Player.CombatScene
         // spawn relax;
         private void spawnRelax()
         {
+
             GameObject item = Resources.Load<GameObject>("Relax");
             GameObject.Instantiate(item, spawnPointBuffAndRelax.transform.position, Quaternion.identity).transform.parent = spawnPointBuffAndRelax.transform;
+
+
 
             // WARNING
             // Relax's index SHOULD BE 1

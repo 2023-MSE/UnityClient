@@ -27,10 +27,12 @@ namespace _Player.CombatScene
 
         private GameObject note;
 
-
         private DungeonManager _dungeonManager;
 
         private CoolDown _coolDown;
+
+  
+
 
         private void Start()
         {
@@ -83,8 +85,8 @@ namespace _Player.CombatScene
                 var obj = queue.Dequeue();
 
 
-                obj.SetActive(true);
 
+                obj.SetActive(true);
 
                 return obj;
             }
@@ -219,6 +221,12 @@ namespace _Player.CombatScene
         public void monsterAttack(int monsterIndex)
         {
 
+
+            int power = monsters[monsterIndex].GetComponent<Monster>().getPower();
+            Debug.Log(power);
+            damage(player, power * attackMulti);
+
+
             int power = monsters[monsterIndex].GetComponent<Monster>().getPower();
             Debug.Log(power);
             damage(player, power * attackMulti);
@@ -260,7 +268,6 @@ namespace _Player.CombatScene
             {
                 monster.setHp(MAX_HP);
             }
-
 
             player.GetComponent<Player>().AnimateIdle(DungeonManager.instance.GetSpeed());
             FindObjectOfType<NoteManager>().CombatManagerReady(this);

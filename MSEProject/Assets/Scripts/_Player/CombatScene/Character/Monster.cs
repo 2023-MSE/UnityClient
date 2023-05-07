@@ -44,6 +44,8 @@ namespace _Player.CombatScene
         {
             _combatManager = FindObjectOfType<CombatManager>();
 
+            //test
+
         }
 
         public void Update()
@@ -62,7 +64,9 @@ namespace _Player.CombatScene
             /*TODO*/
             if (patterns != null)
 
+
             patterns.Shuffle();
+
 
             if (!isDead())
 
@@ -70,6 +74,8 @@ namespace _Player.CombatScene
                 attactMotion();
             }
         }
+
+
 
 
 
@@ -97,7 +103,6 @@ namespace _Player.CombatScene
         {
             animator.SetTrigger("bossAttack");
         }
-
         public override void dead()
         {
             /*TODO*/
@@ -106,6 +111,8 @@ namespace _Player.CombatScene
             Debug.Log("Monster dead");
 
             this.GetComponent<GameObject>().SetActive(false);
+
+                this.GetComponent<GameObject>().SetActive(false);
 
             AnimateDie();
         }
@@ -120,7 +127,6 @@ namespace _Player.CombatScene
                _combatManager.setQueue(patterns);
                 
             }
-
             
        
             

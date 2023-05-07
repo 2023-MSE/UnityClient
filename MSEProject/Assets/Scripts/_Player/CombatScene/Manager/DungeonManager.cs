@@ -54,6 +54,10 @@ namespace _Player.CombatScene
         private CombatManager combatManager;
         private RelaxManager relaxmanager;
 
+
+        private CombatManager combatManager;
+        private RelaxManager relaxmanager;
+
         private ulong currentStage;
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)
         {
@@ -80,6 +84,7 @@ namespace _Player.CombatScene
             UnityEngine.SceneManagement.SceneManager.LoadScene("CombatScene");
             currentStage = nextStage;
         }
+
 
         public AsyncOperationHandle GetHandle(uint index)
         {
@@ -118,7 +123,6 @@ namespace _Player.CombatScene
         {
             combatManager.MonsterAttackPlayer();
         }
-
 
         private void OnEnable()
         {

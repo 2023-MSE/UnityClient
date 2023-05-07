@@ -117,7 +117,7 @@ namespace _Player.CombatScene
                     Debug.Log("ERROR Unknown Node");
                     break;
             }
-            GameObject.Find("CombatManager").GetComponent<CombatManager>().setVariable();
+            DungeonManager.instance.SetCombatManager();
         }
     }
 }

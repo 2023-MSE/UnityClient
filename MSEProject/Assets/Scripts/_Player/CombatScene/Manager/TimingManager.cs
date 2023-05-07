@@ -27,7 +27,7 @@ public class TimingManager : MonoBehaviour
 
     [SerializeField] private GameObject RedCenter;
 
-    [SerializeField] private UnityEvent _successAttackUnityEvent;
+    [SerializeField] private IntEvent _successAttackUnityEvent;
 
     [SerializeField] private IntEvent _failAttackUnityEvent;
 
@@ -100,7 +100,7 @@ public class TimingManager : MonoBehaviour
                         if (dir==note.GetComponent<AttackNote>().getDirection())// 입력값과 노트의 dir 값이 같으면!
                         {
                             Debug.Log("공격 노트 방어 성공입니다");
-                            _successAttackUnityEvent.Invoke();
+                            _successAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
                             
                           
                             boxNoteList.Remove(note);
@@ -110,10 +110,10 @@ public class TimingManager : MonoBehaviour
                         else if (dir != note.GetComponent<AttackNote>().getDirection())
                         {
                             Debug.Log("공격 노트 방어 실패입니다");
-                           // _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().getdamage());
-                            
+                            // _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
+
                         }
-                            
+
                     }
                     else if (note.gameObject.CompareTag("GNote")) // 일반 노트이면!
                     {

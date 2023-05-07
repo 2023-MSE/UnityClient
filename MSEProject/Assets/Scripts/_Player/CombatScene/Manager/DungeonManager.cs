@@ -44,24 +44,18 @@ namespace _Player.CombatScene
 
         // 테스트를 위해 dungeon을 public으로 수정함. 이후 private으로 변환 예정
         public DungeonInfoFolder.Dungeon dungeon;
+        private CombatManager combatManager;
         private ulong currentStage;
         [SerializeField]
         private StageInfoScriptableObject stageInfo;
         private Dictionary<uint, AsyncOperationHandle> assetDict;
-        private AsyncOperationHandle characterHandle;
-        private AsyncOperationHandle effectHandle;
-        private AsyncOperationHandle buffAndRelaxHandle;
-
-        public enum HandelType
-        {
-            Character = 0,
-            Effect = 1,
-            BuffAndRelax =2
-        }
+        private float speed = 1f;
+        private bool check = false;
 
         private void Start()
         {
             assetDict = new Dictionary<uint, AsyncOperationHandle>();
+            currentStage = 0;
             foreach (StageInfoStruct info in stageInfo.stageInfoTemplate)
             {
                 Addressables.LoadAssetAsync<GameObject>(info.prefabPath).Completed +=
@@ -76,13 +70,22 @@ namespace _Player.CombatScene
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)
         {
             this.dungeon = dungeon;
+            speed = 1f;
+        }
+
+        public ulong GetCurrentStage()
+        {
+            return currentStage;
         }
         public DungeonInfoFolder.Dungeon GetDungeon()
         {
             // 지도 보여줄때 필요함
             return dungeon;
         }
-
+        public DungeonInfoFolder.Stage.StageType GetCurrentStageType()
+        {
+            return dungeon.stages[currentStage].myStageType;
+        }
         public void GoNextStage(ulong nextStage)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("CombatScene");
@@ -92,6 +95,32 @@ namespace _Player.CombatScene
         public AsyncOperationHandle GetHandle(uint index)
         {
             return assetDict[index];
+        }
+
+        public float GetSpeed()
+        {
+            return speed;
+        }
+
+        public void SetSpeed(float multi)
+        {
+            speed = (speed * multi > 2) ? 2f : speed * multi;
+        }
+
+        public void SetCombatManager()
+        {
+            combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
+            combatManager.setVariable();
+        }
+
+        public void SkillActivation()
+        {
+            combatManager.skillActivation();
+        }
+
+        public void MonsterAttack()
+        {
+            combatManager.MonsterAttackPlayer();
         }
         private void OnEnable()
         {
@@ -108,7 +137,20 @@ namespace _Player.CombatScene
             Debug.Log("Scene Loaded");
             if (Instance != null && dungeon != null)
             {
-                GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[0]);
+                GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[currentStage]);
+            }
+        }
+        public void StopScene()
+        {
+            check = !check;
+
+            if (check)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
             }
         }
     }

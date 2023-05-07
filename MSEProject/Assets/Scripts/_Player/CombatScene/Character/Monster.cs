@@ -21,24 +21,52 @@ namespace _Player.CombatScene
         private int type;
 
         private CombatManager _combatManager;
+        private Animator animator;
         public void Start()
         {
             _combatManager = FindObjectOfType<CombatManager>();
             //test
             attactMotion();
         }
+        public void hitMotion()
+        {
+            if (patterns != null)
+            {
+                _combatManager.setQueue(patterns);
+            }
+        }
 
-        public override void hitMotion()
+        public override void AnimateHitMotion()
         {
             /*TODO*/
+            animator.SetTrigger("isGetDamage");
+        }
+        public void AnimateAttack()
+        {
+            animator.SetTrigger("attack");
+        }
+
+        public void AnimateDie()
+        {
+            animator.SetTrigger("isDie");
+        }
+
+        public void AnimateWin()
+        {
+            animator.SetTrigger("isWin");
+        }
+
+        public void AnimateBossAttack()
+        {
+            animator.SetTrigger("bossAttack");
         }
         public override void dead()
         {
             /*TODO*/
             Debug.Log("Monster dead");
-            this.GetComponent<GameObject>().SetActive(false);
+            AnimateDie();
         }
-
+       
         public void attactMotion()
         {
             if (patterns != null)
@@ -54,6 +82,12 @@ namespace _Player.CombatScene
         {
             this.power = power;
         }
+
+        public void AnimateIdle(float speed)
+        {
+            animator = this.GetComponent<Animator>();
+            animator.SetFloat("speed", speed);
+        }
         public int getPower()
         {
             return power;
@@ -62,6 +96,16 @@ namespace _Player.CombatScene
         public int getType()
         {
             return power;
+        }
+
+        public void MonsterAttack()
+        {
+            DungeonManager.instance.MonsterAttack();
+        }
+
+        public bool isDead()
+        {
+            return hp <= 0;
         }
     }
 

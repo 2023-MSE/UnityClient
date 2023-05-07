@@ -17,10 +17,10 @@ namespace _Player.CombatScene
         private int singleTargetIndex = 0;
         private Monster[] monsters;
         private GameObject player;
-        private float attackMulti = 1.0f;
         private int currentSkill = 0;
-        private int lastSkill = 0;
-
+        private bool isStageReady = false;
+        private int attackMonsterPower;
+        private bool isPlayerHit;
         private Queue<GameObject> queue;
 
         private Queue<GameObject> ObjectPool;
@@ -28,6 +28,12 @@ namespace _Player.CombatScene
         private List<GameObject> list = new List<GameObject>();
         
         private GameObject note;
+
+        private void Start()
+        {
+            queue = new Queue<GameObject>();
+            ObjectPool = new Queue<GameObject>();
+        }
 
         public void setQueue(GameObject[] q)
         {
@@ -41,13 +47,6 @@ namespace _Player.CombatScene
         public Queue<GameObject> getQueue()
         {
             return queue;
-        }
-
-        private void Start()
-        {
-            queue = new Queue<GameObject>();
-            ObjectPool = new Queue<GameObject>();
-
         }
 
         public void EnqueueObjectPool(GameObject note)
@@ -67,7 +66,8 @@ namespace _Player.CombatScene
             {
                 var obj = queue.Dequeue();
                 queue.Enqueue(obj);
-                obj.SetActive(true);
+
+                //obj.SetActive(true);
                 return obj;
             }
             else
@@ -91,29 +91,38 @@ namespace _Player.CombatScene
         private void damage(GameObject target, float damage)
         {
             // singleTargetIndex 재설정 필요
-            target.GetComponent<Character>().setHp(-damage);
-        }
+            target.GetComponent<Character>().AnimateHitMotion();
+            if (target.GetComponent<Character>().setHp(-damage))
+            {
+                // target is dead
+                if (target.GetComponent<Character>() is Player)
+                {
+                    // player is dead
 
+                }
+                else if (target.GetComponent<Character>() is Monster) 
+                {
+                    // monster is dead
+
+                }
+            }
+        }
         public void skillActivation()
         {
-            if (lastSkill == 0)
-            {
-                Debug.Log("Skill Not Active");
-                currentSkill = 0;
-                return;
-            }
-
             Debug.Log("Skill Active" + currentSkill);
 
-            Skill skill = skillData.skills[lastSkill];
+            Skill skill = skillData.skills[currentSkill];
             if (skill.isSplash)
             {
                 // 광역 스킬인 경우
                 foreach (Monster monster in monsters)
                 {
-                    float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
-                    float skillDamage = skill.damage * (1f + typeMulti);
-                    damage(monster.gameObject, skillDamage);
+                    if (!monster.isDead())
+                    {
+                        float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
+                        float skillDamage = skill.damage * (1f + typeMulti);
+                        damage(monster.gameObject, skillDamage);
+                    }
                 }
             }
             else
@@ -121,55 +130,101 @@ namespace _Player.CombatScene
                 // 단일 스킬인 경우
                 float typeMulti = (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
                 float skillDamage = skill.damage * (1f + typeMulti);
-                damage(monsters[singleTargetIndex].gameObject, skillDamage * attackMulti);
+                damage(monsters[singleTargetIndex].gameObject, skillDamage * DungeonManager.instance.GetSpeed());
             }
-            currentSkill = lastSkill = 0;
+            currentSkill = 0;
+        }
+
+        IEnumerator skillTime(GameObject skill, float wait)
+        {
+            skill.SetActive(true);
+
+            yield return wait;
+
+            skill.SetActive(false);
         }
 
         public void updateSkill(Direction direction)
         {
             currentSkill = skillData.skills[currentSkill].getNextSkill(direction);
+            Debug.Log("Current Skill num: " + currentSkill);
             if (currentSkill == -1)
             {
                 // 해당 방향키의 스킬이 존재하지 않는 경우
-                skillActivation();
+                player.GetComponent<Player>().AnimateMissMotion();
             }
             else
             {
-                // 해당 방향키의 스킬이 존재하는 경우
                 if (skillData.skills[currentSkill].isEnable)
                 {
-                    lastSkill = currentSkill;
+                    // 해당 방향키의 스킬이 존재하는 경우
+                    Debug.Log("SKILL ENABLE");
+                    player.GetComponent<Player>().AnimateSkillMotion();
                 }
+                player.GetComponent<Player>().AnimateDirectionMotion(direction);
             }
         }
 
         public void monsterAttack(int monsterIndex)
         {
-            int power = monsters[monsterIndex].GetComponent<Monster>().getPower();
-            Debug.Log(power);
-            damage(player, power * attackMulti);
+            isPlayerHit = true;
+            player.GetComponent<Player>().AnimateDefenceMotion();
+            attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
+            monsters[monsterIndex].AnimateAttack();
+        }
+        public void monsterAttackDefence(int monsterIndex)
+        {
+            isPlayerHit = false;
+            attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
+            monsters[monsterIndex].AnimateAttack();
+            player.GetComponent<Player>().AnimateDefenceMotion();
+        }
+
+        public void MonsterAttackPlayer()
+        {
+            if (isPlayerHit)
+            {
+                damage(player, attackMonsterPower * DungeonManager.instance.GetSpeed());
+            }
+            else
+            {
+                player.GetComponent<Player>().AnimateDefendeHitMotion();
+            }
         }
 
         public void setVariable()
         {
+            Debug.Log("SetVariable");
             player = GameObject.FindObjectOfType<Player>().gameObject;
             player.GetComponent<Player>().setHp(MAX_HP);
             monsters = GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None);
             foreach(Monster monster in monsters)
             {
                 monster.setHp(MAX_HP);
+                monster.AnimateIdle(DungeonManager.instance.GetSpeed());
             }
+            player.GetComponent<Player>().AnimateIdle(DungeonManager.instance.GetSpeed());
+            FindObjectOfType<NoteManager>().CombatManagerReady(this);
         }
 
-        public void GetBuff()
+        public void InteractBuff()
         {
-            attackMulti = attackMulti * 1.5f;
+            DungeonManager.instance.SetSpeed(1.5f);
         }
 
-        public void GetRelax(int heal)
+        public void InteractRelax(int heal)
         {
             player.GetComponent<Player>().setHp(heal);
+        }
+
+        public GameObject GetPlayer()
+        {
+            return player;
+        }
+
+        public bool GetStageReady()
+        {
+            return isStageReady;
         }
     }
 

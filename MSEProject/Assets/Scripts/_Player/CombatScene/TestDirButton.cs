@@ -38,4 +38,10 @@ public class TestDirButton : MonoBehaviour
         combatManager.updateSkill(Direction.RIGHT);
     }
 
+    public void OnClickButtonNextStage()
+    {
+        _Player.CombatScene.DungeonManager.Instance.GoNextStage(
+            _Player.CombatScene.DungeonManager.Instance.GetCurrentStage() + 1
+        );
+    }
 }

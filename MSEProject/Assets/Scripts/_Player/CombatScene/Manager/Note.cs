@@ -6,13 +6,13 @@ using UnityEngine;
 public class Note : MonoBehaviour
 {
     public float noteSpeed = 120;
-    
-    private String dir= " ";
-    private int damage=0;
-   
+
+    protected Direction dir;
+    protected int damage = 0;
+
     public int getdamage()
     {
-        return damage ;
+        return damage;
     }
 
     public void setdamage(int _damage)
@@ -20,16 +20,16 @@ public class Note : MonoBehaviour
         damage = _damage;
     }
 
-    public String getDirection()
+    public Direction getDirection()
     {
         return dir;
     }
 
-    public void setDirection(String _dir)
+    public void setDirection(Direction _dir)
     {
         dir = _dir;
     }
- 
+
     void Update()
     {
         transform.localPosition += Vector3.right * noteSpeed * Time.deltaTime;

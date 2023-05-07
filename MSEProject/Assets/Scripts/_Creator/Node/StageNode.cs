@@ -26,6 +26,11 @@ public class StageNode : Node
     private void OnEditButtonClick()
     {
         FindObjectOfType<ActivateIndicator>().OtherTargetActivated(indicator);
+        StageEditor.Instance.EditingStage = DungeonEditor.Instance.editingDungeon.stages[IdentifierID];
+        StageEditor.Instance.VisualizeStageType();
+        StageEditor.Instance.VisualizeStageSpecificInfo();
+        
+        MusicDungeonInterface.Instance.LoadMusicToAudioSource();
     }
 
     public override void OnSerialize(Serializer serializer)

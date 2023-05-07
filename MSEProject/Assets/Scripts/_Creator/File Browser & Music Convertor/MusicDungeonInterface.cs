@@ -8,7 +8,7 @@ public struct MusicData
     public byte[] musicBytesData;
 }
 
-public class MusicDungeonInterface : MonoBehaviour
+public class MusicDungeonInterface : Singleton<MusicDungeonInterface>
 {
     public AudioSource myAudioSource;
     
@@ -16,6 +16,8 @@ public class MusicDungeonInterface : MonoBehaviour
     {
         StageEditor.Instance.EditingStage.musicName = inputMusicName;
         StageEditor.Instance.EditingStage.musicBytesData = inputMusicData;
+        
+        LoadMusicToAudioSource();
     }
     
     public byte[] LoadMusicFromStage()
@@ -23,8 +25,11 @@ public class MusicDungeonInterface : MonoBehaviour
         return StageEditor.Instance.EditingStage.musicBytesData;
     }
     
-    public void PlayMusic()
+    public void LoadMusicToAudioSource()
     {
+        if (string.IsNullOrEmpty(StageEditor.Instance.EditingStage.musicName))
+            return;
+        
         MusicExtension thisMusicExtension = DataAndAudioClipConvertor.MusicDataAnalyzer(StageEditor.Instance.EditingStage.musicName);
         switch (thisMusicExtension)
         {
@@ -35,7 +40,15 @@ public class MusicDungeonInterface : MonoBehaviour
                 myAudioSource.clip = DataAndAudioClipConvertor.ConvertWavByteToAudioClip(LoadMusicFromStage());
                 break;
         }
-        
+    }
+    
+    public void PlayMusic()
+    {
         myAudioSource.Play();
+    }
+
+    public void PauseMusic()
+    {
+        myAudioSource.Pause();
     }
 }

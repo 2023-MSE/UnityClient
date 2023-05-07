@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _Creator.DungeonInfoFolder;
 using DungeonInfoFolder;
 using DungeonInfoFolder.DungeonAndUIInterfaces;
 using TMPro;
@@ -9,6 +10,8 @@ public class EachStageInfoMaker : MonoBehaviour
 {
     public TextMeshProUGUI stageInfoNameText;
     public uint assignedInt;
+    
+    public StageInfoScriptableObject stageInfoScriptableObject;
 
     public void SetUpEachStageInfoUI(uint inputInt)
     {
@@ -16,7 +19,18 @@ public class EachStageInfoMaker : MonoBehaviour
         // 혹은 Switch 등을 기반으로 하여 표시.
         
         assignedInt = inputInt;
-        stageInfoNameText.text = "" + inputInt;
+
+        foreach (var tStageInfoStruct in stageInfoScriptableObject.stageInfoTemplate)
+        {
+            if (tStageInfoStruct.thisStageInfoIndex == inputInt)
+            {
+                stageInfoNameText.text = "" + tStageInfoStruct.stageInfo;
+
+                return;
+            }
+        }
+        
+        Debug.LogError("No StageInfo Found");
     }
     
     public void RemoveButtonClicked ()

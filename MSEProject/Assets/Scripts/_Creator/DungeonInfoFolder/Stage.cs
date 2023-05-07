@@ -30,7 +30,7 @@ namespace DungeonInfoFolder
         // 2) specific information about that type
         public string specificTypeInfo;
         public List<uint> elements;
-        public short limitForElements = 4;
+        public short limitForElements = 0;
         
         // 3) Music information
         public string musicName;
@@ -51,6 +51,24 @@ namespace DungeonInfoFolder
         public void PrintStageInfo()
         {
             Debug.Log("My Node ID : " + nodeID + "\n" + prevStageID.Count + "   " + nextStageID.Count);
+        }
+
+        public void ShowAllStageInformation()
+        {
+            Debug.Log("My Node ID : " + nodeID + "\n" +
+                      "Prev Stage ID : " + prevStageID.Count + "\n" +
+                      "Next Stage ID : " + nextStageID.Count + "\n" +
+                      "My Stage Type : " + myStageType + "\n" +
+                      "Specific Type Info : " + specificTypeInfo + "\n" +
+                      "Element Count : " + elements.Count + "\n" +
+                      "Limit for Elements : " + limitForElements);
+            
+            // Show Stage Music Info
+            if (string.IsNullOrEmpty(musicName))
+                Debug.Log("Music Name : " + musicName);
+            else
+                Debug.Log("Music Name : " + musicName + "\n" +
+                          "Music Bytes Data : " + musicBytesData.Length);
         }
     }
 }

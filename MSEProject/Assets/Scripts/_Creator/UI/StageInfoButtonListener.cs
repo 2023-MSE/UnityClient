@@ -20,7 +20,10 @@ public class StageInfoButtonListener : MonoBehaviour
         foreach (var variStageInfoStruct in stageInfoScriptableObject.stageInfoTemplate)
         {
             if (variStageInfoStruct.stageInfo == thisButtonStageInfo)
+            {
                 StageEditor.Instance.AddElementsToStage(variStageInfoStruct.thisStageInfoIndex);
+                return;
+            }
         }
     }
 }

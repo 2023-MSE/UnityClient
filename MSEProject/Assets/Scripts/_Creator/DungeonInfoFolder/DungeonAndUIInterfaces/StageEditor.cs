@@ -45,11 +45,15 @@ public class StageEditor : Singleton<StageEditor>
     
     public List<stageButtonCollectionInfo> stageButtonCollectionInfos = new List<stageButtonCollectionInfo>();
     
+        // 23.05.03 Limitation Visualizer
+    public TextMeshProUGUI limitForElementsTMP;
+    
     // 1-1. Stage Type Visualization
     
     public void VisualizeStageType()
     {
         NodeTypeTMP.text = "Stage Type : " + _editingStage.myStageType;
+        limitForElementsTMP.text = "<color=green>"+ _editingStage.elements.Count + " / " + _editingStage.limitForElements + "</color>";
     }
     
     // 1-2. Stage Type Editor
@@ -60,8 +64,23 @@ public class StageEditor : Singleton<StageEditor>
         if (_editingStage == null)
             return;
 
+        // stage 의 type 변경
         _editingStage.myStageType = toChangStageType;
+        _editingStage.elements.Clear();
 
+        switch (_editingStage.myStageType)
+        {
+            case Stage.StageType.Boss:
+            case Stage.StageType.Totem:
+            case Stage.StageType.Relax:
+                _editingStage.limitForElements = 1;
+                break;
+            case Stage.StageType.Monster:
+                _editingStage.limitForElements = 3;
+                break;
+        }
+
+        // stage type 변경에 따른 UI 처리
         foreach (var stageButtonCollectionInfo in stageButtonCollectionInfos)
         {
             if (stageButtonCollectionInfo.thisCollectionStageType == toChangStageType)
@@ -71,6 +90,7 @@ public class StageEditor : Singleton<StageEditor>
         }
         
         VisualizeStageType();
+        VisualizeStageSpecificInfo();
     }
 
 
@@ -124,10 +144,17 @@ public class StageEditor : Singleton<StageEditor>
         
         _editingStage.elements.Add(inputElements);
         
+        VisualizeStageType();
         VisualizeStageSpecificInfo();
+        
+        limitForElementsTMP.text = "<color=red>"+ _editingStage.elements.Count + " / " + _editingStage.limitForElements + "</color>";
     }
 
     // public void DeleteElementsToStage(uint inputElements) {} : Delete 는 각 Stage Button의 EachStageInfoMaker 내에 존재함.
     
-
+    // A. Show Now editing Stage Info
+    public void ShowNowEditingStageInfo()
+    {
+        _editingStage.ShowAllStageInformation();
+    }
 }

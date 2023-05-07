@@ -381,6 +381,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageInfoNameText: {fileID: 4106285950877894776}
   assignedInt: 0
+  stageInfoScriptableObject: {fileID: 11400000, guid: b8b4368193b2b714b882805d0c0d982d,
+    type: 2}
 --- !u!1 &4106285950743813282
 GameObject:
   m_ObjectHideFlags: 0

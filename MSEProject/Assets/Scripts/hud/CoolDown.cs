@@ -12,7 +12,7 @@ public class CoolDown : MonoBehaviour
     public bool coolingDown;
 
     public float waitTime = 30.0f;
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -34,9 +34,14 @@ public class CoolDown : MonoBehaviour
 
     public void RelaxHp(float hp)
     {
-      
+
         cooldown.fillAmount += 0.1f;
-     
+
+    }
+
+    public void setHp(float hp)
+    {
+        cooldown.fillAmount = hp;
     }
 
 
@@ -52,6 +57,6 @@ public class CoolDown : MonoBehaviour
 
     public void getFillAmount()
     {
-        Debug.Log("fill: "+cooldown.fillAmount);
+        Debug.Log("fill: " + cooldown.fillAmount);
     }
 }

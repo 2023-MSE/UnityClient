@@ -30,4 +30,9 @@ public class AttackNote : Note
     {
         return monsterIndex;
     }
+
+    public void SetMonsterIndex(int monster)
+    {
+        monsterIndex = monster;
+    }
 }

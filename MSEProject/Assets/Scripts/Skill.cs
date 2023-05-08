@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor;
 using UnityEngine.UIElements;
 
 [Serializable]
@@ -36,6 +37,11 @@ public class Skill
     public void seteffect(Vector3 pos)
     {
         effect.gameObject.transform.position = pos;
-        effect.SetActive(true);    
+        
+    }
+
+    public GameObject getEffect()
+    {
+        return effect;
     }
 }

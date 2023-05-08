@@ -25,6 +25,8 @@ namespace _Player.CombatScene
         private bool isPlayerHit;
         private Queue<GameObject> queue;
 
+        [SerializeField] private List<GameObject> skilllist;
+        
         private Queue<GameObject> ObjectPool;
 
         private DungeonManager _dungeonManager;
@@ -40,6 +42,7 @@ namespace _Player.CombatScene
             queue = new Queue<GameObject>();
             ObjectPool = new Queue<GameObject>();
             _coolDown = FindObjectOfType<CoolDown>();
+
         }
 
         public void setQueue(GameObject[] note)
@@ -118,7 +121,7 @@ namespace _Player.CombatScene
                 //target is already alive
                 if (target.GetComponent<Character>() is Player)
                 {
-                    _coolDown.DamageHp(0.1f);
+                    _coolDown.DamageHp(damage * 0.001f);
 
                 }
                 else if (target.GetComponent<Character>() is Monster)
@@ -142,8 +145,9 @@ namespace _Player.CombatScene
                 {
                     if (!monster.isDead())
                     {
-                        skill.seteffect(monster.transform.position);
+                       // skilllist[currentSkill].transform.position = monster.transform.position;
                         
+                        StartCoroutine(skillTime(skilllist[currentSkill].gameObject,monster.transform.position,3f));
                         
                         float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
                         float skillDamage = skill.damage * (1f + typeMulti);
@@ -153,10 +157,8 @@ namespace _Player.CombatScene
             }
             else
             {
-                // 단일 스킬인 경우
                 
-                skill.seteffect(monsters[singleTargetIndex].transform.position);
-                
+                StartCoroutine(skillTime(skilllist[currentSkill].gameObject,monsters[singleTargetIndex].transform.position,3f));
                 
                 float typeMulti =
                     (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
@@ -166,18 +168,33 @@ namespace _Player.CombatScene
 
             currentSkill = 0;
         }
-
-        IEnumerator skillTime(GameObject skill, float wait)
+        IEnumerator skillTimeWait(GameObject skill, float wait)
         {
             skill.SetActive(true);
 
             yield return wait;
-
+            
+            
             skill.SetActive(false);
+
+            
+        }
+        IEnumerator skillTime(GameObject skill, Vector3 pos,float wait)
+        {
+            GameObject s=Instantiate(skill,pos, Quaternion.identity);
+            s.SetActive(true);
+            
+            yield return new WaitForSeconds(2.0f);
+            
+  
+            Destroy(s);
+            
         }
 
         public void updateSkill(Direction direction)
         {
+            
+            Debug.Log(skillData.skills.Count);
             currentSkill = skillData.skills[currentSkill].getNextSkill(direction);
             Debug.Log("Current Skill num: " + currentSkill);
             if (currentSkill == -1)
@@ -192,6 +209,7 @@ namespace _Player.CombatScene
                     // 해당 방향키의 스킬이 존재하는 경우
                     Debug.Log("SKILL ENABLE");
                     player.GetComponent<Player>().AnimateSkillMotion();
+                   
                 }
 
                 player.GetComponent<Player>().AnimateDirectionMotion(direction);
@@ -219,6 +237,7 @@ namespace _Player.CombatScene
             if (isPlayerHit)
             {
                 damage(player, attackMonsterPower * DungeonManager.instance.GetSpeed());
+                _coolDown.DamageHp(attackMonsterPower * DungeonManager.instance.GetSpeed()*0.001f);
             }
             else
             {

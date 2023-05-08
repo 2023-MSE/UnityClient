@@ -117,8 +117,9 @@ public class TimingManager : MonoBehaviour
                         {
                             Debug.Log("공격 노트 방어 실패입니다");
                             
-                            _coolDown.DamageHp(0.01f);
-                            // _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
+                             //_failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex())
+                             //_combatManager.monsterAttack(note.GetComponent<AttackNote>().GetMonsterIndex());
+                            // _combatManager.MonsterAttackPlayer();
 
                         }
 
@@ -133,9 +134,12 @@ public class TimingManager : MonoBehaviour
                         Destroy(note);
                     }
                 }
-               
+                
+                //_combatManager.MonsterAttackPlayer();
 
             }
+            
+            
            
         }
      

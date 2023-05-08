@@ -25,17 +25,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float inputHor = Input.GetAxis("Horizontal");
-        float inputVer = Input.GetAxis("Vertical");
+        float inputHor = Input.GetAxisRaw("Horizontal");
+        float inputVer = Input.GetAxisRaw("Vertical");
         Direction dir = Direction.NONE;
 
         if (inputHor != 0)
         {
-            dir = inputHor > 0 ? Direction.LEFT : Direction.RIGHT;
+            dir = inputHor > 0 ? Direction.RIGHT : Direction.LEFT;
         }
         else if (inputVer != 0)
         {
-            dir = inputHor > 0 ? Direction.UP : Direction.DOWN;
+            dir = inputVer > 0 ? Direction.UP : Direction.DOWN;
         }
         Debug.Log("입력된 방향은 " + dir.ToString());
         theTimingManager.CheckTiming_dir(dir);

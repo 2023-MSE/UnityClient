@@ -17,13 +17,9 @@ MonoBehaviour:
     x: 0
     y: 43
     width: 1920
-    height: 997
+    height: 989
   m_ShowMode: 4
-<<<<<<< HEAD
-  m_Title: Project
-=======
-  m_Title: Game
->>>>>>> origin/yumi-new
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -49,7 +45,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1920
-    height: 997
+    height: 989
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
@@ -100,15 +96,11 @@ MonoBehaviour:
     x: 0
     y: 30
     width: 1920
-    height: 947
+    height: 939
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-<<<<<<< HEAD
-  controlID: 18
-=======
-  controlID: 70
->>>>>>> origin/yumi-new
+  controlID: 137
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -125,7 +117,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 977
+    y: 969
     width: 1920
     height: 20
   m_MinSize: {x: 0, y: 0}
@@ -149,16 +141,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 920
-    height: 947
+    width: 889
+    height: 939
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-<<<<<<< HEAD
-  controlID: 19
-=======
-  controlID: 28
->>>>>>> origin/yumi-new
+  controlID: 27
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,19 +162,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 920
+    x: 889
     y: 0
-<<<<<<< HEAD
-    width: 136.80005
-    height: 722.8
+    width: 164
+    height: 939
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
-=======
-    width: 270
-    height: 947
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
->>>>>>> origin/yumi-new
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -207,10 +188,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1190
+    x: 1053
     y: 0
-    width: 402
-    height: 947
+    width: 390
+    height: 939
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 17}
@@ -228,23 +209,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: 
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1592
+    x: 1443
     y: 0
-    width: 328
-    height: 947
+    width: 477
+    height: 939
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
-  - {fileID: 12}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 0
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -255,23 +235,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: AnimatorControllerTool
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 920
-    height: 413
-  m_MinSize: {x: 200, y: 200}
+    width: 889
+    height: 434
+  m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 19}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 19}
   - {fileID: 14}
   - {fileID: 13}
-  m_Selected: 0
+  - {fileID: 12}
+  m_Selected: 3
   m_LastSelected: 2
 --- !u!114 &11
 MonoBehaviour:
@@ -289,9 +270,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 413
-    width: 920
-    height: 534
+    y: 434
+    width: 889
+    height: 505
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
@@ -300,36 +281,6 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &12
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Console
-    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000,
-      type: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 1592
-    y: 73
-    width: 327
-    height: 926
-  m_ViewDataDictionary: {fileID: 0}
-  m_OverlayCanvas:
-    m_LastAppliedPresetName: Default
-    m_SaveData: []
-    m_OverlaysVisible: 1
---- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,7 +303,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 802
+    width: 888
     height: 413
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -361,17 +312,20 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_ViewTransforms:
     m_KeySerializationHelper:
-    - {fileID: -5170691855346869345, guid: a0e072ebb21d7ea47ab255371c7a36a4, type: 2}
     - {fileID: -1677174721269545969, guid: f3d6268d61049a9479fa3ad49eccf535, type: 2}
+    - {fileID: -1677174721269545969, guid: c4493d99c579a2e438fb983f1ea801d2, type: 2}
+    - {fileID: -1677174721269545969, guid: 3ccfe2e154e7c6f48b28170b52a14a34, type: 2}
+    - {fileID: 110784426, guid: 3705d3d72efc1104fa7fa5b1ae6aa552, type: 2}
+    - {fileID: -5170691855346869345, guid: a0e072ebb21d7ea47ab255371c7a36a4, type: 2}
     m_ValueSerializationHelper:
-    - e00: 0.2338889
+    - e00: 0.56651163
       e01: 0
       e02: 0
-      e03: 61.77777
+      e03: 64.02324
       e10: 0
-      e11: 0.2338889
+      e11: 0.56651163
       e12: 0
-      e13: 123.85
+      e13: 3.6697693
       e20: 0
       e21: 0
       e22: 1
@@ -380,14 +334,62 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.6283582
+    - e00: 0.56651163
       e01: 0
       e02: 0
-      e03: -3.8507385
+      e03: 58.358124
       e10: 0
-      e11: 0.6283582
+      e11: 0.56651163
       e12: 0
-      e13: 39.33583
+      e13: 3.6697693
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 0.7866279
+      e01: 0
+      e02: 0
+      e03: 55.97871
+      e10: 0
+      e11: 0.7866279
+      e12: 0
+      e13: 12.719104
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 0.3891374
+      e01: 0
+      e02: 0
+      e03: 150.16739
+      e10: 0
+      e11: 0.3891374
+      e12: 0
+      e13: -8.348236
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 0.37944445
+      e01: 0
+      e02: 0
+      e03: 90.888885
+      e10: 0
+      e11: 0.37944445
+      e12: 0
+      e13: 84.549995
       e20: 0
       e21: 0
       e22: 1
@@ -411,9 +413,42 @@ MonoBehaviour:
   m_MiniTool: 0
   m_LockTracker:
     m_IsLocked: 0
-  m_CurrentEditor: 1
+  m_CurrentEditor: 0
   m_LayerEditor:
     m_SelectedLayerIndex: 0
+--- !u!114 &13
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12071, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Animation
+    m_Image: {fileID: -8166618308981325432, guid: 0000000000000000d000000000000000,
+      type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 0
+    y: 73
+    width: 881
+    height: 413
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+    m_OverlaysVisible: 1
+  m_LockTracker:
+    m_IsLocked: 0
+  m_LastSelectedObjectID: 122726
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -465,10 +500,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 920
+    x: 889
     y: 73
-    width: 268
-    height: 926
+    width: 162
+    height: 918
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -477,29 +512,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-<<<<<<< HEAD
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 9831ffff903fffff5840ffffa046ffff7265ffff32fbffff8cb50000
-=======
-      m_SelectedIDs: 7069ffff
-      m_LastClickedID: -38544
-      m_ExpandedIDs: b26bffff8877ffffe8a0ffff30fbffff2298000092980000b2980000da980000d49a0000789b00007e9c0000ee9c0000369d0000309f0000429f0000d49f0000
->>>>>>> origin/yumi-new
+      m_ExpandedIDs: 68c4ffffceeeffff32fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Geo_Lion_CorrodedGreen(Clone)
-        m_OriginalName: Geo_Lion_CorrodedGreen(Clone)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -40616
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 7}
       m_SearchString: 
@@ -530,10 +559,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1592
+    x: 1443
     y: 73
-    width: 327
-    height: 926
+    width: 476
+    height: 918
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -542,7 +571,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 252
+    m_CachedPref: 294
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
@@ -573,10 +602,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1190
+    x: 1053
     y: 73
-    width: 400
-    height: 926
+    width: 388
+    height: 918
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -595,51 +624,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-<<<<<<< HEAD
-    - Assets/Scenes
-=======
-    - Assets
->>>>>>> origin/yumi-new
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-<<<<<<< HEAD
-  - Assets/Scenes
-=======
-  - Assets
->>>>>>> origin/yumi-new
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\study\OpenXr\2023-Mse\MSEProject
+  m_LastProjectPath: C:\Users\USER\Desktop\2023-MSE\UnityClient\MSEProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-<<<<<<< HEAD
-    scrollPos: {x: 0, y: 44.49829}
-    m_SelectedIDs: c46d0000
-    m_LastClickedID: 28100
-    m_ExpandedIDs: 000000007e6d0000806d0000826d0000846d0000866d0000966d0000a06d0000a26d0000a66d0000c06e0000f67300000a74000000ca9a3b
-=======
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 706d0000
-    m_LastClickedID: 28016
-    m_ExpandedIDs: 00000000706d0000726d0000746d0000766d0000786d00007a6d00007c6d00007e6d0000806d0000826d000000ca9a3b
->>>>>>> origin/yumi-new
+    m_SelectedIDs: 846d0000
+    m_LastClickedID: 28036
+    m_ExpandedIDs: 00000000826d0000846d0000866d0000886d00008a6d00009c6d0000a86d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Piloto Studio
-      m_OriginalName: Piloto Studio
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 28352
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -653,11 +667,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-<<<<<<< HEAD
-    m_ExpandedIDs: 000000007e6d0000806d0000826d0000846d0000866d0000
-=======
-    m_ExpandedIDs: 00000000706d0000726d0000746d0000766d0000786d00007a6d00007c6d00007e6d0000806d0000826d0000
->>>>>>> origin/yumi-new
+    m_ExpandedIDs: 00000000826d0000846d0000866d0000886d00008a6d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -685,7 +695,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 00000000fc7300007c6e0000
+    m_ExpandedInstanceIDs: 00000000fc730000487700000e700000bca5010084a501004ef70100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -709,10 +719,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 165}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
-  m_DirectoriesAreaWidth: 198
+  m_DirectoriesAreaWidth: 161
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -735,9 +745,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 486
-    width: 919
-    height: 513
+    y: 507
+    width: 888
+    height: 484
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -749,7 +759,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 919, y: 492}
+  m_TargetSize: {x: 888, y: 463}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -764,10 +774,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -459.5
-    m_HBaseRangeMax: 459.5
-    m_VBaseRangeMin: -246
-    m_VBaseRangeMax: 246
+    m_HBaseRangeMin: -444
+    m_HBaseRangeMax: 444
+    m_VBaseRangeMin: -231.5
+    m_VBaseRangeMax: 231.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -785,23 +795,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 919
-      height: 492
+      width: 888
+      height: 463
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 459.5, y: 246}
+    m_Translation: {x: 444, y: 231.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -459.5
-      y: -246
-      width: 919
-      height: 492
+      x: -444
+      y: -231.5
+      width: 888
+      height: 463
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 919, y: 513}
+  m_LastWindowPixelSize: {x: 888, y: 484}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -830,8 +840,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 919
-    height: 392
+    width: 881
+    height: 413
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1028,7 +1038,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 25}
+      snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Particles
@@ -1067,15 +1077,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-<<<<<<< HEAD
     m_Target: {x: 0.00930358, y: 0.9210537, z: 6.341849}
     speed: 2
     m_Value: {x: 0.00930358, y: 0.9210537, z: 6.341849}
-=======
-    m_Target: {x: -1.7192967, y: 0.7953354, z: 6.074781}
-    speed: 2
-    m_Value: {x: -1.7192967, y: 0.7953354, z: 6.074781}
->>>>>>> origin/yumi-new
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1122,7 +1126,6 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-<<<<<<< HEAD
     m_Target: {x: -0.06582514, y: -0.8798393, z: 0.4530329, w: -0.12783833}
     speed: 2
     m_Value: {x: -0.06582411, y: -0.8798255, z: 0.4530258, w: -0.12783632}
@@ -1130,15 +1133,6 @@ MonoBehaviour:
     m_Target: 2.6295366
     speed: 2
     m_Value: 2.6295366
-=======
-    m_Target: {x: -0.035284694, y: 0.19748026, z: 0.0071042394, w: 0.97965366}
-    speed: 2
-    m_Value: {x: -0.035284426, y: 0.19747876, z: 0.0071041854, w: 0.9796462}
-  m_Size:
-    m_Target: 0.8660254
-    speed: 2
-    m_Value: 0.8660254
->>>>>>> origin/yumi-new
   m_Ortho:
     m_Target: 0
     speed: 2

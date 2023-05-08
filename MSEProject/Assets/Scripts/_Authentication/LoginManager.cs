@@ -18,8 +18,8 @@ public class LoginManager : MonoBehaviour
 
     public IEnumerator Login(string id, string pw) {
         // 1. Request URL 설정
-        string url = serverUrl + "/login/successOrNot";
-        string json = "{\"id\":\"" + id + "\", \"pw\":\"" + pw + "\"}";
+        string url = serverUrl + "/login/authentication";
+        string json = "{\"loginId\":\"" + id + "\", \"loginPw\":\"" + pw + "\"}";
         
         // 2. HTTP Request 생성
         UnityWebRequest webRequest = UnityWebRequest.Post(url, json);
@@ -70,8 +70,8 @@ public class LoginManager : MonoBehaviour
 
     public IEnumerator GetUser(long num)
     {
-        string url = serverUrl + "/login/postUser";
-        string json = "{\"num\":" + num + "}";
+        string url = serverUrl + "/login/post-user";
+        string json = "{\"id\":" + num + "}";
 
         UnityWebRequest webRequest = UnityWebRequest.Post(url, json);
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);

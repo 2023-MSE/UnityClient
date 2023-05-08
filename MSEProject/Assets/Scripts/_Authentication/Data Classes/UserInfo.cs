@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class UserInfo
 {
-    public long num;
-    public string id;
+    public long id;
+    public string loginId;
     public string pw;
+    public string loginPw;
     public string nickname;
-    public Player player;
-    public Creator creator;
+    public int money;
 }

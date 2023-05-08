@@ -10,8 +10,6 @@ using UnityEngine.UI;
 
 public class StageEditor : Singleton<StageEditor>
 {
-    // 아예 다시 짜기.
-    
     // 0. Default Editing Stage
     private Stage _editingStage;
     public Stage EditingStage {

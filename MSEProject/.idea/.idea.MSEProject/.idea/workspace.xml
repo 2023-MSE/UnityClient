@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d8ed7c0-ca58-4364-8a5c-b5fffc0a54c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/_Creator/Dungeon Creator.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/_Creator/Dungeon Creator.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/_Creator/Login UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/_Creator/Login UI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Creator/DungeonInfoFolder/Stage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Creator/DungeonInfoFolder/Stage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Creator/File Browser &amp; Music Convertor/DataAndAudioClipConvertor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Creator/File Browser &amp; Music Convertor/DataAndAudioClipConvertor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Creator/File Browser &amp; Music Convertor/FileBrowserTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Creator/File Browser &amp; Music Convertor/FileBrowserTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Creator/File Browser &amp; Music Convertor/MusicDungeonInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Creator/File Browser &amp; Music Convertor/MusicDungeonInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Authentication/LoginManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Authentication/LoginManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Creator/DungeonInfoFolder/DungeonAndUIInterfaces/DungeonEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Creator/DungeonInfoFolder/DungeonAndUIInterfaces/DungeonEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Creator/DungeonInfoFolder/DungeonAndUIInterfaces/StageEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Creator/DungeonInfoFolder/DungeonAndUIInterfaces/StageEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +134,8 @@
       <workItem from="1682578927339" duration="5194000" />
       <workItem from="1682657478316" duration="2933000" />
       <workItem from="1683078949746" duration="9879000" />
-      <workItem from="1683444911589" duration="14411000" />
+      <workItem from="1683444911589" duration="18150000" />
+      <workItem from="1683581699590" duration="299000" />
     </task>
     <servers />
   </component>

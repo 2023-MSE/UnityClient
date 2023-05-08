@@ -6,8 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="d7e11fd4-7ada-4c77-8552-29b3b0b052d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Fire_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Fire_01.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Fire_02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Fire_02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Fire_03.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Fire_03.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Leaf_02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Leaf_02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Leaf_03.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Leaf_03.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Water_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Effect/Water_01.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SkillDataScriptableObject.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SkillDataScriptableObject.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skill.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/hud/CoolDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/hud/CoolDown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,10 +107,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="135684">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="135684" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -127,7 +137,7 @@
       <workItem from="1682578855564" duration="32000" />
       <workItem from="1682578927339" duration="5194000" />
       <workItem from="1682657478316" duration="2933000" />
-      <workItem from="1683454920653" duration="1686000" />
+      <workItem from="1683454920653" duration="11738000" />
     </task>
     <servers />
   </component>

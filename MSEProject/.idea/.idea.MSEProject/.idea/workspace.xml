@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d8ed7c0-ca58-4364-8a5c-b5fffc0a54c3" name="Changes" comment="">
+    <list default="true" id="d7e11fd4-7ada-4c77-8552-29b3b0b052d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skill.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/NoteManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/NoteManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/TimingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/TimingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +111,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7d8ed7c0-ca58-4364-8a5c-b5fffc0a54c3" name="Changes" comment="" />
+      <changelist id="d7e11fd4-7ada-4c77-8552-29b3b0b052d4" name="Changes" comment="" />
       <created>1681132295781</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -130,6 +127,7 @@
       <workItem from="1682578855564" duration="32000" />
       <workItem from="1682578927339" duration="5194000" />
       <workItem from="1682657478316" duration="2933000" />
+      <workItem from="1683454920653" duration="1686000" />
     </task>
     <servers />
   </component>

@@ -32,6 +32,13 @@ namespace _Player.CombatScene
         {
             animator.SetTrigger("activeSkill");
         }
+        
+        public void AnimateIsDrink()
+        {
+            animator.SetTrigger("isDrink");
+   
+        }
+        
         public void AnimateIdle(float speed)
         {
             animator = this.GetComponent<Animator>();

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SearchService;
@@ -12,8 +13,9 @@ namespace _Player.CombatScene
     public class CombatManager : MonoBehaviour
     {
         public const int MAX_HP = 9999999;
-        [SerializeField]
-        private SkillDataScriptableObject skillData;
+        [SerializeField] private SkillDataScriptableObject skillData;
+        
+        
         private int singleTargetIndex = 0;
         private Monster[] monsters;
         private GameObject player;
@@ -25,23 +27,28 @@ namespace _Player.CombatScene
 
         private Queue<GameObject> ObjectPool;
 
+        private DungeonManager _dungeonManager;
+
         private List<GameObject> list = new List<GameObject>();
-        
+
         private GameObject note;
+
+        private CoolDown _coolDown;
 
         private void Start()
         {
             queue = new Queue<GameObject>();
             ObjectPool = new Queue<GameObject>();
+            _coolDown = FindObjectOfType<CoolDown>();
         }
 
-        public void setQueue(GameObject[] q)
+        public void setQueue(GameObject[] note)
         {
-            foreach (var v in q)
+            foreach (var v in note)
             {
                 queue.Enqueue(v);
             }
-           
+
         }
 
         public Queue<GameObject> getQueue()
@@ -83,9 +90,9 @@ namespace _Player.CombatScene
         {
             Debug.Log("put note");
             queue.Enqueue(note);
-           
+
             note.gameObject.SetActive(false);
- 
+
         }
 
         private void damage(GameObject target, float damage)
@@ -98,15 +105,31 @@ namespace _Player.CombatScene
                 if (target.GetComponent<Character>() is Player)
                 {
                     // player is dead
+                    _coolDown.DamageToZero();
+                }
+                else if (target.GetComponent<Character>() is Monster)
+                {
+                    // monster is dead
 
                 }
-                else if (target.GetComponent<Character>() is Monster) 
+            }
+            else
+            {
+                //target is already alive
+                if (target.GetComponent<Character>() is Player)
+                {
+                    _coolDown.DamageHp(0.1f);
+
+                }
+                else if (target.GetComponent<Character>() is Monster)
                 {
                     // monster is dead
 
                 }
             }
         }
+
+
         public void skillActivation()
         {
             Debug.Log("Skill Active" + currentSkill);
@@ -119,6 +142,9 @@ namespace _Player.CombatScene
                 {
                     if (!monster.isDead())
                     {
+                        skill.seteffect(monster.transform.position);
+                        
+                        
                         float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
                         float skillDamage = skill.damage * (1f + typeMulti);
                         damage(monster.gameObject, skillDamage);
@@ -128,10 +154,16 @@ namespace _Player.CombatScene
             else
             {
                 // 단일 스킬인 경우
-                float typeMulti = (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
+                
+                skill.seteffect(monsters[singleTargetIndex].transform.position);
+                
+                
+                float typeMulti =
+                    (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
                 float skillDamage = skill.damage * (1f + typeMulti);
                 damage(monsters[singleTargetIndex].gameObject, skillDamage * DungeonManager.instance.GetSpeed());
             }
+
             currentSkill = 0;
         }
 
@@ -161,6 +193,7 @@ namespace _Player.CombatScene
                     Debug.Log("SKILL ENABLE");
                     player.GetComponent<Player>().AnimateSkillMotion();
                 }
+
                 player.GetComponent<Player>().AnimateDirectionMotion(direction);
             }
         }
@@ -172,6 +205,7 @@ namespace _Player.CombatScene
             attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
             monsters[monsterIndex].AnimateAttack();
         }
+
         public void monsterAttackDefence(int monsterIndex)
         {
             isPlayerHit = false;
@@ -198,11 +232,12 @@ namespace _Player.CombatScene
             player = GameObject.FindObjectOfType<Player>().gameObject;
             player.GetComponent<Player>().setHp(MAX_HP);
             monsters = GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None);
-            foreach(Monster monster in monsters)
+            foreach (Monster monster in monsters)
             {
                 monster.setHp(MAX_HP);
                 monster.AnimateIdle(DungeonManager.instance.GetSpeed());
             }
+
             player.GetComponent<Player>().AnimateIdle(DungeonManager.instance.GetSpeed());
             FindObjectOfType<NoteManager>().CombatManagerReady(this);
         }
@@ -214,8 +249,9 @@ namespace _Player.CombatScene
 
         public void InteractRelax(int heal)
         {
-            player.GetComponent<Player>().setHp(heal);
-        }
+            
+            Debug.Log("interact relax");
+           }
 
         public GameObject GetPlayer()
         {
@@ -227,5 +263,5 @@ namespace _Player.CombatScene
             return isStageReady;
         }
     }
-
 }
+

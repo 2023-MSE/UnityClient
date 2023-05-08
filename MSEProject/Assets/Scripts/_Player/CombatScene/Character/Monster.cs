@@ -5,6 +5,22 @@ using UnityEngine;
 
 namespace _Player.CombatScene
 {
+    public static class ArrayExtensions
+    {
+        // 배열을 랜덤으로 섞는 Fisher-Yates 알고리즘
+        public static void Shuffle<T>(this IList<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = UnityEngine.Random.Range(0, n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
+    }
     public class Monster : Character
     {
         [SerializeField] private int num = 0;
@@ -26,13 +42,28 @@ namespace _Player.CombatScene
         {
             _combatManager = FindObjectOfType<CombatManager>();
             //test
-            attactMotion();
+           
         }
         public void hitMotion()
         {
             if (patterns != null)
             {
                 _combatManager.setQueue(patterns);
+            }
+        }
+
+        public void Update()
+        {
+            hitMotion();
+            if (patterns != null)
+              
+            patterns.Shuffle();
+
+            if (!isDead())
+          
+            {
+                _combatManager.setQueue(patterns);
+                attactMotion();
             }
         }
 

@@ -21,18 +21,7 @@ public class PlayerController : MonoBehaviour
         theTimingManager = FindObjectOfType<TimingManager>();
     }
 
-    public int getHP()
-    {
-        //Debug.Log(Hp_Num);
-        return Hp_Num;
-    }
-
-    public void setHP(int hp)
-    {
-        
-        this.Hp_Num = hp;
-    }
-
+   
     // Update is called once per frame
     void Update()
     {

@@ -121,7 +121,7 @@ namespace _Player.CombatScene
                 //target is already alive
                 if (target.GetComponent<Character>() is Player)
                 {
-                    _coolDown.DamageHp(0.1f);
+                    _coolDown.DamageHp(damage * 0.001f);
 
                 }
                 else if (target.GetComponent<Character>() is Monster)
@@ -237,6 +237,7 @@ namespace _Player.CombatScene
             if (isPlayerHit)
             {
                 damage(player, attackMonsterPower * DungeonManager.instance.GetSpeed());
+                _coolDown.DamageHp(attackMonsterPower * DungeonManager.instance.GetSpeed()*0.001f);
             }
             else
             {

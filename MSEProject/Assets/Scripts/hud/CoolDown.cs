@@ -39,6 +39,11 @@ public class CoolDown : MonoBehaviour
 
     }
 
+    public void setHp(float hp)
+    {
+        cooldown.fillAmount = hp;
+    }
+
 
     public void DamageToZero()
     {

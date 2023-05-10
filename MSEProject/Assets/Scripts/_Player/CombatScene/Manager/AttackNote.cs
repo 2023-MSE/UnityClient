@@ -8,6 +8,9 @@ using Random = System.Random;
 public class AttackNote : Note
 {
     private int monsterIndex = 0;
+    public Direction dir;
+    public int damage;
+
     public void Start()
     {
         Debug.Log(dir + " " + damage);
@@ -26,5 +29,13 @@ public class AttackNote : Note
     public int GetMonsterIndex()
     {
         return monsterIndex;
+    }
+
+    public void SetMonsterIndex(int monster)
+    {
+        
+        monsterIndex = monster;
+        
+        Debug.Log("SET MONSTER INDEX: "+monsterIndex);
     }
 }

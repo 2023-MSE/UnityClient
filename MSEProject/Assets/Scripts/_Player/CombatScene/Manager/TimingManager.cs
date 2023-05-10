@@ -11,6 +11,8 @@ using UnityEngine.Events;
 using UnityEngine.ParticleSystemJobs;
 using Debug = UnityEngine.Debug;
 using Object = System.Object;
+using Random = UnityEngine.Random;
+
 
 [System.Serializable]
 public class StringEvent : UnityEvent<string>
@@ -20,6 +22,10 @@ public class StringEvent : UnityEvent<string>
 public class TimingManager : MonoBehaviour
 {
     private PlayerController player;
+
+    private Player _player;
+    
+    private CoolDown _coolDown;
     
     [SerializeField] Transform Center = null;
 
@@ -36,6 +42,7 @@ public class TimingManager : MonoBehaviour
     [SerializeField] private DirEvent _successGenalizeUnityEvent;
 
     Vector2[] timingBoxs = null;
+    
 
     // Start is called before the first frame update
     public List<GameObject> boxNoteList = new List<GameObject>();
@@ -52,8 +59,8 @@ public class TimingManager : MonoBehaviour
 
     void Start()
     {
+        _coolDown = GameObject.Find("CoolDown").GetComponent<CoolDown>();
         
-
         timingBoxs = new Vector2[timingRect.Length];
         _combatManager = FindObjectOfType<CombatManager>();
 
@@ -63,6 +70,8 @@ public class TimingManager : MonoBehaviour
             timingBoxs[i].Set(Center.localPosition.x-timingRect[i].rect.width/2,Center.localPosition.x+timingRect[i].rect.width/2);
             Debug.Log(timingBoxs[i].x+" "+timingBoxs[i].y);
         }
+        
+        //_coolDown.DamageToFull();
     }
 
     public void AddNote(GameObject note)
@@ -80,6 +89,10 @@ public class TimingManager : MonoBehaviour
     
     public void CheckTiming_dir(Direction dir)
     {
+        
+        // 어느 monster의 note인지 알아야함
+        
+        
         if (dir == Direction.NONE)
             return;
 
@@ -104,13 +117,26 @@ public class TimingManager : MonoBehaviour
                             
                           
                             boxNoteList.Remove(note);
-
+                            Destroy(note);
 
                         }
                         else if (dir != note.GetComponent<AttackNote>().getDirection())
                         {
                             Debug.Log("공격 노트 방어 실패입니다");
-                            // _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
+                            
+                             //_failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex())
+                             
+                             //error ? 왜?
+                             Debug.Log("note index : " + note.GetComponent<AttackNote>().GetMonsterIndex());
+                             //note.GetComponent<AttackNote>().GetMonsterIndex()
+
+                             int random = Random.Range(0, 3);
+                             _combatManager.monsterAttack(note.GetComponent<AttackNote>().GetMonsterIndex());
+
+                             _combatManager.MonsterAttackPlayer();
+                            
+                            //_player.AnimateHitMotion();
+                            
 
                         }
 
@@ -122,11 +148,19 @@ public class TimingManager : MonoBehaviour
                         note.GetComponent<GenalizeNote>().setDirection(dir);
                         
                         boxNoteList.Remove(note);
-
+                        Destroy(note);
                     }
                 }
+                
+                int random1 = Random.Range(0, 3);
+                //_combatManager.monsterAttack(note.GetComponent<AttackNote>().GetMonsterIndex());
+
+                _combatManager.MonsterAttackPlayer();
+
 
             }
+            
+            
            
         }
      

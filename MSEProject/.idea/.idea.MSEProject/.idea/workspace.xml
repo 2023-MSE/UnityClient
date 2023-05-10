@@ -4,16 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d8ed7c0-ca58-4364-8a5c-b5fffc0a54c3" name="Changes" comment="">
+    <list default="true" id="d7e11fd4-7ada-4c77-8552-29b3b0b052d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/_Creator/Dungeon Creator.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/_Creator/Dungeon Creator.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/_Creator/Login UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/_Creator/Login UI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Authentication/SignUpManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Authentication/SignUpManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Creator/DungeonInfoFolder/DungeonAndUIInterfaces/StageEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Creator/DungeonInfoFolder/DungeonAndUIInterfaces/StageEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Creator/File Browser &amp; Music Convertor/MusicDungeonInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Creator/File Browser &amp; Music Convertor/MusicDungeonInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Creator/Node/StageNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Creator/Node/StageNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Creator/UI/EachStageInfoMaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Creator/UI/EachStageInfoMaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SkillDataScriptableObject.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SkillDataScriptableObject.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Character/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Character/Monster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/AttackNote.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/AttackNote.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/RelaxManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/RelaxManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/TimingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/TimingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/PlayerController/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/PlayerController/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,16 +23,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/Downloads/My project (5)/My project (5)/Assets/instantiatefood.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/_Authentication/SignInUpManager_P.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/_Authentication/SignUpManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/_Authentication/UserInfoHolder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ListDisplay.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ScoreManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/_Creator/DungeonInfoFolder/ScriptableObjectForStageInfo/SerializeDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/_Creator/File Browser &amp; Music Convertor/DataAndAudioClipConvertor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/_Creator/File Browser &amp; Music Convertor/WavUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/_Creator/UI/StageInfoButtonListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/enum/MusicExtension.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/enum/StageInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SkillScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/Tiling/MinMaxZJob.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/ScrollRect.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -120,7 +121,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7d8ed7c0-ca58-4364-8a5c-b5fffc0a54c3" name="Changes" comment="" />
+      <changelist id="d7e11fd4-7ada-4c77-8552-29b3b0b052d4" name="Changes" comment="" />
       <created>1681132295781</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -136,9 +137,12 @@
       <workItem from="1682578855564" duration="32000" />
       <workItem from="1682578927339" duration="5194000" />
       <workItem from="1682657478316" duration="2933000" />
-      <workItem from="1683078949746" duration="9879000" />
-      <workItem from="1683444911589" duration="18150000" />
-      <workItem from="1683581699590" duration="8104000" />
+      <workItem from="1683454920653" duration="11738000" />
+      <workItem from="1683525682971" duration="3697000" />
+      <workItem from="1683628391335" duration="7022000" />
+      <workItem from="1683694421568" duration="5575000" />
+      <workItem from="1683702413051" duration="648000" />
+      <workItem from="1683703157047" duration="10693000" />
     </task>
     <servers />
   </component>

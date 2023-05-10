@@ -22,7 +22,7 @@ namespace _Player.CombatScene
             // return true if dead
             Debug.Log("Hp is " + hp + "value is" + value);
             hp = (hp + value >= maxHp ? maxHp : hp + value);
-            Debug.Log("Hp is " + hp);
+             Debug.Log("Hp is " + hp);
             if (hp <= 0)
             {
                 dead();

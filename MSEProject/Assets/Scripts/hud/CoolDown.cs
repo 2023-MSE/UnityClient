@@ -12,13 +12,6 @@ public class CoolDown : MonoBehaviour
     public bool coolingDown;
 
     public float waitTime = 30.0f;
-    
-    private 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -29,8 +22,41 @@ public class CoolDown : MonoBehaviour
         }
     }
 
+    public Image getCoolDown()
+    {
+        return cooldown;
+    }
+
     public void DamageHp(float hp)
     {
         cooldown.fillAmount -= hp;
+    }
+
+    public void RelaxHp(float hp)
+    {
+
+        cooldown.fillAmount += 0.1f;
+
+    }
+
+    public void setHp(float hp)
+    {
+        cooldown.fillAmount = hp;
+    }
+
+
+    public void DamageToZero()
+    {
+        cooldown.fillAmount = 0;
+    }
+
+    public void DamageToFull()
+    {
+        cooldown.fillAmount = 1;
+    }
+
+    public void getFillAmount()
+    {
+        Debug.Log("fill: " + cooldown.fillAmount);
     }
 }

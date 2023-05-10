@@ -37,13 +37,15 @@ namespace _Player.CombatScene
                 player.GetComponent<Player>().AnimateIsDrink();
                 //test
                 DrinkToTem(_coolDown,300f);
-                _coolDown.RelaxHp(0.3f);
+                
             }
         }
 
         public void DrinkToTem(CoolDown cooldown, float hp)
         {
             cooldown.RelaxHp(hp*0.001f);
+            player.GetComponent<Player>().setHp(+300f);
+            Debug.Log(player.GetComponent<Player>().getHp());
         }
 
         public void Scenecheck()

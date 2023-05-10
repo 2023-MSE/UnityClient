@@ -11,6 +11,8 @@ using UnityEngine.Events;
 using UnityEngine.ParticleSystemJobs;
 using Debug = UnityEngine.Debug;
 using Object = System.Object;
+using Random = UnityEngine.Random;
+
 
 [System.Serializable]
 public class StringEvent : UnityEvent<string>
@@ -40,6 +42,7 @@ public class TimingManager : MonoBehaviour
     [SerializeField] private DirEvent _successGenalizeUnityEvent;
 
     Vector2[] timingBoxs = null;
+    
 
     // Start is called before the first frame update
     public List<GameObject> boxNoteList = new List<GameObject>();
@@ -86,6 +89,10 @@ public class TimingManager : MonoBehaviour
     
     public void CheckTiming_dir(Direction dir)
     {
+        
+        // 어느 monster의 note인지 알아야함
+        
+        
         if (dir == Direction.NONE)
             return;
 
@@ -118,8 +125,18 @@ public class TimingManager : MonoBehaviour
                             Debug.Log("공격 노트 방어 실패입니다");
                             
                              //_failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex())
-                             //_combatManager.monsterAttack(note.GetComponent<AttackNote>().GetMonsterIndex());
-                            // _combatManager.MonsterAttackPlayer();
+                             
+                             //error ? 왜?
+                             Debug.Log("note index : " + note.GetComponent<AttackNote>().GetMonsterIndex());
+                             //note.GetComponent<AttackNote>().GetMonsterIndex()
+
+                             int random = Random.Range(0, 3);
+                             _combatManager.monsterAttack(note.GetComponent<AttackNote>().GetMonsterIndex());
+
+                             _combatManager.MonsterAttackPlayer();
+                            
+                            //_player.AnimateHitMotion();
+                            
 
                         }
 
@@ -135,7 +152,11 @@ public class TimingManager : MonoBehaviour
                     }
                 }
                 
-                //_combatManager.MonsterAttackPlayer();
+                int random1 = Random.Range(0, 3);
+                //_combatManager.monsterAttack(note.GetComponent<AttackNote>().GetMonsterIndex());
+
+                _combatManager.MonsterAttackPlayer();
+
 
             }
             

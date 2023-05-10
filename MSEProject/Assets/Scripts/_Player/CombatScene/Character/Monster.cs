@@ -23,7 +23,9 @@ namespace _Player.CombatScene
     }
     public class Monster : Character
     {
-        [SerializeField] private int num = 0;
+        private int num;
+
+        private AttackNote _attackNote;
         
         [SerializeField]
         private bool[] pattern = new bool[4];
@@ -37,12 +39,14 @@ namespace _Player.CombatScene
         private int type;
 
         private CombatManager _combatManager;
+        private ScoreManager _scoreManager;
         private Animator animator;
         public void Start()
         {
             _combatManager = FindObjectOfType<CombatManager>();
+            _scoreManager = FindObjectOfType<ScoreManager>();
             //test
-           
+
         }
         public void hitMotion()
         {
@@ -54,9 +58,6 @@ namespace _Player.CombatScene
 
         public void Update()
         {
-            hitMotion();
-            if (patterns != null)
-              
             patterns.Shuffle();
 
             if (!isDead())
@@ -93,16 +94,25 @@ namespace _Player.CombatScene
         }
         public override void dead()
         {
+          
             /*TODO*/
+            //_scoreManager.scoreUpdate(2,check);
             Debug.Log("Monster dead");
             AnimateDie();
+           
         }
        
         public void attactMotion()
         {
             if (patterns != null)
             {
-               
+                foreach (var obj in patterns)
+                {
+                    if (obj.TryGetComponent(out _attackNote))
+                    {
+                        _attackNote.SetMonsterIndex(num);
+                    }
+                }
                _combatManager.setQueue(patterns);
                 
             }
@@ -137,6 +147,17 @@ namespace _Player.CombatScene
         public bool isDead()
         {
             return hp <= 0;
+        }
+
+        public void setNum(int _num)
+        {
+            Debug.Log("MONSTER NUM"+_num);
+            num = _num;
+        }
+
+        public int getNum()
+        {
+            return num;
         }
     }
 

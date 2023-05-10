@@ -14,18 +14,17 @@ namespace _Player.CombatScene
     {
         public const int MAX_HP = 9999999;
         [SerializeField] private SkillDataScriptableObject skillData;
-        
-        
+      
         private int singleTargetIndex = 0;
         private Monster[] monsters;
-        private GameObject player;
+        private Player player;
         private int currentSkill = 0;
         private bool isStageReady = false;
         private int attackMonsterPower;
         private bool isPlayerHit;
         private Queue<GameObject> queue;
 
-        [SerializeField] private List<GameObject> skilllist;
+        private List<GameObject> skilllist;
         
         private Queue<GameObject> ObjectPool;
 
@@ -42,7 +41,13 @@ namespace _Player.CombatScene
             queue = new Queue<GameObject>();
             ObjectPool = new Queue<GameObject>();
             _coolDown = FindObjectOfType<CoolDown>();
+            player = FindObjectOfType<Player>();
 
+        }
+
+        private void Update()
+        {
+            //StopCombat();
         }
 
         public void setQueue(GameObject[] note)
@@ -121,14 +126,47 @@ namespace _Player.CombatScene
                 //target is already alive
                 if (target.GetComponent<Character>() is Player)
                 {
-                    _coolDown.DamageHp(damage * 0.001f);
+                    _coolDown.DamageHp(damage * 0.01f);
 
                 }
                 else if (target.GetComponent<Character>() is Monster)
                 {
-                    // monster is dead
+                   
 
                 }
+            }
+        }
+
+        public List<GameObject> sendSkill()
+        {
+            foreach (var effect in skillData.skills)
+            {
+                if (effect.isEnable)
+                {
+                    skilllist.Add(effect.effect);
+                }
+            }
+
+            return skilllist;
+        }
+
+        public void StopCombat()
+        {
+            TestDirButton test = FindObjectOfType<TestDirButton>();
+            int num = 0;
+            foreach (Monster m in monsters)
+            {
+                if (m.setHp(0))
+                {
+                    num++;
+                }
+                    
+            }
+
+            if (num == monsters.Length)
+            {
+                Debug.Log("Success!! go to Next Stage");
+                test.OnClickButtonNextStage();
             }
         }
 
@@ -147,7 +185,7 @@ namespace _Player.CombatScene
                     {
                        // skilllist[currentSkill].transform.position = monster.transform.position;
                         
-                        StartCoroutine(skillTime(skilllist[currentSkill].gameObject,monster.transform.position,3f));
+                       StartCoroutine(skillTime(skillData.skills[currentSkill].effect,monster.transform.position,3f));
                         
                         float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
                         float skillDamage = skill.damage * (1f + typeMulti);
@@ -158,7 +196,7 @@ namespace _Player.CombatScene
             else
             {
                 
-                StartCoroutine(skillTime(skilllist[currentSkill].gameObject,monsters[singleTargetIndex].transform.position,3f));
+                StartCoroutine(skillTime(skillData.skills[currentSkill].effect,monsters[singleTargetIndex].transform.position,3f));
                 
                 float typeMulti =
                     (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
@@ -218,8 +256,12 @@ namespace _Player.CombatScene
 
         public void monsterAttack(int monsterIndex)
         {
+            Debug.Log("monster attack "+ monsterIndex);
+            
             isPlayerHit = true;
-            player.GetComponent<Player>().AnimateDefenceMotion();
+             player.GetComponent<Player>().AnimateDefenceMotion();
+             Debug.Log("error happen gameObj " + gameObject.name);
+             Debug.Log("monster attack count" + monsters.Length);
             attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
             monsters[monsterIndex].AnimateAttack();
         }
@@ -236,7 +278,7 @@ namespace _Player.CombatScene
         {
             if (isPlayerHit)
             {
-                damage(player, attackMonsterPower * DungeonManager.instance.GetSpeed());
+                damage(player.gameObject, attackMonsterPower * DungeonManager.instance.GetSpeed());
                 _coolDown.DamageHp(attackMonsterPower * DungeonManager.instance.GetSpeed()*0.001f);
             }
             else
@@ -247,12 +289,16 @@ namespace _Player.CombatScene
 
         public void setVariable()
         {
+            int i = 0;
             Debug.Log("SetVariable");
-            player = GameObject.FindObjectOfType<Player>().gameObject;
+            player = GameObject.FindObjectOfType<Player>();
             player.GetComponent<Player>().setHp(MAX_HP);
+            
             monsters = GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None);
+            Debug.Log("aaaaa"+monsters.Length);
             foreach (Monster monster in monsters)
             {
+                monster.setNum(i++);
                 monster.setHp(MAX_HP);
                 monster.AnimateIdle(DungeonManager.instance.GetSpeed());
             }
@@ -274,7 +320,7 @@ namespace _Player.CombatScene
 
         public GameObject GetPlayer()
         {
-            return player;
+            return player.gameObject;
         }
 
         public bool GetStageReady()

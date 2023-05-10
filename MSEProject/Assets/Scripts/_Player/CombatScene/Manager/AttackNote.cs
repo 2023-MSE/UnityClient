@@ -33,6 +33,9 @@ public class AttackNote : Note
 
     public void SetMonsterIndex(int monster)
     {
+        
         monsterIndex = monster;
+        
+        Debug.Log("SET MONSTER INDEX: "+monsterIndex);
     }
 }

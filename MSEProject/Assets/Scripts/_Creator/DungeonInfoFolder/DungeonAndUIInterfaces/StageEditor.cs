@@ -155,4 +155,11 @@ public class StageEditor : Singleton<StageEditor>
     {
         _editingStage.ShowAllStageInformation();
     }
+    
+    // B. Visualize Stage all Info
+    public void VisualizeStageAllInfo()
+    {
+        VisualizeStageType();
+        VisualizeStageSpecificInfo();
+    }
 }

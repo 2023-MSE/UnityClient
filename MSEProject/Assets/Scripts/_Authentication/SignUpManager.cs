@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Defective.JSON;
+using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class SignUpManager : MonoBehaviour
 {
-    public string serverUrl = "http://localhost:80"; // SpringMVC 서버 URL
+    public string serverUrl = "http://localhost:80/mse"; // SpringMVC 서버 URL
     
     public UnityEvent<bool> onDoubleCheckSuccess;
     public UnityEvent<bool> onDoubleCheckFail;
@@ -18,7 +20,9 @@ public class SignUpManager : MonoBehaviour
     // ID & Nickname 두 가지의 중복체크를 위한 메서드. 두 리퀘스트를 따로따로 전송할 필요가 있음.
     public IEnumerator DoubleCheck(bool isID, string s) {
         string url = serverUrl + "/login/double-check";
-        string json = "{\"isID\":" + isID.ToString().ToLower() + ", \"s\":\"" + s + "\"}";
+        string json = "{\"isId\":" + isID.ToString().ToLower() + ", \"s\":\"" + s + "\"}";
+        Debug.Log(url);
+        Debug.Log(json);
         
         UnityWebRequest webRequest = UnityWebRequest.Post(url, json);
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
@@ -33,8 +37,9 @@ public class SignUpManager : MonoBehaviour
             Debug.Log(webRequest.error);
         } else {
             string response = webRequest.downloadHandler.text;
-            Match match = Regex.Match(response, @"true|false");
-            bool isDouble = bool.Parse(match.Value);
+            
+            JSONObject obj = new JSONObject(response);
+            bool isDouble = obj.GetField("isDouble");
 
             if (isDouble) {
                 Debug.Log("사용 가능한 " + (isID ? "ID" : "닉네임") + "입니다.");
@@ -71,8 +76,9 @@ public class SignUpManager : MonoBehaviour
             Debug.Log(webRequest.error);
         } else {
             string response = webRequest.downloadHandler.text;
-            Match match = Regex.Match(response, @"true|false");
-            bool success = bool.Parse(match.Value);
+            
+            JSONObject obj = new JSONObject(response);
+            bool success = obj.GetField("success");
 
             if (success) {
                 Debug.Log("회원가입이 성공적으로 완료되었습니다.");

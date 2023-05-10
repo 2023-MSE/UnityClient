@@ -29,8 +29,12 @@ public class StageNode : Node
         StageEditor.Instance.EditingStage = DungeonEditor.Instance.editingDungeon.stages[IdentifierID];
         StageEditor.Instance.VisualizeStageType();
         StageEditor.Instance.VisualizeStageSpecificInfo();
+
+        if (StageEditor.Instance.EditingStage.musicBytesData != null) {
+            MusicDungeonInterface.Instance.myAudioSource.clip =
+                MusicDungeonInterface.Instance.ConvertBytesToAudioClip(StageEditor.Instance.EditingStage.musicBytesData);
+        }
         
-        MusicDungeonInterface.Instance.LoadMusicToAudioSource();
     }
 
     public override void OnSerialize(Serializer serializer)

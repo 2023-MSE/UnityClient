@@ -37,6 +37,8 @@ public class EachStageInfoMaker : MonoBehaviour
     {
         StageEditor.Instance.instantiatedStageInfos.Remove(transform);
         StageEditor.Instance.EditingStage.elements.Remove(assignedInt);
+        
+        StageEditor.Instance.VisualizeStageAllInfo();
         Destroy(gameObject);
     }
 }

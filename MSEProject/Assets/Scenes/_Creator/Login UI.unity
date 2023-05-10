@@ -1587,7 +1587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa382122a3e9b40409495a774809605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverUrl: http://localhost:80
+  serverUrl: http://localhost:80/mse
   onDoubleCheckSuccess:
     m_PersistentCalls:
       m_Calls: []
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00df6dda63cef8441a9e8419ddb1049b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverUrl: http://localhost:80
+  serverUrl: http://localhost:80/mse
   onLoginSuccess:
     m_PersistentCalls:
       m_Calls: []
@@ -3635,8 +3635,8 @@ MonoBehaviour:
           m_StringArgument: Dungeon Creator
           m_BoolArgument: 0
         m_CallState: 2
-  loginManager: {fileID: 0}
-  signUpManager: {fileID: 0}
+  loginManager: {fileID: 461013533}
+  signUpManager: {fileID: 461013532}
 --- !u!4 &1271920641
 Transform:
   m_ObjectHideFlags: 0

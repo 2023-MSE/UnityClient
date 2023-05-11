@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private TimingManager theTimingManager;
 
     private int Hp_Num=0;
-    
+    private Direction[][] directions; // hor, ver
     public static PlayerController instance;
 
     private void Awake()
@@ -19,25 +19,44 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         theTimingManager = FindObjectOfType<TimingManager>();
+        directions = new Direction[3][];
+        directions[0] = new Direction[3];
+        directions[1] = new Direction[3];
+        directions[2] = new Direction[3];
+
+        directions[0][0] = directions[0][2] = directions[1][1] = directions[2][0] = directions[2][2] = Direction.NONE;
+        directions[0][1] = Direction.LEFT;
+        directions[2][1] = Direction.RIGHT;
+        directions[1][0] = Direction.DOWN;
+        directions[1][2] = Direction.UP;
     }
 
-   
+
+    private bool getAxisInUse = false;
+
     // Update is called once per frame
     void Update()
     {
-        float inputHor = Input.GetAxisRaw("Horizontal");
-        float inputVer = Input.GetAxisRaw("Vertical");
-        Direction dir = Direction.NONE;
-
-        if (inputHor != 0)
+        int inputHor = (int)Input.GetAxisRaw("Horizontal");
+        int inputVer = (int)Input.GetAxisRaw("Vertical");
+        if (!getAxisInUse)
         {
-            dir = inputHor > 0 ? Direction.RIGHT : Direction.LEFT;
+            Debug.Log("change getAxisInUse to True");
+            Direction dir = directions[++inputHor][++inputVer];
+            Debug.Log("dir is " + dir);
+            if (dir != Direction.NONE)
+            {
+                getAxisInUse = true;
+                theTimingManager.CheckTiming_dir(dir);
+            }
         }
-        else if (inputVer != 0)
+        else
         {
-            dir = inputVer > 0 ? Direction.UP : Direction.DOWN;
+            if (inputHor == 0 && inputVer == 0)
+            {
+                Debug.Log("change getAxisInUse to False");
+                getAxisInUse = false;
+            }
         }
-        Debug.Log("입력된 방향은 " + dir.ToString());
-        theTimingManager.CheckTiming_dir(dir);
     }
 }

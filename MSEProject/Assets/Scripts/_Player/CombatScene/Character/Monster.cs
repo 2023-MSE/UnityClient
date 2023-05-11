@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Player.CombatScene
 {
@@ -29,10 +30,9 @@ namespace _Player.CombatScene
         
         [SerializeField]
         private bool[] pattern = new bool[4];
-        
-        [SerializeField]
-        private GameObject[] patterns = new GameObject[4];
-        
+
+        public GameObject[] patterns = new GameObject[4];
+        private GameObject[] _patterns = new GameObject[4];
         [SerializeField]
         private int power = 10;
         [SerializeField]
@@ -45,7 +45,30 @@ namespace _Player.CombatScene
         {
             _combatManager = FindObjectOfType<CombatManager>();
             _scoreManager = FindObjectOfType<ScoreManager>();
-            //test
+
+            _patterns = _combatManager.getNotes;
+
+            
+            for (int i = 0; i < 4; i++)
+            {
+                bool randomBool = (Random.value > 0.5f);
+                pattern[i] = randomBool;
+              
+            }
+            
+            
+           for (int i = 0; i < 4; i++)
+            {
+                if (pattern[i]) // 1:true -> 
+                {
+                    int aa = (int)Random.Range(0, 4);
+                    patterns[i] = _patterns[aa];
+                }
+                else // 0:false -> 
+                {
+                    patterns[i] = _combatManager.getGNote;
+                }
+            }
 
         }
         public void hitMotion()

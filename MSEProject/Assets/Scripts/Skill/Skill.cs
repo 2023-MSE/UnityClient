@@ -40,8 +40,8 @@ public class Skill
         
     }
 
-    public GameObject getEffect()
+    public String getEffect()
     {
-        return effect;
+        return effect.name;
     }
 }

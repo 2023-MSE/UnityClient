@@ -148,18 +148,6 @@ namespace _Player.CombatScene
                 GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[currentStage]);
             }
         }
-        public void StopScene()
-        {
-            check = !check;
-
-            if (check)
-            {
-                Time.timeScale = 0;
-            }
-            else
-            {
-                Time.timeScale = 1;
-            }
-        }
+    
     }
 }

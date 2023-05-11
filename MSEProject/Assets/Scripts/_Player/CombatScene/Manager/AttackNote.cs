@@ -36,6 +36,6 @@ public class AttackNote : Note
         
         monsterIndex = monster;
         
-        Debug.Log("SET MONSTER INDEX: "+monsterIndex);
+        // Debug.Log("SET MONSTER INDEX: "+monsterIndex);
     }
 }

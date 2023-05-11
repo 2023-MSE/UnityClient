@@ -15,7 +15,7 @@ public class NoteManager : MonoBehaviour
 
     // bpm 이란. bit per minute : 1분당 비트의 수  ex) 120bpm 이면 1분당 120개의 노트가 생성된다는 의미
     
-    public int bpm = 0;
+    public float bpm = 0;
     private double currentTime = 0d;
 
     [SerializeField] private Transform tfNoteAppear = null;
@@ -23,6 +23,8 @@ public class NoteManager : MonoBehaviour
     
    // [SerializeField] private GameObject goNote2 = null;
     private TimingManager theTimingManager;
+
+    private DungeonManager _dungeonManager;
 
     private CombatManager theCombatManager;
     public List<GameObject> Notes = new List<GameObject>();
@@ -38,6 +40,7 @@ public class NoteManager : MonoBehaviour
     private void Start()
     {
         //TimingManager 스크립트를 가지고 있는 오브젝트를 반환한다.
+        _dungeonManager=FindObjectOfType<DungeonManager>();
         theTimingManager = FindObjectOfType<TimingManager>();
         theCombatManager = FindObjectOfType<CombatManager>();
         num = Notes.Count;
@@ -49,12 +52,32 @@ public class NoteManager : MonoBehaviour
         isCombatManagerReady = true;
     }
 
+    public void setBPM()
+    {
+
+        if (_Player.CombatScene.DungeonManager.instance.enabled)
+        {
+            // bpm = (5 / (6 - (_Player.CombatScene.DungeonManager.instance.GetSpeed())) )* 100;
+            // Debug.Log("set bpm : " + bpm);
+        }
+        else
+        {
+            bpm = 120f;
+        }
+    }
+
+    public float getBPM()
+    {
+        return bpm;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+
         currentTime += Time.deltaTime; //1초에 1씩 증가되게
         if (!isCombatManagerReady) {Debug.Log("Stage is Not Ready"); return; }
-
+        setBPM();
         if (currentTime >= 60d / bpm) // 60s / bpm = 비트 한개당 등장 속도 : 1초에 1개씩 노트가 생성.. 120s / bpm : 0.5초에 1개씩 노트가 생성
         {
 

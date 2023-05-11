@@ -26,6 +26,8 @@ public class TimingManager : MonoBehaviour
     private Player _player;
     
     private CoolDown _coolDown;
+
+    private AttackNote _attackNote;
     
     [SerializeField] Transform Center = null;
 
@@ -42,7 +44,6 @@ public class TimingManager : MonoBehaviour
     [SerializeField] private DirEvent _successGenalizeUnityEvent;
 
     Vector2[] timingBoxs = null;
-    
 
     // Start is called before the first frame update
     public List<GameObject> boxNoteList = new List<GameObject>();
@@ -98,12 +99,10 @@ public class TimingManager : MonoBehaviour
 
         for (int i = 0; i < boxNoteList.Count; i++)
         {
-            Debug.Log(i);
+       
             float t_notePosX = boxNoteList[i].transform.localPosition.x;
             GameObject note = boxNoteList[i].gameObject;
-
-            for (int x = 0; x < timingBoxs.Length; x++) // Pefect -> Cool -> Good -> Bad 순으로 판별하게됨. -> 이건 차후에!
-            {
+            
                 // 각 판정 범위의 최소값 x, 최대값 y 를 비교하게됨.
                 if (timingBoxs[0].x <= t_notePosX && t_notePosX <= timingBoxs[0].y)
                 { 
@@ -115,6 +114,7 @@ public class TimingManager : MonoBehaviour
                             Debug.Log("공격 노트 방어 성공입니다");
                             _successAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
                             
+                            // _combatManager.monsterAttackDefence(note.GetComponent<AttackNote>().GetMonsterIndex());
                           
                             boxNoteList.Remove(note);
                             Destroy(note);
@@ -123,47 +123,53 @@ public class TimingManager : MonoBehaviour
                         else if (dir != note.GetComponent<AttackNote>().getDirection())
                         {
                             Debug.Log("공격 노트 방어 실패입니다");
-                            
-                             //_failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex())
+
+                            _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
                              
                              //error ? 왜?
                              Debug.Log("note index : " + note.GetComponent<AttackNote>().GetMonsterIndex());
                              //note.GetComponent<AttackNote>().GetMonsterIndex()
-
-                             int random = Random.Range(0, 3);
-                             _combatManager.monsterAttack(note.GetComponent<AttackNote>().GetMonsterIndex());
-
-                             _combatManager.MonsterAttackPlayer();
-                            
-                            //_player.AnimateHitMotion();
-                            
-
+                             //_combatManager.monsterAttack(note.GetComponent<AttackNote>().GetMonsterIndex());
+                             //_combatManager.MonsterAttackPlayer();
                         }
 
                     }
                     else if (note.gameObject.CompareTag("GNote")) // 일반 노트이면!
                     {
-                      
-                        
                         note.GetComponent<GenalizeNote>().setDirection(dir);
                         
+                        
+                        _successGenalizeUnityEvent.Invoke(note.GetComponent<GenalizeNote>().getDirection());
                         boxNoteList.Remove(note);
                         Destroy(note);
-                    }
-                }
+                    } 
+                } 
                 
-                int random1 = Random.Range(0, 3);
-                //_combatManager.monsterAttack(note.GetComponent<AttackNote>().GetMonsterIndex());
+                // else if (note.TryGetComponent(out _attackNote))
+                // {
+                //     _failAttackUnityEvent.Invoke(_attackNote.GetComponent<AttackNote>().GetMonsterIndex());
+                //
+                // }
 
-                _combatManager.MonsterAttackPlayer();
-
-
-            }
+        }
             
             
            
-        }
+        
      
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        
+        if (other.CompareTag("Note")||other.CompareTag("ANote"))
+        {
+            if (other.gameObject.TryGetComponent(out _attackNote))
+            {
+                _failAttackUnityEvent.Invoke(_attackNote.GetComponent<AttackNote>().GetMonsterIndex());
+            
+            }
+        }
     }
 
     IEnumerator EnQueue(GameObject obj)

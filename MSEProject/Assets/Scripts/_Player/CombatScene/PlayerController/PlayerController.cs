@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private TimingManager theTimingManager;
 
     private int Hp_Num=0;
-    
+    private Direction[][] directions; // hor, ver
     public static PlayerController instance;
 
     private void Awake()
@@ -19,46 +19,44 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         theTimingManager = FindObjectOfType<TimingManager>();
+        directions = new Direction[3][];
+        directions[0] = new Direction[3];
+        directions[1] = new Direction[3];
+        directions[2] = new Direction[3];
+
+        directions[0][0] = directions[0][2] = directions[1][1] = directions[2][0] = directions[2][2] = Direction.NONE;
+        directions[0][1] = Direction.LEFT;
+        directions[2][1] = Direction.RIGHT;
+        directions[1][0] = Direction.DOWN;
+        directions[1][2] = Direction.UP;
     }
 
 
     private bool getAxisInUse = false;
-    
+
     // Update is called once per frame
     void Update()
     {
-        float inputHor = Input.GetAxisRaw("Horizontal");
-        float inputVer = Input.GetAxisRaw("Vertical");
-        Direction dir = Direction.NONE;
-
-
+        int inputHor = (int)Input.GetAxisRaw("Horizontal");
+        int inputVer = (int)Input.GetAxisRaw("Vertical");
         if (!getAxisInUse)
         {
-            if (inputHor != 0)
+            Debug.Log("change getAxisInUse to True");
+            Direction dir = directions[++inputHor][++inputVer];
+            Debug.Log("dir is " + dir);
+            if (dir != Direction.NONE)
             {
-                Debug.Log("change getAxisInUse to True");
-                Debug.Log("change getAxisInUse to True" + gameObject.name);
                 getAxisInUse = true;
-
-                dir = inputHor > 0 ? Direction.RIGHT : Direction.LEFT;
-                theTimingManager.CheckTiming_dir(dir);
-            }
-            else if (inputVer != 0)
-            {
-                Debug.Log("change getAxisInUse to True");
-                Debug.Log("change getAxisInUse to True" + gameObject.name);
-                getAxisInUse = true;
-                
-                dir = inputVer > 0 ? Direction.UP : Direction.DOWN;
                 theTimingManager.CheckTiming_dir(dir);
             }
         }
-
-        if (getAxisInUse == true && inputHor == 0 && inputVer == 0)
+        else
         {
-            Debug.Log("change getAxisInUse to False");
-            getAxisInUse = false;
+            if (inputHor == 0 && inputVer == 0)
+            {
+                Debug.Log("change getAxisInUse to False");
+                getAxisInUse = false;
+            }
         }
-
     }
 }

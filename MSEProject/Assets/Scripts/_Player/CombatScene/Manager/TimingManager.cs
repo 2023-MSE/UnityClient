@@ -44,7 +44,6 @@ public class TimingManager : MonoBehaviour
     [SerializeField] private DirEvent _successGenalizeUnityEvent;
 
     Vector2[] timingBoxs = null;
-    
 
     // Start is called before the first frame update
     public List<GameObject> boxNoteList = new List<GameObject>();
@@ -162,6 +161,7 @@ public class TimingManager : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D other)
     {
+        
         if (other.CompareTag("Note")||other.CompareTag("ANote"))
         {
             if (other.gameObject.TryGetComponent(out _attackNote))

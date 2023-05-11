@@ -14,7 +14,20 @@ namespace _Player.CombatScene
     {
         public const int MAX_HP = 9999999;
         [SerializeField] private SkillDataScriptableObject skillData;
-      
+        [SerializeField]
+        private GameObject[] patterns = new GameObject[4];
+        public GameObject[] getNotes
+        {
+            get => patterns;
+        }
+
+        [SerializeField] private GameObject gnote;
+
+        public GameObject getGNote
+        {
+            get => gnote;
+        }
+        
         private int singleTargetIndex = 0;
         private Monster[] monsters;
         private Player player;
@@ -22,6 +35,7 @@ namespace _Player.CombatScene
         private bool isStageReady = false;
         private int attackMonsterPower;
         private bool _isPlayerHit;
+        
         public bool isPlayerHit
         {
             get => _isPlayerHit;
@@ -43,6 +57,8 @@ namespace _Player.CombatScene
         private GameObject note;
 
         private CoolDown _coolDown;
+        
+        private bool check = false;
 
         private void Start()
         {
@@ -347,6 +363,19 @@ namespace _Player.CombatScene
         public bool GetStageReady()
         {
             return isStageReady;
+        }
+        public void StopScene()
+        {
+            check = !check;
+
+            if (check)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
         }
     }
 }

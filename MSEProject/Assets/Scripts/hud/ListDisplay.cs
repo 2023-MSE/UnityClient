@@ -1,30 +1,47 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using _Player.CombatScene;
 using TMPro;
 
 public class ListDisplay : MonoBehaviour
 {
+
+    private CombatManager _combatManager;
     public GameObject listItemPrefab;
     public VerticalLayoutGroup Layout;
-    public List<string> stringList;
-    //private ListManager listmanager;
-  /*  private void Start()
+    public List<String> stringList;
+
+
+    public void Start()
     {
-        listmanager = GetComponent<ListManager>();
+        gameObject.SetActive(false);
+    }
+
+    public void clickmap()
+    {
+        gameObject.SetActive(true);
+        _combatManager = FindObjectOfType<CombatManager>();
+        stringList=_combatManager.sendSkill();
+       
+
         DisplayList();
+        
+        
+
 
     }
-    
-    
+
 
     public void DisplayList()
     {
-        stringList = listmanager.getList();
-        Debug.Log(stringList.Count);
+        Debug.Log("list count : " +stringList.Count);
+       
         // 리스트에 저장된 문자열을 순회하며 리스트 아이템을 생성하고 배치합니다.
-        foreach (string str in stringList)
+        foreach (String str in stringList)
         {
+            Debug.Log("list:"+str);
             GameObject listItem = Instantiate(listItemPrefab, Layout.transform);
             TextMeshProUGUI textComponent = listItem.GetComponentInChildren<TextMeshProUGUI>();
             textComponent.text = str;
@@ -34,5 +51,5 @@ public class ListDisplay : MonoBehaviour
         Layout.enabled = true;
     }
     
-    */
+    
 }

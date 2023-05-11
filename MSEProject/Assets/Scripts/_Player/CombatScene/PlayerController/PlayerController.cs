@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour
         theTimingManager = FindObjectOfType<TimingManager>();
     }
 
-   
+
+    private bool getAxisInUse = false;
+    
     // Update is called once per frame
     void Update()
     {
@@ -29,15 +31,34 @@ public class PlayerController : MonoBehaviour
         float inputVer = Input.GetAxisRaw("Vertical");
         Direction dir = Direction.NONE;
 
-        if (inputHor != 0)
+
+        if (!getAxisInUse)
         {
-            dir = inputHor > 0 ? Direction.RIGHT : Direction.LEFT;
+            if (inputHor != 0)
+            {
+                Debug.Log("change getAxisInUse to True");
+                Debug.Log("change getAxisInUse to True" + gameObject.name);
+                getAxisInUse = true;
+
+                dir = inputHor > 0 ? Direction.RIGHT : Direction.LEFT;
+                theTimingManager.CheckTiming_dir(dir);
+            }
+            else if (inputVer != 0)
+            {
+                Debug.Log("change getAxisInUse to True");
+                Debug.Log("change getAxisInUse to True" + gameObject.name);
+                getAxisInUse = true;
+                
+                dir = inputVer > 0 ? Direction.UP : Direction.DOWN;
+                theTimingManager.CheckTiming_dir(dir);
+            }
         }
-        else if (inputVer != 0)
+
+        if (getAxisInUse == true && inputHor == 0 && inputVer == 0)
         {
-            dir = inputVer > 0 ? Direction.UP : Direction.DOWN;
+            Debug.Log("change getAxisInUse to False");
+            getAxisInUse = false;
         }
-        Debug.Log("입력된 방향은 " + dir.ToString());
-        theTimingManager.CheckTiming_dir(dir);
+
     }
 }

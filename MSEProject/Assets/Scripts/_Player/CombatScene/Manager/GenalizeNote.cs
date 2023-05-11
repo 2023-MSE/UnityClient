@@ -8,12 +8,12 @@ public class GenalizeNote : Note
 {
     public Direction getDirection()
     {
-        Debug.Log("It is GenalizeNote | getDirection");
+       
         return dir;
     }
     public void setDirection(Direction _dir)
     {
-        Debug.Log("It is GenalizeNote | setDirection" + dir);
+  
         dir = _dir;
     }
 }

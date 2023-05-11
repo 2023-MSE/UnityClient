@@ -21,16 +21,24 @@ namespace _Player.CombatScene
         private int currentSkill = 0;
         private bool isStageReady = false;
         private int attackMonsterPower;
-        private bool isPlayerHit;
+        private bool _isPlayerHit;
+        public bool isPlayerHit
+        {
+            get => _isPlayerHit;
+            set
+            {
+                _isPlayerHit = value;
+                Debug.Log("isPlayerHit Changed");
+            }
+        }
+        
         private Queue<GameObject> queue;
 
-        private List<GameObject> skilllist;
+        private List<String> skilllist=new List<string>();
         
         private Queue<GameObject> ObjectPool;
 
         private DungeonManager _dungeonManager;
-
-        private List<GameObject> list = new List<GameObject>();
 
         private GameObject note;
 
@@ -42,6 +50,7 @@ namespace _Player.CombatScene
             ObjectPool = new Queue<GameObject>();
             _coolDown = FindObjectOfType<CoolDown>();
             player = FindObjectOfType<Player>();
+            _dungeonManager = FindObjectOfType<CombatScene.DungeonManager>();
 
         }
 
@@ -113,7 +122,7 @@ namespace _Player.CombatScene
                 if (target.GetComponent<Character>() is Player)
                 {
                     // player is dead
-                    _coolDown.DamageToZero();
+                    
                 }
                 else if (target.GetComponent<Character>() is Monster)
                 {
@@ -126,7 +135,7 @@ namespace _Player.CombatScene
                 //target is already alive
                 if (target.GetComponent<Character>() is Player)
                 {
-                    _coolDown.DamageHp(damage * 0.01f);
+                
 
                 }
                 else if (target.GetComponent<Character>() is Monster)
@@ -137,22 +146,23 @@ namespace _Player.CombatScene
             }
         }
 
-        public List<GameObject> sendSkill()
+        public List<String> sendSkill()
         {
             foreach (var effect in skillData.skills)
             {
                 if (effect.isEnable)
                 {
-                    skilllist.Add(effect.effect);
+                    skilllist.Add(effect.getEffect());
                 }
             }
 
             return skilllist;
         }
 
+        // !!!!!Relax Scene -> ??? ? ????
         public void StopCombat()
         {
-            TestDirButton test = FindObjectOfType<TestDirButton>();
+            //TestDirButton test = FindObjectOfType<TestDirButton>();
             int num = 0;
             foreach (Monster m in monsters)
             {
@@ -166,15 +176,23 @@ namespace _Player.CombatScene
             if (num == monsters.Length)
             {
                 Debug.Log("Success!! go to Next Stage");
-                test.OnClickButtonNextStage();
+                //test.OnClickButtonNextStage();
+            }
+
+            if (player.setHp(0))
+            {
+                //Time.timeScale = 0;
             }
         }
+        
 
 
         public void skillActivation()
         {
-            Debug.Log("Skill Active" + currentSkill);
+            Debug.Log("Skill Active" + currentSkill+"dungeon speed"+ _dungeonManager.GetSpeed());
 
+            float speed = 3 / DungeonManager.instance.GetSpeed();
+            
             Skill skill = skillData.skills[currentSkill];
             if (skill.isSplash)
             {
@@ -182,10 +200,8 @@ namespace _Player.CombatScene
                 foreach (Monster monster in monsters)
                 {
                     if (!monster.isDead())
-                    {
-                       // skilllist[currentSkill].transform.position = monster.transform.position;
-                        
-                       StartCoroutine(skillTime(skillData.skills[currentSkill].effect,monster.transform.position,3f));
+                    {  
+                       StartCoroutine(skillTime(skillData.skills[currentSkill].effect,monster.transform.position,speed));
                         
                         float typeMulti = (((skill.type + monster.getType()) % 3) - 1) / 2f;
                         float skillDamage = skill.damage * (1f + typeMulti);
@@ -196,7 +212,7 @@ namespace _Player.CombatScene
             else
             {
                 
-                StartCoroutine(skillTime(skillData.skills[currentSkill].effect,monsters[singleTargetIndex].transform.position,3f));
+                StartCoroutine(skillTime(skillData.skills[currentSkill].effect,monsters[singleTargetIndex].transform.position,speed));
                 
                 float typeMulti =
                     (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
@@ -222,7 +238,7 @@ namespace _Player.CombatScene
             GameObject s=Instantiate(skill,pos, Quaternion.identity);
             s.SetActive(true);
             
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(wait);
             
   
             Destroy(s);
@@ -259,15 +275,14 @@ namespace _Player.CombatScene
             Debug.Log("monster attack "+ monsterIndex);
             
             isPlayerHit = true;
-             player.GetComponent<Player>().AnimateDefenceMotion();
-             Debug.Log("error happen gameObj " + gameObject.name);
-             Debug.Log("monster attack count" + monsters.Length);
+            player.GetComponent<Player>().AnimateDefenceMotion();
             attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
             monsters[monsterIndex].AnimateAttack();
         }
 
         public void monsterAttackDefence(int monsterIndex)
         {
+            Debug.Log("monsterAttackDefend");
             isPlayerHit = false;
             attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
             monsters[monsterIndex].AnimateAttack();
@@ -278,11 +293,16 @@ namespace _Player.CombatScene
         {
             if (isPlayerHit)
             {
-                damage(player.gameObject, attackMonsterPower * DungeonManager.instance.GetSpeed());
-                _coolDown.DamageHp(attackMonsterPower * DungeonManager.instance.GetSpeed()*0.001f);
+                Debug.Log("Hit");
+                Debug.Log("attack :"+attackMonsterPower);
+               damage(player.gameObject, attackMonsterPower * DungeonManager.instance.GetSpeed());
+               
+
+               _coolDown.DamageHp(attackMonsterPower * 0.001f);
             }
             else
             {
+                Debug.Log("Defend");
                 player.GetComponent<Player>().AnimateDefendeHitMotion();
             }
         }
@@ -304,6 +324,7 @@ namespace _Player.CombatScene
             }
 
             player.GetComponent<Player>().AnimateIdle(DungeonManager.instance.GetSpeed());
+            
             FindObjectOfType<NoteManager>().CombatManagerReady(this);
         }
 

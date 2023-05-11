@@ -159,6 +159,18 @@ public class TimingManager : MonoBehaviour
         
      
     }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Note")||other.CompareTag("ANote"))
+        {
+            if (other.gameObject.TryGetComponent(out _attackNote))
+            {
+                _failAttackUnityEvent.Invoke(_attackNote.GetComponent<AttackNote>().GetMonsterIndex());
+            
+            }
+        }
+    }
 
     IEnumerator EnQueue(GameObject obj)
     {

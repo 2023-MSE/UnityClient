@@ -35,6 +35,9 @@ namespace _Player.CombatScene
         private bool isStageReady = false;
         private int attackMonsterPower;
         private bool _isPlayerHit;
+        private int deadMonster = 0;
+
+        public GameObject GameOver;
         
         public bool isPlayerHit
         {
@@ -57,6 +60,8 @@ namespace _Player.CombatScene
         private GameObject note;
 
         private CoolDown _coolDown;
+
+        private TestDirButton test;
         
         private bool check = false;
 
@@ -67,7 +72,7 @@ namespace _Player.CombatScene
             _coolDown = FindObjectOfType<CoolDown>();
             player = FindObjectOfType<Player>();
             _dungeonManager = FindObjectOfType<CombatScene.DungeonManager>();
-
+            test = FindObjectOfType<TestDirButton>();
         }
 
         private void Update()
@@ -137,12 +142,18 @@ namespace _Player.CombatScene
                 // target is dead
                 if (target.GetComponent<Character>() is Player)
                 {
-                    // player is dead
-                    
+                    //Time.timeScale = 0;
+                    GameOver.SetActive(true);
+
                 }
                 else if (target.GetComponent<Character>() is Monster)
                 {
                     // monster is dead
+                    deadMonster++;
+                    if (deadMonster == 3)
+                    {
+                        test.OnClickButtonNextStage();
+                    }
 
                 }
             }
@@ -161,6 +172,8 @@ namespace _Player.CombatScene
                 }
             }
         }
+
+      
 
         public List<String> sendSkill()
         {
@@ -325,6 +338,7 @@ namespace _Player.CombatScene
 
         public void setVariable()
         {
+            GameOver.SetActive(false);
             int i = 0;
             Debug.Log("SetVariable");
             player = GameObject.FindObjectOfType<Player>();
@@ -376,6 +390,16 @@ namespace _Player.CombatScene
             {
                 Time.timeScale = 1;
             }
+        }
+
+        public void SpeedUp()
+        {
+            Time.timeScale += 0.1f;
+        }
+        
+        public void SpeedDown()
+        {
+            Time.timeScale -= 0.1f;
         }
     }
 }

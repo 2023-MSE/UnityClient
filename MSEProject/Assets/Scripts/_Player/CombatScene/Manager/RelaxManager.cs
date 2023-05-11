@@ -26,7 +26,10 @@ namespace _Player.CombatScene
             Debug.Log("start relax Scene");
             _combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
             _coolDown = GameObject.Find("CoolDown").GetComponent<CoolDown>();
-            _coolDown.setHp(player.GetComponent<Player>().getHp()*0.001f);
+            
+            
+            //_coolDown.setHp(player.GetComponent<Player>().getHp()*0.001f);
+            
         }
 
         private void Update()
@@ -51,6 +54,7 @@ namespace _Player.CombatScene
         public void Scenecheck()
         {
             check = !check;
+            _coolDown.setHp(0.3f);
         }
     }
 }

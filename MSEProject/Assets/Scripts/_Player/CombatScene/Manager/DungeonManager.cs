@@ -66,6 +66,7 @@ namespace _Player.CombatScene
                     Debug.Assert(handle.Status == AsyncOperationStatus.Succeeded, "Fail to load Asset" + handle.Status);
                     assetDict.Add(info.thisStageInfoIndex, handle);
                 };
+                
             }
         }
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)

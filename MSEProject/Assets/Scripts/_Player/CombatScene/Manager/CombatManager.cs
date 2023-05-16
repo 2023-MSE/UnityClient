@@ -23,6 +23,8 @@ namespace _Player.CombatScene
 
         [SerializeField] private GameObject gnote;
 
+        [SerializeField] private GameObject playerAttackEffect;
+
         public GameObject getGNote
         {
             get => gnote;
@@ -327,7 +329,7 @@ namespace _Player.CombatScene
                damage(player.gameObject, attackMonsterPower * DungeonManager.instance.GetSpeed());
                
 
-               _coolDown.DamageHp(attackMonsterPower * 0.001f);
+               _coolDown.DamageHp(attackMonsterPower * DungeonManager.instance.GetSpeed()* 0.001f);
             }
             else
             {

@@ -730,6 +730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 1000
   hp: 0
+  effect: {fileID: 9087951056434953097, guid: d183b07c78476ce4786d340c79c21475, type: 3}
 --- !u!114 &-9088734490510116595
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,8 +30,7 @@ namespace _Player.CombatScene
             get => gnote;
         }
         
-        private int singleTargetIndex = 0;
-        private Monster[] monsters;
+        private List<Monster> monsters;
         private Player player;
         private int currentSkill = 0;
         private bool isStageReady = false;
@@ -80,6 +79,11 @@ namespace _Player.CombatScene
         private void Update()
         {
             //StopCombat();
+        }
+
+        public Monster GetRandomMonster()
+        {
+            return monsters[UnityEngine.Random.Range(0, monsters.Count)];
         }
 
         public void setQueue(GameObject[] note)
@@ -152,6 +156,7 @@ namespace _Player.CombatScene
                 {
                     // monster is dead
                     deadMonster++;
+                    monsters.Remove(target.GetComponent<Monster>());
                     if (deadMonster == 3)
                     {
                         test.OnClickButtonNextStage();
@@ -204,7 +209,7 @@ namespace _Player.CombatScene
                     
             }
 
-            if (num == monsters.Length)
+            if (num == monsters.Count)
             {
                 Debug.Log("Success!! go to Next Stage");
                 //test.OnClickButtonNextStage();
@@ -227,8 +232,9 @@ namespace _Player.CombatScene
             Skill skill = skillData.skills[currentSkill];
             if (skill.isSplash)
             {
+                List<Monster> tempMonsters = monsters;
                 // 광역 스킬인 경우
-                foreach (Monster monster in monsters)
+                foreach (Monster monster in tempMonsters)
                 {
                     if (!monster.isDead())
                     {  
@@ -242,13 +248,13 @@ namespace _Player.CombatScene
             }
             else
             {
-                
-                StartCoroutine(skillTime(skillData.skills[currentSkill].effect,monsters[singleTargetIndex].transform.position,speed));
+                Monster singleTraget = GetRandomMonster();
+                StartCoroutine(skillTime(skillData.skills[currentSkill].effect, singleTraget.transform.position,speed));
                 
                 float typeMulti =
-                    (((skill.type + monsters[singleTargetIndex].GetComponent<Monster>().getType()) % 3) - 1) / 2f;
+                    (((skill.type + singleTraget.getType()) % 3) - 1) / 2f;
                 float skillDamage = skill.damage * (1f + typeMulti);
-                damage(monsters[singleTargetIndex].gameObject, skillDamage * DungeonManager.instance.GetSpeed());
+                damage(singleTraget.gameObject, skillDamage * DungeonManager.instance.GetSpeed());
             }
 
             currentSkill = 0;
@@ -345,9 +351,8 @@ namespace _Player.CombatScene
             Debug.Log("SetVariable");
             player = GameObject.FindObjectOfType<Player>();
             player.GetComponent<Player>().setHp(MAX_HP);
-            
-            monsters = GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None);
-            Debug.Log("aaaaa"+monsters.Length);
+            monsters = new List<Monster>(GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None));
+            Debug.Log("aaaaa"+monsters.Count);
             foreach (Monster monster in monsters)
             {
                 monster.setNum(i++);

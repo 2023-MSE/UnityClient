@@ -141,7 +141,7 @@ namespace _Player.CombatScene
 
         private void damage(GameObject target, float damage)
         {
-            // singleTargetIndex 재설정 필요
+            // singleTargetIndex ??? ??
             target.GetComponent<Character>().AnimateHitMotion();
             if (target.GetComponent<Character>().setHp(-damage))
             {
@@ -233,7 +233,7 @@ namespace _Player.CombatScene
             if (skill.isSplash)
             {
                 List<Monster> tempMonsters = monsters;
-                // 광역 스킬인 경우
+                // ?? ??? ??
                 foreach (Monster monster in tempMonsters)
                 {
                     if (!monster.isDead())
@@ -256,6 +256,7 @@ namespace _Player.CombatScene
                 float skillDamage = skill.damage * (1f + typeMulti);
                 damage(singleTraget.gameObject, skillDamage * DungeonManager.instance.GetSpeed());
             }
+
 
             currentSkill = 0;
         }
@@ -290,14 +291,14 @@ namespace _Player.CombatScene
             Debug.Log("Current Skill num: " + currentSkill);
             if (currentSkill == -1)
             {
-                // 해당 방향키의 스킬이 존재하지 않는 경우
+                // ?? ???? ??? ???? ?? ??
                 player.GetComponent<Player>().AnimateMissMotion();
             }
             else
             {
                 if (skillData.skills[currentSkill].isEnable)
                 {
-                    // 해당 방향키의 스킬이 존재하는 경우
+                    // ?? ???? ??? ???? ??
                     Debug.Log("SKILL ENABLE");
                     player.GetComponent<Player>().AnimateSkillMotion();
                    
@@ -313,16 +314,55 @@ namespace _Player.CombatScene
             
             isPlayerHit = true;
             player.GetComponent<Player>().AnimateDefenceMotion();
-            attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
-            monsters[monsterIndex].AnimateAttack();
+            if (monsters[monsterIndex] is BossMonster)
+            {
+                int random = UnityEngine.Random.Range(0, 1);
+                BossMonster boss = monsters[monsterIndex] as BossMonster;
+                switch (random)
+                {
+                    case 0:
+                        attackMonsterPower = boss.GetBossPower();
+                        boss.AnimateBossAttack();
+                        break;
+                    case 1:
+                        attackMonsterPower = boss.getPower();
+                        boss.AnimateAttack();
+                        break;
+                }
+            }
+            else
+            {
+                attackMonsterPower = monsters[monsterIndex].getPower();
+                monsters[monsterIndex].AnimateAttack();
+            }
         }
 
         public void monsterAttackDefence(int monsterIndex)
         {
             Debug.Log("monsterAttackDefend");
             isPlayerHit = false;
-            attackMonsterPower = monsters[monsterIndex].GetComponent<Monster>().getPower();
-            monsters[monsterIndex].AnimateAttack();
+            
+            if (monsters[monsterIndex] is BossMonster)
+            {
+                int random = UnityEngine.Random.Range(0, 1);
+                BossMonster boss = monsters[monsterIndex] as BossMonster;
+                switch (random)
+                {
+                    case 0:
+                        attackMonsterPower = boss.GetBossPower();
+                        boss.AnimateBossAttack();
+                        break;
+                    case 1:
+                        attackMonsterPower = boss.getPower();
+                        boss.AnimateAttack();
+                        break;
+                }
+            }
+            else
+            {
+                attackMonsterPower = monsters[monsterIndex].getPower();
+                monsters[monsterIndex].AnimateAttack();
+            }
             player.GetComponent<Player>().AnimateDefenceMotion();
         }
 

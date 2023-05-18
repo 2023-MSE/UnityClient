@@ -498,7 +498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 459364}
   - component: {fileID: 9585228}
-  - component: {fileID: -4970327754585696438}
+  - component: {fileID: -2125661754929301000}
   m_Layer: 0
   m_Name: Red
   m_TagString: Untagged
@@ -544,7 +544,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-4970327754585696438
+--- !u!114 &-2125661754929301000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 130416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a795fb78726ce14687c846b2ed3784a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e12088eb1bb04a4082988e74ceebe42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 5000
@@ -562,10 +562,11 @@ MonoBehaviour:
   patterns:
   - {fileID: 5375850686441753685, guid: ca284ff69f10a8e4b8170637aff6e14f, type: 3}
   - {fileID: 5375850686441753685, guid: 2a879ce6718e8e541a5f71f4fd14bb94, type: 3}
-  - {fileID: 5375850686441753685, guid: ca284ff69f10a8e4b8170637aff6e14f, type: 3}
+  - {fileID: 5375850686441753685, guid: 167f10008dceec340976d982d9acdfae, type: 3}
   - {fileID: 5375850686441753685, guid: 1f3ee2dfb090d6c47ae4faac4ea5ed6b, type: 3}
-  power: 10
+  power: 100
   type: 0
+  bossAttackPower: 400
 --- !u!1 &133440
 GameObject:
   m_ObjectHideFlags: 0

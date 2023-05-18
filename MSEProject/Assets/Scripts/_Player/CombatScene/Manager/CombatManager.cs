@@ -232,7 +232,7 @@ namespace _Player.CombatScene
             Skill skill = skillData.skills[currentSkill];
             if (skill.isSplash)
             {
-                List<Monster> tempMonsters = monsters;
+                List<Monster> tempMonsters = new List<Monster>(monsters);
                 // ?? ??? ??
                 foreach (Monster monster in tempMonsters)
                 {

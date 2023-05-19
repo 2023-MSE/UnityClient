@@ -8,24 +8,15 @@ namespace _Player.CombatScene
     {
         private List<bool> skillAvailability;
         private Animator animator;
-        public GameObject effect;
+       
         
         public override void AnimateHitMotion()
         {
             animator.SetTrigger("isGetDamage");
-            StartCoroutine(effectPlayer(5.0f));
+          
         }
 
-        IEnumerator effectPlayer(float wait)
-        {
-            Debug.Log("player effect");
-            GameObject b=Instantiate(effect, gameObject.transform.position, Quaternion.identity);
-
-            yield return wait;
-            
-            Destroy(b);
-
-        }
+        
 
         public void AnimateDefendeHitMotion()
         {

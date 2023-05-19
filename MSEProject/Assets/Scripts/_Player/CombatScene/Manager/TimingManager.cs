@@ -143,14 +143,12 @@ public class TimingManager : MonoBehaviour
                         boxNoteList.Remove(note);
                         Destroy(note);
                     } 
+                    boxNoteList.Remove(note);
+                    Destroy(note);
+                    
                 } 
                 
-                // else if (note.TryGetComponent(out _attackNote))
-                // {
-                //     _failAttackUnityEvent.Invoke(_attackNote.GetComponent<AttackNote>().GetMonsterIndex());
-                //
-                // }
-
+                
         }
             
             

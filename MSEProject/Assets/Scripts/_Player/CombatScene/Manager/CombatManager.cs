@@ -23,7 +23,7 @@ namespace _Player.CombatScene
 
         [SerializeField] private GameObject gnote;
 
-        [SerializeField] private GameObject playerAttackEffect;
+     
 
         public GameObject getGNote
         {
@@ -65,6 +65,8 @@ namespace _Player.CombatScene
         private TestDirButton test;
         
         private bool check = false;
+
+        public GameObject effect;
 
         private void Start()
         {
@@ -373,8 +375,8 @@ namespace _Player.CombatScene
                 Debug.Log("Hit");
                 Debug.Log("attack :"+attackMonsterPower);
                damage(player.gameObject, attackMonsterPower * DungeonManager.instance.GetSpeed());
+               StartCoroutine(effectPlayer(3.0f));
                
-
                _coolDown.DamageHp(attackMonsterPower * DungeonManager.instance.GetSpeed()* 0.001f);
             }
             else
@@ -382,6 +384,17 @@ namespace _Player.CombatScene
                 Debug.Log("Defend");
                 player.GetComponent<Player>().AnimateDefendeHitMotion();
             }
+        }
+        
+        IEnumerator effectPlayer(float wait)
+        {
+            Debug.Log("player effect");
+            GameObject b=Instantiate(effect, player.gameObject.transform.position, Quaternion.identity);
+
+            yield return wait;
+            
+            Destroy(b);
+
         }
 
         public void setVariable()

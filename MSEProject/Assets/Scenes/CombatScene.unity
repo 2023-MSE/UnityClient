@@ -8818,8 +8818,8 @@ MonoBehaviour:
   - {fileID: 5375850686441753685, guid: 167f10008dceec340976d982d9acdfae, type: 3}
   - {fileID: 5375850686441753685, guid: 1f3ee2dfb090d6c47ae4faac4ea5ed6b, type: 3}
   gnote: {fileID: 5375850686441753685, guid: 64c479266873a5b4db7082809c64abfe, type: 3}
-  playerAttackEffect: {fileID: 0}
   GameOver: {fileID: 573771414}
+  effect: {fileID: 321625853944281719, guid: 8a73b9f9c03303445bbdd09866ef9258, type: 3}
 --- !u!1001 &1165495301
 PrefabInstance:
   m_ObjectHideFlags: 0

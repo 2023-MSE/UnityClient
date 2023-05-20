@@ -107,17 +107,4 @@ public class NoteManager : MonoBehaviour
             currentTime -= 60d / bpm; // 오차로 인해 .
         }
     }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Note")||other.CompareTag("GNote")||other.CompareTag("ANote"))
-        {
-           
-            theTimingManager.RemoveNote(other.gameObject);
-
-            theCombatManager.EnqueueObjectPool(other.gameObject);
-            other.gameObject.SetActive(false);
-            Destroy(other.gameObject);
-        }
-    }
 }

@@ -9,6 +9,18 @@ public class Note : MonoBehaviour
 
     protected Direction dir;
     protected int damage = 0;
+    protected bool checkit = false;
+
+    public void noteCheckTrue()
+    {
+        checkit = true;
+       
+    }
+
+    public bool noteCheckIt()
+    {
+        return checkit;
+    }
 
     public int getdamage()
     {

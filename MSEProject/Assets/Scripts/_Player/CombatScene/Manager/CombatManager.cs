@@ -22,8 +22,10 @@ namespace _Player.CombatScene
         }
 
         [SerializeField] private GameObject gnote;
+        
+        [SerializeField] private GameObject uinote;
 
-     
+
 
         public GameObject getGNote
         {
@@ -76,6 +78,7 @@ namespace _Player.CombatScene
             player = FindObjectOfType<Player>();
             _dungeonManager = FindObjectOfType<CombatScene.DungeonManager>();
             test = FindObjectOfType<TestDirButton>();
+            GameOver.SetActive(false);
         }
 
         private void Update()
@@ -151,7 +154,8 @@ namespace _Player.CombatScene
                 if (target.GetComponent<Character>() is Player)
                 {
                     //Time.timeScale = 0;
-                    //GameOver.SetActive(true);
+                    GameOver.SetActive(true);
+                    uinote.SetActive(false);
 
                 }
                 else if (target.GetComponent<Character>() is Monster)
@@ -312,6 +316,7 @@ namespace _Player.CombatScene
 
         public void monsterAttack(int monsterIndex)
         {
+            Debug.Log("--check--attack");
             Debug.Log("monster attack "+ monsterIndex);
             
             isPlayerHit = true;
@@ -341,7 +346,7 @@ namespace _Player.CombatScene
 
         public void monsterAttackDefence(int monsterIndex)
         {
-            Debug.Log("monsterAttackDefend");
+            Debug.Log("--check--defence");
             isPlayerHit = false;
             
             if (monsters[monsterIndex] is BossMonster)
@@ -370,6 +375,7 @@ namespace _Player.CombatScene
 
         public void MonsterAttackPlayer()
         {
+            Debug.Log("--check--" + isPlayerHit);
             if (isPlayerHit)
             {
                 Debug.Log("Hit");

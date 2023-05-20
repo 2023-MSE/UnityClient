@@ -5,10 +5,203 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7e11fd4-7ada-4c77-8552-29b3b0b052d4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/1.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/1/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/1/Materials/defaultMat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/1/Materials/defaultMat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/1/Potion1.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/1/Potion1.obj.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/1/Potion1.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/1/Potion1.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/1/Potion1.sbsar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/1/Potion1.sbsar.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/2.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/2/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/2/Materials/defaultMat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/2/Materials/defaultMat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/2/Potion2.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/2/Potion2.obj.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/2/Potion2.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/2/Potion2.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/2/Potion2.sbsar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/2/Potion2.sbsar.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/3/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/3/Materials/defaultMat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/3/Materials/defaultMat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/3/Potion3.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/3/Potion3.obj.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/3/Potion3.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/3/Potion3.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/3/Potion3.sbsar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/3/Potion3.sbsar.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/ReadMe.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/Potions/ReadMe.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Beer.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Beer.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Bread.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Bread.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Cake.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Cake.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Cheese.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Cheese.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Fish.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Fish.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Glass1.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Glass1.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Glass2.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Glass2.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Ground.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Ground.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Ham.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Ham.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Pie.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Pie.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Potion.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Potion.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Ribs.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Ribs.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Steak.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Steak.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Stew.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Stew.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Watermelon.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/Watermelon.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/WineBottle.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/WineBottle.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/WineJug.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Materials/WineJug.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Beer.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Beer.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Bread.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Bread.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Cake.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Cake.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Cheese.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Cheese.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Fish.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Fish.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Ham.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Ham.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Pie.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Pie.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/PotionBig.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/PotionBig.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/PotionSmall.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/PotionSmall.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Ribs.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Ribs.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Steak.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Steak.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Stew.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Stew.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Watermelon.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/Watermelon.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/WineBottle.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/WineBottle.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/WineJug.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Models/WineJug.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Beer.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Beer.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Bread.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Bread.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Cake.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Cake.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Cheese.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Cheese.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Fish.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Fish.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Ham.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Ham.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Pie.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Pie.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/PotionBig.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/PotionBig.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/PotionSmall.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/PotionSmall.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Ribs.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Ribs.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Steak.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Steak.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Stew.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Stew.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Watermelon.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/Watermelon.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/WineBottle.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/WineBottle.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/WineJug.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Prefabs/WineJug.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Scripts/Consumer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Scripts/Consumer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Scripts/Rotator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Scripts/Rotator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/BeerTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/BeerTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/BreadTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/BreadTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/CakeTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/CakeTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/CheeseTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/CheeseTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/FishTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/FishTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/HamTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/HamTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/PieTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/PieTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/PotionTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/PotionTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/RibsTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/RibsTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/SteakTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/SteakTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/StewTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/StewTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/WatermelonTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/WatermelonTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/WineBottleTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/WineBottleTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/WineJugTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Assets/Textures/WineJugTexture.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Demo.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Demo/Food &amp; Drinks.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Demo/Food &amp; Drinks.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Demo/Food &amp; Drinks_Profiles.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Demo/Food &amp; Drinks_Profiles/Post-process Volume Profile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Demo/Food &amp; Drinks_Profiles/Post-process Volume Profile.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Assets/Originals.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Door.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Door.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Door.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Door.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Floor.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Floor.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Floor.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Floor.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Lamp_01.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Lamp_01.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Lamp_01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Lamp_01.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Lamp_02.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Lamp_02.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Lamp_02.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Lamp_02.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Pillar.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Pillar.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Pillar.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Pillar.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Wall.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Wall.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Wall.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Wall.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Wall_Entrance.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Wall_Entrance.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Originals/Wall_Entrance.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Wall_Entrance.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Buff &amp; Relax/Relax.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Buff &amp; Relax/Relax.prefab" afterDir="false" />
+>>>>>>> sangyeol
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/TimingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/TimingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/StageSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/StageSpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,13 +239,14 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\김휘년\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\김휘년\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\김휘년\\AppData\\Local\\Symbols\\src&quot;
+      &quot;C:\\Users\\USER\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\USER\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\USER\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
 }</component>
@@ -66,7 +260,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Lab Internship\Unity Downloads\2021.3.20f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.20f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath D:\ManyThings\MSE\MSEProject -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\ManyThings\MSE\MSEProject" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -74,7 +268,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Lab Internship\Unity Downloads\2021.3.20f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.20f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath D:\ManyThings\MSE\MSEProject -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\ManyThings\MSE\MSEProject" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -136,7 +330,13 @@
       <workItem from="1683702413051" duration="648000" />
       <workItem from="1683703157047" duration="31280000" />
       <workItem from="1684235561409" duration="2347000" />
+<<<<<<< HEAD
       <workItem from="1684310295463" duration="8270000" />
+=======
+      <workItem from="1684310295463" duration="607000" />
+      <workItem from="1684401956997" duration="2350000" />
+      <workItem from="1684404377119" duration="4222000" />
+>>>>>>> sangyeol
     </task>
     <servers />
   </component>

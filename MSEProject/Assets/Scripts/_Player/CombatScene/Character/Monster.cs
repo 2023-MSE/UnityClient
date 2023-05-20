@@ -40,7 +40,7 @@ namespace _Player.CombatScene
 
         private CombatManager _combatManager;
         private ScoreManager _scoreManager;
-        private Animator animator;
+        protected Animator animator;
         public void Start()
         {
             _combatManager = FindObjectOfType<CombatManager>();
@@ -93,7 +93,6 @@ namespace _Player.CombatScene
 
         public override void AnimateHitMotion()
         {
-            /*TODO*/
             animator.SetTrigger("isGetDamage");
         }
         public void AnimateAttack()
@@ -111,10 +110,6 @@ namespace _Player.CombatScene
             animator.SetTrigger("isWin");
         }
 
-        public void AnimateBossAttack()
-        {
-            animator.SetTrigger("bossAttack");
-        }
         public override void dead()
         {
           

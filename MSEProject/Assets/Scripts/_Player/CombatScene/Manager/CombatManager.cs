@@ -147,7 +147,7 @@ namespace _Player.CombatScene
                 if (target.GetComponent<Character>() is Player)
                 {
                     //Time.timeScale = 0;
-                    GameOver.SetActive(true);
+                    //GameOver.SetActive(true);
 
                 }
                 else if (target.GetComponent<Character>() is Monster)
@@ -362,7 +362,7 @@ namespace _Player.CombatScene
             monsters = GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None);
             Debug.Log("aaaaa"+monsters.Length);
             foreach (Monster monster in monsters)
-            {
+            {  
                 monster.setNum(i++);
                 monster.setHp(MAX_HP);
                 monster.AnimateIdle(DungeonManager.instance.GetSpeed());

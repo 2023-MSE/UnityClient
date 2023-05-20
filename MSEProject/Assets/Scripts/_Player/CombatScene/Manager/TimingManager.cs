@@ -87,76 +87,76 @@ public class TimingManager : MonoBehaviour
        boxNoteList.Remove(note);
       // _combatManager.getQueue().Enqueue(note);
     }
-    
+
     public void CheckTiming_dir(Direction dir)
     {
-        
+
         // 어느 monster의 note인지 알아야함
-        
-        
+
+
         if (dir == Direction.NONE)
             return;
 
         for (int i = 0; i < boxNoteList.Count; i++)
         {
-       
+
             float t_notePosX = boxNoteList[i].transform.localPosition.x;
             GameObject note = boxNoteList[i].gameObject;
-            
-                // 각 판정 범위의 최소값 x, 최대값 y 를 비교하게됨.
-                if (timingBoxs[0].x <= t_notePosX && t_notePosX <= timingBoxs[0].y)
-                { 
-                    if (note.gameObject.CompareTag("ANote")) // 공격 노트이면!
+
+            // 각 판정 범위의 최소값 x, 최대값 y 를 비교하게됨.
+            if (timingBoxs[0].x <= t_notePosX && t_notePosX <= timingBoxs[0].y)
+            {
+                if (note.gameObject.CompareTag("ANote")) // 공격 노트이면!
+                {
+
+                    if (dir == note.GetComponent<AttackNote>().getDirection()) // 입력값과 노트의 dir 값이 같으면!
                     {
-                      
-                        if (dir==note.GetComponent<AttackNote>().getDirection())// 입력값과 노트의 dir 값이 같으면!
-                        {
-                            Debug.Log("공격 노트 방어 성공입니다");
-                            _successAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
-                            
-                            // _combatManager.monsterAttackDefence(note.GetComponent<AttackNote>().GetMonsterIndex());
-                          
-                            boxNoteList.Remove(note);
-                            Destroy(note);
+                        Debug.Log("공격 노트 방어 성공입니다");
+                        _successAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
 
-                        }
-                        else if (dir != note.GetComponent<AttackNote>().getDirection())
-                        {
-                            Debug.Log("공격 노트 방어 실패입니다");
+                        // _combatManager.monsterAttackDefence(note.GetComponent<AttackNote>().GetMonsterIndex());
 
-                            _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
-                             
-                             //error ? 왜?
-                             Debug.Log("note index : " + note.GetComponent<AttackNote>().GetMonsterIndex());
-                             //note.GetComponent<AttackNote>().GetMonsterIndex()
-                             //_combatManager.monsterAttack(note.GetComponent<AttackNote>().GetMonsterIndex());
-                             //_combatManager.MonsterAttackPlayer();
-                        }
+                        boxNoteList.Remove(note);
+                        Destroy(note);
+
+                    }
+                    else if (dir != note.GetComponent<AttackNote>().getDirection())
+                    {
+                        Debug.Log("공격 노트 방어 실패입니다");
+
+                        _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
+
+                 
+                        Debug.Log("note index : " + note.GetComponent<AttackNote>().GetMonsterIndex());
+                        boxNoteList.Remove(note);
+                        Destroy(note);
 
                     }
                     else if (note.gameObject.CompareTag("GNote")) // 일반 노트이면!
                     {
                         note.GetComponent<GenalizeNote>().setDirection(dir);
-                        
-                        
+
+
                         _successGenalizeUnityEvent.Invoke(note.GetComponent<GenalizeNote>().getDirection());
                         boxNoteList.Remove(note);
                         Destroy(note);
-                    } 
+                    }
+
                     boxNoteList.Remove(note);
                     Destroy(note);
-                    
-                } 
-                
-                
+
+                }
+
+
+            }
+
+
+
+
+
         }
-            
-            
-           
-        
-     
     }
-    
+
     private void OnTriggerExit2D(Collider2D other)
     {
         

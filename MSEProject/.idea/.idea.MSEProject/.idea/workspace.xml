@@ -7,7 +7,6 @@
     <list default="true" id="d7e11fd4-7ada-4c77-8552-29b3b0b052d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Character/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Character/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/TimingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/TimingManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
@@ -137,7 +136,7 @@
       <workItem from="1683702413051" duration="648000" />
       <workItem from="1683703157047" duration="31280000" />
       <workItem from="1684235561409" duration="2347000" />
-      <workItem from="1684310295463" duration="4034000" />
+      <workItem from="1684310295463" duration="8270000" />
     </task>
     <servers />
   </component>

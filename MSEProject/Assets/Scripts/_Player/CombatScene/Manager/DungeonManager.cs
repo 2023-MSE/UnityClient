@@ -52,9 +52,11 @@ namespace _Player.CombatScene
         private Dictionary<uint, AsyncOperationHandle> assetDict;
         private float speed = 1f;
         private bool check = false;
+ 
 
         private void Start()
         {
+            
             assetDict = new Dictionary<uint, AsyncOperationHandle>();
             currentStage = 0;
             foreach (StageInfoStruct info in stageInfo.stageInfoTemplate)
@@ -149,6 +151,8 @@ namespace _Player.CombatScene
                 GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[currentStage]);
             }
         }
+
+ 
     
     }
 }

@@ -41,6 +41,8 @@ namespace _Player.CombatScene
         private int deadMonster = 0;
 
         public GameObject GameOver;
+
+        private FadeEffect _fadeEffect;
         
         public bool isPlayerHit
         {
@@ -72,6 +74,8 @@ namespace _Player.CombatScene
 
         private void Start()
         {
+            
+            _fadeEffect = FindObjectOfType<FadeEffect>();
             queue = new Queue<GameObject>();
             ObjectPool = new Queue<GameObject>();
             _coolDown = FindObjectOfType<CoolDown>();
@@ -79,6 +83,7 @@ namespace _Player.CombatScene
             _dungeonManager = FindObjectOfType<CombatScene.DungeonManager>();
             test = FindObjectOfType<TestDirButton>();
             GameOver.SetActive(false);
+  
         }
 
         private void Update()
@@ -153,9 +158,11 @@ namespace _Player.CombatScene
                 // target is dead
                 if (target.GetComponent<Character>() is Player)
                 {
-                    //Time.timeScale = 0;
+                    _fadeEffect.fadein();
+                    
                     GameOver.SetActive(true);
                     uinote.SetActive(false);
+                    
 
                 }
                 else if (target.GetComponent<Character>() is Monster)
@@ -165,7 +172,19 @@ namespace _Player.CombatScene
                     monsters.Remove(target.GetComponent<Monster>());
                     if (deadMonster == 3)
                     {
-                        test.OnClickButtonNextStage();
+                       
+                       
+                        uinote.SetActive(false);
+
+
+                        if (!_fadeEffect.isFading())
+                        {
+                            _fadeEffect.fadein();
+                            Debug.Log("fade "+_fadeEffect.isFading());
+                            //StartCoroutine(FadeIn(3f));
+                        }
+
+
                     }
 
                 }
@@ -185,6 +204,8 @@ namespace _Player.CombatScene
                 }
             }
         }
+
+       
 
       
 
@@ -405,6 +426,9 @@ namespace _Player.CombatScene
 
         public void setVariable()
         {
+            
+            
+            
             GameOver.SetActive(false);
             int i = 0;
             Debug.Log("SetVariable");
@@ -417,6 +441,7 @@ namespace _Player.CombatScene
                 monster.setNum(i++);
                 monster.setHp(MAX_HP);
                 monster.AnimateIdle(DungeonManager.instance.GetSpeed());
+               
             }
 
             player.GetComponent<Player>().AnimateIdle(DungeonManager.instance.GetSpeed());
@@ -467,6 +492,8 @@ namespace _Player.CombatScene
         {
             Time.timeScale -= 0.1f;
         }
+        
+     
     }
 }
 

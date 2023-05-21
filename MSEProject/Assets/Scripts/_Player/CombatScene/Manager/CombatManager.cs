@@ -402,13 +402,14 @@ namespace _Player.CombatScene
                 Debug.Log("Hit");
                 Debug.Log("attack :"+attackMonsterPower);
                damage(player.gameObject, attackMonsterPower * DungeonManager.instance.GetSpeed());
-               StartCoroutine(effectPlayer(3.0f));
+               StartCoroutine(effectPlayer(1f));
                
                _coolDown.DamageHp(attackMonsterPower * DungeonManager.instance.GetSpeed()* 0.001f);
             }
             else
             {
                 Debug.Log("Defend");
+                player.GetComponent<Player>().effectDefend(1f);
                 player.GetComponent<Player>().AnimateDefendeHitMotion();
             }
         }
@@ -418,7 +419,7 @@ namespace _Player.CombatScene
             Debug.Log("player effect");
             GameObject b=Instantiate(effect, player.gameObject.transform.position, Quaternion.identity);
 
-            yield return wait;
+            yield return new WaitForSeconds(wait);
             
             Destroy(b);
 

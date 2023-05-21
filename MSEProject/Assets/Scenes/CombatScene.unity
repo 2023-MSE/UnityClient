@@ -8937,7 +8937,7 @@ MonoBehaviour:
   gnote: {fileID: 5375850686441753685, guid: 64c479266873a5b4db7082809c64abfe, type: 3}
   uinote: {fileID: 1591618202}
   GameOver: {fileID: 573771414}
-  effect: {fileID: 321625853944281719, guid: 8a73b9f9c03303445bbdd09866ef9258, type: 3}
+  effect: {fileID: 9087951056434953097, guid: d183b07c78476ce4786d340c79c21475, type: 3}
 --- !u!1001 &1165495301
 PrefabInstance:
   m_ObjectHideFlags: 0

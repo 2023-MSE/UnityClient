@@ -8,6 +8,7 @@ namespace _Player.CombatScene
     {
         private List<bool> skillAvailability;
         private Animator animator;
+        [SerializeReference] private GameObject defence;
        
         
         public override void AnimateHitMotion()
@@ -21,12 +22,32 @@ namespace _Player.CombatScene
         public void AnimateDefendeHitMotion()
         {
             animator.SetTrigger("isDefendHit");
+            
+            
         }
         public void AnimateDefenceMotion()
         {
             animator.SetTrigger("isDefence");
+
             
+
         }
+
+        public void effectDefend(float wait)
+        {
+            StartCoroutine(defenceEffect(wait));
+        }
+
+        IEnumerator defenceEffect(float wait)
+        {
+            GameObject d = Instantiate(defence, gameObject.transform.position, Quaternion.identity);
+
+            yield return new WaitForSeconds(wait);
+            
+            Destroy(d);
+        }
+        
+  
         public override void dead()
         {
             /*TODO*/

@@ -180,6 +180,9 @@
       <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Demo/Food &amp; Drinks_Profiles/Post-process Volume Profile.asset" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/ExternalAssets/_Player/Buff&amp;Relax/Relax Component/RPG Food &amp; Drinks Pack/Demo/Food &amp; Drinks_Profiles/Post-process Volume Profile.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSEProject/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CombatScene.unity" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/Assets/Originals.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Originals/Door.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Door.fbx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Originals/Door.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Door.fbx.meta" afterDir="false" />
@@ -196,6 +199,7 @@
       <change beforePath="$PROJECT_DIR$/Assets/Originals/Wall_Entrance.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Wall_Entrance.fbx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Originals/Wall_Entrance.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExternalAssets/Dungeon Asset/Originals/Wall_Entrance.fbx.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Buff &amp; Relax/Relax.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Addressable/Buff &amp; Relax/Relax.prefab" afterDir="false" />
+>>>>>>> sangyeol
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/CombatManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/StageSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Player/CombatScene/Manager/StageSpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
@@ -326,9 +330,13 @@
       <workItem from="1683702413051" duration="648000" />
       <workItem from="1683703157047" duration="31280000" />
       <workItem from="1684235561409" duration="2347000" />
+<<<<<<< HEAD
+      <workItem from="1684310295463" duration="8270000" />
+=======
       <workItem from="1684310295463" duration="607000" />
       <workItem from="1684401956997" duration="2350000" />
       <workItem from="1684404377119" duration="4222000" />
+>>>>>>> sangyeol
     </task>
     <servers />
   </component>

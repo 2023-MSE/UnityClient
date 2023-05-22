@@ -22,8 +22,10 @@ namespace _Player.CombatScene
         }
 
         [SerializeField] private GameObject gnote;
+        
+        [SerializeField] private GameObject uinote;
 
-     
+
 
         public GameObject getGNote
         {
@@ -39,6 +41,8 @@ namespace _Player.CombatScene
         private int deadMonster = 0;
 
         public GameObject GameOver;
+
+        private FadeEffect _fadeEffect;
         
         public bool isPlayerHit
         {
@@ -70,12 +74,16 @@ namespace _Player.CombatScene
 
         private void Start()
         {
+            
+            _fadeEffect = FindObjectOfType<FadeEffect>();
             queue = new Queue<GameObject>();
             ObjectPool = new Queue<GameObject>();
             _coolDown = FindObjectOfType<CoolDown>();
             player = FindObjectOfType<Player>();
             _dungeonManager = FindObjectOfType<CombatScene.DungeonManager>();
             test = FindObjectOfType<TestDirButton>();
+            GameOver.SetActive(false);
+  
         }
 
         private void Update()
@@ -150,8 +158,11 @@ namespace _Player.CombatScene
                 // target is dead
                 if (target.GetComponent<Character>() is Player)
                 {
-                    //Time.timeScale = 0;
+                    _fadeEffect.fadein();
+                    
                     GameOver.SetActive(true);
+                    uinote.SetActive(false);
+                    
 
                 }
                 else if (target.GetComponent<Character>() is Monster)
@@ -161,7 +172,19 @@ namespace _Player.CombatScene
                     monsters.Remove(target.GetComponent<Monster>());
                     if (deadMonster == 3)
                     {
-                        test.OnClickButtonNextStage();
+                       
+                       
+                        uinote.SetActive(false);
+
+
+                        if (!_fadeEffect.isFading())
+                        {
+                            _fadeEffect.fadein();
+                            Debug.Log("fade "+_fadeEffect.isFading());
+                            //StartCoroutine(FadeIn(3f));
+                        }
+
+
                     }
 
                 }
@@ -181,6 +204,8 @@ namespace _Player.CombatScene
                 }
             }
         }
+
+       
 
       
 
@@ -312,6 +337,7 @@ namespace _Player.CombatScene
 
         public void monsterAttack(int monsterIndex)
         {
+            Debug.Log("--check--attack");
             Debug.Log("monster attack "+ monsterIndex);
             
             isPlayerHit = true;
@@ -341,7 +367,7 @@ namespace _Player.CombatScene
 
         public void monsterAttackDefence(int monsterIndex)
         {
-            Debug.Log("monsterAttackDefend");
+            Debug.Log("--check--defence");
             isPlayerHit = false;
             
             if (monsters[monsterIndex] is BossMonster)
@@ -353,10 +379,12 @@ namespace _Player.CombatScene
                     case 0:
                         attackMonsterPower = boss.GetBossPower();
                         boss.AnimateBossAttack();
+                        boss.attackeffect();
                         break;
                     case 1:
                         attackMonsterPower = boss.getPower();
                         boss.AnimateAttack();
+                        boss.attackeffect();
                         break;
                 }
             }
@@ -370,18 +398,20 @@ namespace _Player.CombatScene
 
         public void MonsterAttackPlayer()
         {
+            Debug.Log("--check--" + isPlayerHit);
             if (isPlayerHit)
             {
                 Debug.Log("Hit");
                 Debug.Log("attack :"+attackMonsterPower);
                damage(player.gameObject, attackMonsterPower * DungeonManager.instance.GetSpeed());
-               StartCoroutine(effectPlayer(3.0f));
+               StartCoroutine(effectPlayer(1f));
                
                _coolDown.DamageHp(attackMonsterPower * DungeonManager.instance.GetSpeed()* 0.001f);
             }
             else
             {
                 Debug.Log("Defend");
+                player.GetComponent<Player>().effectDefend(1f);
                 player.GetComponent<Player>().AnimateDefendeHitMotion();
             }
         }
@@ -389,9 +419,9 @@ namespace _Player.CombatScene
         IEnumerator effectPlayer(float wait)
         {
             Debug.Log("player effect");
-            GameObject b=Instantiate(effect, player.gameObject.transform.position, Quaternion.identity);
+            GameObject b=Instantiate(effect, player.gameObject.transform.position-new Vector3(0,0,1.5f), Quaternion.identity);
 
-            yield return wait;
+            yield return new WaitForSeconds(wait);
             
             Destroy(b);
 
@@ -399,6 +429,9 @@ namespace _Player.CombatScene
 
         public void setVariable()
         {
+            
+            
+            
             GameOver.SetActive(false);
             int i = 0;
             Debug.Log("SetVariable");
@@ -407,7 +440,7 @@ namespace _Player.CombatScene
             monsters = new List<Monster>(GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None));
             Debug.Log("aaaaa"+monsters.Count);
             foreach (Monster monster in monsters)
-            {
+            {  
                 monster.setNum(i++);
                 monster.setHp(MAX_HP);
                 monster.AnimateIdle();
@@ -461,6 +494,8 @@ namespace _Player.CombatScene
         {
             Time.timeScale -= 0.1f;
         }
+        
+     
     }
 }
 

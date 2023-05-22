@@ -27,7 +27,7 @@ namespace _Player.CombatScene
         private int num;
 
         private AttackNote _attackNote;
-        
+        private GenalizeNote _gNote;
         [SerializeField]
         private bool[] pattern = new bool[4];
 
@@ -41,6 +41,8 @@ namespace _Player.CombatScene
         private CombatManager _combatManager;
         private ScoreManager _scoreManager;
         protected Animator animator;
+
+        private bool deadcheck = false;
         public void Start()
         {
             _combatManager = FindObjectOfType<CombatManager>();
@@ -81,11 +83,12 @@ namespace _Player.CombatScene
 
         public void Update()
         {
-            patterns.Shuffle();
+           
 
-            if (!isDead())
+            if (!isDead()&&(deadcheck==false))
           
             {
+                patterns.Shuffle();
                 _combatManager.setQueue(patterns);
                 attactMotion();
             }
@@ -117,7 +120,8 @@ namespace _Player.CombatScene
             //_scoreManager.scoreUpdate(2,check);
             Debug.Log("Monster dead");
             AnimateDie();
-           
+            deadcheck = true;
+
         }
        
         public void attactMotion()
@@ -129,6 +133,10 @@ namespace _Player.CombatScene
                     if (obj.TryGetComponent(out _attackNote))
                     {
                         _attackNote.SetMonsterIndex(num);
+                    }
+                    else if(obj.TryGetComponent(out _gNote))
+                    {
+                        _gNote.SetMonsterIndex(num);
                     }
                 }
                _combatManager.setQueue(patterns);

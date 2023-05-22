@@ -410,10 +410,10 @@ namespace _Player.CombatScene
             {
                 monster.setNum(i++);
                 monster.setHp(MAX_HP);
-                monster.AnimateIdle(DungeonManager.instance.GetSpeed());
+                monster.AnimateIdle();
             }
 
-            player.GetComponent<Player>().AnimateIdle(DungeonManager.instance.GetSpeed());
+            player.GetComponent<Player>().AnimateIdle();
             
             FindObjectOfType<NoteManager>().CombatManagerReady(this);
         }

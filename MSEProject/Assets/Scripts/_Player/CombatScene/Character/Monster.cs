@@ -142,10 +142,9 @@ namespace _Player.CombatScene
             this.power = power;
         }
 
-        public void AnimateIdle(float speed)
+        public void AnimateIdle()
         {
             animator = this.GetComponent<Animator>();
-            animator.SetFloat("speed", speed);
         }
         public int getPower()
         {

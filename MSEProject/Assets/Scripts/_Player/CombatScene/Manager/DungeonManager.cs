@@ -72,7 +72,7 @@ namespace _Player.CombatScene
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)
         {
             this.dungeon = dungeon;
-            speed = 2f;
+            speed = 1.5f;
         }
 
         public ulong GetCurrentStage()

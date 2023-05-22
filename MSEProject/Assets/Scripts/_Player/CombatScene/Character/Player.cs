@@ -45,10 +45,9 @@ namespace _Player.CombatScene
    
         }
         
-        public void AnimateIdle(float speed)
+        public void AnimateIdle()
         {
             animator = this.GetComponent<Animator>();
-            animator.SetFloat("speed", speed);
             Debug.Log("Animator is " + animator);
             Debug.Assert(animator != null, "Animator is NULL");
 

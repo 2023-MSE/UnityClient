@@ -131,6 +131,8 @@ public class TimingManager : MonoBehaviour
                              //note.GetComponent<AttackNote>().GetMonsterIndex()
                              //_combatManager.monsterAttack(note.GetComponent<AttackNote>().GetMonsterIndex());
                              //_combatManager.MonsterAttackPlayer();
+                             boxNoteList.Remove(note);
+                             Destroy(note);
                         }
 
                     }

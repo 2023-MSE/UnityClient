@@ -46,6 +46,8 @@ namespace _Player.CombatScene
             
             Destroy(d);
         }
+        
+  
         public override void dead()
         {
             /*TODO*/

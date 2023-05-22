@@ -567,6 +567,7 @@ MonoBehaviour:
   power: 100
   type: 0
   bossAttackPower: 400
+  effect: {fileID: 5395200985256534057, guid: 1108822b81ff93e4abfa4114fcc0af6b, type: 3}
 --- !u!1 &133440
 GameObject:
   m_ObjectHideFlags: 0

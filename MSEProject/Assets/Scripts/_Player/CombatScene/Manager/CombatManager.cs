@@ -379,10 +379,12 @@ namespace _Player.CombatScene
                     case 0:
                         attackMonsterPower = boss.GetBossPower();
                         boss.AnimateBossAttack();
+                        boss.attackeffect();
                         break;
                     case 1:
                         attackMonsterPower = boss.getPower();
                         boss.AnimateAttack();
+                        boss.attackeffect();
                         break;
                 }
             }
@@ -417,7 +419,7 @@ namespace _Player.CombatScene
         IEnumerator effectPlayer(float wait)
         {
             Debug.Log("player effect");
-            GameObject b=Instantiate(effect, player.gameObject.transform.position, Quaternion.identity);
+            GameObject b=Instantiate(effect, player.gameObject.transform.position-new Vector3(0,0,1.5f), Quaternion.identity);
 
             yield return new WaitForSeconds(wait);
             

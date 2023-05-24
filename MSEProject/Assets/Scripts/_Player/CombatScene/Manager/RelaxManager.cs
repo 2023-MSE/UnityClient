@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml.Schema;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -17,18 +18,33 @@ namespace _Player.CombatScene
         private CombatManager _combatManager;
 
         private GameObject player;
-        
+
+        [SerializeField] private GameObject card;
+        [SerializeField] private GameObject note;
+
+        [SerializeField] private GameObject heal;
+        [SerializeField] private GameObject dead;
         // check cool down
         private CoolDown _coolDown;
+        
+        public float minDamage = 100; // 최소 데미지
+        public float maxDamage = 200; // 최대 데미지
+        public float minHeal = 50; // 최소 회복량
+        public float maxHeal = 100; // 최대 회복량
         private void Start()
         {
+            card.SetActive(false);
+            
+            heal.SetActive(false);
+            dead.SetActive(false);
+            
             player = GameObject.FindWithTag("Player");
             Debug.Log("start relax Scene");
             _combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
-            _coolDown = GameObject.Find("CoolDown").GetComponent<CoolDown>();
+          
             
             
-            //_coolDown.setHp(player.GetComponent<Player>().getHp()*0.001f);
+           
             
         }
 
@@ -36,11 +52,12 @@ namespace _Player.CombatScene
         {
             if (Input.GetKeyDown(KeyCode.Space)&&check)
             {
-                GameObject player = GameObject.FindWithTag("Player");
-                player.GetComponent<Player>().AnimateIsDrink();
+                card.SetActive(true);
+             
                 //test
-                DrinkToTem(_coolDown,300f);
-                
+                ApplyRandomEffect();
+
+
             }
         }
 
@@ -48,13 +65,55 @@ namespace _Player.CombatScene
         {
             cooldown.RelaxHp(hp*0.001f);
             player.GetComponent<Player>().setHp(+300f);
-            Debug.Log(player.GetComponent<Player>().getHp());
+         
         }
 
         public void Scenecheck()
         {
             check = !check;
-            _coolDown.setHp(0.3f);
+            player = GameObject.FindWithTag("Player");
+            _coolDown = GameObject.Find("CoolDown").GetComponent<CoolDown>();
+            if (player != null)
+            {
+                Debug.Log("relax not null"+ null);
+            }
+            if (_coolDown != null)
+            {
+                Debug.Log("relax not cooldown"+ null);
+            }
+            //note.SetActive(false);
+
+            _coolDown.setHp(0.8f);
+            
         }
+        
+        public void ApplyRandomEffect()
+        {
+            bool shouldDamage = Random.Range(0, 2) == 0; // 0 또는 1 중에서 랜덤으로 선택
+            
+            Debug.Log("relax : " +  shouldDamage);
+            if (shouldDamage)
+            {
+                //
+                dead.SetActive(true);
+                float damageAmount = Random.Range(minDamage, maxDamage + 1);
+                Debug.Log("relax damage : " +  damageAmount);
+                player.GetComponent<Player>().setHp(-damageAmount);
+                _coolDown.setHp(player.GetComponent<Player>().getHp()*0.001f);
+                player.GetComponent<Player>().AnimateHitMotion();
+               
+            }
+            else
+            {
+                //
+                heal.SetActive(true);
+                player.GetComponent<Player>().AnimateIsDrink();
+                float healAmount = Random.Range(minHeal, maxHeal + 1);
+                Debug.Log("relax heal: " +  healAmount);
+                player.GetComponent<Player>().setHp(healAmount);
+                _coolDown.setHp(player.GetComponent<Player>().getHp()*0.001f);
+            }
+        }
+      
     }
 }

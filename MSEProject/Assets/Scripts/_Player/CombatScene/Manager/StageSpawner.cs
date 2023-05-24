@@ -112,7 +112,7 @@ namespace _Player.CombatScene
                     break;
                 case DungeonInfoFolder.Stage.StageType.Relax:
                     spawnRelax();
-                    //DungeonManager.instance.SetRelaxManager();
+                    DungeonManager.instance.SetRelaxManager();
                     break;
                 default:
                     Debug.Log("ERROR Unknown Node");

@@ -42,7 +42,7 @@ namespace _Player.CombatScene
         }
 
 
-        // 테스트를 위해 dungeon을 public으로 수정함. 이후 private으로 변환 예정
+        // ?????? ???? dungeon?? public???? ??????. ???? private???? ??? ????
         public DungeonInfoFolder.Dungeon dungeon;
         private CombatManager combatManager;
         private RelaxManager relaxmanager;
@@ -83,7 +83,7 @@ namespace _Player.CombatScene
         }
         public DungeonInfoFolder.Dungeon GetDungeon()
         {
-            // 지도 보여줄때 필요함
+            // ???? ??????? ?????
             return dungeon;
         }
         public DungeonInfoFolder.Stage.StageType GetCurrentStageType()

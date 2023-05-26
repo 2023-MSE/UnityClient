@@ -27,6 +27,8 @@ namespace _Player.CombatScene
         private GameObject player;
 
         public GameObject rnote;
+        
+        public GameObject nextnote;
 
         [SerializeField] private GameObject card;
         [SerializeField] private GameObject note;
@@ -71,18 +73,7 @@ namespace _Player.CombatScene
         
         
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space)&&check)
-            {
-                card.SetActive(true);
-             
-                //test
-                ApplyRandomEffect();
-
-
-            }
-        }
+       
 
         void FixedUpdate()
         {
@@ -96,7 +87,19 @@ namespace _Player.CombatScene
 
             if (currentTime >= 60d / bpm) // 60s / bpm = 비트 한개당 등장 속도 : 1초에 1개씩 노트가 생성.. 120s / bpm : 0.5초에 1개씩 노트가 생성
             {
-                GameObject note = rnote;
+                int aa = (int)Random.Range(0, 2);
+                GameObject note =null;
+                if (aa == 0)
+                {
+                    Debug.Log("relax");
+                    note = rnote;
+                }
+                else if (aa == 1)
+                {
+                    Debug.Log("next");
+                    note = nextnote;
+                }
+               
                 //t_note.transform.position = tfNoteAppear.position;
 
                 if (note != null)
@@ -154,6 +157,7 @@ namespace _Player.CombatScene
         
         public void ApplyRandomEffect()
         {
+            card.SetActive(true);
             bool shouldDamage = Random.Range(0, 2) == 0; // 0 또는 1 중에서 랜덤으로 선택
             
             Debug.Log("relax : " +  shouldDamage);

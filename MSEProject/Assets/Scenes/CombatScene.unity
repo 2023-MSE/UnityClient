@@ -14333,6 +14333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tfNoteAppear: {fileID: 1316438523}
   rnote: {fileID: 5375850686441753685, guid: 6a4998a6a7aec1c45959bece60f69888, type: 3}
+  nextnote: {fileID: 5375850686441753685, guid: 7aea4c9d1d95f5449bc1c10f822d38d1,
+    type: 3}
   card: {fileID: 33258939}
   note: {fileID: 1591618202}
   heal: {fileID: 33258938}

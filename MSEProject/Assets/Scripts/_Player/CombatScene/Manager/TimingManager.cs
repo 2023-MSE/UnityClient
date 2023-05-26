@@ -29,7 +29,13 @@ public class TimingManager : MonoBehaviour
 
     private AttackNote _attackNote;
 
+    private TestDirButton test;
+    
     private GenalizeNote _gnote;
+
+    private FadeEffect _fadeEffect;
+
+    private RelaxManager _relaxManager;
     
     [SerializeField] Transform Center = null;
 
@@ -62,8 +68,10 @@ public class TimingManager : MonoBehaviour
 
     void Start()
     {
+        _fadeEffect = FindObjectOfType<FadeEffect>();
+        test = FindObjectOfType<TestDirButton>();
         _coolDown = GameObject.Find("CoolDown").GetComponent<CoolDown>();
-        
+        _relaxManager = FindObjectOfType<RelaxManager>();
         timingBoxs = new Vector2[timingRect.Length];
         _combatManager = FindObjectOfType<CombatManager>();
 
@@ -147,6 +155,21 @@ public class TimingManager : MonoBehaviour
                         boxNoteList.Remove(note);
                         Destroy(note.gameObject);
                 }
+                else if (note.gameObject.CompareTag("RelaxNote")) // 일반 노트이면!
+                {
+                   
+                    _relaxManager.ApplyRandomEffect();
+                    boxNoteList.Remove(note);
+                    Destroy(note.gameObject);
+                }
+                else if (note.gameObject.CompareTag("NextNote")) // 일반 노트이면!
+                {
+                   
+                    _fadeEffect.fadein();
+                    boxNoteList.Remove(note);
+                    Destroy(note.gameObject);
+                }
+
 
             }
             else // not in the range
@@ -206,6 +229,12 @@ public class TimingManager : MonoBehaviour
                     _failGenalizeUnityEvent.Invoke(_gnote.GetComponent<GenalizeNote>().GetMonsterIndex());
                 }
             }
+            boxNoteList.Remove(other.gameObject);
+            Destroy(other.gameObject);
+        }
+        
+        else if (other.CompareTag("RelaxNote"))
+        {
             boxNoteList.Remove(other.gameObject);
             Destroy(other.gameObject);
         }

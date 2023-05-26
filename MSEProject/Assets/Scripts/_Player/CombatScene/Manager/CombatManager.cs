@@ -312,6 +312,12 @@ namespace _Player.CombatScene
             
         }
 
+        public void MissGeneralNote()
+        {
+            currentSkill = 0;
+            player.GetComponent<Player>().AnimateMissMotion();
+        }
+        
         public void updateSkill(Direction direction)
         {
             
@@ -322,6 +328,7 @@ namespace _Player.CombatScene
             {
                 // ?? ???? ??? ???? ?? ??
                 player.GetComponent<Player>().AnimateMissMotion();
+                currentSkill = 0;
             }
             else
             {

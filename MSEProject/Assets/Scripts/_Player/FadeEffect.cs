@@ -114,7 +114,6 @@ public class FadeEffect : MonoBehaviour
     {
         yield return wait;
         test.OnClickButtonNextStage();
-
     }
 
 }

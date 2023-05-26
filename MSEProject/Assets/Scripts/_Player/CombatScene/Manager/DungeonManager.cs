@@ -158,5 +158,10 @@ namespace _Player.CombatScene
             playerHP = hp;
             Debug.Log("Set Player Hp to :" + hp);
         }
+
+        public List<ulong> GetNextStages()
+        {
+            return dungeon.stages[currentStage].nextStageID;
+        }
     }
 }

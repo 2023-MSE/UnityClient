@@ -96,6 +96,11 @@ namespace _Player.CombatScene
             currentStage = nextStage;
         }
 
+        public void GotoMain()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("TestConvertTo Combat Scene");
+        }
+
         public AsyncOperationHandle GetHandle(uint index)
         {
             return assetDict[index];

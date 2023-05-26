@@ -26,6 +26,8 @@ namespace _Player.CombatScene
         [SerializeField] private GameObject dead;
         // check cool down
         private CoolDown _coolDown;
+
+        private CameraShake _shake;
         
         public float minDamage = 100; // 최소 데미지
         public float maxDamage = 200; // 최대 데미지
@@ -41,11 +43,11 @@ namespace _Player.CombatScene
             player = GameObject.FindWithTag("Player");
             Debug.Log("start relax Scene");
             _combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
-          
-            
-            
-           
-            
+            _shake = FindObjectOfType<CameraShake>();
+
+
+
+
         }
 
         private void Update()
@@ -83,7 +85,7 @@ namespace _Player.CombatScene
             }
             //note.SetActive(false);
 
-            _coolDown.setHp(0.8f);
+          
             
         }
         
@@ -96,17 +98,21 @@ namespace _Player.CombatScene
             {
                 //
                 dead.SetActive(true);
+                heal.SetActive(false);
+                player.GetComponent<Player>().AnimateHitMotion();
                 float damageAmount = Random.Range(minDamage, maxDamage + 1);
                 Debug.Log("relax damage : " +  damageAmount);
                 player.GetComponent<Player>().setHp(-damageAmount);
                 _coolDown.setHp(player.GetComponent<Player>().getHp()*0.001f);
-                player.GetComponent<Player>().AnimateHitMotion();
+                _shake.ShakeCamera();
+
                
             }
             else
             {
                 //
                 heal.SetActive(true);
+                dead.SetActive(false);
                 player.GetComponent<Player>().AnimateIsDrink();
                 float healAmount = Random.Range(minHeal, maxHeal + 1);
                 Debug.Log("relax heal: " +  healAmount);

@@ -158,10 +158,14 @@ namespace _Player.CombatScene
                 // target is dead
                 if (target.GetComponent<Character>() is Player)
                 {
-                    _fadeEffect.fadein();
                     
                     GameOver.SetActive(true);
                     uinote.SetActive(false);
+                    
+                    // ????? ?? ! ??? ????? ???.
+                    _fadeEffect.gameover();
+                    
+                    
                     
 
                 }

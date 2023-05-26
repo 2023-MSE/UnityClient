@@ -12,6 +12,8 @@ public class FadeEffect : MonoBehaviour
     public bool fadeOutOnExit = true;
 
 
+    private DungeonManager _dungeonManager;
+
     private bool check=false;
     private bool nextcheck = false;
     
@@ -23,9 +25,31 @@ public class FadeEffect : MonoBehaviour
     {
         test = FindObjectOfType<TestDirButton>();
         canvasGroup = gameObject.GetComponentInChildren<CanvasGroup>();
+        _dungeonManager = FindObjectOfType<DungeonManager>();
+    }
+
+    public void gameover()
+    {
+        StartCoroutine(Over());
+        
+        
+    }
+    IEnumerator Over()
+    {
+        while (canvasGroup.alpha < 1)
+        {
+            Debug.Log("fade in : " +canvasGroup.alpha);
+            canvasGroup.alpha += Time.deltaTime * fadeSpeed;
+
+            yield return null;
+        }
+
+        Time.timeScale = 0;
+
 
     }
-    
+
+   
 
     public void fadein()
     {

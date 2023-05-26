@@ -109,10 +109,12 @@ namespace _Player.CombatScene
                     }
                 case DungeonInfoFolder.Stage.StageType.Totem:
                     spawnBuff(stage.elements[0]);
+                    //물어보기
+                   //DungeonManager.instance.SetDungeon();
                     break;
                 case DungeonInfoFolder.Stage.StageType.Relax:
                     spawnRelax();
-                    //DungeonManager.instance.SetRelaxManager();
+                    DungeonManager.instance.SetRelaxManager();
                     break;
                 default:
                     Debug.Log("ERROR Unknown Node");

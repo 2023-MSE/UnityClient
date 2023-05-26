@@ -42,7 +42,7 @@ namespace _Player.CombatScene
         private ScoreManager _scoreManager;
         protected Animator animator;
 
-        private bool deadcheck = false;
+        protected bool deadcheck = false;
         public void Start()
         {
             _combatManager = FindObjectOfType<CombatManager>();
@@ -172,7 +172,7 @@ namespace _Player.CombatScene
 
         public bool isDead()
         {
-            return hp <= 0;
+            return deadcheck;
         }
 
         public void setNum(int _num)

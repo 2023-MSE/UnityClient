@@ -5771,6 +5771,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678f6cd463eb45c4b6287005401e5bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tfNoteAppear: {fileID: 1316438523}
+  rnote: {fileID: 5375850686441753685, guid: 6a4998a6a7aec1c45959bece60f69888, type: 3}
   card: {fileID: 33258939}
   note: {fileID: 1591618202}
   heal: {fileID: 33258938}

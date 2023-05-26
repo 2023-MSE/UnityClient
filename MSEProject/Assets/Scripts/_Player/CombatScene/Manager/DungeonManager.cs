@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using _Creator.DungeonInfoFolder;
+using DungeonInfoFolder;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -50,7 +51,7 @@ namespace _Player.CombatScene
         [SerializeField]
         private StageInfoScriptableObject stageInfo;
         private Dictionary<uint, AsyncOperationHandle> assetDict;
-        private float speed = 1f;
+        private float playerHP;
         private bool check = false;
  
 
@@ -59,6 +60,7 @@ namespace _Player.CombatScene
             
             assetDict = new Dictionary<uint, AsyncOperationHandle>();
             currentStage = 0;
+            playerHP = CombatManager.MAX_HP;
             foreach (StageInfoStruct info in stageInfo.stageInfoTemplate)
             {
                 Addressables.LoadAssetAsync<GameObject>(info.prefabPath).Completed +=
@@ -74,7 +76,6 @@ namespace _Player.CombatScene
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)
         {
             this.dungeon = dungeon;
-            speed = 1.5f;
         }
 
         public ulong GetCurrentStage()
@@ -104,16 +105,6 @@ namespace _Player.CombatScene
         public AsyncOperationHandle GetHandle(uint index)
         {
             return assetDict[index];
-        }
-
-        public float GetSpeed()
-        {
-            return speed;
-        }
-
-        public void SetSpeed(float multi)
-        {
-            speed = (speed * multi > 2) ? 2f : speed * multi;
         }
 
         public void SetCombatManager()
@@ -157,7 +148,15 @@ namespace _Player.CombatScene
             }
         }
 
- 
-    
+        public float GetPlayerHP()
+        {
+            return playerHP;
+        }
+
+        public void SetPlayerHP(float hp)
+        {
+            playerHP = hp;
+            Debug.Log("Set Player Hp to :" + hp);
+        }
     }
 }

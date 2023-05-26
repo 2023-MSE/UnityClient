@@ -12,7 +12,7 @@ namespace _Player.CombatScene
 
     public class CombatManager : MonoBehaviour
     {
-        public const int MAX_HP = 9999999;
+        public static int MAX_HP = 9999999;
         [SerializeField] private SkillDataScriptableObject skillData;
         [SerializeField]
         private GameObject[] patterns = new GameObject[4];
@@ -174,9 +174,9 @@ namespace _Player.CombatScene
                     // monster is dead
                     deadMonster++;
                     monsters.Remove(target.GetComponent<Monster>());
-                    if (deadMonster == 3)
+                    if (deadMonster == 3) // 3?? ?? ? ? ??? ?? ??.
                     {
-                       
+                       DungeonManager.instance.SetPlayerHP(player.getHp());
                        
                         uinote.SetActive(false);
 
@@ -256,9 +256,7 @@ namespace _Player.CombatScene
 
         public void skillActivation()
         {
-            Debug.Log("Skill Active" + currentSkill+"dungeon speed"+ _dungeonManager.GetSpeed());
-
-            float speed = 3 / DungeonManager.instance.GetSpeed();
+            float speed = 3 / Time.timeScale;
             
             Skill skill = skillData.skills[currentSkill];
             if (skill.isSplash)
@@ -285,7 +283,7 @@ namespace _Player.CombatScene
                 float typeMulti =
                     (((skill.type + singleTraget.getType()) % 3) - 1) / 2f;
                 float skillDamage = skill.damage * (1f + typeMulti);
-                damage(singleTraget.gameObject, skillDamage * DungeonManager.instance.GetSpeed());
+                damage(singleTraget.gameObject, skillDamage * Time.timeScale);
             }
 
 
@@ -407,10 +405,10 @@ namespace _Player.CombatScene
             {
                 Debug.Log("Hit");
                 Debug.Log("attack :"+attackMonsterPower);
-               damage(player.gameObject, attackMonsterPower * DungeonManager.instance.GetSpeed());
+               damage(player.gameObject, attackMonsterPower * Time.timeScale);
                StartCoroutine(effectPlayer(1f));
                
-               _coolDown.DamageHp(attackMonsterPower * DungeonManager.instance.GetSpeed()* 0.001f);
+               _coolDown.DamageHp(attackMonsterPower * Time.timeScale * 0.001f);
             }
             else
             {
@@ -433,14 +431,11 @@ namespace _Player.CombatScene
 
         public void setVariable()
         {
-            
-            
-            
             GameOver.SetActive(false);
             int i = 0;
             Debug.Log("SetVariable");
             player = GameObject.FindObjectOfType<Player>();
-            player.GetComponent<Player>().setHp(MAX_HP);
+            player.GetComponent<Player>().setHp(DungeonManager.instance.GetPlayerHP());
             monsters = new List<Monster>(GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None));
             Debug.Log("aaaaa"+monsters.Count);
             foreach (Monster monster in monsters)
@@ -457,14 +452,14 @@ namespace _Player.CombatScene
 
         public void InteractBuff()
         {
-            DungeonManager.instance.SetSpeed(1.5f);
+            Time.timeScale *= 1.5f;
         }
 
         public void InteractRelax(int heal)
         {
             
             Debug.Log("interact relax");
-           }
+        }
 
         public GameObject GetPlayer()
         {

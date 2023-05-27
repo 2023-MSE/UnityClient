@@ -161,6 +161,11 @@ namespace _Player.CombatScene
 
         public List<ulong> GetNextStages()
         {
+            foreach (var ex in dungeon.stages[currentStage].nextStageID)
+            {
+                Debug.Log("list"+ex);
+            }
+            Debug.Log(dungeon.stages[currentStage].nextStageID.Count);
             return dungeon.stages[currentStage].nextStageID;
         }
     }

@@ -163,9 +163,14 @@ namespace _Player.CombatScene
         {
             foreach (var ex in dungeon.stages[currentStage].nextStageID)
             {
-                Debug.Log("list"+ex);
+                Debug.Log("list n"+ex);
+                
+                
             }
-            Debug.Log(dungeon.stages[currentStage].nextStageID.Count);
+            foreach (var ex in dungeon.stages[currentStage].prevStageID)
+            {
+                Debug.Log("list p"+ex);
+            }
             return dungeon.stages[currentStage].nextStageID;
         }
     }

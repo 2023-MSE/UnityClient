@@ -32,6 +32,7 @@ public class ConvertCombatTestScript : MonoBehaviour
 
         DungeonInfoFolder.Stage stage3 = new DungeonInfoFolder.Stage(3);
         stage3.nextStageID.Add(4);
+        stage3.nextStageID.Add(3);
         stage3.elements.Add(1);
         stage3.myStageType = DungeonInfoFolder.Stage.StageType.Relax;
 

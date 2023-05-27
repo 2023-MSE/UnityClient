@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         {
             if (inputHor == 0 && inputVer == 0)
             {
-                Debug.Log("change getAxisInUse to False");
+                
                 getAxisInUse = false;
             }
         }

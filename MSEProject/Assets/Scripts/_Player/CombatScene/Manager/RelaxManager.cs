@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml.Schema;
 using Unity.Mathematics;
 using UnityEngine;
@@ -42,19 +43,26 @@ namespace _Player.CombatScene
 
         private CameraShake _shake;
         private TimingManager theTimingManager;
+
+        private RelaxMapList _relaxMapList;
         
         public float minDamage = 100; // 최소 데미지
         public float maxDamage = 200; // 최대 데미지
         public float minHeal = 50; // 최소 회복량
         public float maxHeal = 100; // 최대 회복량
 
+
+        private GameObject[] list;
+        
         private void Start()
         {
+ 
             card.SetActive(false);
 
             heal.SetActive(false);
             dead.SetActive(false);
             theTimingManager = FindObjectOfType<TimingManager>();
+            _relaxMapList = FindObjectOfType<RelaxMapList>();
             player = GameObject.FindWithTag("Player");
             Debug.Log("start relax Scene");
             _combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
@@ -70,11 +78,9 @@ namespace _Player.CombatScene
             _combatManager = manager;
             isRelaxManagerReady = true;
         }
-        
-        
 
-       
-
+        private int justone = 0;
+        
         void FixedUpdate()
         {
 
@@ -102,7 +108,7 @@ namespace _Player.CombatScene
                
                 //t_note.transform.position = tfNoteAppear.position;
 
-                if (note != null)
+                if (note != null&&!(_relaxMapList.check_note()))
                 {
                     note = Instantiate(note, tfNoteAppear.position, quaternion.identity);
                     //새로 생성된 t_note의 부모를 Canvas 안의 위치로 지정해줘야함!
@@ -111,13 +117,25 @@ namespace _Player.CombatScene
                 }
                 else
                 {
-                    Debug.Log("note is null");
+                   //theTimingManager.checking_f();
+                    
+                    if (justone == 0)
+                    {
+                        list = GameObject.FindGameObjectsWithTag("NextNote");
+                        foreach (var l in list)
+                        {
+                            Destroy(l);
+                        }
+                    }
+
+                    justone++;
                 }
 
                 // TimingManager에 t_note 바로 생성된 노트를 보냄
                 if (note != null)
                 {
                     theTimingManager.AddNote(note);
+                    
                 }
                 else
                 {
@@ -153,6 +171,13 @@ namespace _Player.CombatScene
 
           
             
+        }
+        
+        
+
+        public void ShowNextStage()
+        {
+           _relaxMapList.clickmap();
         }
         
         public void ApplyRandomEffect()

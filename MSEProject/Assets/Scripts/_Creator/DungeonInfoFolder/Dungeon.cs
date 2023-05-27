@@ -28,7 +28,7 @@ namespace DungeonInfoFolder
                 Stage stage = new Stage(0);
                 stage.nextStageID.Add(1);
                 stage.nextStageID.Add(2);
-              
+                stage.nextStageID.Add(3);
                 stage.elements.Add(0);
                 stage.elements.Add(1);
                 stage.myStageType = Stage.StageType.Monster;

@@ -98,55 +98,63 @@ public class TimingManager : MonoBehaviour
       // _combatManager.getQueue().Enqueue(note);
     }
 
+    private bool check = true;
+
+    public void checking_f()
+    {
+        check = !check;
+    }
+
     public void CheckTiming_dir(Direction dir)
     {
 
         // 어느 monster의 note인지 알아야함
-
-
-        if (dir == Direction.NONE)
-            return;
-
-        for (int i = 0; i < boxNoteList.Count; i++)
+        if (check)
         {
 
-            float t_notePosX = boxNoteList[i].transform.localPosition.x;
-            GameObject note = boxNoteList[i].gameObject;
+            if (dir == Direction.NONE)
+                return;
 
-            // 각 판정 범위의 최소값 x, 최대값 y 를 비교하게됨.
-            if (timingBoxs[0].x <= t_notePosX && t_notePosX <= timingBoxs[0].y)
+            for (int i = 0; i < boxNoteList.Count; i++)
             {
-               
-                if (note.gameObject.CompareTag("ANote")) // 공격 노트이면!
+
+                float t_notePosX = boxNoteList[i].transform.localPosition.x;
+                GameObject note = boxNoteList[i].gameObject;
+
+                // 각 판정 범위의 최소값 x, 최대값 y 를 비교하게됨.
+                if (timingBoxs[0].x <= t_notePosX && t_notePosX <= timingBoxs[0].y)
                 {
 
-                    if (dir == note.GetComponent<AttackNote>().getDirection()) // 입력값과 노트의 dir 값이 같으면!
+                    if (note.gameObject.CompareTag("ANote")) // 공격 노트이면!
                     {
-                        Debug.Log("--check--:000attacknote");
-                        note.GetComponent<AttackNote>().noteCheckTrue();
-                        _successAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
 
-                        // _combatManager.monsterAttackDefence(note.GetComponent<AttackNote>().GetMonsterIndex());
+                        if (dir == note.GetComponent<AttackNote>().getDirection()) // 입력값과 노트의 dir 값이 같으면!
+                        {
+                            Debug.Log("--check--:000attacknote");
+                            note.GetComponent<AttackNote>().noteCheckTrue();
+                            _successAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
 
-                        boxNoteList.Remove(note);
-                        Destroy(note.gameObject);
+                            // _combatManager.monsterAttackDefence(note.GetComponent<AttackNote>().GetMonsterIndex());
 
+                            boxNoteList.Remove(note);
+                            Destroy(note.gameObject);
+
+                        }
+                        else if (dir != note.GetComponent<AttackNote>().getDirection())
+                        {
+                            Debug.Log("--check--:xxxattacknote");
+                            note.GetComponent<AttackNote>().noteCheckTrue();
+                            _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
+
+
+                            Debug.Log("note index : " + note.GetComponent<AttackNote>().GetMonsterIndex());
+                            boxNoteList.Remove(note);
+                            Destroy(note.gameObject);
+
+                        }
                     }
-                    else if (dir != note.GetComponent<AttackNote>().getDirection())
+                    else if (note.gameObject.CompareTag("GNote")) // 일반 노트이면!
                     {
-                        Debug.Log("--check--:xxxattacknote");
-                        note.GetComponent<AttackNote>().noteCheckTrue();
-                        _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
-
-
-                        Debug.Log("note index : " + note.GetComponent<AttackNote>().GetMonsterIndex());
-                        boxNoteList.Remove(note);
-                        Destroy(note.gameObject);
-
-                    }
-                }
-                else if (note.gameObject.CompareTag("GNote")) // 일반 노트이면!
-                {
                         Debug.Log("--check--:000gnote");
                         note.GetComponent<GenalizeNote>().setDirection(dir);
                         note.GetComponent<GenalizeNote>().noteCheckTrue();
@@ -154,25 +162,26 @@ public class TimingManager : MonoBehaviour
                         _successGenalizeUnityEvent.Invoke(note.GetComponent<GenalizeNote>().getDirection());
                         boxNoteList.Remove(note);
                         Destroy(note.gameObject);
-                }
-                else if (note.gameObject.CompareTag("RelaxNote")) // 일반 노트이면!
-                {
-                   
-                    _relaxManager.ApplyRandomEffect();
-                    boxNoteList.Remove(note);
-                    Destroy(note.gameObject);
-                }
-                else if (note.gameObject.CompareTag("NextNote")) // 일반 노트이면!
-                {
-                   
-                    _fadeEffect.fadein();
-                    boxNoteList.Remove(note);
-                    Destroy(note.gameObject);
-                }
+                    }
+                    else if (note.gameObject.CompareTag("RelaxNote")) // 일반 노트이면!
+                    {
 
+                        _relaxManager.ApplyRandomEffect();
+                        boxNoteList.Remove(note);
+                        Destroy(note.gameObject);
+                    }
+                    else if (note.gameObject.CompareTag("NextNote")) // 일반 노트이면!
+                    {
 
+                        _relaxManager.ShowNextStage();
+                        boxNoteList.Remove(note);
+                        Destroy(note.gameObject);
+                    }
+
+                }
             }
-            else // not in the range
+        }
+        else // not in the range
             {
             /*    if (note.gameObject.CompareTag("ANote"))
                 {
@@ -200,7 +209,7 @@ public class TimingManager : MonoBehaviour
             
             
             
-        }
+        
     }
 
     //OUT OF THE UI
@@ -234,6 +243,11 @@ public class TimingManager : MonoBehaviour
         }
         
         else if (other.CompareTag("RelaxNote"))
+        {
+            boxNoteList.Remove(other.gameObject);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("NextNote"))
         {
             boxNoteList.Remove(other.gameObject);
             Destroy(other.gameObject);

@@ -52,20 +52,14 @@ public class NoteManager : MonoBehaviour
         isCombatManagerReady = true;
     }
 
-    public void setBPM()
-    {
 
+    public void SetBpm(float _bpm)
+    {
         if (_Player.CombatScene.DungeonManager.instance.enabled)
         {
-            // bpm = (5 / (6 - (_Player.CombatScene.DungeonManager.instance.GetSpeed())) )* 100;
-            // Debug.Log("set bpm : " + bpm);
-        }
-        else
-        {
-            bpm = 120f;
+            bpm = _bpm;
         }
     }
-
     public float getBPM()
     {
         return bpm;
@@ -77,7 +71,7 @@ public class NoteManager : MonoBehaviour
 
         currentTime += Time.deltaTime; //1초에 1씩 증가되게
         if (!isCombatManagerReady) {Debug.Log("Stage is Not Ready"); return; }
-        setBPM();
+      
         if (currentTime >= 60d / bpm) // 60s / bpm = 비트 한개당 등장 속도 : 1초에 1개씩 노트가 생성.. 120s / bpm : 0.5초에 1개씩 노트가 생성
         {
 

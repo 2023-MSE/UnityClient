@@ -29,6 +29,7 @@ public class RelaxMapList : MonoBehaviour
     {
         itemButtons = new List<GameObject>();
         ScrollView.SetActive(false);
+       
         
     }
 
@@ -72,7 +73,28 @@ public class RelaxMapList : MonoBehaviour
             GameObject listItem = Instantiate(listItemPrefab, Layout.transform);
             itemButtons.Add(listItem);
             TextMeshProUGUI textComponent = listItem.GetComponentInChildren<TextMeshProUGUI>();
-            textComponent.text = str.ToString();
+           
+            if ((int)str == 0)
+            {
+                textComponent.text = "MONSTER";
+            }
+            else if ((int)str == 1)
+            {
+                textComponent.text = "MONSTER";
+            }
+            else if ((int)str == 2)
+            {
+                textComponent.text = "TOTEM";
+            }
+            else if ((int)str == 3)
+            {
+                textComponent.text = "RELAX";
+            }
+            else if ((int)str == 4)
+            {
+                textComponent.text = "BOSS";
+            }
+           
         }
 
         // GridLayoutGroup 업데이트를 통해 아이템들을 자동으로 배치
@@ -94,9 +116,12 @@ public class RelaxMapList : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("enter!!");
+                Debug.Log("enter!!"+_Player.CombatScene.DungeonManager.Instance.GetCurrentStage() + currentIndex);
+                
+                
                 _Player.CombatScene.DungeonManager.instance.GoNextStage(
-                    _Player.CombatScene.DungeonManager.Instance.GetCurrentStage() + (ulong)(currentIndex)
+                   // _Player.CombatScene.DungeonManager.Instance.GetCurrentStage() + _Player.CombatScene.DungeonManager.Instance.GetNextStages()[currentIndex]
+                     (ulong)currentIndex
                     );
             }
         }
@@ -119,8 +144,12 @@ public class RelaxMapList : MonoBehaviour
     private void MoveSelection(int direction)
     {
         // 이전 아이템 focus 해제
-     
-        itemButtons[currentIndex].GetComponent<Image>().color = Color.yellow;
+        Debug.Log(currentIndex);
+        for (int i = 0; i < itemButtons.Count; i++)
+        {
+            itemButtons[currentIndex].GetComponent<Image>().color = Color.white;
+        }
+        //itemButtons[currentIndex].GetComponent<Image>().color = Color.yellow;
         // 아이템 인덱스 업데이트
         currentIndex += direction;
         Debug.Log("list :: white"+currentIndex);
@@ -145,7 +174,7 @@ public class RelaxMapList : MonoBehaviour
         //itemButtons[index].GetComponent<Button>().Select();
 
       
-        itemButtons[currentIndex].GetComponent<Image>().color=Color.gray;
+        itemButtons[currentIndex].GetComponent<Image>().color=Color.magenta;
     }
 
     public void RemoveList()

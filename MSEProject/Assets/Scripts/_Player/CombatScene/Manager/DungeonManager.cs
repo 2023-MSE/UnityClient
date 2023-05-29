@@ -47,6 +47,7 @@ namespace _Player.CombatScene
         public DungeonInfoFolder.Dungeon dungeon;
         private CombatManager combatManager;
         private RelaxManager relaxmanager;
+        private BuffManager _buffManager;
         private ulong currentStage;
         [SerializeField]
         private StageInfoScriptableObject stageInfo;
@@ -119,6 +120,12 @@ namespace _Player.CombatScene
             relaxmanager = GameObject.Find("RelaxManager").GetComponent<RelaxManager>();
             relaxmanager.Scenecheck();
         }
+        public void SetBUFFManager()
+        {
+            Debug.Log("scene relax");
+            _buffManager = GameObject.Find("BuffManager").GetComponent<BuffManager>();
+            _buffManager.Scenecheck_Buff();
+        }
 
         public void SkillActivation()
         {
@@ -157,6 +164,18 @@ namespace _Player.CombatScene
         {
             playerHP = hp;
             Debug.Log("Set Player Hp to :" + hp);
+        }
+
+        public void SetspeedUpDown(int i)
+        {
+            if (i == 0)
+            {
+                Time.timeScale -= 0.1f;
+            }
+            else if (i == 1)
+            {
+                Time.timeScale += 0.1f;
+            }
         }
 
         public List<ulong> GetNextStages()

@@ -109,8 +109,7 @@ namespace _Player.CombatScene
                     }
                 case DungeonInfoFolder.Stage.StageType.Totem:
                     spawnBuff(stage.elements[0]);
-                    //물어보기
-                   //DungeonManager.instance.SetDungeon();
+                    DungeonManager.instance.SetBUFFManager();
                     break;
                 case DungeonInfoFolder.Stage.StageType.Relax:
                     spawnRelax();

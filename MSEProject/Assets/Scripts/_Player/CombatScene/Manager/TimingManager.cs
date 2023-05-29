@@ -21,6 +21,9 @@ public class StringEvent : UnityEvent<string>
 }
 public class TimingManager : MonoBehaviour
 {
+    private GameObject[] list;
+    private GameObject[] list2;
+    
     private PlayerController player;
 
     private Player _player;
@@ -100,7 +103,7 @@ public class TimingManager : MonoBehaviour
 
     private bool check = true;
 
-    public void checking_f()
+    public void checking_timing()
     {
         check = !check;
     }
@@ -114,10 +117,24 @@ public class TimingManager : MonoBehaviour
 
             if (dir == Direction.NONE)
                 return;
-
+            
+            if (_relaxManager.ShowRelaxNext())
+            {
+                list = GameObject.FindGameObjectsWithTag("NextNote");
+                foreach (var l in list)
+                {
+                    Destroy(l);
+                }
+                        
+                list2 = GameObject.FindGameObjectsWithTag("RelaxNote");
+                foreach (var la in list2)
+                {
+                    Destroy(la);
+                }
+                return;
+            }
             for (int i = 0; i < boxNoteList.Count; i++)
             {
-
                 float t_notePosX = boxNoteList[i].transform.localPosition.x;
                 GameObject note = boxNoteList[i].gameObject;
 
@@ -177,6 +194,7 @@ public class TimingManager : MonoBehaviour
                         boxNoteList.Remove(note);
                         Destroy(note.gameObject);
                     }
+
 
                 }
             }

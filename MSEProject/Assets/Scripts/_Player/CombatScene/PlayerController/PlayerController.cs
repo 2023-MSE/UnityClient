@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using _Player.CombatScene;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     private TimingManager theTimingManager;
+    private RelaxManager theRelaxManager;
 
     private int Hp_Num=0;
     private Direction[][] directions; // hor, ver
@@ -18,7 +20,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         theTimingManager = FindObjectOfType<TimingManager>();
+        theRelaxManager = FindObjectOfType<RelaxManager>();
+        
         directions = new Direction[3][];
         directions[0] = new Direction[3];
         directions[1] = new Direction[3];
@@ -47,7 +52,11 @@ public class PlayerController : MonoBehaviour
             if (dir != Direction.NONE)
             {
                 getAxisInUse = true;
+                //theTimingManager.CheckTiming_dir(dir);
                 theTimingManager.CheckTiming_dir(dir);
+               
+               
+
             }
         }
         else

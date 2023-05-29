@@ -113,7 +113,7 @@ public class FadeEffect : MonoBehaviour
     IEnumerator nextstage(float wait)
     {
         yield return wait;
-        _Player.CombatScene.DungeonManager.instance.GetNextStages();
+        //_Player.CombatScene.DungeonManager.instance.GetNextStages();
         
         
         

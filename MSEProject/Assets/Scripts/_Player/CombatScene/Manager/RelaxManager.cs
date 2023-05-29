@@ -45,6 +45,8 @@ namespace _Player.CombatScene
         private TimingManager theTimingManager;
 
         private RelaxMapList _relaxMapList;
+
+        private Direction _dir;
         
         public float minDamage = 100; // 최소 데미지
         public float maxDamage = 200; // 최대 데미지
@@ -52,8 +54,11 @@ namespace _Player.CombatScene
         public float maxHeal = 100; // 최대 회복량
 
 
+        private FadeEffect _fadeEffect;
+
         private GameObject[] list;
         
+        private GameObject[] list2;
         private void Start()
         {
  
@@ -62,6 +67,7 @@ namespace _Player.CombatScene
             heal.SetActive(false);
             dead.SetActive(false);
             theTimingManager = FindObjectOfType<TimingManager>();
+            _fadeEffect = FindObjectOfType<FadeEffect>();
             _relaxMapList = FindObjectOfType<RelaxMapList>();
             player = GameObject.FindWithTag("Player");
             Debug.Log("start relax Scene");
@@ -73,16 +79,25 @@ namespace _Player.CombatScene
 
         }
 
-        public void RelaxManagerReady(CombatManager manager)
+     
+
+        public bool RelaxManagerReady()
         {
-            _combatManager = manager;
-            isRelaxManagerReady = true;
+           
+            return isRelaxManagerReady;
+        }
+
+        public bool ShowRelaxNext()
+        {
+            return _relaxMapList.check_note();
         }
 
         private int justone = 0;
         
         void FixedUpdate()
         {
+
+           
 
             currentTime += Time.deltaTime; //1초에 1씩 증가되게
             if (!isRelaxManagerReady)
@@ -115,21 +130,7 @@ namespace _Player.CombatScene
                    // note.gameObject.transform.SetParent(this.transform);
                    note.gameObject.transform.SetParent(GameObject.Find("Note").transform);
                 }
-                else
-                {
-                   //theTimingManager.checking_f();
-                    
-                    if (justone == 0)
-                    {
-                        list = GameObject.FindGameObjectsWithTag("NextNote");
-                        foreach (var l in list)
-                        {
-                            Destroy(l);
-                        }
-                    }
-
-                    justone++;
-                }
+               
 
                 // TimingManager에 t_note 바로 생성된 노트를 보냄
                 if (note != null)
@@ -152,6 +153,22 @@ namespace _Player.CombatScene
             player.GetComponent<Player>().setHp(+300f);
          
         }
+        
+
+        public void CheckRelax_dir(Direction direction)
+        {
+            _dir = direction;
+        }
+
+        public Direction getDirection()
+        {
+            return _dir;
+        }
+
+        public void RelaxSceneOff()
+        {
+            isRelaxManagerReady = false;
+        }
 
         public void Scenecheck()
         {
@@ -159,14 +176,7 @@ namespace _Player.CombatScene
             isRelaxManagerReady = true;
             player = GameObject.FindWithTag("Player");
             _coolDown = GameObject.Find("CoolDown").GetComponent<CoolDown>();
-            if (player != null)
-            {
-                Debug.Log("relax not null"+ null);
-            }
-            if (_coolDown != null)
-            {
-                Debug.Log("relax not cooldown"+ null);
-            }
+           
             //note.SetActive(false);
 
           
@@ -192,12 +202,15 @@ namespace _Player.CombatScene
                 dead.SetActive(true);
                 heal.SetActive(false);
                 player.GetComponent<Player>().AnimateHitMotion();
-                float damageAmount = Random.Range(minDamage, maxDamage + 1);
+                float damageAmount = (int)Random.Range(minDamage, maxDamage + 1);
                 Debug.Log("relax damage : " +  damageAmount);
                 player.GetComponent<Player>().setHp(-damageAmount);
                 _coolDown.setHp(player.GetComponent<Player>().getHp()*0.001f);
                 _shake.ShakeCamera();
-
+                if (player.GetComponent<Player>().setHp(0))
+                {
+                    _fadeEffect.gameover();
+                }
                
             }
             else
@@ -208,6 +221,7 @@ namespace _Player.CombatScene
                 player.GetComponent<Player>().AnimateIsDrink();
                 float healAmount = Random.Range(minHeal, maxHeal + 1);
                 Debug.Log("relax heal: " +  healAmount);
+               
                 player.GetComponent<Player>().setHp(healAmount);
                 _coolDown.setHp(player.GetComponent<Player>().getHp()*0.001f);
             }

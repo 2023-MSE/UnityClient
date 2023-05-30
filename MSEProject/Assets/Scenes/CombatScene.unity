@@ -3630,6 +3630,7 @@ MonoBehaviour:
   tfNoteAppear: {fileID: 1316438523}
   up: {fileID: 5375850686441753685, guid: 0ace73b1c6a2966428891498dabfe0d2, type: 3}
   down: {fileID: 5375850686441753685, guid: 0f7544442648fe14da99267b8587f52f, type: 3}
+  next: {fileID: 5375850686441753685, guid: 89c76929cdf003d42a9c28c1171dfdd1, type: 3}
 --- !u!1 &125567885
 GameObject:
   m_ObjectHideFlags: 0

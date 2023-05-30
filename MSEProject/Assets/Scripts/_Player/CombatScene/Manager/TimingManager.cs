@@ -63,6 +63,7 @@ public class TimingManager : MonoBehaviour
 
     private CombatManager _combatManager;
 
+
     private void Awake()
     {
         RedCenter.SetActive(false);
@@ -194,6 +195,28 @@ public class TimingManager : MonoBehaviour
                         boxNoteList.Remove(note);
                         Destroy(note.gameObject);
                     }
+                    else if (note.gameObject.CompareTag("UpNote")) 
+                    {
+
+                        _Player.CombatScene.DungeonManager.instance.SetspeedUpDown(1);
+                        boxNoteList.Remove(note);
+                        Destroy(note.gameObject);
+                    }
+                    else if (note.gameObject.CompareTag("DownNote")) 
+                    {
+
+                        _Player.CombatScene.DungeonManager.instance.SetspeedUpDown(0);
+                        boxNoteList.Remove(note);
+                        Destroy(note.gameObject);
+                    }
+                    else if (note.gameObject.CompareTag("NextNoteBuff")) 
+                    {
+
+                        _fadeEffect.fadein();
+                        boxNoteList.Remove(note);
+                        Destroy(note.gameObject);
+                    }
+
 
 
                 }
@@ -266,6 +289,17 @@ public class TimingManager : MonoBehaviour
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("NextNote"))
+        {
+            boxNoteList.Remove(other.gameObject);
+            Destroy(other.gameObject);
+        }
+            
+        else if (other.CompareTag("UpNote"))
+        {
+            boxNoteList.Remove(other.gameObject);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("DownNote"))
         {
             boxNoteList.Remove(other.gameObject);
             Destroy(other.gameObject);

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = Unity.Mathematics.Random;
 
 
@@ -18,6 +20,8 @@ namespace _Player.CombatScene
         public GameObject up;
         
         public GameObject down;
+
+        public GameObject next;
         
         private Boolean check = false;
 
@@ -32,21 +36,31 @@ namespace _Player.CombatScene
         private CoolDown _coolDown;
 
         private FadeEffect _fadeEffect;
-
+        
+      
         private void Start()
         {
             theTimingManager = FindObjectOfType<TimingManager>();
             _combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
         }
 
+        public void BuffManagerSetFalse()
+        {
+            isBuffManagerReady = false;
+        }
+
         private void FixedUpdate()
         {
             
             currentTime += Time.deltaTime; 
-            
+            if (!isBuffManagerReady)
+            {
+                Debug.Log("Stage is Not Ready");
+                return;
+            }
             if (currentTime >= 60d / bpm) // 60s / bpm = 비트 한개당 등장 속도 : 1초에 1개씩 노트가 생성.. 120s / bpm : 0.5초에 1개씩 노트가 생성
             {
-                int aa = (int)UnityEngine.Random.Range(0, 2);
+                int aa = (int)UnityEngine.Random.Range(0, 3);
                 
                 GameObject note =null;
                 if (aa == 0)
@@ -58,6 +72,10 @@ namespace _Player.CombatScene
                 {
                     Debug.Log("speed down");
                     note = down;
+                }
+                else if (aa == 2)
+                {
+                    note = next;
                 }
                
                 //t_note.transform.position = tfNoteAppear.position;

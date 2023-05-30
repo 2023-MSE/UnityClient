@@ -19,6 +19,7 @@ public class RelaxMapList : MonoBehaviour
 
     private bool checkList = false;
 
+    private RelaxManager _relaxManager;
 
     private List<GameObject> itemButtons;
     private Color focusColor;
@@ -29,8 +30,8 @@ public class RelaxMapList : MonoBehaviour
     {
         itemButtons = new List<GameObject>();
         ScrollView.SetActive(false);
-       
-        
+        _relaxManager = FindObjectOfType<RelaxManager>();
+
     }
 
   
@@ -123,6 +124,9 @@ public class RelaxMapList : MonoBehaviour
                    // _Player.CombatScene.DungeonManager.Instance.GetCurrentStage() + _Player.CombatScene.DungeonManager.Instance.GetNextStages()[currentIndex]
                      (ulong)currentIndex
                     );
+                
+                _relaxManager.RelaxSceneOff();
+
             }
         }
     }

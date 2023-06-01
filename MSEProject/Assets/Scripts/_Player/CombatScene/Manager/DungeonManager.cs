@@ -51,28 +51,15 @@ namespace _Player.CombatScene
         private ulong currentStage;
         [SerializeField]
         private StageInfoScriptableObject stageInfo;
-        private Dictionary<uint, AsyncOperationHandle> assetDict;
         private float playerHP;
         private bool check = false;
  
 
         private void Start()
         {
-            
-            assetDict = new Dictionary<uint, AsyncOperationHandle>();
             currentStage = 0;
             playerHP = CombatManager.MAX_HP;
-            foreach (StageInfoStruct info in stageInfo.stageInfoTemplate)
-            {
-                Addressables.LoadAssetAsync<GameObject>(info.prefabPath).Completed +=
-                (handle) =>
-                {
-                    Debug.Log("Load Asset " + info.stageInfo);
-                    Debug.Assert(handle.Status == AsyncOperationStatus.Succeeded, "Fail to load Asset" + handle.Status);
-                    assetDict.Add(info.thisStageInfoIndex, handle);
-                };
-                
-            }
+            AddressableManager.Instance.SetAddressable(stageInfo.stageInfoTemplate);
         }
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)
         {
@@ -101,11 +88,6 @@ namespace _Player.CombatScene
         public void GotoMain()
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("TestConvertTo Combat Scene");
-        }
-
-        public AsyncOperationHandle GetHandle(uint index)
-        {
-            return assetDict[index];
         }
 
         public void SetCombatManager()

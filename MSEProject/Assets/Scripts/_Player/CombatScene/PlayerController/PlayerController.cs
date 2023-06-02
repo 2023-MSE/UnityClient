@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Runtime.CompilerServices;
 using _Player.CombatScene;
 using UnityEngine;
 
@@ -39,6 +40,8 @@ public class PlayerController : MonoBehaviour
 
     private bool getAxisInUse = false;
 
+    
+    [MethodImpl(MethodImplOptions.Synchronized)]
     // Update is called once per frame
     void Update()
     {
@@ -54,9 +57,6 @@ public class PlayerController : MonoBehaviour
                 getAxisInUse = true;
                 //theTimingManager.CheckTiming_dir(dir);
                 theTimingManager.CheckTiming_dir(dir);
-               
-               
-
             }
         }
         else

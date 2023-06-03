@@ -7,8 +7,8 @@ using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class SignUpManager : MonoBehaviour
-{
-    public string serverUrl = "http://localhost:80/mse"; // SpringMVC 서버 URL
+{ 
+    private readonly string _serverUrl = "http://localhost:8080/mse"; // SpringMVC 서버 URL
     
     public UnityEvent<bool> onDoubleCheckSuccess;
     public UnityEvent<bool> onDoubleCheckFail;
@@ -18,7 +18,7 @@ public class SignUpManager : MonoBehaviour
     
     // ID & Nickname 두 가지의 중복체크를 위한 메서드. 두 리퀘스트를 따로따로 전송할 필요가 있음.
     public IEnumerator DoubleCheck(bool isID, string s) {
-        string url = serverUrl + "/login/double-check";
+        string url = _serverUrl + "/login/double-check";
         string json = "{\"isId\":" + isID.ToString().ToLower() + ", \"s\":\"" + s + "\"}";
         Debug.Log(url);
         Debug.Log(json);
@@ -59,7 +59,7 @@ public class SignUpManager : MonoBehaviour
     
     // Double Check 후 실행. 단, ID / PW / Nickname 등에 대한 정보가 추가적으로 필요하므로 Interface 가 되는 Class 에서 실행.
     public IEnumerator SignUp(string id, string pw, string nickname) {
-        string url = serverUrl + "/login/signup";
+        string url = _serverUrl + "/login/signup";
         string json = "{\"loginId\":\"" + id + "\", \"loginPw\":\"" + pw + "\", \"nickname\":\"" + nickname + "\"}";
 
         UnityWebRequest webRequest = UnityWebRequest.Post(url, json);

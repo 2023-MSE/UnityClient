@@ -90,7 +90,7 @@ namespace _Player.CombatScene
         }
         public DungeonInfoFolder.Stage.StageType GetCurrentStageType()
         {
-            return dungeon.stages[currentStage].myStageType;
+            return dungeon.dStages[currentStage].myStageType;
         }
         public void GoNextStage(ulong nextStage)
         {
@@ -151,7 +151,7 @@ namespace _Player.CombatScene
             Debug.Log("Scene Loaded");
             if (Instance != null && dungeon != null)
             {
-                GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[currentStage]);
+                GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.dStages[currentStage]);
             }
         }
 
@@ -180,17 +180,17 @@ namespace _Player.CombatScene
 
         public List<ulong> GetNextStages()
         {
-            foreach (var ex in dungeon.stages[currentStage].nextStageID)
+            foreach (var ex in dungeon.dStages[currentStage].nextStageID)
             {
                 Debug.Log("list n"+ex);
                 
                 
             }
-            foreach (var ex in dungeon.stages[currentStage].prevStageID)
+            foreach (var ex in dungeon.dStages[currentStage].prevStageID)
             {
                 Debug.Log("list p"+ex);
             }
-            return dungeon.stages[currentStage].nextStageID;
+            return dungeon.dStages[currentStage].nextStageID;
         }
     }
 }

@@ -49,11 +49,11 @@ public class ConvertCombatTestScript : MonoBehaviour
         stage4.elements.Add(4);
         stage4.myStageType = DungeonInfoFolder.Stage.StageType.Boss;
 
-        dungeon.stages.Add(0, stage0);
-        dungeon.stages.Add(1, stage1);
-        dungeon.stages.Add(2, stage2);
-        dungeon.stages.Add(3, stage3);
-        dungeon.stages.Add(4, stage4);
+        dungeon.dStages.Add(0, stage0);
+        dungeon.dStages.Add(1, stage1);
+        dungeon.dStages.Add(2, stage2);
+        dungeon.dStages.Add(3, stage3);
+        dungeon.dStages.Add(4, stage4);
 
         _Player.CombatScene.DungeonManager.instance.SetDungeon(dungeon);
         _Player.CombatScene.DungeonManager.Instance.GoNextStage(0);
@@ -70,9 +70,9 @@ public class ConvertCombatTestScript : MonoBehaviour
         stage.nextStageID.Add(2);
         stage.elements.Add(5);
         stage.myStageType = DungeonInfoFolder.Stage.StageType.Totem;
-        dungeon.stages.Add(0, stage);
+        dungeon.dStages.Add(0, stage);
         for (ulong i = 1; i < 11; i++)
-            dungeon.stages.Add(i, new DungeonInfoFolder.Stage(i));
+            dungeon.dStages.Add(i, new DungeonInfoFolder.Stage(i));
 
         _Player.CombatScene.DungeonManager.instance.SetDungeon(dungeon);
         _Player.CombatScene.DungeonManager.Instance.GoNextStage(0);
@@ -88,9 +88,9 @@ public class ConvertCombatTestScript : MonoBehaviour
         stage.nextStageID.Add(1);
         stage.nextStageID.Add(2);
         stage.myStageType = DungeonInfoFolder.Stage.StageType.Relax;
-        dungeon.stages.Add(0, stage);
+        dungeon.dStages.Add(0, stage);
         for (ulong i = 1; i < 11; i++)
-            dungeon.stages.Add(i, new DungeonInfoFolder.Stage(i));
+            dungeon.dStages.Add(i, new DungeonInfoFolder.Stage(i));
 
         _Player.CombatScene.DungeonManager.instance.SetDungeon(dungeon);
         _Player.CombatScene.DungeonManager.Instance.GoNextStage(0);

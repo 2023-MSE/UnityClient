@@ -868,10 +868,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc88b91827bc24b9b803ba806936da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dungeonEditorType: 0
   editingDungeon:
     nodeEditorJsonData: 
+    id: 0
     name: 
     createdTime: 
+    stages: []
+    userId: 0
     recentID: 0
     level: 0
 --- !u!1 &80190966
@@ -3539,7 +3543,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 296201253}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11167,6 +11171,7 @@ MonoBehaviour:
     thisCollectionStageType: 1
   - stageButtonCollection: {fileID: 1680671850}
     thisCollectionStageType: 2
+  limitForElementsTMP: {fileID: 0}
   stageInfoElementPrefab: {fileID: 4106285950603123577, guid: 97cdefddee312264387cf91916227e63,
     type: 3}
   stageInfoCollector: {fileID: 416669376}
@@ -18244,6 +18249,7 @@ GameObject:
   - component: {fileID: 1774351996}
   - component: {fileID: 1774351995}
   - component: {fileID: 1774351994}
+  - component: {fileID: 1774351998}
   m_Layer: 5
   m_Name: DungeonListUI
   m_TagString: Untagged
@@ -18337,6 +18343,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1774351998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774351993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd407b6dbb6249743b6652541e9f043b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEnableEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1776197699
 GameObject:
   m_ObjectHideFlags: 0

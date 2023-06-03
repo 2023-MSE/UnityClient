@@ -22,6 +22,7 @@ public class UIInputChecker : MonoBehaviour
     public void OnNewDungeonMakingDone()
     {
         Dungeon tempDungeon = new Dungeon();
+        tempDungeon.id = DungeonManager.Instance.MyDungeonList.myDungeons.Count;
         tempDungeon.name = dungeonNameInput.text;
         tempDungeon.createdTime = DateTime.Now.ToString("HH : mm : ss");
         

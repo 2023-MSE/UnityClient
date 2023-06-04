@@ -50,7 +50,7 @@ public class StageEditor : Singleton<StageEditor>
     
     public void VisualizeStageType()
     {
-        NodeTypeTMP.text = "Stage Type : " + _editingStage.myStageType;
+        NodeTypeTMP.text = "Stage Type : " + _editingStage.stageType;
         limitForElementsTMP.text = "<color=green>"+ _editingStage.elements.Count + " / " + _editingStage.limitForElements + "</color>";
     }
     
@@ -63,10 +63,10 @@ public class StageEditor : Singleton<StageEditor>
             return;
 
         // stage 의 type 변경
-        _editingStage.myStageType = toChangStageType;
+        _editingStage.stageType = toChangStageType;
         _editingStage.elements.Clear();
 
-        switch (_editingStage.myStageType)
+        switch (_editingStage.stageType)
         {
             case Stage.StageType.Boss:
             case Stage.StageType.Totem:

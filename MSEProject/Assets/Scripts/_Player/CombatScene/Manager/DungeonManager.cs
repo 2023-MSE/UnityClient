@@ -90,7 +90,7 @@ namespace _Player.CombatScene
         }
         public DungeonInfoFolder.Stage.StageType GetCurrentStageType()
         {
-            return dungeon.dStages[currentStage].myStageType;
+            return dungeon.dStages[currentStage].stageType;
         }
         public void GoNextStage(ulong nextStage)
         {
@@ -180,17 +180,17 @@ namespace _Player.CombatScene
 
         public List<ulong> GetNextStages()
         {
-            foreach (var ex in dungeon.dStages[currentStage].nextStageID)
+            foreach (var ex in dungeon.dStages[currentStage].nextStage)
             {
                 Debug.Log("list n"+ex);
                 
                 
             }
-            foreach (var ex in dungeon.dStages[currentStage].prevStageID)
+            foreach (var ex in dungeon.dStages[currentStage].prevStage)
             {
                 Debug.Log("list p"+ex);
             }
-            return dungeon.dStages[currentStage].nextStageID;
+            return dungeon.dStages[currentStage].nextStage;
         }
     }
 }

@@ -26,7 +26,10 @@ namespace DungeonInfoFolder
 
         public Dungeon()
         {
-            userId = UserInfoHolder.Instance.myInfo.id;
+            if (UserInfoHolder.Instance.myInfo == null)
+                userId = 0;
+            else
+                userId = UserInfoHolder.Instance.myInfo.id;
         }
         
         // Test Default Dungeon
@@ -35,12 +38,12 @@ namespace DungeonInfoFolder
             if (thisIsTest)
             {
                 Stage stage = new Stage(0);
-                stage.nextStageID.Add(1);
-                stage.nextStageID.Add(2);
-                stage.nextStageID.Add(3);
+                stage.nextStage.Add(1);
+                stage.nextStage.Add(2);
+                stage.nextStage.Add(3);
                 stage.elements.Add(0);
                 stage.elements.Add(1);
-                stage.myStageType = Stage.StageType.Monster;
+                stage.stageType = Stage.StageType.Monster;
                 dStages.Add(0, stage);
                 for (ulong i = 1; i < 11; i++)
                     dStages.Add(i, new Stage(i));
@@ -63,7 +66,7 @@ namespace DungeonInfoFolder
             
             foreach (var stage in stages)
             {
-                dStages.Add(stage.nodeID, stage);
+                dStages.Add(stage.id, stage);
             }
         }
     }

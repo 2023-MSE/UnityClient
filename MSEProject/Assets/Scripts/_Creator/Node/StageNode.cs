@@ -19,14 +19,14 @@ public class StageNode : Node
         Register(inputSocket);
         SetHeader("Stage");
 
-        StageEditor.Instance.EditingStage = DungeonEditor.Instance.editingDungeon.stages[IdentifierID];
+        StageEditor.Instance.EditingStage = DungeonEditor.Instance.editingDungeon.dStages[IdentifierID];
         editButton.onClick.AddListener(OnEditButtonClick);
     }
 
     private void OnEditButtonClick()
     {
         FindObjectOfType<ActivateIndicator>().OtherTargetActivated(indicator);
-        StageEditor.Instance.EditingStage = DungeonEditor.Instance.editingDungeon.stages[IdentifierID];
+        StageEditor.Instance.EditingStage = DungeonEditor.Instance.editingDungeon.dStages[IdentifierID];
         StageEditor.Instance.VisualizeStageType();
         StageEditor.Instance.VisualizeStageSpecificInfo();
 

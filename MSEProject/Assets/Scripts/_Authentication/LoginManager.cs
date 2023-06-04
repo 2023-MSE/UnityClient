@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 
 public class LoginManager : MonoBehaviour
 {
-    public string serverUrl = "http://localhost:80"; // SpringMVC 서버 URL
+    private readonly string _serverUrl = "http://localhost:8080/mse"; // SpringMVC 서버 URL
     
     public UnityEvent onLoginSuccess;
     
@@ -18,7 +18,7 @@ public class LoginManager : MonoBehaviour
 
     public IEnumerator Login(string id, string pw) {
         // 1. Request URL 설정
-        string url = serverUrl + "/login/authentication";
+        string url = _serverUrl + "/login/authentication";
         string json = "{\"loginId\":\"" + id + "\", \"loginPw\":\"" + pw + "\"}";
         
         // 2. HTTP Request 생성
@@ -70,7 +70,7 @@ public class LoginManager : MonoBehaviour
 
     public IEnumerator GetUser(long num)
     {
-        string url = serverUrl + "/login/post-user";
+        string url = _serverUrl + "/login/post-user";
         string json = "{\"id\":" + num + "}";
 
         UnityWebRequest webRequest = UnityWebRequest.Post(url, json);

@@ -558,6 +558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 5000
   hp: 0
+  num: 5
   pattern: 00010100
   patterns:
   - {fileID: 5375850686441753685, guid: ca284ff69f10a8e4b8170637aff6e14f, type: 3}
@@ -566,6 +567,7 @@ MonoBehaviour:
   - {fileID: 5375850686441753685, guid: 1f3ee2dfb090d6c47ae4faac4ea5ed6b, type: 3}
   power: 100
   type: 0
+  num: 0
   bossAttackPower: 400
   effect: {fileID: 5395200985256534057, guid: 1108822b81ff93e4abfa4114fcc0af6b, type: 3}
 --- !u!1 &133440

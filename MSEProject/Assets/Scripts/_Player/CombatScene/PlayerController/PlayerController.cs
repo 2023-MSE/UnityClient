@@ -40,8 +40,10 @@ public class PlayerController : MonoBehaviour
     private bool getAxisInUse = false;
 
     // Update is called once per frame
+    // 두번 실행이 됨
     void Update()
     {
+        
         int inputHor = (int)Input.GetAxisRaw("Horizontal");
         int inputVer = (int)Input.GetAxisRaw("Vertical");
         if (!getAxisInUse)
@@ -57,6 +59,10 @@ public class PlayerController : MonoBehaviour
                
                
 
+            }
+            else
+            {
+                getAxisInUse = false;
             }
         }
         else

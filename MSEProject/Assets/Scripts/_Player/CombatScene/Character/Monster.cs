@@ -41,7 +41,6 @@ namespace _Player.CombatScene
         private CombatManager _combatManager;
         private ScoreManager _scoreManager;
         protected Animator animator;
-
         protected bool deadcheck = false;
         public void Start()
         {
@@ -53,7 +52,7 @@ namespace _Player.CombatScene
             
             for (int i = 0; i < 4; i++)
             {
-                bool randomBool = (Random.value > 0.5f);
+                bool randomBool = (Random.value > 0.65f);
                 pattern[i] = randomBool;
               
             }
@@ -71,28 +70,9 @@ namespace _Player.CombatScene
                     patterns[i] = _combatManager.getGNote;
                 }
             }
-
+           attactMotion();
         }
-        public void hitMotion()
-        {
-            if (patterns != null)
-            {
-                _combatManager.setQueue(patterns);
-            }
-        }
-
-        public void Update()
-        {
-           
-
-            if (!isDead()&&(deadcheck==false))
-          
-            {
-                patterns.Shuffle();
-                _combatManager.setQueue(patterns);
-                attactMotion();
-            }
-        }
+        
 
         public override void AnimateHitMotion()
         {
@@ -123,23 +103,29 @@ namespace _Player.CombatScene
             deadcheck = true;
 
         }
-       
+
+        
         public void attactMotion()
-        {
+        { 
+            List<GameObject> list =new List<GameObject>();
+            
             if (patterns != null)
             {
                 foreach (var obj in patterns)
                 {
+                    Debug.Log("--check-- num" + num);
                     if (obj.TryGetComponent(out _attackNote))
                     {
                         _attackNote.SetMonsterIndex(num);
+                        list.Add(_attackNote.gameObject);
                     }
                     else if(obj.TryGetComponent(out _gNote))
                     {
                         _gNote.SetMonsterIndex(num);
+                        list.Add(_gNote.gameObject);
                     }
                 }
-               _combatManager.setQueue(patterns);
+                _combatManager.setQueue(list);
                 
             }
             

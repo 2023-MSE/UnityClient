@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 1000
   hp: 0
-  num: 0
+  num: 2
   pattern: 00000000
   patterns:
   - {fileID: 5375850686441753685, guid: ca284ff69f10a8e4b8170637aff6e14f, type: 3}

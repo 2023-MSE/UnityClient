@@ -6,6 +6,7 @@ namespace _Player.CombatScene
 {
     public class BossMonster : Monster
     {
+         private int num;
         [SerializeField] private int bossAttackPower;
         [SerializeField] private GameObject effect;
         public void AnimateBossAttack()

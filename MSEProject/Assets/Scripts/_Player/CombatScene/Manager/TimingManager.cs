@@ -148,11 +148,11 @@ public class TimingManager : MonoBehaviour
 
                         if (dir == note.GetComponent<AttackNote>().getDirection()) // 입력값과 노트의 dir 값이 같으면!
                         {
-                            Debug.Log("--check--:000attacknote");
+                            Debug.Log("--check--:"+note.GetComponent<AttackNote>().GetMonsterIndex());
                             note.GetComponent<AttackNote>().noteCheckTrue();
                             _successAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
 
-                            // _combatManager.monsterAttackDefence(note.GetComponent<AttackNote>().GetMonsterIndex());
+                            
 
                             boxNoteList.Remove(note);
                             Destroy(note.gameObject);
@@ -160,12 +160,10 @@ public class TimingManager : MonoBehaviour
                         }
                         else if (dir != note.GetComponent<AttackNote>().getDirection())
                         {
-                            Debug.Log("--check--:xxxattacknote");
+                            Debug.Log("--check--:"+note.GetComponent<AttackNote>().GetMonsterIndex());
                             note.GetComponent<AttackNote>().noteCheckTrue();
                             _failAttackUnityEvent.Invoke(note.GetComponent<AttackNote>().GetMonsterIndex());
 
-
-                            Debug.Log("note index : " + note.GetComponent<AttackNote>().GetMonsterIndex());
                             boxNoteList.Remove(note);
                             Destroy(note.gameObject);
 
@@ -173,7 +171,7 @@ public class TimingManager : MonoBehaviour
                     }
                     else if (note.gameObject.CompareTag("GNote")) // 일반 노트이면!
                     {
-                        Debug.Log("--check--:000gnote");
+                        Debug.Log("--check--:"+note.GetComponent<GenalizeNote>().GetMonsterIndex());
                         note.GetComponent<GenalizeNote>().setDirection(dir);
                         note.GetComponent<GenalizeNote>().noteCheckTrue();
 
@@ -181,14 +179,14 @@ public class TimingManager : MonoBehaviour
                         boxNoteList.Remove(note);
                         Destroy(note.gameObject);
                     }
-                    else if (note.gameObject.CompareTag("RelaxNote")) // 일반 노트이면!
+                    else if (note.gameObject.CompareTag("RelaxNote")) 
                     {
 
                         _relaxManager.ApplyRandomEffect();
                         boxNoteList.Remove(note);
                         Destroy(note.gameObject);
                     }
-                    else if (note.gameObject.CompareTag("NextNote")) // 일반 노트이면!
+                    else if (note.gameObject.CompareTag("NextNote")) 
                     {
 
                         _relaxManager.ShowNextStage();

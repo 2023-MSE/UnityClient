@@ -72,18 +72,21 @@ namespace _Player.CombatScene
 
         public GameObject effect;
 
+        [SerializeReference] private GameObject Gnote;
+
         private void Start()
         {
             
             _fadeEffect = FindObjectOfType<FadeEffect>();
             queue = new Queue<GameObject>();
+
             ObjectPool = new Queue<GameObject>();
             _coolDown = FindObjectOfType<CoolDown>();
             player = FindObjectOfType<Player>();
             _dungeonManager = FindObjectOfType<CombatScene.DungeonManager>();
             test = FindObjectOfType<TestDirButton>();
             GameOver.SetActive(false);
-  
+            
         }
 
         private void Update()
@@ -96,7 +99,7 @@ namespace _Player.CombatScene
             return monsters[UnityEngine.Random.Range(0, monsters.Count)];
         }
 
-        public void setQueue(GameObject[] note)
+        public void setQueue(List<GameObject> note)
         {
             foreach (var v in note)
             {
@@ -120,15 +123,24 @@ namespace _Player.CombatScene
             return ObjectPool.Dequeue();
         }
 
+        private int i = 0;
+
 
         public GameObject GetNote()
         {
+            if (i == 3)
+            {
+                GetRandomMonster().attactMotion();
+                i = 0;
+            }
+
             if (queue.Count > 0)
             {
                 var obj = queue.Dequeue();
-                queue.Enqueue(obj);
+                //queue.Enqueue(obj);
 
                 //obj.SetActive(true);
+                i++;
                 return obj;
             }
             else
@@ -137,6 +149,7 @@ namespace _Player.CombatScene
                 Debug.Log("empty");
                 return null;
             }
+            
 
         }
 
@@ -346,15 +359,13 @@ namespace _Player.CombatScene
 
         public void monsterAttack(int monsterIndex)
         {
-            Debug.Log("--check--attack");
-            Debug.Log("monster attack "+ monsterIndex);
-            
+            Monster m = GetRandomMonster();
             isPlayerHit = true;
             player.GetComponent<Player>().AnimateDefenceMotion();
-            if (monsters[monsterIndex] is BossMonster)
+            if (m is BossMonster)
             {
                 int random = UnityEngine.Random.Range(0, 1);
-                BossMonster boss = monsters[monsterIndex] as BossMonster;
+                BossMonster boss = m as BossMonster;
                 switch (random)
                 {
                     case 0:
@@ -369,20 +380,21 @@ namespace _Player.CombatScene
             }
             else
             {
-                attackMonsterPower = monsters[monsterIndex].getPower();
-                monsters[monsterIndex].AnimateAttack();
+                attackMonsterPower = m.getPower();
+                m.AnimateAttack();
             }
         }
 
+        //
         public void monsterAttackDefence(int monsterIndex)
         {
             Debug.Log("--check--defence");
             isPlayerHit = false;
-            
-            if (monsters[monsterIndex] is BossMonster)
+            Monster m = GetRandomMonster();
+            if (m is BossMonster)
             {
                 int random = UnityEngine.Random.Range(0, 1);
-                BossMonster boss = monsters[monsterIndex] as BossMonster;
+                BossMonster boss = m as BossMonster;
                 switch (random)
                 {
                     case 0:
@@ -399,8 +411,8 @@ namespace _Player.CombatScene
             }
             else
             {
-                attackMonsterPower = monsters[monsterIndex].getPower();
-                monsters[monsterIndex].AnimateAttack();
+                attackMonsterPower = m.getPower();
+                m.AnimateAttack();
             }
             player.GetComponent<Player>().AnimateDefenceMotion();
         }
@@ -446,7 +458,8 @@ namespace _Player.CombatScene
             monsters = new List<Monster>(GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None));
             Debug.Log("aaaaa"+monsters.Count);
             foreach (Monster monster in monsters)
-            {  
+            {
+                
                 monster.setNum(i++);
                 monster.setHp(MAX_HP);
                 monster.AnimateIdle();

@@ -1587,7 +1587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa382122a3e9b40409495a774809605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverUrl: http://localhost:80/mse
   onDoubleCheckSuccess:
     m_PersistentCalls:
       m_Calls: []
@@ -1612,7 +1611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00df6dda63cef8441a9e8419ddb1049b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverUrl: http://localhost:80/mse
   onLoginSuccess:
     m_PersistentCalls:
       m_Calls: []
@@ -2189,7 +2187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 652751374}
-  - component: {fileID: 652751373}
+  - component: {fileID: 652751375}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -2197,19 +2195,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &652751373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652751372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57e6b0df097c25743bcb23d15cfb7dab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startSceneName: 
 --- !u!4 &652751374
 Transform:
   m_ObjectHideFlags: 0
@@ -2225,6 +2210,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &652751375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652751372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106ef591b52d69f44ad99fc9411e5b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startSceneName: 
 --- !u!1 &712174408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3623,8 +3621,8 @@ MonoBehaviour:
   onSigninSuccess:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 652751373}
-        m_TargetAssemblyTypeName: CreatorSceneManager, Assembly-CSharp
+      - m_Target: {fileID: 652751375}
+        m_TargetAssemblyTypeName: PlayerSceneManager, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -3632,7 +3630,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Dungeon Creator
+          m_StringArgument: Dungeon List
           m_BoolArgument: 0
         m_CallState: 2
   loginManager: {fileID: 461013533}

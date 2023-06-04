@@ -45,6 +45,7 @@ namespace _Player.CombatScene
 
         // ?????? ???? dungeon?? public???? ??????. ???? private???? ??? ????
         public DungeonInfoFolder.Dungeon dungeon;
+        private DeployedDungeon _dungeonInfo;
         private CombatManager combatManager;
         private RelaxManager relaxmanager;
         private BuffManager _buffManager;
@@ -53,8 +54,16 @@ namespace _Player.CombatScene
         private StageInfoScriptableObject stageInfo;
         private float playerHP;
         private bool check = false;
- 
 
+        public void SetDeployedDungeon(DeployedDungeon dungeon)
+        {
+            _dungeonInfo = dungeon;
+        }
+        public DeployedDungeon GetDeployedDungeon()
+        {
+            return _dungeonInfo;
+        }
+        
         private void Start()
         {
             currentStage = 0;

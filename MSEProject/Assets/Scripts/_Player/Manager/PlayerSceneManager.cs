@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerSceneManager : MonoBehaviour
+public class PlayerSceneManager : Singleton<PlayerSceneManager>
 {
     [HideInInspector] public string startSceneName;
 

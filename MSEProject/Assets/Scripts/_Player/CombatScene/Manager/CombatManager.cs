@@ -43,7 +43,7 @@ namespace _Player.CombatScene
         public GameObject GameOver;
 
         private FadeEffect _fadeEffect;
-        
+        private MapManager _mapManager;
         public bool isPlayerHit
         {
             get => _isPlayerHit;
@@ -79,7 +79,7 @@ namespace _Player.CombatScene
             
             _fadeEffect = FindObjectOfType<FadeEffect>();
             queue = new Queue<GameObject>();
-
+            _mapManager = FindObjectOfType<MapManager>();
             ObjectPool = new Queue<GameObject>();
             _coolDown = FindObjectOfType<CoolDown>();
             player = FindObjectOfType<Player>();
@@ -196,7 +196,7 @@ namespace _Player.CombatScene
 
                         if (!_fadeEffect.isFading())
                         {
-                            _fadeEffect.fadein();
+                            _mapManager.DisplayList();
                             Debug.Log("fade "+_fadeEffect.isFading());
                             //StartCoroutine(FadeIn(3f));
                         }

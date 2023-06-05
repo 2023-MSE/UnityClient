@@ -210,7 +210,7 @@ public class TimingManager : MonoBehaviour
                     else if (note.gameObject.CompareTag("NextNoteBuff")) 
                     {
 
-                        _fadeEffect.fadein();
+                        //_relaxManager.ShowNextStage();
                         boxNoteList.Remove(note);
                         Destroy(note.gameObject);
                     }

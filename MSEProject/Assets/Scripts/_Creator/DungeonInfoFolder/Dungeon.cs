@@ -26,7 +26,8 @@ namespace DungeonInfoFolder
 
         public Dungeon()
         {
-            userId = UserInfoHolder.Instance.myInfo.id;
+            //userId = UserInfoHolder.Instance.myInfo.id;
+            userId = 2;
         }
         
         // Test Default Dungeon

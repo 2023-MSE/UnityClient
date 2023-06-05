@@ -54,7 +54,7 @@ namespace _Player.CombatScene
         private StageInfoScriptableObject stageInfo;
         private float playerHP;
         private bool check = false;
-
+        public AudioSource audioSource;
         public void SetDeployedDungeon(DeployedDungeon dungeon)
         {
             _dungeonInfo = dungeon;
@@ -66,6 +66,7 @@ namespace _Player.CombatScene
         
         private void Start()
         {
+            audioSource = audioSource.GetComponent<AudioSource>();
             currentStage = 0;
             playerHP = CombatManager.MAX_HP;
             AddressableManager.Instance.SetAddressable(stageInfo.stageInfoTemplate);
@@ -162,10 +163,12 @@ namespace _Player.CombatScene
             if (i == 0)
             {
                 Time.timeScale -= 0.1f;
+                audioSource.pitch = Time.timeScale;
             }
             else if (i == 1)
             {
                 Time.timeScale += 0.1f;
+                audioSource.pitch = Time.timeScale;
             }
         }
 

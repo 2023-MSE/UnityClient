@@ -773,11 +773,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeon:
     nodeEditorJsonData: none
+    id: 0
     name: name
     createdTime: time
+    stages: []
+    userId: 0
     recentID: 1
     level: 1
   stageInfo: {fileID: 11400000, guid: b8b4368193b2b714b882805d0c0d982d, type: 2}
+  audioSource: {fileID: 1827120643}
 --- !u!4 &1325295594
 Transform:
   m_ObjectHideFlags: 0

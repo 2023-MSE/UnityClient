@@ -9275,7 +9275,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1548713557}
+      objectReference: {fileID: 0}
     - target: {fileID: 7171801413185867608, guid: f0ea5167a40b00f4cb4bc6d0b8c4dbae,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -24338,55 +24338,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1054694113}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1057442357
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1057442358}
-  - component: {fileID: 1057442359}
-  m_Layer: 0
-  m_Name: MapManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1057442358
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057442357}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1951646306}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1057442359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057442357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7ad096597e4492bbbfcef1036f27089, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listItemPrefab: {fileID: 0}
-  Layout: {fileID: 0}
-  stringList: []
-  ScrollView: {fileID: 0}
-  map: {fileID: 0}
 --- !u!1001 &1057910153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27018,7 +26969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079068e074fce3e40bf9c49060afca24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillData: {fileID: 11400000, guid: 910ee5fc0da132a47b4eb987fbec81c4, type: 2}
+  skillData: {fileID: 11400000, guid: 36ea190438c596d42ba097ed0c70e8be, type: 2}
   patterns:
   - {fileID: 5375850686441753685, guid: ca284ff69f10a8e4b8170637aff6e14f, type: 3}
   - {fileID: 5375850686441753685, guid: 2a879ce6718e8e541a5f71f4fd14bb94, type: 3}
@@ -28291,11 +28242,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeon:
     nodeEditorJsonData: 
+    id: 0
     name: 
     createdTime: 
+    stages: []
+    userId: 0
     recentID: 0
     level: 0
   stageInfo: {fileID: 11400000, guid: b8b4368193b2b714b882805d0c0d982d, type: 2}
+  audioSource: {fileID: 0}
 --- !u!1 &1208165041
 GameObject:
   m_ObjectHideFlags: 0
@@ -36979,8 +36934,8 @@ GameObject:
   - component: {fileID: 1548713561}
   - component: {fileID: 1548713560}
   - component: {fileID: 1548713559}
-  - component: {fileID: 1548713557}
   - component: {fileID: 1548713558}
+  - component: {fileID: 1548713562}
   m_Layer: 5
   m_Name: NextMap
   m_TagString: Untagged
@@ -37010,24 +36965,6 @@ RectTransform:
   m_AnchoredPosition: {x: 602, y: 229.5}
   m_SizeDelta: {x: 1204, y: 459}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1548713557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548713555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce08322261781964cbf13c5e6880947f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listItemPrefab: {fileID: 1740180958304847071, guid: 3f19e5d3eb7d1224196ee25994ca6d01,
-    type: 3}
-  Layout: {fileID: 974871449}
-  stringList: []
-  ScrollView: {fileID: 974871446}
-  map: {fileID: 0}
 --- !u!222 &1548713558
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37097,6 +37034,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1548713562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548713555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ad096597e4492bbbfcef1036f27089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listItemPrefab: {fileID: 1740180958304847071, guid: c73118723427fe347896a1bfcf3d5442,
+    type: 3}
+  Layout: {fileID: 974871449}
+  stringList: []
+  ScrollView: {fileID: 974871446}
+  map: {fileID: 0}
 --- !u!1001 &1549742466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38178,7 +38133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6bf08684bf8db4f98c06ed77c0447f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 60
   tfNoteAppear: {fileID: 1316438523}
   Notes: []
 --- !u!61 &1591618205
@@ -47173,7 +47127,6 @@ Transform:
   - {fileID: 1207627696}
   - {fileID: 652353531}
   - {fileID: 124167254}
-  - {fileID: 1057442358}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

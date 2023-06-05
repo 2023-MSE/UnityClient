@@ -51,17 +51,17 @@ public class FadeEffect : MonoBehaviour
 
    
 
-    public void fadein()
+
+    public void fadein_map(ulong i)
     {
         check = true;
         Debug.Log("fadeinstart");
         if (fadeInOnStart)
         {
             canvasGroup.alpha = 0f;
-            StartCoroutine(FadeIn());
+            StartCoroutine(FadeIn(i));
         }
     }
-
  
 
     public bool isFading()
@@ -75,7 +75,7 @@ public class FadeEffect : MonoBehaviour
     }
 
 
-    IEnumerator FadeIn()
+    IEnumerator FadeIn(ulong i)
     {
         while (canvasGroup.alpha < 1)
         {
@@ -87,16 +87,16 @@ public class FadeEffect : MonoBehaviour
         if (fadeOutOnExit)
         {
             nextcheck = true;
-            StartCoroutine(FadeOut());
+            StartCoroutine(FadeOut(i));
             
         }
 
        
     }
 
-    IEnumerator FadeOut()
+    IEnumerator FadeOut(ulong i)
     {
-        StartCoroutine(nextstage(1.5f));
+        StartCoroutine(nextstage(1.5f,i));
         while (canvasGroup.alpha > 0)
         {
             Debug.Log("fade out : " +canvasGroup.alpha);
@@ -110,16 +110,18 @@ public class FadeEffect : MonoBehaviour
        
     }
 
-    IEnumerator nextstage(float wait)
+    IEnumerator nextstage(float wait,ulong i)
     {
         yield return wait;
         //_Player.CombatScene.DungeonManager.instance.GetNextStages();
         
         
         
-        _Player.CombatScene.DungeonManager.Instance.GoNextStage(
-            _Player.CombatScene.DungeonManager.Instance.GetCurrentStage() + 1
+       _Player.CombatScene.DungeonManager.Instance.GoNextStage(
+           // _Player.CombatScene.DungeonManager.Instance.GetCurrentStage() + 1
+           i
         );
+        
     }
 
 }

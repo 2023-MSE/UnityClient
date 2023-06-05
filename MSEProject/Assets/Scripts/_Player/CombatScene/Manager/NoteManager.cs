@@ -15,7 +15,7 @@ public class NoteManager : MonoBehaviour
 
     // bpm 이란. bit per minute : 1분당 비트의 수  ex) 120bpm 이면 1분당 120개의 노트가 생성된다는 의미
     
-    public float bpm = 0;
+    private float bpm = 0;
     private double currentTime = 0d;
 
     [SerializeField] private Transform tfNoteAppear = null;
@@ -57,6 +57,8 @@ public class NoteManager : MonoBehaviour
     {
         if (_Player.CombatScene.DungeonManager.instance.enabled)
         {
+            while (_bpm >= 45)
+                _bpm /= 2;
             bpm = _bpm;
         }
     }

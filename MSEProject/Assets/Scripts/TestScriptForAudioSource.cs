@@ -42,19 +42,19 @@ public class TestScriptForAudioSource : MonoBehaviour
                 switch (index)
                 {
                     case 0 :
-                        FindObjectOfType<NoteManager>().bpm = 30F;
+                        FindObjectOfType<NoteManager>().SetBpm(30f);
                         break;
                     case 1 :
-                        FindObjectOfType<NoteManager>().bpm = 45F;
+                        FindObjectOfType<NoteManager>().SetBpm(45f);
                         break;
                     case 2 :
-                        FindObjectOfType<NoteManager>().bpm = 47F;
+                        FindObjectOfType<NoteManager>().SetBpm(47f);
                         break;
                     case 3 :
-                        FindObjectOfType<NoteManager>().bpm = 56F;
+                        FindObjectOfType<NoteManager>().SetBpm(56f);
                         break;
                     case 4 :
-                        FindObjectOfType<NoteManager>().bpm = 56F;
+                        FindObjectOfType<NoteManager>().SetBpm(56f);
                         break;
                 }
             }

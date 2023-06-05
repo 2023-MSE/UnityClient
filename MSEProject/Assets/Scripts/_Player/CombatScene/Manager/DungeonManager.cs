@@ -45,34 +45,30 @@ namespace _Player.CombatScene
 
         // ?????? ???? dungeon?? public???? ??????. ???? private???? ??? ????
         public DungeonInfoFolder.Dungeon dungeon;
+        private DeployedDungeon _dungeonInfo;
         private CombatManager combatManager;
         private RelaxManager relaxmanager;
         private BuffManager _buffManager;
         private ulong currentStage;
         [SerializeField]
         private StageInfoScriptableObject stageInfo;
-        private Dictionary<uint, AsyncOperationHandle> assetDict;
         private float playerHP;
         private bool check = false;
- 
 
+        public void SetDeployedDungeon(DeployedDungeon dungeon)
+        {
+            _dungeonInfo = dungeon;
+        }
+        public DeployedDungeon GetDeployedDungeon()
+        {
+            return _dungeonInfo;
+        }
+        
         private void Start()
         {
-            
-            assetDict = new Dictionary<uint, AsyncOperationHandle>();
             currentStage = 0;
             playerHP = CombatManager.MAX_HP;
-            foreach (StageInfoStruct info in stageInfo.stageInfoTemplate)
-            {
-                Addressables.LoadAssetAsync<GameObject>(info.prefabPath).Completed +=
-                (handle) =>
-                {
-                    Debug.Log("Load Asset " + info.stageInfo);
-                    Debug.Assert(handle.Status == AsyncOperationStatus.Succeeded, "Fail to load Asset" + handle.Status);
-                    assetDict.Add(info.thisStageInfoIndex, handle);
-                };
-                
-            }
+            AddressableManager.Instance.SetAddressable(stageInfo.stageInfoTemplate);
         }
         public void SetDungeon(DungeonInfoFolder.Dungeon dungeon)
         {
@@ -90,7 +86,7 @@ namespace _Player.CombatScene
         }
         public DungeonInfoFolder.Stage.StageType GetCurrentStageType()
         {
-            return dungeon.stages[currentStage].myStageType;
+            return dungeon.dStages[currentStage].myStageType;
         }
         public void GoNextStage(ulong nextStage)
         {
@@ -101,11 +97,6 @@ namespace _Player.CombatScene
         public void GotoMain()
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("TestConvertTo Combat Scene");
-        }
-
-        public AsyncOperationHandle GetHandle(uint index)
-        {
-            return assetDict[index];
         }
 
         public void SetCombatManager()
@@ -151,7 +142,7 @@ namespace _Player.CombatScene
             Debug.Log("Scene Loaded");
             if (Instance != null && dungeon != null)
             {
-                GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.stages[currentStage]);
+                GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.dStages[currentStage]);
             }
         }
 
@@ -180,17 +171,17 @@ namespace _Player.CombatScene
 
         public List<ulong> GetNextStages()
         {
-            foreach (var ex in dungeon.stages[currentStage].nextStageID)
+            foreach (var ex in dungeon.dStages[currentStage].nextStageID)
             {
                 Debug.Log("list n"+ex);
                 
                 
             }
-            foreach (var ex in dungeon.stages[currentStage].prevStageID)
+            foreach (var ex in dungeon.dStages[currentStage].prevStageID)
             {
                 Debug.Log("list p"+ex);
             }
-            return dungeon.stages[currentStage].nextStageID;
+            return dungeon.dStages[currentStage].nextStageID;
         }
     }
 }

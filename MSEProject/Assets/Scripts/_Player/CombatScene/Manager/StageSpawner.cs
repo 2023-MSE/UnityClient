@@ -30,7 +30,7 @@ namespace _Player.CombatScene
         // spawn monster
         private void spawnMonster(uint monsterIndex, int spawnIndex)
         {
-            AsyncOperationHandle handle = DungeonManager.instance.GetHandle(monsterIndex);
+            AsyncOperationHandle handle = AddressableManager.Instance.GetHandle(monsterIndex);
             if (handle.Status == AsyncOperationStatus.Succeeded && handle.Result is GameObject)
             {
                 Instantiate(handle.Result as GameObject, spawnPointMonster[spawnIndex].transform.position, Quaternion.identity);
@@ -47,7 +47,7 @@ namespace _Player.CombatScene
         {
             // WARNING
             // Player's index SHOULD BE 0
-            AsyncOperationHandle handle = DungeonManager.instance.GetHandle(0);
+            AsyncOperationHandle handle = AddressableManager.Instance.GetHandle(0);
             Instantiate(handle.Result as GameObject, spawnPointPlayer.transform.position, Quaternion.Euler(0f, 180f, 0f));
         }
 
@@ -57,7 +57,7 @@ namespace _Player.CombatScene
             // WARNING
             // Relax's index SHOULD BE 1
 
-            AsyncOperationHandle handle = DungeonManager.instance.GetHandle(1);
+            AsyncOperationHandle handle = AddressableManager.Instance.GetHandle(1);
             if (handle.Status == AsyncOperationStatus.Succeeded && handle.Result is GameObject)
             {
                 Instantiate(handle.Result as GameObject, spawnPointBuffAndRelax.transform.position, Quaternion.identity);
@@ -72,7 +72,7 @@ namespace _Player.CombatScene
         // spawn buff;
         private void spawnBuff(uint buffindex)
         {
-            AsyncOperationHandle handle = DungeonManager.instance.GetHandle(buffindex);
+            AsyncOperationHandle handle = AddressableManager.Instance.GetHandle(buffindex);
             if (handle.Status == AsyncOperationStatus.Succeeded && handle.Result is GameObject)
             {
                 Instantiate(handle.Result as GameObject, spawnPointBuffAndRelax.transform.position, Quaternion.identity);

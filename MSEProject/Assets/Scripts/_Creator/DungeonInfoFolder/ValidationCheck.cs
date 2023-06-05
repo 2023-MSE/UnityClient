@@ -9,7 +9,7 @@ public class ValidationCheck : MonoBehaviour
         bool endPoint = false;
         List<Stage> startList = new List<Stage>();
 
-        foreach (var stage in dungeon.stages)
+        foreach (var stage in dungeon.dStages)
         {
             if (stage.Value.nextStageID.Count == 0)
             {
@@ -41,7 +41,7 @@ public class ValidationCheck : MonoBehaviour
         {
             ulong current = stack.Pop();
             visited.Add(current, true);
-            foreach (var next in dungeon.stages[current].prevStageID)
+            foreach (var next in dungeon.dStages[current].prevStageID)
             {
                 if (!visited.ContainsKey(next))
                 {
@@ -57,7 +57,7 @@ public class ValidationCheck : MonoBehaviour
     // ±íÀÌ ¿ì¼± Å½»ö
     private void DFS(Stack<ulong> stack, Dungeon dungeon, Dictionary<ulong, bool> visited, ulong current)
     {
-        foreach (var next in dungeon.stages[current].nextStageID)
+        foreach (var next in dungeon.dStages[current].nextStageID)
         {
             if (!visited.ContainsKey(next))
             {

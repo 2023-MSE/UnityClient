@@ -36,17 +36,30 @@ namespace _Player.CombatScene
         private CoolDown _coolDown;
 
         private FadeEffect _fadeEffect;
+
+        private BuffMapList _buffMapList;
         
       
         private void Start()
         {
             theTimingManager = FindObjectOfType<TimingManager>();
             _combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
+            _buffMapList = FindObjectOfType<BuffMapList>();
+        }
+
+        public bool ShowBuffNext()
+        {
+            return _buffMapList.check_note();
         }
 
         public void BuffManagerSetFalse()
         {
             isBuffManagerReady = false;
+        }
+
+        public void ShowNextStage()
+        {
+            _buffMapList.clickmap();
         }
 
         private void FixedUpdate()

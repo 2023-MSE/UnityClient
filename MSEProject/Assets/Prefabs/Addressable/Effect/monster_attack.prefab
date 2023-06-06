@@ -118,8 +118,8 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 2
+      minMaxState: 0
+      scalar: 1
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2
@@ -9836,6 +9836,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6836432840685760845, guid: aae9cdbfdb2205b4b9a6e76c0a8aca51,
         type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836432840685760845, guid: aae9cdbfdb2205b4b9a6e76c0a8aca51,
+        type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.016642934
       objectReference: {fileID: 0}
@@ -9858,6 +9863,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startRotation.minScalar
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836432840685760845, guid: aae9cdbfdb2205b4b9a6e76c0a8aca51,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8086803705738809499, guid: aae9cdbfdb2205b4b9a6e76c0a8aca51,
         type: 3}

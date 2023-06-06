@@ -21,8 +21,7 @@ public class StringEvent : UnityEvent<string>
 }
 public class TimingManager : MonoBehaviour
 {
-    private GameObject[] list;
-    private GameObject[] list2;
+    public GameObject noteui;
     
     private PlayerController player;
 
@@ -39,6 +38,8 @@ public class TimingManager : MonoBehaviour
     private FadeEffect _fadeEffect;
 
     private RelaxManager _relaxManager;
+
+    private BuffManager _buffManager;
     
     [SerializeField] Transform Center = null;
 
@@ -68,6 +69,7 @@ public class TimingManager : MonoBehaviour
     {
         RedCenter.SetActive(false);
         player = FindObjectOfType<PlayerController>();
+        _buffManager = FindObjectOfType<BuffManager>();
     }
 
     void Start()
@@ -87,6 +89,51 @@ public class TimingManager : MonoBehaviour
         }
         
         //_coolDown.DamageToFull();
+    }
+
+    private void FixedUpdate()
+    {
+         
+        if (_relaxManager.ShowRelaxNext())
+        {
+            GameObject[] list = GameObject.FindGameObjectsWithTag("NextNote");
+            foreach (var l in list)
+            {
+                Destroy(l);
+            }
+                        
+            GameObject[] list2 = GameObject.FindGameObjectsWithTag("RelaxNote");
+            foreach (var la in list2)
+            {
+                Destroy(la);
+            }
+
+               
+            return;
+        }
+        else if (_buffManager.ShowBuffNext())
+        {
+            GameObject[] list = GameObject.FindGameObjectsWithTag("UpNote");
+            foreach (var l in list)
+            {
+                Destroy(l);
+            }
+                        
+            GameObject[] list2 = GameObject.FindGameObjectsWithTag("DownNote");
+            foreach (var la in list2)
+            {
+                Destroy(la);
+            }
+            
+            GameObject[] list3 = GameObject.FindGameObjectsWithTag("NextNoteBuff");
+            foreach (var la in list3)
+            {
+                Destroy(la);
+            }
+
+               
+            return;
+        }
     }
 
     public void AddNote(GameObject note)
@@ -115,25 +162,11 @@ public class TimingManager : MonoBehaviour
         // 어느 monster의 note인지 알아야함
         if (check)
         {
-
+           
             if (dir == Direction.NONE)
                 return;
-            
-            if (_relaxManager.ShowRelaxNext())
-            {
-                list = GameObject.FindGameObjectsWithTag("NextNote");
-                foreach (var l in list)
-                {
-                    Destroy(l);
-                }
-                        
-                list2 = GameObject.FindGameObjectsWithTag("RelaxNote");
-                foreach (var la in list2)
-                {
-                    Destroy(la);
-                }
-                return;
-            }
+           
+           
             for (int i = 0; i < boxNoteList.Count; i++)
             {
                 float t_notePosX = boxNoteList[i].transform.localPosition.x;
@@ -210,7 +243,8 @@ public class TimingManager : MonoBehaviour
                     else if (note.gameObject.CompareTag("NextNoteBuff")) 
                     {
 
-                        //_relaxManager.ShowNextStage();
+                        _buffManager.ShowNextStage();
+                        
                         boxNoteList.Remove(note);
                         Destroy(note.gameObject);
                     }
@@ -298,6 +332,11 @@ public class TimingManager : MonoBehaviour
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("DownNote"))
+        {
+            boxNoteList.Remove(other.gameObject);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("NextNoteBuff"))
         {
             boxNoteList.Remove(other.gameObject);
             Destroy(other.gameObject);

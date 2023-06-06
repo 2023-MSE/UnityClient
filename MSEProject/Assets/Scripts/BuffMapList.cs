@@ -1,11 +1,13 @@
-using System;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
 using System.Collections.Generic;
 using _Player.CombatScene;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class RelaxMapList : MonoBehaviour
+
+public class BuffMapList : MonoBehaviour
+  
 {
 
   
@@ -18,9 +20,9 @@ public class RelaxMapList : MonoBehaviour
     private GameObject[] list;
 
     private bool checkList = false;
-    private List<int> maplist;
-    private RelaxManager _relaxManager;
-    private FadeEffect _fadeEffect;
+
+    private BuffManager _buffManager;
+
     private List<GameObject> itemButtons;
     private Color focusColor;
 
@@ -29,10 +31,10 @@ public class RelaxMapList : MonoBehaviour
     public void Start()
     {
         maplist = new List<int>();
+        _fadeEffect = FindObjectOfType<FadeEffect>();
         itemButtons = new List<GameObject>();
         ScrollView.SetActive(false);
-        _relaxManager = FindObjectOfType<RelaxManager>();
-        _fadeEffect = FindObjectOfType<FadeEffect>();
+        _buffManager= FindObjectOfType<BuffManager>();
 
     }
 
@@ -61,6 +63,8 @@ public class RelaxMapList : MonoBehaviour
         return checkList;
     }
 
+    private List<int> maplist;
+    private FadeEffect _fadeEffect;
 
     public void DisplayList()
     {
@@ -126,9 +130,10 @@ public class RelaxMapList : MonoBehaviour
             {
                 Debug.Log("enter!!"+_Player.CombatScene.DungeonManager.Instance.GetCurrentStage() + currentIndex);
                 
-                _fadeEffect.fadein_map((ulong)maplist[currentIndex]);
                 
-                _relaxManager.RelaxSceneOff();
+                _fadeEffect.fadein_map((ulong)maplist[currentIndex]);
+
+                _buffManager.BuffManagerSetFalse();
 
             }
         }

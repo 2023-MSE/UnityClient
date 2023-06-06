@@ -9,6 +9,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5195788916189573099, guid: 1108822b81ff93e4abfa4114fcc0af6b,
         type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195788916189573099, guid: 1108822b81ff93e4abfa4114fcc0af6b,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195788916189573099, guid: 1108822b81ff93e4abfa4114fcc0af6b,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195788916189573099, guid: 1108822b81ff93e4abfa4114fcc0af6b,
+        type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key0.b
       value: 0
       objectReference: {fileID: 0}

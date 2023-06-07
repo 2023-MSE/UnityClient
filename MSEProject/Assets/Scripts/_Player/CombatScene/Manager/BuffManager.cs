@@ -124,6 +124,8 @@ namespace _Player.CombatScene
             isBuffManagerReady = true;
             player = GameObject.FindWithTag("Player");
             _coolDown = GameObject.Find("CoolDown").GetComponent<CoolDown>();
+            player.GetComponent<Player>().setHp(DungeonManager.instance.GetPlayerHP());
+            _coolDown.setHp(DungeonManager.instance.GetPlayerHP()*0.001f);
 
         }
     }

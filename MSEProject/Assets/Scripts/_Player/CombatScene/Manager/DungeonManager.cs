@@ -108,13 +108,11 @@ namespace _Player.CombatScene
         
         public void SetRelaxManager()
         {
-            Debug.Log("scene relax");
             relaxmanager = GameObject.Find("RelaxManager").GetComponent<RelaxManager>();
             relaxmanager.Scenecheck();
         }
         public void SetBUFFManager()
         {
-            Debug.Log("scene relax");
             _buffManager = GameObject.Find("BuffManager").GetComponent<BuffManager>();
             _buffManager.Scenecheck_Buff();
         }
@@ -149,13 +147,14 @@ namespace _Player.CombatScene
 
         public float GetPlayerHP()
         {
+            Debug.Log("notion : get Player Hp to :" + playerHP);
             return playerHP;
         }
 
         public void SetPlayerHP(float hp)
         {
             playerHP = hp;
-            Debug.Log("Set Player Hp to :" + hp);
+            Debug.Log("notion : Set Player Hp to :" + hp);
         }
 
         public void SetspeedUpDown(int i)

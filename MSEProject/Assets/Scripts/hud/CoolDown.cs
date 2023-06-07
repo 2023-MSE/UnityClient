@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
@@ -12,6 +13,28 @@ public class CoolDown : MonoBehaviour
     public bool coolingDown;
 
     public float waitTime = 30.0f;
+
+    private float hp;
+
+    public static CoolDown instance;
+    
+    public static CoolDown Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
+    }
+
+    private void Start()
+    {
+        Debug.Log("notion : CoolDown setactive"+_Player.CombatScene.DungeonManager.instance.GetPlayerHP());
+        setHp(_Player.CombatScene.DungeonManager.instance.GetPlayerHP()*0.001f);
+    }
 
     // Update is called once per frame
     void Update()

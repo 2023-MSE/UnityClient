@@ -12,7 +12,7 @@ namespace _Player.CombatScene
 
     public class CombatManager : MonoBehaviour
     {
-        public static int MAX_HP = 9999999;
+        public static int MAX_HP = 1000;
         [SerializeField] private SkillDataScriptableObject skillData;
         [SerializeField]
         private GameObject[] patterns = new GameObject[4];
@@ -174,8 +174,7 @@ namespace _Player.CombatScene
                     
                     GameOver.SetActive(true);
                     uinote.SetActive(false);
-                    
-                    // ????? ?? ! ??? ????? ???.
+
                     _fadeEffect.gameover();
                     
                     
@@ -189,7 +188,8 @@ namespace _Player.CombatScene
                     monsters.Remove(target.GetComponent<Monster>());
                     if (deadMonster == 3) // 3?? ?? ? ? ??? ?? ??.
                     {
-                       DungeonManager.instance.SetPlayerHP(player.getHp());
+                        Debug.Log("notion 191 1 : "+player.getHp());
+                        DungeonManager.instance.SetPlayerHP(player.getHp());
                        
                         uinote.SetActive(false);
 
@@ -197,8 +197,7 @@ namespace _Player.CombatScene
                         if (!_fadeEffect.isFading())
                         {
                             _mapManager.DisplayList();
-                            Debug.Log("fade "+_fadeEffect.isFading());
-                            //StartCoroutine(FadeIn(3f));
+
                         }
 
 
@@ -334,9 +333,9 @@ namespace _Player.CombatScene
         public void updateSkill(Direction direction)
         {
             
-            Debug.Log(skillData.skills.Count);
+        
             currentSkill = skillData.skills[currentSkill].getNextSkill(direction);
-            Debug.Log("Current Skill num: " + currentSkill);
+
             if (currentSkill == -1)
             {
                 // ?? ???? ??? ???? ?? ??
@@ -388,7 +387,7 @@ namespace _Player.CombatScene
         //
         public void monsterAttackDefence(int monsterIndex)
         {
-            Debug.Log("--check--defence");
+
             isPlayerHit = false;
             Monster m = GetRandomMonster();
             if (m is BossMonster)
@@ -419,19 +418,17 @@ namespace _Player.CombatScene
 
         public void MonsterAttackPlayer()
         {
-            Debug.Log("--check--" + isPlayerHit);
+   
             if (isPlayerHit)
             {
-                Debug.Log("Hit");
-                Debug.Log("attack :"+attackMonsterPower);
+         
                damage(player.gameObject, attackMonsterPower * Time.timeScale);
                StartCoroutine(effectPlayer(1f));
-               
                _coolDown.DamageHp(attackMonsterPower * Time.timeScale * 0.001f);
             }
             else
             {
-                Debug.Log("Defend");
+           
                 player.GetComponent<Player>().effectDefend(1f);
                 player.GetComponent<Player>().AnimateDefendeHitMotion();
             }
@@ -448,15 +445,28 @@ namespace _Player.CombatScene
 
         }
 
+        
         public void setVariable()
         {
+
             GameOver.SetActive(false);
-            int i = 0;
             Debug.Log("SetVariable");
             player = GameObject.FindObjectOfType<Player>();
+            Debug.Log("notion : 455 player"+DungeonManager.instance.GetPlayerHP());
+            
             player.GetComponent<Player>().setHp(DungeonManager.instance.GetPlayerHP());
+
+            if (_coolDown == null)
+            {
+                Debug.Log("no!");
+            }
+            else
+            {
+                _coolDown.setHp(DungeonManager.instance.GetPlayerHP()*0.001f);
+            }
+
             monsters = new List<Monster>(GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None));
-            Debug.Log("aaaaa"+monsters.Count);
+
             foreach (Monster monster in monsters)
             {
                 

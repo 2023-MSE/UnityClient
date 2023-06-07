@@ -974,8 +974,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1205865098109069402, guid: ff6c7a88e0c3bda46a84f79714be1516,
         type: 3}
+      propertyPath: m_text
+      value: Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205865098109069402, guid: ff6c7a88e0c3bda46a84f79714be1516,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205865098109069402, guid: ff6c7a88e0c3bda46a84f79714be1516,
+        type: 3}
       propertyPath: m_margin.x
-      value: -11.304657
+      value: -81.05165
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205865098109069402, guid: ff6c7a88e0c3bda46a84f79714be1516,
+        type: 3}
+      propertyPath: m_margin.z
+      value: -77.00693
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205865098109069402, guid: ff6c7a88e0c3bda46a84f79714be1516,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 140
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1205865097911764114, guid: ff6c7a88e0c3bda46a84f79714be1516, type: 3}

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using System;
 using System.Collections;
+using UnityEngine;
 
 namespace DungeonInfoFolder
 {
@@ -21,7 +22,7 @@ namespace DungeonInfoFolder
         public List<Stage> stages = new List<Stage>();
 
         public long userId;
-        public ulong recentID = 0;
+        public ulong recentID = 2;
         public ulong level;
 
         public Dungeon()
@@ -57,6 +58,7 @@ namespace DungeonInfoFolder
             foreach (var stage in dStages)
             {
                 stages.Add(stage.Value);
+                Debug.Log("Stage ID : " + stage.Key);
             }
         }
         
@@ -66,7 +68,32 @@ namespace DungeonInfoFolder
             
             foreach (var stage in stages)
             {
-                dStages.Add(stage.id, stage);
+                dStages.Add(stage.identifierId, stage);
+            }
+            
+            recentID = (ulong)(dStages.Count + 10);
+        }
+
+        public void ShowDungeonData()
+        {
+            // Show Dungeon Fields
+            Debug.Log("Dungeon ID : " + id);
+            Debug.Log("Dungeon NodeJsonData: " + nodeEditorJsonData);
+            
+            Debug.Log("Dungeon Name: " + name);
+            Debug.Log("Created Time: " + createdTime);
+            Debug.Log("Dungeon Level: " + level);
+
+            foreach (var stage in dStages)
+            {
+                // Show Stage Fields
+                Debug.Log("Stage Dictionary ID : " + stage.Key);
+                Debug.Log("Stage ID : " + stage.Value.identifierId);
+            }
+
+            foreach (var stage in stages)
+            {
+                Debug.Log("Stage ID : " + stage.identifierId);
             }
         }
     }

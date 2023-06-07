@@ -6,6 +6,7 @@ namespace RuntimeNodeEditor
     [Serializable]
     public class NodeData
     {
+        public ulong identifierID;
         public string id;
         public SerializedValue[] values;
         public float posX;

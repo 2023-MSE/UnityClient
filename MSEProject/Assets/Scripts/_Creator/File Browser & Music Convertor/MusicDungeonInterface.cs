@@ -36,14 +36,29 @@ public class MusicDungeonInterface : Singleton<MusicDungeonInterface>
     
     public AudioClip ConvertBytesToAudioClip(byte[] bytesData)
     {
+        if (bytesData is not { Length: > 0 }) return null;
+        
         float[] floatData = new float[bytesData.Length / 2];
         Buffer.BlockCopy(bytesData, 0, floatData, 0, bytesData.Length);
         for (int i = 0; i < bytesData.Length; i += 4) {
             floatData[i / 4] = BitConverter.ToSingle(bytesData, i);
         }
 
-        int lengthSamples = floatData.Length / myAudioSource.clip.channels;
-        AudioClip newClip = AudioClip.Create("newClip", lengthSamples, myAudioSource.clip.channels, myAudioSource.clip.frequency, false);
+        int lengthSamples;
+        AudioClip newClip;
+        
+        if (myAudioSource.clip != null)
+        {
+            lengthSamples = floatData.Length / myAudioSource.clip.channels;
+            newClip = AudioClip.Create("newClip", lengthSamples, myAudioSource.clip.channels,
+                myAudioSource.clip.frequency, false);
+        }
+        else
+        {
+            lengthSamples = floatData.Length / 2;
+            newClip = AudioClip.Create("newClip", lengthSamples, 2, 44100, false);
+        }
+
         newClip.SetData(floatData, 0);
 
         return newClip;

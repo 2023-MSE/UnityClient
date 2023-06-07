@@ -32,8 +32,8 @@ public class ValidationCheck : MonoBehaviour
         Dictionary<ulong, bool> visited = new Dictionary<ulong, bool>();
         foreach (Stage stage in startList)
         {
-            visited.Add(stage.id, true);
-            DFS(stack, dungeon, visited, stage.id);
+            visited.Add(stage.identifierId, true);
+            DFS(stack, dungeon, visited, stage.identifierId);
         }
         visited.Clear();
 

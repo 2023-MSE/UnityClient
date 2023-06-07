@@ -9,7 +9,7 @@ namespace DungeonInfoFolder
     public class Stage
     {
         // 1. Node ID for Searching and Positioning stages
-        public ulong id;
+        public ulong identifierId;
         public List<ulong> prevStage;
         public List<ulong> nextStage;
         
@@ -37,9 +37,9 @@ namespace DungeonInfoFolder
         public AudioClip musicData;
         public byte[] musicBytesData;
 
-        public Stage(ulong inputID)
+        public Stage(ulong inputIdentifierId)
         {
-            id = inputID;
+            identifierId = inputIdentifierId;
             prevStage = new List<ulong>();
             nextStage = new List<ulong>();
             
@@ -51,12 +51,12 @@ namespace DungeonInfoFolder
 
         public void PrintStageInfo()
         {
-            Debug.Log("My Node ID : " + id + "\n" + prevStage.Count + "   " + nextStage.Count);
+            Debug.Log("My Node ID : " + identifierId + "\n" + prevStage.Count + "   " + nextStage.Count);
         }
 
         public void ShowAllStageInformation()
         {
-            Debug.Log("My Node ID : " + id + "\n" +
+            Debug.Log("My Node ID : " + identifierId + "\n" +
                       "Prev Stage ID : " + prevStage.Count + "\n" +
                       "Next Stage ID : " + nextStage.Count + "\n" +
                       "My Stage Type : " + stageType + "\n" +

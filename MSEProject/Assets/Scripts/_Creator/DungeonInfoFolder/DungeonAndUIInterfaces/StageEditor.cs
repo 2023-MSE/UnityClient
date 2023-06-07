@@ -133,6 +133,9 @@ public class StageEditor : Singleton<StageEditor>
     // 2-2. Stage Specific Info Editor
     public void AddElementsToStage(uint inputElements)
     {
+        if (_editingStage == null)
+            return;
+        
         // Stage part
         if (_editingStage.limitForElements <= _editingStage.elements.Count)
         {

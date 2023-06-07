@@ -96,6 +96,7 @@ public class CreatorAndBackend : MonoBehaviour
             if (isSuccess)
             {
                 Debug.Log("던전 생성에 성공했습니다.");
+                GetMyDungeonListStart();
             }
             else
             {
@@ -260,7 +261,17 @@ public class CreatorAndBackend : MonoBehaviour
             // 5-1. jsonUtility Class 를 이용하여 받아온 List<Stage> 값을 현재 editingDungeon.stages 에 덮어씌움.
             // JsonUtility.FromJsonOverwrite(response, DungeonManager.Instance.MyDungeonList); - Json이 Object 타입일 때만 해당 코드의 사용이 가능.
             
-            DungeonManager.Instance.MyDungeonList.myDungeons = JsonConvert.DeserializeObject<List<Dungeon>>(response);
+            List<Dungeon> dungeons = JsonConvert.DeserializeObject<List<Dungeon>>(response);
+            if (dungeons != null && dungeons.Count > 0)
+            {
+                DungeonManager.Instance.MyDungeonList.myDungeons = dungeons;
+            }
+            else
+            {
+                // 이거 왜 안 되지??? - myDungeonList 가 없을 가능성이 제일 높음.
+                DungeonManager.Instance.MyDungeonList.myDungeons = new List<Dungeon>();
+            }
+            
             DungeonUIVisualizer.Instance.VisualizeDungeonList();
             
             Debug.Log("Get Dungeon List done");

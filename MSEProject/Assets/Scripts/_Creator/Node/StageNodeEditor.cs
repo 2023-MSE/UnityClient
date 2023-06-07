@@ -197,17 +197,17 @@ public class StageNodeEditor : NodeEditor
         Dungeon tempEditingDungeon = DungeonEditor.Instance.editingDungeon;
         Stage tempDeletedStage = tempEditingDungeon.dStages[node.IdentifierID];
 
-        tempEditingDungeon.dStages.Remove(tempDeletedStage.id);
+        tempEditingDungeon.dStages.Remove(tempDeletedStage.identifierId);
         foreach (var tempDeletedNodeNextStageID in tempDeletedStage.nextStage)
         {
             // 자신의 뒤의 스테이지로 가서, 앞에 연결된 Stage 중 자신이 없어졌다는 것을 말해줌.
-            tempEditingDungeon.dStages[tempDeletedNodeNextStageID].prevStage.Remove(tempDeletedStage.id);
+            tempEditingDungeon.dStages[tempDeletedNodeNextStageID].prevStage.Remove(tempDeletedStage.identifierId);
         }
 
         foreach (var tempDeletedNodePrevStageID in tempDeletedStage.prevStage)
         {
             // 자신의 앞의 스테이지로 가서, 뒤에 연결된 Stage 중 자신이 없어졌다는 것을 말해줌.
-            tempEditingDungeon.dStages[tempDeletedNodePrevStageID].nextStage.Remove(tempDeletedStage.id);
+            tempEditingDungeon.dStages[tempDeletedNodePrevStageID].nextStage.Remove(tempDeletedStage.identifierId);
         }
 
         Graph.Delete(node);

@@ -6,6 +6,8 @@ public class DungeonCreatorApplicationStartup : MonoBehaviour
 {
     public RectTransform      editorHolder;
     public StageNodeEditor    editor;
+    
+    public GameObject         ctxMenuContainer;
 
     private void Start()
     {
@@ -18,5 +20,8 @@ public class DungeonCreatorApplicationStartup : MonoBehaviour
         Transform tempTransformForCtxMenu = GameObject.Find("CtxMenuContainer").transform;
         tempTransformForCtxMenu.localScale = Vector3.one * 2.5f;
         tempTransformForCtxMenu.parent = tempTransformForCtxMenu.parent.parent.parent;
+        
+        if (ctxMenuContainer != null)
+            ctxMenuContainer.SetActive(false);
     }
 }

@@ -10,10 +10,16 @@ public class DungeonManager : Singleton<DungeonManager>
 {
     public DungeonList MyDungeonList { get; set; }
 
+    protected override void Awake()
+    {
+        base.Awake();
+        MyDungeonList = new DungeonList();
+    }
+
     private void Start()
     {
         // Test code
-        GetDungeonList();
+        // GetDungeonList();
     }
 
     public void ShowAllDungeons()

@@ -74,6 +74,7 @@ public class CreatorAndBackend : MonoBehaviour
     private IEnumerator EditDungeonRequest() {
         // 1. Request URL 설정
         string url = _serverUrl + "/edit";
+        DungeonEditor.Instance.editingDungeon.ConvertStagesDictionaryToList();
         string json = JsonUtility.ToJson(DungeonEditor.Instance.editingDungeon);
 
         // 2. Web Request 생성 및 설정

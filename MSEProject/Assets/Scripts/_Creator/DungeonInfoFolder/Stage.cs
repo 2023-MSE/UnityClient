@@ -8,6 +8,7 @@ namespace DungeonInfoFolder
     [Serializable]
     public class Stage
     {
+        public ulong id;
         // 1. Node ID for Searching and Positioning stages
         public ulong identifierId;
         public List<ulong> prevStage;
@@ -70,6 +71,12 @@ namespace DungeonInfoFolder
             else
                 Debug.Log("Music Name : " + musicName + "\n" +
                           "Music Bytes Data : " + musicBytesData.Length);
+        }
+
+        public void ShowStageMusicData()
+        {
+            Debug.Log("Music Name : " + musicName + "\n" +
+                      "Music Bytes Data : " + musicBytesData);
         }
     }
 }

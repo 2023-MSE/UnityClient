@@ -17,8 +17,8 @@ public class MusicDungeonInterface : Singleton<MusicDungeonInterface>
     {
         StageEditor.Instance.EditingStage.musicName = inputMusicName;
         StageEditor.Instance.EditingStage.musicData = inputMusicData;
-        StageEditor.Instance.EditingStage.musicBytesData = ConvertAudioClipToBytes(inputMusicData);
-        Debug.Log(StageEditor.Instance.EditingStage.musicBytesData.Length);
+        StageEditor.Instance.EditingStage.musicBytesDataReal = ConvertAudioClipToBytes(inputMusicData);
+        Debug.Log(StageEditor.Instance.EditingStage.musicBytesDataReal.Length);
 
         myAudioSource.clip = inputMusicData;
     }
@@ -68,14 +68,14 @@ public class MusicDungeonInterface : Singleton<MusicDungeonInterface>
     public void SaveMusicToStage(string inputMusicName, byte[] inputMusicData)
     {
         StageEditor.Instance.EditingStage.musicName = inputMusicName;
-        StageEditor.Instance.EditingStage.musicBytesData = inputMusicData;
+        StageEditor.Instance.EditingStage.musicBytesDataReal = inputMusicData;
         
         LoadMusicToAudioSource();
     }
     
     public byte[] LoadMusicFromStage()
     {
-        return StageEditor.Instance.EditingStage.musicBytesData;
+        return StageEditor.Instance.EditingStage.musicBytesDataReal;
     }
     
     public void LoadMusicToAudioSource()

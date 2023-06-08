@@ -30,9 +30,9 @@ public class StageNode : Node
         StageEditor.Instance.VisualizeStageType();
         StageEditor.Instance.VisualizeStageSpecificInfo();
 
-        if (StageEditor.Instance.EditingStage.musicBytesData != null) {
+        if (StageEditor.Instance.EditingStage.musicBytesDataReal != null) {
             MusicDungeonInterface.Instance.myAudioSource.clip =
-                MusicDungeonInterface.Instance.ConvertBytesToAudioClip(StageEditor.Instance.EditingStage.musicBytesData);
+                MusicDungeonInterface.Instance.ConvertBytesToAudioClip(StageEditor.Instance.EditingStage.musicBytesDataReal);
         }
         
     }

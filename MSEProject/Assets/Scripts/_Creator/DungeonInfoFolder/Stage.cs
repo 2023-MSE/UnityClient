@@ -36,7 +36,8 @@ namespace DungeonInfoFolder
         // 3) Music information
         public string musicName;
         public AudioClip musicData;
-        public byte[] musicBytesData;
+        public string musicBytesData;
+        public byte[] musicBytesDataReal;
 
         public Stage(ulong inputIdentifierId)
         {
@@ -70,13 +71,23 @@ namespace DungeonInfoFolder
                 Debug.Log("Music Name : " + musicName);
             else
                 Debug.Log("Music Name : " + musicName + "\n" +
-                          "Music Bytes Data : " + musicBytesData.Length);
+                          "Music Bytes Data : " + musicBytesDataReal.Length);
         }
 
         public void ShowStageMusicData()
         {
             Debug.Log("Music Name : " + musicName + "\n" +
-                      "Music Bytes Data : " + musicBytesData);
+                      "Music Bytes Data : " + musicBytesDataReal);
+        }
+
+        public void MusicBytesDataToBase64()
+        {
+            musicBytesData = musicBytesDataReal != null ? Convert.ToBase64String(musicBytesDataReal) : null;
+        }
+        
+        public void Base64ToMusicBytesData()
+        {
+            musicBytesDataReal = musicBytesData != null ? Convert.FromBase64String(musicBytesData) : null;
         }
     }
 }

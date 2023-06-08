@@ -74,6 +74,22 @@ namespace DungeonInfoFolder
             recentID = (ulong)(dStages.Count + 10);
         }
 
+        public void ConvertStagesMusicBytesDataToBase64()
+        {
+            foreach (var stage in dStages)
+            {
+                stage.Value.MusicBytesDataToBase64();
+            }
+        }
+        
+        public void ConvertStagesBase64ToMusicBytesData()
+        {
+            foreach (var stage in dStages)
+            {
+                stage.Value.Base64ToMusicBytesData();
+            }
+        }
+
         public void ShowDungeonData()
         {
             // Show Dungeon Fields
@@ -96,5 +112,7 @@ namespace DungeonInfoFolder
                 Debug.Log("Stage ID : " + stage.identifierId);
             }
         }
+        
+        
     }
 }

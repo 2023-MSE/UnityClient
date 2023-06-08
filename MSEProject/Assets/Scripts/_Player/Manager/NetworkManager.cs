@@ -89,6 +89,7 @@ namespace _Player
                 
                 CombatScene.DungeonManager.Instance.dungeon.stages =
                     JsonConvert.DeserializeObject<List<Stage>>(response);
+                CombatScene.DungeonManager.Instance.dungeon.ConvertStagesBase64ToMusicBytesData();
                 ulong firstEntry = CombatScene.DungeonManager.Instance.dungeon.ConvertStagesListToDictionaryAndReturnFirst();
                 // 5-2. 게임 시작
                 CombatScene.DungeonManager.Instance.GoNextStage(firstEntry);

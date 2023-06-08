@@ -9,9 +9,9 @@ namespace DungeonInfoFolder
     public class Stage
     {
         // 1. Node ID for Searching and Positioning stages
-        public ulong nodeID;
-        public List<ulong> prevStageID;
-        public List<ulong> nextStageID;
+        public ulong identifierId;
+        public List<ulong> prevStage;
+        public List<ulong> nextStage;
         
         
         // 2. Specific Stage information
@@ -25,7 +25,7 @@ namespace DungeonInfoFolder
             Relax
         }
 
-        public StageType myStageType;
+        public StageType stageType;
 
         // 2) specific information about that type
         public string specificTypeInfo;
@@ -37,13 +37,13 @@ namespace DungeonInfoFolder
         public AudioClip musicData;
         public byte[] musicBytesData;
 
-        public Stage(ulong inputNodeID)
+        public Stage(ulong inputIdentifierId)
         {
-            nodeID = inputNodeID;
-            prevStageID = new List<ulong>();
-            nextStageID = new List<ulong>();
+            identifierId = inputIdentifierId;
+            prevStage = new List<ulong>();
+            nextStage = new List<ulong>();
             
-            myStageType = StageType.Relax;
+            stageType = StageType.Relax;
             
             specificTypeInfo = "Just Default Stage for new Node";
             elements = new List<uint>();
@@ -51,15 +51,15 @@ namespace DungeonInfoFolder
 
         public void PrintStageInfo()
         {
-            Debug.Log("My Node ID : " + nodeID + "\n" + prevStageID.Count + "   " + nextStageID.Count);
+            Debug.Log("My Node ID : " + identifierId + "\n" + prevStage.Count + "   " + nextStage.Count);
         }
 
         public void ShowAllStageInformation()
         {
-            Debug.Log("My Node ID : " + nodeID + "\n" +
-                      "Prev Stage ID : " + prevStageID.Count + "\n" +
-                      "Next Stage ID : " + nextStageID.Count + "\n" +
-                      "My Stage Type : " + myStageType + "\n" +
+            Debug.Log("My Node ID : " + identifierId + "\n" +
+                      "Prev Stage ID : " + prevStage.Count + "\n" +
+                      "Next Stage ID : " + nextStage.Count + "\n" +
+                      "My Stage Type : " + stageType + "\n" +
                       "Specific Type Info : " + specificTypeInfo + "\n" +
                       "Element Count : " + elements.Count + "\n" +
                       "Limit for Elements : " + limitForElements);

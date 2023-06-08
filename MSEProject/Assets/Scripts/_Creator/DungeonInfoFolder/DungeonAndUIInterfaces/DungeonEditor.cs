@@ -28,5 +28,10 @@ namespace DungeonInfoFolder.DungeonAndUIInterfaces
         {
             SetDungeonEditorType(DungeonEditorType.Edit);
         }
+
+        public void ShowEditingDungeonData()
+        {
+            editingDungeon.ShowDungeonData();
+        }
     }
 }

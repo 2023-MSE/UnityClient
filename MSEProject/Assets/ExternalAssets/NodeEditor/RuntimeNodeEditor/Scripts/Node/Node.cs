@@ -28,8 +28,9 @@ namespace RuntimeNodeEditor
         private INodeEvents                 _nodeEvents;
         private ISocketEvents               _socketEvents;
 
-        public void Init(INodeEvents nodeEvents, ISocketEvents socketEvents, Vector2 pos, string id, string path)
+        public void Init(INodeEvents nodeEvents, ISocketEvents socketEvents, Vector2 pos, string id, ulong identifierID, string path)
         {
+            IdentifierID        = identifierID;
             ID                  = id;
             LoadPath            = path;
             Outputs             = new List<SocketOutput>();

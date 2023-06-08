@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
 using Defective.JSON;
+using DungeonInfoFolder;
 using DungeonInfoFolder.DungeonAndUIInterfaces;
+using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class CreatorAndBackend : MonoBehaviour
@@ -95,6 +96,7 @@ public class CreatorAndBackend : MonoBehaviour
             if (isSuccess)
             {
                 Debug.Log("던전 생성에 성공했습니다.");
+                GetMyDungeonListStart();
             }
             else
             {
@@ -107,6 +109,8 @@ public class CreatorAndBackend : MonoBehaviour
 
     #region get selected Dungeon stages
 
+    public UnityEvent onGetSelectedDungeonStagesSuccess;
+    
     public void GetSelectedDungeonStagesStart()
     {
         StartCoroutine(GetSelectedDungeonStagesRequest());
@@ -131,8 +135,12 @@ public class CreatorAndBackend : MonoBehaviour
             string response = webRequest.downloadHandler.text;
             
             // 5-1. jsonUtility Class 를 이용하여 받아온 List<Stage> 값을 현재 editingDungeon.stages 에 덮어씌움.
-            JsonUtility.FromJsonOverwrite(response, DungeonEditor.Instance.editingDungeon.stages);
+            // JsonUtility.FromJsonOverwrite(response, DungeonEditor.Instance.editingDungeon.stages); - Json이 Object 타입일 때만 사용이 가능.
+            DungeonEditor.Instance.editingDungeon.stages = JsonConvert.DeserializeObject<List<Stage>>(response);
             DungeonEditor.Instance.editingDungeon.ConvertStagesListToDictionary();
+            
+            // 6. Load 가 끝나고 나서 각종 이벤트 실행.
+            onGetSelectedDungeonStagesSuccess.Invoke();
         }
     }
     
@@ -235,7 +243,7 @@ public class CreatorAndBackend : MonoBehaviour
     {
         // 1. Request URL 설정
         string url = "http://localhost:8080/mse/login/get-creator-dungeon-list";
-        string json = "{\"id\":\"" + DungeonEditor.Instance.editingDungeon.userId + "\"}";
+        string json = "{\"id\":\"" + UserInfoHolder.Instance.myInfo.id + "\"}";
 
         // 2. Web Request 생성 및 설정
         UnityWebRequest webRequest = CommonWebRequestSetupByJson(url, json);
@@ -249,10 +257,24 @@ public class CreatorAndBackend : MonoBehaviour
         } else {
             // 5. HTTP Response 결과 확인
             string response = webRequest.downloadHandler.text;
-            
+            Debug.Log(response);
             // 5-1. jsonUtility Class 를 이용하여 받아온 List<Stage> 값을 현재 editingDungeon.stages 에 덮어씌움.
-            JsonUtility.FromJsonOverwrite(response, DungeonManager.Instance.MyDungeonList);
+            // JsonUtility.FromJsonOverwrite(response, DungeonManager.Instance.MyDungeonList); - Json이 Object 타입일 때만 해당 코드의 사용이 가능.
+            
+            List<Dungeon> dungeons = JsonConvert.DeserializeObject<List<Dungeon>>(response);
+            if (dungeons != null && dungeons.Count > 0)
+            {
+                DungeonManager.Instance.MyDungeonList.myDungeons = dungeons;
+            }
+            else
+            {
+                // 이거 왜 안 되지??? - myDungeonList 가 없을 가능성이 제일 높음.
+                DungeonManager.Instance.MyDungeonList.myDungeons = new List<Dungeon>();
+            }
+            
             DungeonUIVisualizer.Instance.VisualizeDungeonList();
+            
+            Debug.Log("Get Dungeon List done");
         }
     }
     

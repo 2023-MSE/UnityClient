@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DungeonInfoFolder;
+using DungeonInfoFolder.DungeonAndUIInterfaces;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,10 +10,24 @@ public class DungeonManager : Singleton<DungeonManager>
 {
     public DungeonList MyDungeonList { get; set; }
 
+    protected override void Awake()
+    {
+        base.Awake();
+        MyDungeonList = new DungeonList();
+    }
+
     private void Start()
     {
         // Test code
-        GetDungeonList();
+        // GetDungeonList();
+    }
+
+    public void ShowAllDungeons()
+    {
+        foreach (var eachDungeon in MyDungeonList.myDungeons)
+        {
+            Debug.Log(eachDungeon.name);
+        }
     }
 
     public void GetDungeonList()

@@ -19,7 +19,7 @@ public class StageNode : Node
         Register(inputSocket);
         SetHeader("Stage");
 
-        StageEditor.Instance.EditingStage = DungeonEditor.Instance.editingDungeon.dStages[IdentifierID];
+        // StageEditor.Instance.EditingStage = DungeonEditor.Instance.editingDungeon.dStages[IdentifierID];
         editButton.onClick.AddListener(OnEditButtonClick);
     }
 

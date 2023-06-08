@@ -10,5 +10,6 @@ public class OnEnableCheck : MonoBehaviour
     private void OnEnable()
     {
         onEnableEvent.Invoke();
+        Debug.Log("OnEnableCheck");
     }
 }

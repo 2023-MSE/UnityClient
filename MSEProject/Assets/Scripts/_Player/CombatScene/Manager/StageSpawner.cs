@@ -87,7 +87,7 @@ namespace _Player.CombatScene
         public void spawnStage(Stage stage)
         {
             spawnPlayer();
-            switch(stage.myStageType)
+            switch(stage.stageType)
             {
                 case DungeonInfoFolder.Stage.StageType.Boss:
                     {

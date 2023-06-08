@@ -75,7 +75,7 @@ namespace RuntimeNodeEditor
         public Node Create(string prefabPath, Vector2 pos)
         {
             var node            = Utility.CreateNodePrefab<Node>(prefabPath, nodeContainer);
-            node.Init(_signalSystem, _signalSystem, pos, NewId(), prefabPath);
+            node.Init(_signalSystem, _signalSystem, pos, NewId(), 0, prefabPath);
             node.Setup();
             nodes.Add(node);
             HandleSocketRegister(node);
@@ -206,7 +206,7 @@ namespace RuntimeNodeEditor
 
                 foreach (var node in nodes)
                 {
-                    var nodeData = graph.nodes.FirstOrDefault(data => data.id == node.ID);
+                    var nodeData = graph.nodes.FirstOrDefault(data => data.id == node.ID);  
 
                     for (int i = 0; i < nodeData.inputSocketIds.Length; i++)
                     {
@@ -249,6 +249,7 @@ namespace RuntimeNodeEditor
                 var data = new NodeData();
                 node.OnSerialize(ser);
 
+                data.identifierID = node.IdentifierID;
                 data.id = node.ID;
                 data.values = ser.Serialize();
                 data.posX = node.Position.x;
@@ -473,7 +474,8 @@ namespace RuntimeNodeEditor
         {
             var node = Utility.CreateNodePrefab<Node>(data.path, nodeContainer);
             var pos  = new Vector2(data.posX, data.posY);
-            node.Init(_signalSystem, _signalSystem, pos, data.id, data.path);
+            var identifierID = data.identifierID;
+            node.Init(_signalSystem, _signalSystem, pos, data.id, identifierID, data.path);
             node.Setup();
             nodes.Add(node);
 

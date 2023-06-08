@@ -152,7 +152,7 @@ namespace _Player.CombatScene
 
         public void MonsterAttack()
         {
-            DungeonManager.instance.MonsterAttack();
+            DungeonManager.Instance.MonsterAttack();
         }
 
         public bool isDead()

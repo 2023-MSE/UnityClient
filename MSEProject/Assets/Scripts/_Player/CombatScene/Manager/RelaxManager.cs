@@ -176,8 +176,8 @@ namespace _Player.CombatScene
             isRelaxManagerReady = true;
             player = GameObject.FindWithTag("Player");
             _coolDown = GameObject.Find("CoolDown").GetComponent<CoolDown>();
-            _player.setHp(DungeonManager.instance.GetPlayerHP());
-            _coolDown.setHp(DungeonManager.instance.GetPlayerHP()*0.001f);
+            _player.setHp(DungeonManager.Instance.GetPlayerHP());
+            _coolDown.setHp(DungeonManager.Instance.GetPlayerHP()*0.001f);
 
             //note.SetActive(false);
 

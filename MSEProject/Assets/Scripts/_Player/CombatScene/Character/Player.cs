@@ -73,7 +73,7 @@ namespace _Player.CombatScene
             Debug.Assert(animator != null, "Animator is NULL");
 
             int idleType = -1;
-            switch (DungeonManager.instance.GetCurrentStageType())
+            switch (DungeonManager.Instance.GetCurrentStageType())
             {
                 case DungeonInfoFolder.Stage.StageType.Monster:
                 case DungeonInfoFolder.Stage.StageType.Boss:
@@ -135,7 +135,7 @@ namespace _Player.CombatScene
 
         public void SkillActivation()
         {
-            DungeonManager.instance.SkillActivation();
+            DungeonManager.Instance.SkillActivation();
         }
     }
 }

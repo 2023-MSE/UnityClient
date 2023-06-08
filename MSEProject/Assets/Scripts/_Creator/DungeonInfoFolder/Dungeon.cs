@@ -74,6 +74,11 @@ namespace DungeonInfoFolder
             recentID = (ulong)(dStages.Count + 10);
         }
 
+        public ulong ConvertStagesListToDictionaryAndReturnFirst()
+        {
+            ConvertStagesListToDictionary();
+            return stages[0].identifierId;
+        }
         public void ShowDungeonData()
         {
             // Show Dungeon Fields

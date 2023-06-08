@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Defective.JSON;
+using DungeonInfoFolder;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -42,7 +44,7 @@ namespace _Player
 
                 // 5-1. jsonUtility Class 를 이용하여 받아온 List<Stage> 값을 현재 editingDungeon.stages 에 덮어씌움.
                 /*TODO : Json 변환시 오류있음! 해결 필요 */
-                JsonUtility.FromJsonOverwrite(response, _visualizer.dungeonList);
+                _visualizer.dungeonList.deployedList = JsonConvert.DeserializeObject<List<DeployedDungeon>>(response);
                 _visualizer.VisualizeDungeonList();
             }
         }
@@ -79,11 +81,17 @@ namespace _Player
                 string response = webRequest.downloadHandler.text;
 
                 // 5-1. jsonUtility Class 를 이용하여 받아온 List<Stage> 값을 현재 editingDungeon.stages 에 덮어씌움.
-                JsonUtility.FromJsonOverwrite(response, CombatScene.DungeonManager.Instance.dungeon.stages);
-                CombatScene.DungeonManager.Instance.dungeon.ConvertStagesListToDictionary();
+                CombatScene.DungeonManager.Instance.dungeon = new Dungeon();
+                CombatScene.DungeonManager.Instance.dungeon.id = deployedDungeon.id;
+                CombatScene.DungeonManager.Instance.dungeon.name = deployedDungeon.name;
+                CombatScene.DungeonManager.Instance.dungeon.createdTime = deployedDungeon.createdTime;
+                CombatScene.DungeonManager.Instance.dungeon.userId = deployedDungeon.userId;
                 
+                CombatScene.DungeonManager.Instance.dungeon.stages =
+                    JsonConvert.DeserializeObject<List<Stage>>(response);
+                ulong firstEntry = CombatScene.DungeonManager.Instance.dungeon.ConvertStagesListToDictionaryAndReturnFirst();
                 // 5-2. 게임 시작
-                CombatScene.DungeonManager.Instance.GoNextStage(0);
+                CombatScene.DungeonManager.Instance.GoNextStage(firstEntry);
             }
         }
         

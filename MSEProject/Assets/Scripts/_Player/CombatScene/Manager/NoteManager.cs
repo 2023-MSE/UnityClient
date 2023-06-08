@@ -55,7 +55,7 @@ public class NoteManager : MonoBehaviour
 
     public void SetBpm(float _bpm)
     {
-        if (_Player.CombatScene.DungeonManager.instance.enabled)
+        if (_Player.CombatScene.DungeonManager.Instance.enabled)
         {
             while (_bpm >= 45)
                 _bpm /= 2;

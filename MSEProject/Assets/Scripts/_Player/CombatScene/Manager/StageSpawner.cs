@@ -109,17 +109,17 @@ namespace _Player.CombatScene
                     }
                 case DungeonInfoFolder.Stage.StageType.Totem:
                     spawnBuff(stage.elements[0]);
-                    DungeonManager.instance.SetBUFFManager();
+                    DungeonManager.Instance.SetBUFFManager();
                     break;
                 case DungeonInfoFolder.Stage.StageType.Relax:
                     spawnRelax();
-                    DungeonManager.instance.SetRelaxManager();
+                    DungeonManager.Instance.SetRelaxManager();
                     break;
                 default:
                     Debug.Log("ERROR Unknown Node");
                     break;
             }
-            DungeonManager.instance.SetCombatManager();
+            DungeonManager.Instance.SetCombatManager();
         }
     }
 }

@@ -9,39 +9,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace _Player.CombatScene
 {
-    public class DungeonManager : MonoBehaviour
+    public class DungeonManager : Singleton<DungeonManager>
     {
-        /*
-         * Make it singleton
-         * **/
-        public static DungeonManager instance = null;
-
-        private DungeonManager() { }
-        public static DungeonManager Instance
-        {
-            get
-            {
-                if (null == instance)
-                {
-                    return null;
-                }
-                return instance;
-            }
-        }
-        void Awake()
-        {
-            if (null == instance)
-            {
-                instance = this;
-                DontDestroyOnLoad(this.gameObject);
-                dungeon = null;
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
-        }
-
 
         // ?????? ???? dungeon?? public???? ??????. ???? private???? ??? ????
         public DungeonInfoFolder.Dungeon dungeon;
@@ -54,7 +23,13 @@ namespace _Player.CombatScene
         private StageInfoScriptableObject stageInfo;
         private float playerHP;
         private bool check = false;
-        public AudioSource audioSource;
+        private AudioSource audioSource;
+        private NoteManager _noteManager;
+
+        public void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
         public void SetDeployedDungeon(DeployedDungeon dungeon)
         {
             _dungeonInfo = dungeon;
@@ -66,7 +41,7 @@ namespace _Player.CombatScene
         
         private void Start()
         {
-            audioSource = audioSource.GetComponent<AudioSource>();
+            audioSource = GetComponent<AudioSource>();
             currentStage = 0;
             playerHP = CombatManager.MAX_HP;
             AddressableManager.Instance.SetAddressable(stageInfo.stageInfoTemplate);
@@ -139,9 +114,16 @@ namespace _Player.CombatScene
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             Debug.Log("Scene Loaded");
-            if (Instance != null && dungeon != null)
+            GameObject stageSpawner = GameObject.Find("StageSpawner");
+            
+            if (dungeon != null && stageSpawner != null)
             {
-                GameObject.Find("StageSpawner").GetComponent<StageSpawner>().spawnStage(dungeon.dStages[currentStage]);
+                stageSpawner.GetComponent<StageSpawner>().spawnStage(dungeon.dStages[currentStage]);
+                Debug.Log(dungeon.dStages[currentStage].musicData);
+                audioSource.clip = dungeon.dStages[currentStage].musicData;
+                audioSource.Play();
+                _noteManager = GameObject.Find("Note").GetComponent<NoteManager>();
+                _noteManager.SetBpm(60);
             }
         }
 

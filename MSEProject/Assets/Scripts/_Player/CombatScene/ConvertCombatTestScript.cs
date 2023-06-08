@@ -55,7 +55,7 @@ public class ConvertCombatTestScript : MonoBehaviour
         dungeon.dStages.Add(3, stage3);
         dungeon.dStages.Add(4, stage4);
 
-        _Player.CombatScene.DungeonManager.instance.SetDungeon(dungeon);
+        _Player.CombatScene.DungeonManager.Instance.SetDungeon(dungeon);
         _Player.CombatScene.DungeonManager.Instance.GoNextStage(0);
     }
     public void OnClickConvertBuffButton()
@@ -74,7 +74,7 @@ public class ConvertCombatTestScript : MonoBehaviour
         for (ulong i = 1; i < 11; i++)
             dungeon.dStages.Add(i, new DungeonInfoFolder.Stage(i));
 
-        _Player.CombatScene.DungeonManager.instance.SetDungeon(dungeon);
+        _Player.CombatScene.DungeonManager.Instance.SetDungeon(dungeon);
         _Player.CombatScene.DungeonManager.Instance.GoNextStage(0);
     }
     public void OnClickConvertRelaxButton()
@@ -92,7 +92,7 @@ public class ConvertCombatTestScript : MonoBehaviour
         for (ulong i = 1; i < 11; i++)
             dungeon.dStages.Add(i, new DungeonInfoFolder.Stage(i));
 
-        _Player.CombatScene.DungeonManager.instance.SetDungeon(dungeon);
+        _Player.CombatScene.DungeonManager.Instance.SetDungeon(dungeon);
         _Player.CombatScene.DungeonManager.Instance.GoNextStage(0);
     }
 }

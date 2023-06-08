@@ -165,4 +165,10 @@ public class StageEditor : Singleton<StageEditor>
         VisualizeStageType();
         VisualizeStageSpecificInfo();
     }
+    
+    // 23.06.08 
+    public void ShowStageMusicData()
+    {
+        _editingStage.ShowStageMusicData();
+    }
 }

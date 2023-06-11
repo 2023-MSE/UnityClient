@@ -38,6 +38,7 @@ namespace DungeonInfoFolder
         public AudioClip musicData;
         public string musicBytesData;
         public byte[] musicBytesDataReal;
+        public int bpm= 60;
 
         public Stage(ulong inputIdentifierId)
         {
@@ -88,6 +89,12 @@ namespace DungeonInfoFolder
         public void Base64ToMusicBytesData()
         {
             musicBytesDataReal = musicBytesData != null ? Convert.FromBase64String(musicBytesData) : null;
+        }
+        
+        public void MusicBytesDataToAudioClip()
+        {
+            Debug.Log("MusicByte64Data : " + musicBytesData);
+            musicData = MusicDungeonInterface.Instance.ConvertBytesToAudioClip(musicBytesDataReal);
         }
     }
 }

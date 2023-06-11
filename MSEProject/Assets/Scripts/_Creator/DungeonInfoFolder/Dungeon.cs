@@ -94,6 +94,14 @@ namespace DungeonInfoFolder
                 stage.Value.Base64ToMusicBytesData();
             }
         }
+        
+        public void ConvertStagesMusicBytesDataToAudioClip()
+        {
+            foreach (var stage in dStages)
+            {
+                stage.Value.MusicBytesDataToAudioClip();
+            }
+        }
 
         public void ShowDungeonData()
         {

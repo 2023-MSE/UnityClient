@@ -171,4 +171,10 @@ public class StageEditor : Singleton<StageEditor>
     {
         _editingStage.ShowStageMusicData();
     }
+    
+    // 23.06.11
+    public void EditStageBpm (string endedInput)
+    {
+        _editingStage.bpm = int.Parse(endedInput);
+    }
 }

@@ -123,7 +123,7 @@ namespace _Player.CombatScene
                 audioSource.clip = dungeon.dStages[currentStage].musicData;
                 audioSource.Play();
                 _noteManager = GameObject.Find("Note").GetComponent<NoteManager>();
-                _noteManager.SetBpm(60);
+                _noteManager.SetBpm(dungeon.dStages[currentStage].bpm);
             }
         }
 

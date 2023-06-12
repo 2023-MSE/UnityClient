@@ -132,16 +132,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a795fb78726ce14687c846b2ed3784a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1000
+  maxHp: 500
   hp: 0
-  num: 4
   pattern: 00010001
   patterns:
   - {fileID: 5375850686441753685, guid: 64c479266873a5b4db7082809c64abfe, type: 3}
   - {fileID: 5375850686441753685, guid: 64c479266873a5b4db7082809c64abfe, type: 3}
   - {fileID: 5375850686441753685, guid: 64c479266873a5b4db7082809c64abfe, type: 3}
   - {fileID: 5375850686441753685, guid: 64c479266873a5b4db7082809c64abfe, type: 3}
-  power: 10
+  power: 100
   type: 0
 --- !u!1 &1326775223490303571
 GameObject:

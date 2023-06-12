@@ -13,6 +13,7 @@ public class ConvertCombatTestScript : MonoBehaviour
 
         DungeonInfoFolder.Stage stage0 = new DungeonInfoFolder.Stage(0);
         stage0.nextStageID.Add(1);
+        stage0.nextStageID.Add(4);
         stage0.elements.Add(2);
         stage0.elements.Add(2);
         stage0.elements.Add(2);
@@ -20,6 +21,7 @@ public class ConvertCombatTestScript : MonoBehaviour
 
         DungeonInfoFolder.Stage stage1 = new DungeonInfoFolder.Stage(1);
         stage1.nextStageID.Add(2);
+        stage1.nextStageID.Add(3);
         stage1.elements.Add(3);
         stage1.elements.Add(4);
         stage1.elements.Add(5);
@@ -32,9 +34,7 @@ public class ConvertCombatTestScript : MonoBehaviour
 
         DungeonInfoFolder.Stage stage3 = new DungeonInfoFolder.Stage(3);
         
-        stage3.nextStageID.Add(0);
-        stage3.nextStageID.Add(1);
-        stage3.nextStageID.Add(2);
+      
         stage3.nextStageID.Add(3);
         stage3.nextStageID.Add(4);
       
@@ -43,7 +43,7 @@ public class ConvertCombatTestScript : MonoBehaviour
         stage3.myStageType = DungeonInfoFolder.Stage.StageType.Relax;
 
         DungeonInfoFolder.Stage stage4 = new DungeonInfoFolder.Stage(4);
-        stage4.nextStageID.Add(5);
+        //stage4.nextStageID.Add(5);
         stage4.elements.Add(4);
         stage4.elements.Add(6);
         stage4.elements.Add(4);

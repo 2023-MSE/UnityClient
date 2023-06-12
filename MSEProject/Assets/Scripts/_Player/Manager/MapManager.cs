@@ -158,6 +158,12 @@ public class MapManager : MonoBehaviour
     private void SelectItem(int index)
     {
         itemButtons[currentIndex].GetComponent<Image>().color=Color.magenta;
+
+
+        if (itemButtons[currentIndex] == null)
+        {
+            return;
+        }
     } 
     public void RemoveList()
     {

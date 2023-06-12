@@ -70,6 +70,7 @@ namespace _Player.CombatScene
             _fadeEffect = FindObjectOfType<FadeEffect>();
             _relaxMapList = FindObjectOfType<RelaxMapList>();
             player = GameObject.FindWithTag("Player");
+
             Debug.Log("start relax Scene");
             _combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
             _shake = FindObjectOfType<CameraShake>();
@@ -167,6 +168,7 @@ namespace _Player.CombatScene
 
         public void RelaxSceneOff()
         {
+            //DungeonManager.instance.SetPlayerHP(player.GetComponent<Player>().getHp());
             isRelaxManagerReady = false;
         }
 
@@ -175,9 +177,16 @@ namespace _Player.CombatScene
             check = !check;
             isRelaxManagerReady = true;
             player = GameObject.FindWithTag("Player");
+
             _coolDown = GameObject.Find("CoolDown").GetComponent<CoolDown>();
-            _player.setHp(DungeonManager.instance.GetPlayerHP());
+
+            if (player == null)
+            {
+                return; 
+            }
+            player.GetComponent<Player>().setHp(DungeonManager.instance.GetPlayerHP());
             _coolDown.setHp(DungeonManager.instance.GetPlayerHP()*0.001f);
+
 
             //note.SetActive(false);
 
@@ -208,6 +217,7 @@ namespace _Player.CombatScene
                 Debug.Log("relax damage : " +  damageAmount);
                 player.GetComponent<Player>().setHp(-damageAmount);
                 _coolDown.setHp(player.GetComponent<Player>().getHp()*0.001f);
+                DungeonManager.instance.SetPlayerHP(player.GetComponent<Player>().getHp());
                 _shake.ShakeCamera();
                 if (player.GetComponent<Player>().setHp(0))
                 {
@@ -225,6 +235,7 @@ namespace _Player.CombatScene
                 Debug.Log("relax heal: " +  healAmount);
                
                 player.GetComponent<Player>().setHp(healAmount);
+                DungeonManager.instance.SetPlayerHP(player.GetComponent<Player>().getHp());
                 _coolDown.setHp(player.GetComponent<Player>().getHp()*0.001f);
             }
         }

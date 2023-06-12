@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 namespace _Player
 {
@@ -17,6 +19,14 @@ namespace _Player
             dungeonNameText.text = dungeon.name;
             dungeonIDText.text = "#" +dungeon.id;
             dungeonInfo = dungeon;
+            GetComponent<Button>().onClick.AddListener(OnClickButton);
+        }
+
+        private void OnClickButton()
+        {
+            Debug.Log("Select dungeon " + dungeonInfo);
+            CombatScene.DungeonManager.Instance.SetDeployedDungeon(dungeonInfo);
+            CombatScene.DungeonManager.Instance.SetDeployedDungeon(dungeonInfo);
         }
     }
 }

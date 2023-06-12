@@ -32,8 +32,8 @@ public class CoolDown : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("notion : CoolDown setactive"+_Player.CombatScene.DungeonManager.instance.GetPlayerHP());
-        setHp(_Player.CombatScene.DungeonManager.instance.GetPlayerHP()*0.001f);
+        Debug.Log("notion : CoolDown setactive"+_Player.CombatScene.DungeonManager.Instance.GetPlayerHP());
+        setHp(_Player.CombatScene.DungeonManager.Instance.GetPlayerHP()*0.001f);
     }
 
     // Update is called once per frame

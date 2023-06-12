@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using _Player.CombatScene;
 using TMPro;
+using UnityEditor.SceneManagement;
+using Stage = DungeonInfoFolder.Stage;
 
 public class MapManager : MonoBehaviour
 {
@@ -46,35 +48,32 @@ public class MapManager : MonoBehaviour
 
 
         // 리스트에 저장된 문자열을 순회하며 리스트 아이템을 생성하고 배치
-        foreach (var str in _Player.CombatScene.DungeonManager.instance.GetNextStages())
+        foreach (var str in _Player.CombatScene.DungeonManager.Instance.GetNextStages())
         {
             GameObject listItem = Instantiate(listItemPrefab, Layout.transform);
             itemButtons.Add(listItem);
             TextMeshProUGUI textComponent = listItem.GetComponentInChildren<TextMeshProUGUI>();
-           
-            if ((int)str == 0)
+
+            Stage currentStage = _Player.CombatScene.DungeonManager.Instance.GetDungeon().dStages[str];
+            
+            if (currentStage.stageType == Stage.StageType.Boss)
+            {
+                textComponent.text = "BOSS";
+                maplist.Add((int)str);
+            }
+            else if (currentStage.stageType == Stage.StageType.Monster)
             {
                 textComponent.text = "MONSTER";
                 maplist.Add((int)str);
             }
-            else if ((int)str == 1)
-            {
-                textComponent.text = "MONSTER";
-                maplist.Add((int)str);
-            }
-            else if ((int)str == 2)
+            else if (currentStage.stageType == Stage.StageType.Totem)
             {
                 textComponent.text = "TOTEM";
                 maplist.Add((int)str);
             }
-            else if ((int)str == 3)
+            else if (currentStage.stageType == Stage.StageType.Relax)
             {
                 textComponent.text = "RELAX";
-                maplist.Add((int)str);
-            }
-            else if ((int)str == 4)
-            {
-                textComponent.text = "BOSS";
                 maplist.Add((int)str);
             }
 

@@ -11,14 +11,14 @@ public class ValidationCheck : MonoBehaviour
 
         foreach (var stage in dungeon.dStages)
         {
-            if (stage.Value.nextStageID.Count == 0)
+            if (stage.Value.nextStage.Count == 0)
             {
                 if (endPoint)
                     // 독립 노드 존재 또는 최종 노드가 2개 이상
                     return false;
                 endPoint = true;
             }
-            if (stage.Value.prevStageID.Count == 0)
+            if (stage.Value.prevStage.Count == 0)
             {
                 // 시작 지점 노드들을 저장
                 startList.Add(stage.Value);
@@ -32,8 +32,8 @@ public class ValidationCheck : MonoBehaviour
         Dictionary<ulong, bool> visited = new Dictionary<ulong, bool>();
         foreach (Stage stage in startList)
         {
-            visited.Add(stage.nodeID, true);
-            DFS(stack, dungeon, visited, stage.nodeID);
+            visited.Add(stage.identifierId, true);
+            DFS(stack, dungeon, visited, stage.identifierId);
         }
         visited.Clear();
 
@@ -41,7 +41,7 @@ public class ValidationCheck : MonoBehaviour
         {
             ulong current = stack.Pop();
             visited.Add(current, true);
-            foreach (var next in dungeon.dStages[current].prevStageID)
+            foreach (var next in dungeon.dStages[current].prevStage)
             {
                 if (!visited.ContainsKey(next))
                 {
@@ -57,7 +57,7 @@ public class ValidationCheck : MonoBehaviour
     // 깊이 우선 탐색
     private void DFS(Stack<ulong> stack, Dungeon dungeon, Dictionary<ulong, bool> visited, ulong current)
     {
-        foreach (var next in dungeon.dStages[current].nextStageID)
+        foreach (var next in dungeon.dStages[current].nextStage)
         {
             if (!visited.ContainsKey(next))
             {

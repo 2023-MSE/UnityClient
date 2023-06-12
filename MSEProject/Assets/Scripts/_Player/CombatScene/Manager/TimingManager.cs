@@ -236,14 +236,14 @@ public class TimingManager : MonoBehaviour
                     else if (note.gameObject.CompareTag("UpNote")) 
                     {
 
-                        _Player.CombatScene.DungeonManager.instance.SetspeedUpDown(1);
+                        _Player.CombatScene.DungeonManager.Instance.SetspeedUpDown(1);
                         boxNoteList.Remove(note);
                         Destroy(note.gameObject);
                     }
                     else if (note.gameObject.CompareTag("DownNote")) 
                     {
 
-                        _Player.CombatScene.DungeonManager.instance.SetspeedUpDown(0);
+                        _Player.CombatScene.DungeonManager.Instance.SetspeedUpDown(0);
                         boxNoteList.Remove(note);
                         Destroy(note.gameObject);
                     }

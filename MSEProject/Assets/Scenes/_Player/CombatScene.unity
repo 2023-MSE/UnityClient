@@ -3861,7 +3861,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1951646306}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &124167255
 MonoBehaviour:
@@ -14726,7 +14726,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1951646306}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &652353532
 MonoBehaviour:
@@ -27435,7 +27435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1181157686}
   m_Layer: 0
-  m_Name: MonsterSpawnPoint_2
+  m_Name: MonsterSpawnPoint_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28186,61 +28186,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1206039572}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1207627695
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1207627696}
-  - component: {fileID: 1207627697}
-  m_Layer: 0
-  m_Name: DungeonManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1207627696
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207627695}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1951646306}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1207627697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207627695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1daeb2da0db9ae54aa709d44bc30e566, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dungeon:
-    nodeEditorJsonData: 
-    id: 0
-    name: 
-    createdTime: 
-    stages: []
-    userId: 0
-    recentID: 0
-    level: 0
-  stageInfo: {fileID: 11400000, guid: b8b4368193b2b714b882805d0c0d982d, type: 2}
-  audioSource: {fileID: 0}
 --- !u!1 &1208165041
 GameObject:
   m_ObjectHideFlags: 0
@@ -45707,8 +45652,8 @@ MonoBehaviour:
   stageInfo: {fileID: 11400000, guid: b8b4368193b2b714b882805d0c0d982d, type: 2}
   spawnPointPlayer: {fileID: 1156893902}
   spawnPointMonster:
-  - {fileID: 1974521270}
   - {fileID: 1181157685}
+  - {fileID: 1974521270}
   - {fileID: 1498475312}
   spawnPointBuffAndRelax: {fileID: 1797722620}
 --- !u!1001 &1906590821
@@ -46892,7 +46837,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1163982688}
-  - {fileID: 1207627696}
   - {fileID: 652353531}
   - {fileID: 124167254}
   m_Father: {fileID: 0}
@@ -47218,7 +47162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1974521271}
   m_Layer: 0
-  m_Name: MonsterSpawnPoint_1
+  m_Name: MonsterSpawnPoint_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -74,7 +74,7 @@ public class BuffMapList : MonoBehaviour
         ScrollView.SetActive(true);
 
         // 리스트에 저장된 문자열을 순회하며 리스트 아이템을 생성하고 배치
-        foreach (var str in _Player.CombatScene.DungeonManager.instance.GetNextStages())
+        foreach (var str in _Player.CombatScene.DungeonManager.Instance.GetNextStages())
         {
             Debug.Log("list:"+str);
             GameObject listItem = Instantiate(listItemPrefab, Layout.transform);

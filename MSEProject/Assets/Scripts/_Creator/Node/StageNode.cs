@@ -19,7 +19,7 @@ public class StageNode : Node
         Register(inputSocket);
         SetHeader("Stage");
 
-        StageEditor.Instance.EditingStage = DungeonEditor.Instance.editingDungeon.dStages[IdentifierID];
+        // StageEditor.Instance.EditingStage = DungeonEditor.Instance.editingDungeon.dStages[IdentifierID];
         editButton.onClick.AddListener(OnEditButtonClick);
     }
 
@@ -30,9 +30,9 @@ public class StageNode : Node
         StageEditor.Instance.VisualizeStageType();
         StageEditor.Instance.VisualizeStageSpecificInfo();
 
-        if (StageEditor.Instance.EditingStage.musicBytesData != null) {
+        if (StageEditor.Instance.EditingStage.musicBytesDataReal != null) {
             MusicDungeonInterface.Instance.myAudioSource.clip =
-                MusicDungeonInterface.Instance.ConvertBytesToAudioClip(StageEditor.Instance.EditingStage.musicBytesData);
+                MusicDungeonInterface.Instance.ConvertBytesToAudioClip(StageEditor.Instance.EditingStage.musicBytesDataReal);
         }
         
     }

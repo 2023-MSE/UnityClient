@@ -45,9 +45,9 @@ public class StageNodeEditor : NodeEditor
         // Socket 에 연결되었을 때, OwnerNode 에 접근할 수 있음.
         // 또한 StageNodeEditor 라는 상속된 Class 이므로, 이것만 따로 사용한다 해도 문제가 없음. (Interface 역할)
         // arg1 이 output으로 연결되어 지는 node, arg2 가 input으로 나오는 node 로 보임.
-        DungeonEditor.Instance.editingDungeon.dStages[arg1.OwnerNode.IdentifierID].prevStageID
+        DungeonEditor.Instance.editingDungeon.dStages[arg1.OwnerNode.IdentifierID].prevStage
             .Add(arg2.OwnerNode.IdentifierID);
-        DungeonEditor.Instance.editingDungeon.dStages[arg2.OwnerNode.IdentifierID].nextStageID
+        DungeonEditor.Instance.editingDungeon.dStages[arg2.OwnerNode.IdentifierID].nextStage
             .Add(arg1.OwnerNode.IdentifierID);
 
         // Test for Stage Info
@@ -87,7 +87,7 @@ public class StageNodeEditor : NodeEditor
         ulong tempRecentID = tempEditingDungeon.recentID;
 
         Stage tempNewStage = new Stage(tempRecentID);
-        tempNewStage.myStageType = Stage.StageType.Relax;
+        tempNewStage.stageType = Stage.StageType.Relax;
         tempNewStage.specificTypeInfo = "";
 
         tempEditingDungeon.dStages.Add(tempRecentID, tempNewStage);
@@ -197,17 +197,17 @@ public class StageNodeEditor : NodeEditor
         Dungeon tempEditingDungeon = DungeonEditor.Instance.editingDungeon;
         Stage tempDeletedStage = tempEditingDungeon.dStages[node.IdentifierID];
 
-        tempEditingDungeon.dStages.Remove(tempDeletedStage.nodeID);
-        foreach (var tempDeletedNodeNextStageID in tempDeletedStage.nextStageID)
+        tempEditingDungeon.dStages.Remove(tempDeletedStage.identifierId);
+        foreach (var tempDeletedNodeNextStageID in tempDeletedStage.nextStage)
         {
             // 자신의 뒤의 스테이지로 가서, 앞에 연결된 Stage 중 자신이 없어졌다는 것을 말해줌.
-            tempEditingDungeon.dStages[tempDeletedNodeNextStageID].prevStageID.Remove(tempDeletedStage.nodeID);
+            tempEditingDungeon.dStages[tempDeletedNodeNextStageID].prevStage.Remove(tempDeletedStage.identifierId);
         }
 
-        foreach (var tempDeletedNodePrevStageID in tempDeletedStage.prevStageID)
+        foreach (var tempDeletedNodePrevStageID in tempDeletedStage.prevStage)
         {
             // 자신의 앞의 스테이지로 가서, 뒤에 연결된 Stage 중 자신이 없어졌다는 것을 말해줌.
-            tempEditingDungeon.dStages[tempDeletedNodePrevStageID].nextStageID.Remove(tempDeletedStage.nodeID);
+            tempEditingDungeon.dStages[tempDeletedNodePrevStageID].nextStage.Remove(tempDeletedStage.identifierId);
         }
 
         Graph.Delete(node);
@@ -222,7 +222,7 @@ public class StageNodeEditor : NodeEditor
         ulong tempRecentID = tempEditingDungeon.recentID;
 
         Stage tempStage = new Stage(tempRecentID);
-        tempStage.myStageType = node.GetComponent<Stage>().myStageType;
+        tempStage.stageType = node.GetComponent<Stage>().stageType;
         tempStage.specificTypeInfo = node.GetComponent<Stage>().specificTypeInfo;
 
         tempEditingDungeon.dStages.Add(tempRecentID, tempStage);
@@ -240,9 +240,9 @@ public class StageNodeEditor : NodeEditor
         var connection = Graph.connections.FirstOrDefault<Connection>(c => c.connId == line_id);
 
         // !!!!! 이거 한번 체크해 봐야 함. Input / Output Node 가 반대 방향일 수도 있음.
-        tempEditingDungeon.dStages[connection.input.OwnerNode.IdentifierID].nextStageID
+        tempEditingDungeon.dStages[connection.input.OwnerNode.IdentifierID].nextStage
             .Remove(connection.output.OwnerNode.IdentifierID);
-        tempEditingDungeon.dStages[connection.output.OwnerNode.IdentifierID].prevStageID
+        tempEditingDungeon.dStages[connection.output.OwnerNode.IdentifierID].prevStage
             .Remove(connection.input.OwnerNode.IdentifierID);
 
         Graph.Disconnect(line_id);
@@ -253,8 +253,8 @@ public class StageNodeEditor : NodeEditor
     private void ClearConnections(Node node)
     {
         Dungeon tempEditingDungeon = DungeonEditor.Instance.editingDungeon;
-        tempEditingDungeon.dStages[node.IdentifierID].prevStageID.Clear();
-        tempEditingDungeon.dStages[node.IdentifierID].nextStageID.Clear();
+        tempEditingDungeon.dStages[node.IdentifierID].prevStage.Clear();
+        tempEditingDungeon.dStages[node.IdentifierID].nextStage.Clear();
 
         Graph.ClearConnectionsOf(node);
         CloseContextMenu();

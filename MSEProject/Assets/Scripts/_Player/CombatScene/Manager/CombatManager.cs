@@ -190,7 +190,7 @@ namespace _Player.CombatScene
                     if (deadMonster == 3) // 3?? ?? ? ? ??? ?? ??.
                     {
                         Debug.Log("notion 191 1 : "+player.getHp());
-                        DungeonManager.instance.SetPlayerHP(player.getHp());
+                        DungeonManager.Instance.SetPlayerHP(player.getHp());
                        
                         uinote.SetActive(false);
 
@@ -453,9 +453,9 @@ namespace _Player.CombatScene
             GameOver.SetActive(false);
             Debug.Log("SetVariable");
             player = GameObject.FindObjectOfType<Player>();
-            Debug.Log("notion : 455 player"+DungeonManager.instance.GetPlayerHP());
+            Debug.Log("notion : 455 player"+DungeonManager.Instance.GetPlayerHP());
             
-            player.GetComponent<Player>().setHp(DungeonManager.instance.GetPlayerHP());
+            player.GetComponent<Player>().setHp(DungeonManager.Instance.GetPlayerHP());
 
             if (_coolDown == null)
             {
@@ -463,7 +463,7 @@ namespace _Player.CombatScene
             }
             else
             {
-                _coolDown.setHp(DungeonManager.instance.GetPlayerHP()*0.001f);
+                _coolDown.setHp(DungeonManager.Instance.GetPlayerHP()*0.001f);
             }
 
             monsters = new List<Monster>(GameObject.FindObjectsByType<Monster>(FindObjectsSortMode.None));

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class FadeEffect : MonoBehaviour
 {
+    [SerializeField] private GameObject imgae;
 
     public float fadeSpeed = 0.2f;
     public bool fadeInOnStart = true;
@@ -26,13 +27,14 @@ public class FadeEffect : MonoBehaviour
         test = FindObjectOfType<TestDirButton>();
         canvasGroup = gameObject.GetComponentInChildren<CanvasGroup>();
         _dungeonManager = FindObjectOfType<DungeonManager>();
+        imgae.SetActive(false);
     }
 
     public void gameover()
     {
+        imgae.SetActive(true);
         StartCoroutine(Over());
-        
-        
+
     }
     IEnumerator Over()
     {
@@ -77,6 +79,7 @@ public class FadeEffect : MonoBehaviour
 
     IEnumerator FadeIn(ulong i)
     {
+        imgae.SetActive(true);
         while (canvasGroup.alpha < 1)
         {
             Debug.Log("fade in : " +canvasGroup.alpha);
@@ -91,7 +94,8 @@ public class FadeEffect : MonoBehaviour
             
         }
 
-       
+        yield return null;
+        imgae.SetActive(false);
     }
 
     IEnumerator FadeOut(ulong i)
@@ -107,7 +111,6 @@ public class FadeEffect : MonoBehaviour
         }
         
         check = false;
-       
     }
 
     IEnumerator nextstage(float wait,ulong i)

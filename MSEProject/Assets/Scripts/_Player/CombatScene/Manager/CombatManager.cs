@@ -6,6 +6,7 @@ using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SearchService;
+using static UnityEngine.Events.UnityEvent;
 
 namespace _Player.CombatScene
 {
@@ -502,6 +503,7 @@ namespace _Player.CombatScene
         }
         public void StopScene()
         {
+            Debug.Log("check !!");
             check = !check;
 
             if (check)

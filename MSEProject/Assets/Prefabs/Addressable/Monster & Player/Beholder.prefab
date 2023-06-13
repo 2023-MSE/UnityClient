@@ -654,9 +654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a795fb78726ce14687c846b2ed3784a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1000
+  maxHp: 250
   hp: 0
-  num: 1
   pattern: 00000000
   patterns:
   - {fileID: 5375850686441753685, guid: ca284ff69f10a8e4b8170637aff6e14f, type: 3}

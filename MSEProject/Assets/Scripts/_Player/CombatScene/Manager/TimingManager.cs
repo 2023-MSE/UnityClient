@@ -169,7 +169,14 @@ public class TimingManager : MonoBehaviour
            
             for (int i = 0; i < boxNoteList.Count; i++)
             {
+
+                if (boxNoteList[i] == null)
+                {
+                    return;
+                }
                 float t_notePosX = boxNoteList[i].transform.localPosition.x;
+                
+                
                 GameObject note = boxNoteList[i].gameObject;
 
                 // 각 판정 범위의 최소값 x, 최대값 y 를 비교하게됨.
